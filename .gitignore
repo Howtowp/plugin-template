@@ -1,0 +1,31 @@
+# Secrets and local config: NEVER commit
+.env
+.env.*
+*.pem
+*.key
+*.token
+auth.json
+
+# Build / dependency output
+node_modules/
+vendor/
+composer.lock
+build/
+*.zip
+/dist/
+*.log
+.phpunit.cache/
+.DS_Store
+
+# Large or private project data (keep samples in data/sample/)
+data/private/
+data/raw/
+data/*.sqlite
+data/*.sql
+data/*.csv
+!data/sample/
+!data/sample/**
+research/private/
+design/*.psd
+design/*.fig
+design/_exports/

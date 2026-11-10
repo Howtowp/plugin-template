@@ -1,0 +1,4 @@
+# Files ignored by Plugin Check (wordpress/plugin-check-action).
+node_modules
+vendor
+tests

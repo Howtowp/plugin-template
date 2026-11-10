@@ -1,0 +1,8 @@
+# Used by the How to WP release packer (and wp dist-archive). Paths are relative to
+# the plugin folder, written WITHOUT a leading slash.
+assets/src
+blocks
+tests
+node_modules
+.phpunit.cache
+*.map

@@ -1,0 +1,42 @@
+{
+	"name": "howtowp/plugin-template",
+	"description": "Starter skeleton for How to WP WordPress plugins.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpstan/extension-installer": "^1.4",
+		"phpunit/phpunit": "^10.5",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"wp-coding-standards/wpcs": "^3.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"HowToWP\\PluginTemplate\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"HowToWP\\PluginTemplate\\Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"sort-packages": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true
+		}
+	},
+	"scripts": {
+		"lint": "find . -path ./vendor -prune -o -path ./node_modules -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l",
+		"phpcs": "phpcs",
+		"phpcbf": "phpcbf",
+		"phpstan": "phpstan analyse --memory-limit=1G",
+		"test": "phpunit"
+	}
+}

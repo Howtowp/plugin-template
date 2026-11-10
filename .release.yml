@@ -1,0 +1,39 @@
+# How to WP release config (project layout: the plugin lives in a subfolder).
+# Schema: https://github.com/Howtowp/.github/blob/main/docs/wordpress-release.md
+slug: plugin-template
+zip_slug: plugin-template
+type: plugin
+plugin_dir: plugin-template # the shippable plugin; everything else in the repo never ships
+main: plugin-template.php   # relative to plugin_dir
+
+# Block build (blocks/ -> build/). Paths are relative to the REPOSITORY root.
+node:
+  enabled: true
+  dir: plugin-template
+  version: "22"
+  install: ci
+  script: build
+
+# No runtime Composer dependencies: the plugin ships a PSR-4 fallback autoloader.
+# If you add some: composer.enabled: true, composer.dir: plugin-template, include_vendor: true,
+# and add `vendor/autoload.php` to keep.
+composer:
+  enabled: false
+  dir: plugin-template
+
+exclude: []
+keep:
+  - plugin-template.php
+  - readme.txt
+  - LICENSE
+  - build/blocks-manifest.php
+  - build/sample-block/block.json
+  - build/sample-block/view.js
+  - languages
+
+use_package_sh: false
+use_distignore: true       # reads plugin-template/.distignore
+include_vendor: false
+allow_tests: false
+copy_root_files: false     # do not copy the project's README.md / CHANGELOG.md into the zip
+max_zip_mb: 50

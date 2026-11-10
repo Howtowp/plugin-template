@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "plugin-template/sample-block",
+	"version": "0.1.0",
+	"title": "Plugin Template sample",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Sample interactive block (Interactivity API).",
+	"example": {},
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"textdomain": "plugin-template",
+	"editorScript": "file:./index.js",
+	"viewScriptModule": "file:./view.js",
+	"render": "file:./render.php"
+}

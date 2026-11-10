@@ -1,0 +1,21 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Plugin Template demo",
+		"description": "Opens WordPress Playground with the plugin installed. Replace the zip URL with a public release zip (the template itself ships at https://github.com/howtowp/plugin-template/releases).",
+		"author": "howtowp"
+	},
+	"landingPage": "/wp-admin/options-general.php?page=plugin-template",
+	"preferredVersions": { "php": "8.3", "wp": "latest" },
+	"steps": [
+		{ "step": "login" },
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "url",
+				"url": "https://github.com/howtowp/plugin-template/releases/download/v0.1.0/plugin-template-0.1.0.zip"
+			},
+			"options": { "activate": true }
+		}
+	]
+}

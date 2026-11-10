@@ -1,0 +1,7 @@
+---
+description: Project rules for the WordPress plugin project
+alwaysApply: true
+---
+
+Read and follow `AGENTS.md` at the repository root before changing anything.
+The shippable plugin is the `plugin-template/` subfolder; `docs/`, `data/`, `design/`, `research/`, `scripts/`, `dev/` never ship.
