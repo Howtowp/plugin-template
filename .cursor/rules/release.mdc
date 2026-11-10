@@ -1,0 +1,17 @@
+---
+description: when bumping version / releasing
+alwaysApply: false
+---
+
+Full guide: `docs/releasing.md`. Release = tag push; never zip or upload by hand.
+
+1. Work on `dev`; docs-only changes need no release (just merge to `main`).
+2. Bump everywhere to the same `X.Y.Z`: header `Version:` and the `HTW_PT_VERSION` constant in `plugin-template/plugin-template.php`, `plugin-template/readme.txt` (Stable tag + changelog), `package.json` / `package-lock.json` and `blocks/*/block.json` if present, `dev/blueprint.json` zip URL if used.
+3. Add a Keep a Changelog entry to `CHANGELOG.md` (`## [X.Y.Z] - date`, Added/Changed/Fixed).
+4. Run `composer lint && composer phpcs && composer phpstan && composer test` and `npm run build` in `plugin-template/`; all green.
+5. Merge `dev` -> `main` (fast-forward / PR), push `main`.
+6. Tag on `main`: `git tag -a vX.Y.Z -m vX.Y.Z && git push origin vX.Y.Z`. The tag must equal the header Version (`-beta` suffix = prerelease). Only tag when the owner asked for a release.
+7. Actions (`.github/workflows/release.yml` -> `howtowp/.github` reusable workflow) builds per `.release.yml`, verifies, and publishes the Release zip. howtowp.ir serves the latest Release to subscribers; there is no in-dashboard auto-updater.
+8. Optional dry-run: Actions tab -> Release -> Run workflow with an existing tag (`dry_run` defaults to true).
+9. Version-mismatch failure: fix the version, then delete the wrong tag (`git push origin :refs/tags/vX.Y.Z && git tag -d vX.Y.Z`) and re-tag, only if no Release was published; otherwise ship the next patch.
+10. Never commit zips, dev `vendor/`, `node_modules/`, `build/`, `.env`, tokens; never force-push `main`; never move a tag that has a published Release.

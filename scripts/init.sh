@@ -76,6 +76,12 @@ for f in "${FILES[@]}"; do
   fi
 done
 
+# The "adopt this in an old project" prompt in docs/releasing.md fetches files from the TEMPLATE repo:
+# keep those URLs pointing at howtowp/plugin-template.
+if [ -f docs/releasing.md ]; then
+  perl -pi -e 's{raw\.githubusercontent\.com/howtowp/\Q$ENV{SLUG}\E/main/}{raw.githubusercontent.com/howtowp/plugin-template/main/}g' docs/releasing.md
+fi
+
 # package-lock.json: only the package name (keep dependency data untouched).
 if [ -f "$OLD_SLUG/package-lock.json" ]; then
   perl -pi -e 's/"name": "\Q$ENV{OLD_SLUG}\E"/"name": "$ENV{SLUG}"/g' "$OLD_SLUG/package-lock.json"

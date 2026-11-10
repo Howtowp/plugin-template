@@ -37,7 +37,7 @@ my-plugin/                  ریشه‌ی ریپو = پروژه
 
 ## ریلیز
 
-نسخه را در هدر افزونه، `HTW_*_VERSION`، `readme.txt`، `package.json` و `CHANGELOG.md` بالا ببرید، روی `main` تگ `vX.Y.Z` بزنید. GitHub Actions فایل `<slug>-X.Y.Z.zip` را می‌سازد و به Release اضافه می‌کند. آپدیت خودکار داخل پیشخوان وجود ندارد؛ مشتری از howtowp.ir دانلود می‌کند.
+نسخه را در هدر افزونه، `HTW_*_VERSION`، `readme.txt`، `package.json` و `CHANGELOG.md` بالا ببرید، روی `main` تگ `vX.Y.Z` بزنید. GitHub Actions فایل `<slug>-X.Y.Z.zip` را می‌سازد و به Release اضافه می‌کند. آپدیت خودکار داخل پیشخوان وجود ندارد؛ مشتری از howtowp.ir دانلود می‌کند. راهنمای کامل: [docs/releasing.md](docs/releasing.md).
 
 ## ویژگی‌ها
 
@@ -71,6 +71,6 @@ PSR-4 modules (`Core`, `Admin`, `Frontend`, `Rest`, `Abilities`, `AI`, `Integrat
 
 ### Release
 
-Bump the version everywhere, tag `vX.Y.Z` on `main`; the reusable workflow in [`howtowp/.github`](https://github.com/howtowp/.github) builds `<slug>-X.Y.Z.zip` and publishes a Release. There is no in-dashboard auto-updater.
+Bump the version everywhere, tag `vX.Y.Z` on `main`; the reusable workflow in [`howtowp/.github`](https://github.com/howtowp/.github) builds `<slug>-X.Y.Z.zip` and publishes a Release. There is no in-dashboard auto-updater. Full guide: [docs/releasing.md](docs/releasing.md).
 
 License: GPL-2.0-or-later. © How to WP.

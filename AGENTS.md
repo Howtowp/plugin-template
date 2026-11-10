@@ -72,12 +72,18 @@ Same list as section 13 of `docs/security-rules.md`; all must be true before a c
 - [ ] `npm run build` works and Plugin Check is green in CI.
 - [ ] Release: version, `readme.txt`, `CHANGELOG.md` updated; no secrets, zips, `.env`, `node_modules`, dev `vendor` or private data committed.
 
-## Release rules
+## Release
 
-- SemVer. Work on `dev`, merge to `main`, tag `vX.Y.Z` on `main`. **The tag must equal the `Version:` header** in `plugin-template/plugin-template.php` (also update `HTW_PT_VERSION`, `readme.txt` Stable tag, `package.json`, `CHANGELOG.md`).
-- Tag push → GitHub Actions builds `plugin-template-X.Y.Z.zip` (root folder `plugin-template/`) and attaches it to a Release. Manual run (`workflow_dispatch`) is a dry-run by default.
-- There is **no** in-dashboard auto-updater. Customers download from howtowp.ir.
-- Never create/move tags from automation, never force-push `main`.
+Guide: [`docs/releasing.md`](docs/releasing.md) (Persian, short English) · agent rule: `.cursor/rules/release.mdc`. Release = **tag push**; never build or upload zips by hand.
+
+1. Work on `dev`. Docs-only changes need no release (merge to `main` only).
+2. Bump the same `X.Y.Z` everywhere: header `Version:` + `HTW_PT_VERSION` in `plugin-template/plugin-template.php`, `readme.txt` Stable tag + changelog, `package.json` / `package-lock.json` / `blocks/*/block.json` if present, `dev/blueprint.json` URL if used. Add a Keep a Changelog entry to `CHANGELOG.md`.
+3. Run `composer lint && composer phpcs && composer phpstan && composer test` and `npm run build` (all green), merge `dev` -> `main`, push.
+4. Tag on `main`: `git tag -a vX.Y.Z -m vX.Y.Z && git push origin vX.Y.Z`. **The tag must equal the header `Version:`**; a `-beta` suffix makes a prerelease. Only tag when the owner asks for a release.
+5. Actions builds per `.release.yml` (only the plugin folder, root `plugin-template/`), verifies, and publishes `plugin-template-X.Y.Z.zip` as a Release. howtowp.ir serves the latest Release to subscribers; there is **no** in-dashboard auto-updater.
+6. Optional dry-run: Actions tab -> Release -> Run workflow (existing tag, `dry_run` defaults to true).
+7. Version-mismatch failure: fix the version and re-tag; delete the wrong tag (`git push origin :refs/tags/vX.Y.Z && git tag -d vX.Y.Z`) only if no Release was published, otherwise ship the next patch.
+8. Never commit zips, dev `vendor/`, `node_modules/`, `.env`, tokens; never force-push `main`; never move a tag with a published Release.
 
 ## Never commit
 

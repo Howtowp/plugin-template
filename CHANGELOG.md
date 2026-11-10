@@ -4,6 +4,7 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 The WordPress-facing changelog lives in `plugin-template/readme.txt`.
 
 ## [Unreleased]
+- docs: release process (`docs/releasing.md`, `.cursor/rules/release.mdc`, Release section in `AGENTS.md`).
 
 ## [0.2.0]
 - Added `docs/security-rules.md` (the Persian Security & Standards ruleset, adapted to `src/` PSR-4, PHP 8.1 / WP 6.8, Abilities API, `wp_add_inline_script` / `wp_interactivity_state`), the condensed `.cursor/rules/wordpress.mdc`, and the Definition of Done in `AGENTS.md`.
