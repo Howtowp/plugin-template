@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Plugin Template
  * Plugin URI:        https://howtowp.ir/plugins/plugin-template
- * Description:       Starter skeleton for How to WP plugins: PSR-4, modules, Abilities API, blocks, WooCommerce HPOS-ready.
+ * Description:       Starter skeleton for How to WP plugins: PSR-4 modules, Abilities API, blocks, HPOS-ready.
  * Version:           0.2.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
@@ -36,7 +36,10 @@ define( 'HTW_PT_MIN_WP', '6.8' );
  * Environment check. Keep this part free of namespaces and typed
  * syntax above this line, so an old PHP shows a notice instead of a fatal error.
  */
-if ( version_compare( PHP_VERSION, HTW_PT_MIN_PHP, '<' ) || version_compare( $GLOBALS['wp_version'], HTW_PT_MIN_WP, '<' ) ) {
+if (
+	version_compare( PHP_VERSION, HTW_PT_MIN_PHP, '<' )
+	|| version_compare( $GLOBALS['wp_version'], HTW_PT_MIN_WP, '<' )
+) {
 	add_action(
 		'admin_notices',
 		static function () {

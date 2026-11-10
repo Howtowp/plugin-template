@@ -34,7 +34,8 @@ final class WooCommerce implements Module {
 		if ( ! class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
 			return;
 		}
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', HTW_PT_FILE, true );
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', HTW_PT_FILE, true );
+		$features = '\Automattic\WooCommerce\Utilities\FeaturesUtil';
+		$features::declare_compatibility( 'custom_order_tables', HTW_PT_FILE, true );
+		$features::declare_compatibility( 'cart_checkout_blocks', HTW_PT_FILE, true );
 	}
 }

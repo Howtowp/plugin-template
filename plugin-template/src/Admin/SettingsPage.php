@@ -88,7 +88,9 @@ final class SettingsPage implements Module {
 	public function sanitize( $input ): array {
 		$input = is_array( $input ) ? $input : array();
 		return array(
-			'greeting'                 => isset( $input['greeting'] ) ? sanitize_text_field( (string) $input['greeting'] ) : '',
+			'greeting'                 => isset( $input['greeting'] )
+				? sanitize_text_field( (string) $input['greeting'] )
+				: '',
 			'delete_data_on_uninstall' => ! empty( $input['delete_data_on_uninstall'] ),
 		);
 	}
@@ -140,8 +142,9 @@ final class SettingsPage implements Module {
 	 * @return array<int, string>
 	 */
 	public function action_links( array $links ): array {
-		$url = admin_url( 'options-general.php?page=' . self::PAGE_SLUG );
-		array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'plugin-template' ) . '</a>' );
+		$url   = admin_url( 'options-general.php?page=' . self::PAGE_SLUG );
+		$label = esc_html__( 'Settings', 'plugin-template' );
+		array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . $label . '</a>' );
 		return $links;
 	}
 }

@@ -65,7 +65,7 @@ final class Abilities implements Module {
 			'plugin-template/site-info',
 			array(
 				'label'               => __( 'Get site info', 'plugin-template' ),
-				'description'         => __( 'Returns the site name, WordPress, PHP and plugin versions. Read-only.', 'plugin-template' ),
+				'description'         => __( 'Returns site name, WordPress, PHP and plugin versions. Read-only.', 'plugin-template' ),
 				'category'            => self::CATEGORY,
 				'output_schema'       => array(
 					'type'       => 'object',

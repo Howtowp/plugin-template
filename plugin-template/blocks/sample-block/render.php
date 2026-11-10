@@ -11,10 +11,15 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
+<?php
+// Both helpers return already-escaped attribute strings.
+$htw_pt_wrapper = get_block_wrapper_attributes();
+$htw_pt_context = wp_interactivity_data_wp_context( array( 'isOpen' => false ) );
+?>
 <div
-	<?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo $htw_pt_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	data-wp-interactive="plugin-template"
-	<?php echo wp_interactivity_data_wp_context( array( 'isOpen' => false ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo $htw_pt_context; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 >
 	<button type="button" data-wp-on--click="actions.toggle" data-wp-bind--aria-expanded="context.isOpen">
 		<?php esc_html_e( 'Toggle', 'plugin-template' ); ?>

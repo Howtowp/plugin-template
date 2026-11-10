@@ -22,10 +22,10 @@
 	<rule ref="WordPress-Docs"/>
 	<rule ref="PHPCompatibilityWP"/>
 
-	<!-- Guidance only: warn above 150 characters, never error. Aim for 100-120 in new code. -->
+	<!-- Soft limit: warn above 120 characters (aim for ~100). -->
 	<rule ref="Generic.Files.LineLength">
 		<properties>
-			<property name="lineLimit" value="150"/>
+			<property name="lineLimit" value="120"/>
 			<property name="absoluteLineLimit" value="0"/>
 		</properties>
 	</rule>

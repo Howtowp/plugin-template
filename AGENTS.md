@@ -28,8 +28,8 @@ Details: <https://github.com/howtowp/.github/blob/main/docs/wordpress-release.md
 
 ## Security & standards (read first)
 
-Full ruleset (Persian): [`docs/security-rules.md`](docs/security-rules.md). Condensed Cursor rule: `.cursor/rules/wordpress.mdc`.
-Golden rule, in order: **Validate -> Sanitize -> Prepare -> Escape**. Nonce **and** capability on every state change; real `permission_callback` on every REST route and ability. `exit` only for the `ABSPATH` / `WP_UNINSTALL_PLUGIN` guards and right after `wp_safe_redirect()`, `wp_send_json_*`, or a streamed download.
+Full ruleset (Persian, authoritative): [`docs/security-rules.md`](docs/security-rules.md). Condensed Cursor rule: `.cursor/rules/wordpress.mdc`.
+Golden rule: **Validate -> Sanitize (input) -> Prepare (query) -> Escape (output)**. Nonce **and** capability on every state change; real `permission_callback` on every REST route and ability. `exit` only for the `ABSPATH` / `WP_UNINSTALL_PLUGIN` guards and right after `wp_safe_redirect()`, `wp_send_json_*`, or a streamed download. Fix priority: security blockers, then release standards (enqueue, readme.txt/index.php, i18n), then quality (die/exit, error handling, line length, WPCS) — root-cause fixes everywhere the pattern repeats.
 
 ## Naming (after `scripts/init.sh` these are renamed; use the current names, never hard-code others)
 
@@ -56,16 +56,21 @@ Golden rule, in order: **Validate -> Sanitize -> Prepare -> Escape**. Nonce **an
 
 ## Definition of Done
 
-A change is done only when all of this is true:
+Same list as section 13 of `docs/security-rules.md`; all must be true before a commit/release:
 
-- [ ] Input validated, unslashed and sanitized; output escaped late; every query uses `$wpdb->prepare()` (or an API).
-- [ ] State changes check nonce **and** capability; REST/ability `permission_callback` is real.
-- [ ] No `die`/`exit` in normal flow, no `extract()`, no `wp_localize_script` for new data passing.
-- [ ] New PHP files start with `defined( 'ABSPATH' ) || exit;`; every new folder in the plugin has an `index.php`.
-- [ ] Strings are translatable with the `plugin-template` text domain; new hooks/abilities are documented in `docs/`.
-- [ ] `composer lint`, `composer phpcs` (0 errors, 0 warnings), `composer phpstan`, `composer test` pass; `npm run build` works.
-- [ ] Plugin Check is green in CI; version, `readme.txt`, `CHANGELOG.md` updated when releasing.
-- [ ] No secrets, zips, `.env`, `node_modules`, dev `vendor` or private data committed.
+- [ ] No `$_POST/$_GET/$_REQUEST/$_SERVER` without `wp_unslash` + sanitize; no output without context-correct escaping.
+- [ ] Every query with variable input uses `$wpdb->prepare()` (or a WP API).
+- [ ] Every PHP file has the `ABSPATH` guard (`uninstall.php`: `WP_UNINSTALL_PLUGIN`).
+- [ ] Every state-changing action checks nonce **and** `current_user_can()`.
+- [ ] No unauthorised `die`/`exit` (only the five allowed cases above); errors via `WP_Error`.
+- [ ] All CSS/JS via `wp_enqueue_*`; data to JS via `wp_add_inline_script` / `wp_interactivity_state` (not `wp_localize_script`).
+- [ ] Every REST route and Ability has a real `permission_callback` (write/delete never wide open).
+- [ ] `readme.txt`, `uninstall.php` and `index.php` (silence) exist in the plugin root and every subfolder; `build/` gets its `index.php` from `npm run build` (postbuild).
+- [ ] All strings i18n'd with text domain = slug; all globals prefixed; classes in `src/` with PSR-4 namespace.
+- [ ] `composer phpcs` (0 errors, 0 warnings), `composer phpstan`, `composer test` green; no line over 120 characters; no PHP warnings/notices.
+- [ ] No API key or secret in code (options/constants only); AI only via the core AI Client.
+- [ ] `npm run build` works and Plugin Check is green in CI.
+- [ ] Release: version, `readme.txt`, `CHANGELOG.md` updated; no secrets, zips, `.env`, `node_modules`, dev `vendor` or private data committed.
 
 ## Release rules
 

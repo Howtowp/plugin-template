@@ -1,17 +1,26 @@
 ---
-description: WordPress security and coding standards for plugin code
+description: WordPress security and coding standards for plugin code (condensed from docs/security-rules.md)
 globs: "**/*.php,**/*.js"
 alwaysApply: true
 ---
 
-Full rules: `docs/security-rules.md` (Persian). Read it before touching PHP. Condensed:
+Full ruleset (Persian, authoritative): `docs/security-rules.md`. Read it before touching PHP/JS.
 
-- Baseline PHP 8.1, WordPress 6.8. Code in `plugin-template/src/` (PSR-4, namespace `HowToWP\PluginTemplate\`), prefix `htw_pt_` / `HTW_PT_`.
-- 4 layers, in order: **Validate -> Sanitize -> Prepare -> Escape**. Unslash then sanitize all input; escape late on output; `$wpdb->prepare()` for every query.
-- State changes need **nonce AND capability**. REST routes and Abilities need a real `permission_callback` (never wide open for writes).
-- No `die`/`wp_die`/`exit` in normal flow. Allowed `exit`: the `ABSPATH` guard, the `WP_UNINSTALL_PLUGIN` guard, after `wp_safe_redirect()`, after `wp_send_json_*`, after streaming a file download.
-- No `extract()`, `eval()`, `$_REQUEST`, raw `file_get_contents` on URLs. Pass data to the front end with `wp_add_inline_script`, `wp_interactivity_state`, or script-module data, not `wp_localize_script`.
-- Every plugin folder keeps an `index.php` (`<?php // Silence is golden.`); `build/` gets it from `npm run build` (postbuild).
-- AI features: core AI Client only, feature-detected, never store or request API keys.
-- Never commit tokens, `.env`, zips, `node_modules`, dev `vendor`, customer data.
-- Before finishing run: `composer lint && composer phpcs && composer phpstan && composer test` and `npm run build` inside `plugin-template/`. See "Definition of Done" in `AGENTS.md`.
+**Golden rule: Validate -> Sanitize (input) -> Prepare (query) -> Escape (output).** Code missing a layer is incomplete.
+
+Baseline: PHP 8.1, WordPress 6.8. Code in `plugin-template/src/` (PSR-4, `HowToWP\PluginTemplate\`), prefix `htw_pt_` / `HTW_PT_` / `htw-pt-`, text domain = slug.
+
+Non-negotiable:
+1. Never use `$_POST/$_GET/$_REQUEST/$_SERVER/$_COOKIE` raw: `isset` -> `wp_unslash` -> sanitize -> validate. Whitelist (`in_array(..., true)`) for fixed choices.
+2. Escape every output late (`esc_html`, `esc_attr`, `esc_url`, `esc_textarea`, `wp_kses_post`, `esc_html__`); literal strings only in `__()` / `_e()`.
+3. Every query with variable input goes through `$wpdb->prepare()` (`%d %f %s`, `esc_like()` for LIKE); table/column names from whitelists. Prefer WP APIs.
+4. Every PHP file starts with `defined( 'ABSPATH' ) || exit;` (`uninstall.php`: `defined( 'WP_UNINSTALL_PLUGIN' ) || exit;`).
+5. Every state-changing action (form, AJAX, REST, link) checks **nonce AND capability** (never only `is_admin()`).
+6. No `die` / `exit` / `wp_die` in normal flow. `exit` only: ABSPATH guard, WP_UNINSTALL_PLUGIN guard, right after `wp_safe_redirect()`, after `wp_send_json_*`, after streaming a file download. Errors -> `WP_Error`.
+7. Every REST route and every Ability has a real `permission_callback`; write/delete is never wide open.
+
+Also: assets only via `wp_enqueue_*` (version = plugin constant, load only on own screens); pass data to JS with `wp_add_inline_script` or `wp_interactivity_state`, NOT `wp_localize_script`; HTTP via `wp_remote_*`; files via `WP_Filesystem` / `wp_handle_upload`, sanitized paths; tabs, Yoda, docblocks, lines <= 120 (aim ~100); `index.php` ("Silence is golden") in the plugin root and every subfolder (`build/` gets it from the npm `postbuild` script); `error_log()` not `var_dump`; no secrets in code; AI only via core AI Client, feature-detected, no API keys.
+
+Fix priority: (1) security blockers (SQLi, XSS, nonce/capability, ABSPATH), (2) release standards (enqueue, readme.txt/index.php, i18n), (3) quality (die/exit, error handling, line length, WPCS). Fix root causes everywhere the pattern repeats.
+
+Before finishing: `composer lint && composer phpcs && composer phpstan && composer test` and `npm run build` inside `plugin-template/`. Definition of Done: `AGENTS.md`.
