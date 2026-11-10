@@ -28,6 +28,17 @@ jobs:
           npm ci
           npm run build
 
+      # Check what customers get: stage the plugin without dev files (same idea as the release zip).
+      - name: Stage distributable plugin
+        run: |
+          mkdir -p dist
+          rsync -a \
+            --exclude-from=plugin-template/.distignore \
+            --exclude='.*' --exclude='node_modules' --exclude='vendor' \
+            --exclude='composer.json' --exclude='composer.lock' --exclude='package.json' --exclude='package-lock.json' \
+            --exclude='phpcs.xml.dist' --exclude='phpstan.neon.dist' --exclude='phpunit.xml.dist' \
+            plugin-template/ dist/plugin-template/
+
       # wp-env would read the project's dev .wp-env.json (which already mounts the plugin);
       # the action builds its own config.
       - name: Use the action's own wp-env config
@@ -36,6 +47,8 @@ jobs:
       - name: Run Plugin Check
         uses: WordPress/plugin-check-action@v1
         with:
-          # The plugin lives in a subfolder (project layout).
-          build-dir: plugin-template
-          exclude-directories: node_modules,vendor,tests
+          build-dir: dist/plugin-template
+          # Update URI is intentional (plugins are distributed from howtowp.ir, not WordPress.org),
+          # and load_plugin_textdomain() is needed outside WordPress.org. After renaming the
+          # template, "trademarked_term" no longer applies; remove it from this list if you like.
+          ignore-codes: plugin_updater_detected,trademarked_term,PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
