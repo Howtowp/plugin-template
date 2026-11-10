@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build (e.g. v1.0.0). Tags are never created or moved.
+        required: true
+        type: string
+      dry_run:
+        description: Build and verify only; do not create or update a GitHub Release.
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  release:
+    uses: Howtowp/.github/.github/workflows/wordpress-release.yml@main
+    with:
+      tag: ${{ inputs.tag || github.ref_name }}
+      dry_run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+    secrets: inherit

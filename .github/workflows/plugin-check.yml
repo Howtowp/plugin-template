@@ -1,0 +1,41 @@
+name: Plugin Check
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  plugin-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: plugin-template/package-lock.json
+
+      - name: Build blocks
+        working-directory: plugin-template
+        run: |
+          npm ci
+          npm run build
+
+      # wp-env would read the project's dev .wp-env.json (which already mounts the plugin);
+      # the action builds its own config.
+      - name: Use the action's own wp-env config
+        run: rm -f .wp-env.json
+
+      - name: Run Plugin Check
+        uses: WordPress/plugin-check-action@v1
+        with:
+          # The plugin lives in a subfolder (project layout).
+          build-dir: plugin-template
+          exclude-directories: node_modules,vendor,tests
