@@ -3,7 +3,7 @@
  * Plugin Name:       Plugin Template
  * Plugin URI:        https://howtowp.ir/plugins/plugin-template
  * Description:       Starter skeleton for How to WP plugins: PSR-4, modules, Abilities API, blocks, WooCommerce HPOS-ready.
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
  * Author:            How to WP
@@ -24,7 +24,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'HTW_PT_VERSION', '0.1.0' ); // Keep equal to the Version header above (release check + tests).
+define( 'HTW_PT_VERSION', '0.2.0' ); // Keep equal to the Version header above (release check + tests).
 define( 'HTW_PT_FILE', __FILE__ );
 define( 'HTW_PT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'HTW_PT_URL', plugin_dir_url( __FILE__ ) );

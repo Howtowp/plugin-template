@@ -25,6 +25,9 @@ exclude: []
 keep:
   - plugin-template.php
   - readme.txt
+  - index.php
+  - build/index.php
+  - src/index.php
   - LICENSE
   - build/blocks-manifest.php
   - build/sample-block/block.json

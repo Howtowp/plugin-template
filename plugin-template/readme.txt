@@ -4,7 +4,7 @@ Tags: howtowp, starter, template
 Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,10 +29,13 @@ No. Download new versions from https://howtowp.ir and upload them.
 
 == Changelog ==
 
+= 0.2.0 =
+* Security and standards ruleset (docs/security-rules.md), "Silence is golden" index.php files, stricter PHPCS (WordPress-Extra, WordPress-Docs, PHPCompatibilityWP), templates no longer use extract().
+
 = 0.1.0 =
 * Initial release.
 
 == Upgrade Notice ==
 
-= 0.1.0 =
-Initial release.
+= 0.2.0 =
+Hardening release, no functional changes.

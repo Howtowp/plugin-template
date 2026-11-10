@@ -1,0 +1,17 @@
+---
+description: WordPress security and coding standards for plugin code
+globs: "**/*.php,**/*.js"
+alwaysApply: true
+---
+
+Full rules: `docs/security-rules.md` (Persian). Read it before touching PHP. Condensed:
+
+- Baseline PHP 8.1, WordPress 6.8. Code in `plugin-template/src/` (PSR-4, namespace `HowToWP\PluginTemplate\`), prefix `htw_pt_` / `HTW_PT_`.
+- 4 layers, in order: **Validate -> Sanitize -> Prepare -> Escape**. Unslash then sanitize all input; escape late on output; `$wpdb->prepare()` for every query.
+- State changes need **nonce AND capability**. REST routes and Abilities need a real `permission_callback` (never wide open for writes).
+- No `die`/`wp_die`/`exit` in normal flow. Allowed `exit`: the `ABSPATH` guard, the `WP_UNINSTALL_PLUGIN` guard, after `wp_safe_redirect()`, after `wp_send_json_*`, after streaming a file download.
+- No `extract()`, `eval()`, `$_REQUEST`, raw `file_get_contents` on URLs. Pass data to the front end with `wp_add_inline_script`, `wp_interactivity_state`, or script-module data, not `wp_localize_script`.
+- Every plugin folder keeps an `index.php` (`<?php // Silence is golden.`); `build/` gets it from `npm run build` (postbuild).
+- AI features: core AI Client only, feature-detected, never store or request API keys.
+- Never commit tokens, `.env`, zips, `node_modules`, dev `vendor`, customer data.
+- Before finishing run: `composer lint && composer phpcs && composer phpstan && composer test` and `npm run build` inside `plugin-template/`. See "Definition of Done" in `AGENTS.md`.

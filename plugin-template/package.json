@@ -1,11 +1,12 @@
 {
 	"name": "plugin-template",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"description": "Block build for the Plugin Template plugin.",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
 		"build": "wp-scripts build --experimental-modules --webpack-src-dir=blocks --output-path=build --blocks-manifest",
+		"postbuild": "node bin/add-index.js",
 		"start": "wp-scripts start --experimental-modules --webpack-src-dir=blocks --output-path=build --blocks-manifest",
 		"lint:js": "wp-scripts lint-js blocks",
 		"format": "wp-scripts format blocks"

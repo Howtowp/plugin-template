@@ -13,7 +13,7 @@
 			"step": "installPlugin",
 			"pluginData": {
 				"resource": "url",
-				"url": "https://github.com/howtowp/plugin-template/releases/download/v0.1.0/plugin-template-0.1.0.zip"
+				"url": "https://github.com/howtowp/plugin-template/releases/download/v0.2.0/plugin-template-0.2.0.zip"
 			},
 			"options": { "activate": true }
 		}

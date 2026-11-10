@@ -13,11 +13,27 @@
 	<arg value="ps"/>
 	<arg name="parallel" value="8"/>
 
+	<!-- Minimum supported WordPress (WPCS 3 name; older WPCS called it minimum_supported_wp_version). -->
 	<config name="minimum_wp_version" value="6.8"/>
+	<!-- PHP versions to check for compatibility: 8.1 and up. -->
 	<config name="testVersion" value="8.1-"/>
 
-	<rule ref="WordPress"/>
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
 	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Guidance only: warn above 150 characters, never error. Aim for 100-120 in new code. -->
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="150"/>
+			<property name="absoluteLineLimit" value="0"/>
+		</properties>
+	</rule>
+
+	<!-- "Silence is golden" index.php files carry no file docblock. -->
+	<rule ref="Squiz.Commenting.FileComment">
+		<exclude-pattern>*/index.php</exclude-pattern>
+	</rule>
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>

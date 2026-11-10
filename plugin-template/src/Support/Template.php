@@ -21,7 +21,7 @@ final class Template {
 	 * Render a template and return its HTML.
 	 *
 	 * @param string               $name Template name without extension (e.g. "hello").
-	 * @param array<string, mixed> $vars Variables available inside the template.
+	 * @param array<string, mixed> $vars Data passed to the template as $args.
 	 */
 	public static function render( string $name, array $vars = array() ): string {
 		$name = preg_replace( '/[^a-z0-9\-_\/]/i', '', $name );
@@ -33,10 +33,10 @@ final class Template {
 			return '';
 		}
 		ob_start();
-		( static function ( string $htw_pt_file, array $htw_pt_vars ): void {
-			// phpcs:ignore WordPress.PHP.DontExtract.extract_extract
-			extract( $htw_pt_vars, EXTR_SKIP );
-			include $htw_pt_file;
+		// $args is consumed by the included template.
+		// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+		( static function ( string $htw_pt_file, array $args ): void {
+			include $htw_pt_file; // Templates read their data from $args, never from extracted variables.
 		} )( $file, $vars );
 		return (string) ob_get_clean();
 	}

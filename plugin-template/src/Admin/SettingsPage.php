@@ -62,12 +62,25 @@ final class SettingsPage implements Module {
 
 		add_settings_section( 'htw_pt_main', __( 'General', 'plugin-template' ), '__return_false', self::PAGE_SLUG );
 
-		add_settings_field( 'greeting', __( 'Greeting', 'plugin-template' ), array( $this, 'field_greeting' ), self::PAGE_SLUG, 'htw_pt_main' );
-		add_settings_field( 'delete_data_on_uninstall', __( 'Remove data on uninstall', 'plugin-template' ), array( $this, 'field_delete' ), self::PAGE_SLUG, 'htw_pt_main' );
+		add_settings_field(
+			'greeting',
+			__( 'Greeting', 'plugin-template' ),
+			array( $this, 'field_greeting' ),
+			self::PAGE_SLUG,
+			'htw_pt_main'
+		);
+		add_settings_field(
+			'delete_data_on_uninstall',
+			__( 'Remove data on uninstall', 'plugin-template' ),
+			array( $this, 'field_delete' ),
+			self::PAGE_SLUG,
+			'htw_pt_main'
+		);
 	}
 
 	/**
-	 * Sanitize submitted settings. Whitelist keys, cast types.
+	 * Sanitize submitted settings. Whitelist keys, cast types. (options.php already unslashes the
+	 * POST data and checks the nonce and the manage_options capability before this runs.)
 	 *
 	 * @param mixed $input Raw input.
 	 * @return array<string, mixed>

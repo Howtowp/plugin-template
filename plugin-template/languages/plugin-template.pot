@@ -44,19 +44,19 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:65
+#: src/Admin/SettingsPage.php:67
 msgid "Greeting"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:66
+#: src/Admin/SettingsPage.php:74
 msgid "Remove data on uninstall"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:104
+#: src/Admin/SettingsPage.php:117
 msgid "Delete all plugin data when the plugin is deleted."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:131
+#: src/Admin/SettingsPage.php:144
 msgid "Settings"
 msgstr ""
 

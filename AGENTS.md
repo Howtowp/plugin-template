@@ -15,6 +15,8 @@ This repo is a **project** that contains one shippable WordPress plugin. Read th
 │   ├── templates/            PHP templates, overridable by themes at {theme}/plugin-template/
 │   ├── assets/src|dist       sources (not shipped) | compiled assets (shipped)
 │   ├── languages/            .pot (+ fa_IR)   tests/ phpunit   readme.txt  LICENSE  uninstall.php
+│   ├── bin/add-index.js      postbuild: puts index.php into build/ (bin/ never ships)
+│   ├── index.php             "Silence is golden" in the plugin root and in every subfolder
 │   └── composer.json package.json phpcs.xml.dist phpstan.neon.dist phpunit.xml.dist .distignore
 ├── docs/  data/  design/  research/  scripts/  dev/   project material, NEVER ships
 ├── .release.yml            release config (plugin_dir: plugin-template)
@@ -23,6 +25,11 @@ This repo is a **project** that contains one shippable WordPress plugin. Read th
 
 Simple layout (plugin at repo root) also exists for old product repos: same `.release.yml` without `plugin_dir`.
 Details: <https://github.com/howtowp/.github/blob/main/docs/wordpress-release.md>.
+
+## Security & standards (read first)
+
+Full ruleset (Persian): [`docs/security-rules.md`](docs/security-rules.md). Condensed Cursor rule: `.cursor/rules/wordpress.mdc`.
+Golden rule, in order: **Validate -> Sanitize -> Prepare -> Escape**. Nonce **and** capability on every state change; real `permission_callback` on every REST route and ability. `exit` only for the `ABSPATH` / `WP_UNINSTALL_PLUGIN` guards and right after `wp_safe_redirect()`, `wp_send_json_*`, or a streamed download.
 
 ## Naming (after `scripts/init.sh` these are renamed; use the current names, never hard-code others)
 
@@ -46,6 +53,19 @@ Details: <https://github.com/howtowp/.github/blob/main/docs/wordpress-release.md
 - AI features use the core AI Client (`wp_ai_client_prompt`), feature-detected; **never store or request API keys**.
 - Checks (run inside `plugin-template/`): `composer install && composer lint && composer phpcs && composer phpstan && composer test`.
 - Keep docs in `docs/` (project) and `readme.txt` (WordPress.org-style readme, shipped).
+
+## Definition of Done
+
+A change is done only when all of this is true:
+
+- [ ] Input validated, unslashed and sanitized; output escaped late; every query uses `$wpdb->prepare()` (or an API).
+- [ ] State changes check nonce **and** capability; REST/ability `permission_callback` is real.
+- [ ] No `die`/`exit` in normal flow, no `extract()`, no `wp_localize_script` for new data passing.
+- [ ] New PHP files start with `defined( 'ABSPATH' ) || exit;`; every new folder in the plugin has an `index.php`.
+- [ ] Strings are translatable with the `plugin-template` text domain; new hooks/abilities are documented in `docs/`.
+- [ ] `composer lint`, `composer phpcs` (0 errors, 0 warnings), `composer phpstan`, `composer test` pass; `npm run build` works.
+- [ ] Plugin Check is green in CI; version, `readme.txt`, `CHANGELOG.md` updated when releasing.
+- [ ] No secrets, zips, `.env`, `node_modules`, dev `vendor` or private data committed.
 
 ## Release rules
 
