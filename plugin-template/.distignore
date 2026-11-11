@@ -6,3 +6,5 @@ tests
 node_modules
 .phpunit.cache
 *.map
+
+# AI-GUIDE.md must ship in the zip — do not add it or a blanket *.md rule.

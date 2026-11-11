@@ -102,6 +102,7 @@ cat > README.md <<README_EOF
 افزونه‌ی وردپرس · WordPress plugin by [How to WP](https://howtowp.ir).
 
 - Plugin folder: \`$SLUG/\` (the only thing that ships). Project material: \`docs/\`, \`data/\`, \`design/\`, \`research/\`, \`scripts/\`, \`dev/\`.
+- Store copy: [product.json](./product.json) (bilingual; not in the zip). Customer AI guide: \`$SLUG/AI-GUIDE.md\` (ships in the zip).
 - Coding agents: read [AGENTS.md](./AGENTS.md).
 - Build: \`cd $SLUG && composer install && npm install && npm run build\`.
 - Release: bump versions, tag \`vX.Y.Z\` on \`main\` (see AGENTS.md).

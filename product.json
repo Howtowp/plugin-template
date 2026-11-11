@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Howtowp/.github/main/schemas/product.schema.json",
+  "schema_version": 1,
+  "catalog_slug": "plugin-template",
+  "wc_slug": "plugin-template",
+  "code_repo": "howtowp/plugin-template",
+  "type": "plugin",
+  "name": {
+    "fa": "Plugin Template",
+    "en": "Plugin Template"
+  },
+  "tagline": {
+    "fa": "",
+    "en": ""
+  },
+  "short_description": {
+    "fa": "",
+    "en": ""
+  },
+  "features": [],
+  "use_cases": [],
+  "faq": [],
+  "audience": {
+    "regular_users": [],
+    "vibe_coders": []
+  },
+  "demo_url": null,
+  "video_url": null,
+  "product_page": null,
+  "requirements_notes": {
+    "fa": "",
+    "en": ""
+  },
+  "ai_guide": "plugin-template/AI-GUIDE.md"
+}

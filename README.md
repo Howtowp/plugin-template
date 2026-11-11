@@ -25,15 +25,25 @@ composer lint && composer phpcs && composer phpstan && composer test
 ```
 my-plugin/                  ریشه‌ی ریپو = پروژه
 ├── my-plugin/              خود افزونه (نام پوشه = slug = ریشه‌ی zip)
-│   ├── my-plugin.php  src/  blocks/  templates/  assets/  languages/  tests/
+│   ├── my-plugin.php  AI-GUIDE.md  src/  blocks/  templates/  assets/  languages/  tests/
 │   └── composer.json  package.json  readme.txt  LICENSE  uninstall.php  …
 ├── docs/  data/  design/  research/  scripts/  dev/
 ├── AGENTS.md  CLAUDE.md  .cursor/rules/
+├── product.json            bilingual store copy (not in the zip)
+├── product.schema.json     convenience copy; canonical schema is in howtowp/.github
 ├── .release.yml            plugin_dir: my-plugin
 └── .github/workflows/      release.yml · plugin-check.yml
 ```
 
 اگر فقط خود افزونه را دارید (بدون پروژه)، **چیدمان ساده** هم پشتیبانی می‌شود: فایل‌های افزونه مستقیم در ریشه‌ی ریپو باشند و در `.release.yml` کلید `plugin_dir` را حذف کنید. جزئیات: [docs/wordpress-release.md](https://github.com/howtowp/.github/blob/main/docs/wordpress-release.md).
+
+
+## محتوای محصول (`product.json` و `AI-GUIDE.md`)
+
+- `product.json` در ریشهٔ ریپو: متن دوزبانهٔ صفحهٔ محصول (ویژگی‌ها، کاربردها، FAQ و غیره). داخل zip نمی‌رود؛ بعداً به‌عنوان asset به Release وصل می‌شود. اسکیمای مرجع: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json).
+- `<slug>/AI-GUIDE.md`: راهنمای مشتری و وایب‌کدر برای گسترش افزونه با Cursor یا Claude. این فایل **باید** داخل zip باشد. با `AGENTS.md` (توسعهٔ داخلی) فرق دارد.
+
+قیمت، نسخه، changelog و Requires از این فایل‌ها خوانده نمی‌شوند.
 
 ## ریلیز
 
@@ -68,6 +78,14 @@ See [docs/wordpress-release.md](https://github.com/howtowp/.github/blob/main/doc
 ### What is inside
 
 PSR-4 modules (`Core`, `Admin`, `Frontend`, `Rest`, `Abilities`, `AI`, `Integrations`, `Services`, `Repositories`, `Support`), Settings API page, REST route, Abilities API sample (WP 6.9+), optional AI Client stub (WP 7.0+, no API keys), WooCommerce HPOS/Checkout-blocks declaration, Interactivity-API block built with `@wordpress/scripts`, PHPCS (WPCS 3.4), PHPStan, PHPUnit, Plugin Check CI, Playground blueprint, `.wp-env.json`, and `AGENTS.md` for AI coding agents.
+
+
+### Product content (`product.json` and `AI-GUIDE.md`)
+
+- `product.json` at the repo root: bilingual store copy (features, use cases, FAQ, …). It does **not** ship in the plugin zip; it is attached to the GitHub Release later. Canonical schema: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json).
+- `<slug>/AI-GUIDE.md`: customer / vibe-coder guide for extending the plugin with Cursor or Claude. It **must** ship in the zip. This is not `AGENTS.md` (internal development).
+
+Price, version, changelog and requirement headers do not belong in `product.json`.
 
 ### Release
 

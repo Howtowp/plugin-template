@@ -85,6 +85,13 @@ Guide: [`docs/releasing.md`](docs/releasing.md) (Persian, short English) · agen
 7. Version-mismatch failure: fix the version and re-tag; delete the wrong tag (`git push origin :refs/tags/vX.Y.Z && git tag -d vX.Y.Z`) only if no Release was published, otherwise ship the next patch.
 8. Never commit zips, dev `vendor/`, `node_modules/`, `.env`, tokens; never force-push `main`; never move a tag with a published Release.
 
+
+## Product content
+
+- `product.json` lives at the **repository root** (not inside the plugin folder) and must validate against the canonical schema: `https://raw.githubusercontent.com/Howtowp/.github/main/schemas/product.schema.json`. Every text field is `{ "fa": "…", "en": "…" }`. Do not put version, changelog, Requires, Tested up to, price, or club policy in this file.
+- `plugin-template/AI-GUIDE.md` ships in the zip. It is for customers and vibe coders extending the plugin; it is not this `AGENTS.md`. Keep hook lists honest — only hooks that exist in the code.
+- After filling or updating those files, commit to `dev`. Do not tag a release unless the owner asked for one.
+
 ## Never commit
 
 Tokens, API keys, `.env*`, private keys, customer data, zip files, `node_modules/`, dev `vendor/`, `build/` output, large/private datasets (use `data/sample/` for small fixtures). `docs/`, `data/`, `design/`, `research/`, `scripts/`, `dev/` must never end up in the plugin folder or the zip.

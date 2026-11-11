@@ -29,6 +29,7 @@ keep:
   - build/index.php
   - src/index.php
   - LICENSE
+  - AI-GUIDE.md
   - build/blocks-manifest.php
   - build/sample-block/block.json
   - build/sample-block/view.js
