@@ -89,6 +89,7 @@ Guide: [`docs/releasing.md`](docs/releasing.md) (Persian, short English) · agen
 ## Product content
 
 - `product.json` lives at the **repository root** (not inside the plugin folder) and must validate against the canonical schema: `https://raw.githubusercontent.com/Howtowp/.github/main/schemas/product.schema.json`. Every text field is `{ "fa": "…", "en": "…" }`. Do not put version, changelog, Requires, Tested up to, price, or club policy in this file.
+- Long description is the optional `description_sections` array (canonical ids, bilingual, no HTML), not free-form WooCommerce HTML. Feature cards (`features`, 6–9, benefit-first titles) follow [docs/product-copy.md](https://github.com/Howtowp/.github/blob/main/docs/product-copy.md).
 - `plugin-template/AI-GUIDE.md` ships in the zip. It is for customers and vibe coders extending the plugin; it is not this `AGENTS.md`. Keep hook lists honest — only hooks that exist in the code.
 - After filling or updating those files, commit to `dev`. Do not tag a release unless the owner asked for one.
 

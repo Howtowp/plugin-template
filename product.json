@@ -31,5 +31,108 @@
     "fa": "",
     "en": ""
   },
-  "ai_guide": "plugin-template/AI-GUIDE.md"
+  "ai_guide": "plugin-template/AI-GUIDE.md",
+  "description_sections": [
+    {
+      "id": "opener",
+      "body": {
+        "fa": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "audience",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      },
+      "items": []
+    },
+    {
+      "id": "how_it_works",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      },
+      "steps": [
+        {
+          "fa": "",
+          "en": ""
+        },
+        {
+          "fa": "",
+          "en": ""
+        },
+        {
+          "fa": "",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "key_features",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "use_cases",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "why_howtowp",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      },
+      "items": []
+    },
+    {
+      "id": "requirements",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      },
+      "items": []
+    },
+    {
+      "id": "cta",
+      "body": {
+        "fa": "",
+        "en": ""
+      },
+      "heading": {
+        "fa": "",
+        "en": ""
+      }
+    }
+  ]
 }

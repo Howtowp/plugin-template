@@ -40,7 +40,7 @@ my-plugin/                  ریشه‌ی ریپو = پروژه
 
 ## محتوای محصول (`product.json` و `AI-GUIDE.md`)
 
-- `product.json` در ریشهٔ ریپو: متن دوزبانهٔ صفحهٔ محصول (ویژگی‌ها، کاربردها، FAQ و غیره). داخل zip نمی‌رود؛ بعداً به‌عنوان asset به Release وصل می‌شود. اسکیمای مرجع: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json).
+- `product.json` در ریشهٔ ریپو: متن دوزبانهٔ صفحهٔ محصول (ویژگی‌ها، کاربردها، FAQ و توضیحات بلند ساخت‌یافته در `description_sections`). داخل zip نمی‌رود؛ بعداً به‌عنوان asset به Release وصل می‌شود. اسکیمای مرجع: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json). الگوی نگارش: [docs/product-copy.md](https://github.com/Howtowp/.github/blob/main/docs/product-copy.md).
 - `<slug>/AI-GUIDE.md`: راهنمای مشتری و وایب‌کدر برای گسترش افزونه با Cursor یا Claude. این فایل **باید** داخل zip باشد. با `AGENTS.md` (توسعهٔ داخلی) فرق دارد.
 
 قیمت، نسخه، changelog و Requires از این فایل‌ها خوانده نمی‌شوند.
@@ -82,7 +82,7 @@ PSR-4 modules (`Core`, `Admin`, `Frontend`, `Rest`, `Abilities`, `AI`, `Integrat
 
 ### Product content (`product.json` and `AI-GUIDE.md`)
 
-- `product.json` at the repo root: bilingual store copy (features, use cases, FAQ, …). It does **not** ship in the plugin zip; it is attached to the GitHub Release later. Canonical schema: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json).
+- `product.json` at the repo root: bilingual store copy (features, use cases, FAQ, and structured `description_sections`). It does **not** ship in the plugin zip; it is attached to the GitHub Release later. Canonical schema: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json). Writing guide: [docs/product-copy.md](https://github.com/Howtowp/.github/blob/main/docs/product-copy.md).
 - `<slug>/AI-GUIDE.md`: customer / vibe-coder guide for extending the plugin with Cursor or Claude. It **must** ship in the zip. This is not `AGENTS.md` (internal development).
 
 Price, version, changelog and requirement headers do not belong in `product.json`.
