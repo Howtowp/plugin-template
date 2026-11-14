@@ -28,8 +28,8 @@
   "video_url": null,
   "product_page": null,
   "requirements_notes": {
-    "fa": "",
-    "en": ""
+    "fa": "هستهٔ Bluwp از نسخهٔ ۰.۲.۱ تا پیش از ۰.۳ باید نصب و فعال باشد. ظاهر پیشخوان از کیت bluwp-vuejs ساخته می‌شود و فایل CSS کیت داخل افزونه کپی نمی‌شود.",
+    "en": "Bluwp from 0.2.1 up to, but not including, 0.3 must be installed and active. The admin look is built from the bluwp-vuejs kit; the kit CSS is not copied into the plugin."
   },
   "ai_guide": "plugin-template/AI-GUIDE.md",
   "description_sections": [

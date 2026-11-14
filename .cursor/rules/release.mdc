@@ -6,7 +6,7 @@ alwaysApply: false
 Full guide: `docs/releasing.md`. Release = tag push; never zip or upload by hand.
 
 1. Work on `dev`; docs-only changes need no release (just merge to `main`).
-2. Bump everywhere to the same `X.Y.Z`: header `Version:` and the `HTW_PT_VERSION` constant in `plugin-template/plugin-template.php`, `plugin-template/readme.txt` (Stable tag + changelog), `package.json` / `package-lock.json` and `blocks/*/block.json` if present, `dev/blueprint.json` zip URL if used.
+2. Bump everywhere to the same `X.Y.Z`: header `Version:` and the `HTW_PT_VERSION` constant in `plugin-template/plugin-template.php` (`bootstrap/app.php` reads that constant), `plugin-template/readme.txt` (Stable tag + changelog), `Plugin-Version` in `plugin-template/AI-GUIDE.md`, `package.json` / `package-lock.json`. Do not add a version key to `product.json`. Bluwp's `>=0.2.1 <0.3` pin is a different number (`HTW_PT_BLUWP_MIN` / `kit.json`); do not confuse it with the plugin version.
 3. Add a Keep a Changelog entry to `CHANGELOG.md` (`## [X.Y.Z] - date`, Added/Changed/Fixed).
 4. Run `composer lint && composer phpcs && composer phpstan && composer test` and `npm run build` in `plugin-template/`; all green.
 5. Merge `dev` -> `main` (fast-forward / PR), push `main`.

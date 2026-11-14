@@ -17,12 +17,14 @@
 | فایل | چه چیزی |
 | --- | --- |
 | `plugin-template/plugin-template.php` | هدر `Version:` (تگ باید با این برابر باشد) |
-| `plugin-template/plugin-template.php` | ثابت `HTW_PT_VERSION` |
+| `plugin-template/plugin-template.php` | ثابت `HTW_PT_VERSION` ( `bootstrap/app.php` همین ثابت را می‌خواند؛ نسخه‌ی دوم ننویس) |
 | `plugin-template/readme.txt` | `Stable tag:` و ورودی `== Changelog ==` / `== Upgrade Notice ==` |
-| `plugin-template/package.json` (و `package-lock.json` با `npm install --package-lock-only`) | `version` (اگر وجود دارد) |
-| `plugin-template/blocks/*/block.json` | `version` (اگر وجود دارد) |
+| `plugin-template/AI-GUIDE.md` | خط `Plugin-Version:` |
+| `plugin-template/package.json` (و `package-lock.json`) | `version` |
 | `dev/blueprint.json` | آدرس zip نسخه (اگر استفاده می‌کنی) |
 | `CHANGELOG.md` | ورودی جدید به سبک [Keep a Changelog](https://keepachangelog.com) |
+
+`product.json` فیلد version ندارد. بازه‌ی Bluwp (`>=0.2.1 <0.3` در ثابت‌ها و `development/kit.json`) نسخه‌ی خود افزونه نیست. بعد از بالا بردن نسخه: `php scripts/check-catalog.php`.
 
 نمونه‌ی `CHANGELOG.md`:
 
@@ -124,4 +126,4 @@ git push origin vX.Y.Z
 
 ## English summary
 
-Releases happen only via **git tag → GitHub Actions → Release**. Work on `dev`, bump the plugin header `Version:`, the `HTW_PT_VERSION` constant, `readme.txt` Stable tag, `package.json` / `block.json` (if present) and add a Keep-a-Changelog entry to `CHANGELOG.md`. Run `composer lint/phpcs/phpstan/test` and `npm run build`. Merge `dev` to `main`, then `git tag -a vX.Y.Z` (must equal the header Version; a `-beta` suffix makes a prerelease) and push the tag. The reusable workflow in `howtowp/.github` builds the zip per `.release.yml` (only the plugin folder, root folder `<slug>/`), verifies it and publishes the Release; howtowp.ir serves the latest Release to subscribers. A manual `workflow_dispatch` run in the Actions tab is a dry-run by default (it needs an existing tag). Never commit zips, dev `vendor/`, `node_modules/`, `.env` or tokens, and never upload zips by hand. If a release fails on a version mismatch, fix the version and re-tag; delete the wrong tag only if no Release was published, otherwise ship the next patch version. Docs-only changes need no release.
+Releases happen only via **git tag → GitHub Actions → Release**. Work on `dev`, bump the plugin header `Version:`, the `HTW_PT_VERSION` constant (`bootstrap/app.php` uses that constant), `readme.txt` Stable tag, `AI-GUIDE.md` `Plugin-Version`, and `package.json`. Do not put a version in `product.json`. Run `composer lint/phpcs/phpstan/test`, `php scripts/check-catalog.php`, and `npm run build:strict` when admin assets ship. Merge `dev` to `main`, then `git tag -a vX.Y.Z` (must equal the header Version; a `-beta` suffix makes a prerelease) and push the tag. The reusable workflow in `howtowp/.github` builds the zip per `.release.yml` (only the plugin folder, root folder `<slug>/`), verifies it and publishes the Release; howtowp.ir serves the latest Release to subscribers. A manual `workflow_dispatch` run in the Actions tab is a dry-run by default (it needs an existing tag). Never commit zips, dev `vendor/`, `node_modules/`, compiled kit CSS, `.env` or tokens, and never upload zips by hand. If a release fails on a version mismatch, fix the version and re-tag; delete the wrong tag only if no Release was published, otherwise ship the next patch version. Docs-only changes need no release.

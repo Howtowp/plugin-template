@@ -2,10 +2,11 @@
 /**
  * Plugin Name:       Plugin Template
  * Plugin URI:        https://howtowp.ir/plugins/plugin-template
- * Description:       Starter skeleton for How to WP plugins: PSR-4 modules, Abilities API, blocks, HPOS-ready.
- * Version:           0.2.0
+ * Description:       Shared starter for How to WP plugins. Admin UI comes from Bluwp and the bluwp-vuejs kit.
+ * Version:           0.3.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
+ * Requires Plugins:  bluwp
  * Author:            How to WP
  * Author URI:        https://howtowp.ir
  * License:           GPL-2.0-or-later
@@ -14,27 +15,32 @@
  * Domain Path:       /languages
  * Update URI:        https://howtowp.ir
  *
- * Optional headers, add them above when the plugin needs them (do not leave a
- * half-commented header line in this block, WordPress would still parse it):
- *   - "Requires Plugins" with a comma separated list of plugin slugs (e.g. woocommerce)
- *   - "WC requires at least" and "WC tested up to" for WooCommerce plugins
+ * WooCommerce plugins add "woocommerce" to Requires Plugins and the WC requires /
+ * WC tested headers. Do not hardcode this file's name anywhere else: pass HTW_PT_FILE.
  *
  * @package HowToWP\PluginTemplate
  */
 
+declare(strict_types=1);
+
 defined( 'ABSPATH' ) || exit;
 
-define( 'HTW_PT_VERSION', '0.2.0' ); // Keep equal to the Version header above (release check + tests).
+define( 'HTW_PT_VERSION', '0.3.0' ); // Keep equal to the Version header (release check + tests).
 define( 'HTW_PT_FILE', __FILE__ );
 define( 'HTW_PT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'HTW_PT_URL', plugin_dir_url( __FILE__ ) );
 define( 'HTW_PT_BASENAME', plugin_basename( __FILE__ ) );
+define( 'HTW_PT_SLUG', 'plugin-template' );
+define( 'HTW_PT_CAPABILITY', 'manage_options' ); // Admin page and REST must both use this.
 define( 'HTW_PT_MIN_PHP', '8.1' );
 define( 'HTW_PT_MIN_WP', '6.8' );
+define( 'HTW_PT_BLUWP_MIN', '0.2.1' );
+define( 'HTW_PT_BLUWP_BELOW', '0.3.0' ); // Exclusive upper bound. Stay on Bluwp 0.2.x.
 
 /*
- * Environment check. Keep this part free of namespaces and typed
- * syntax above this line, so an old PHP shows a notice instead of a fatal error.
+ * Keep this block free of namespaces, return types, and enums so an old PHP
+ * parses it and shows a notice instead of a fatal error. Typed code is loaded
+ * only after the check passes.
  */
 if (
 	version_compare( PHP_VERSION, HTW_PT_MIN_PHP, '<' )
@@ -60,31 +66,18 @@ if (
 	return;
 }
 
-// Autoload: Composer if present, otherwise a tiny PSR-4 fallback (no vendor/ needed).
-if ( is_readable( HTW_PT_DIR . 'vendor/autoload.php' ) ) {
-	require_once HTW_PT_DIR . 'vendor/autoload.php';
-} else {
-	spl_autoload_register(
-		static function ( $class_name ) {
-			$prefix = 'HowToWP\\PluginTemplate\\';
-			if ( 0 !== strpos( $class_name, $prefix ) ) {
-				return;
-			}
-			$relative = str_replace( '\\', '/', substr( $class_name, strlen( $prefix ) ) );
-			$path     = HTW_PT_DIR . 'src/' . $relative . '.php';
-			if ( is_readable( $path ) ) {
-				require_once $path;
-			}
-		}
-	);
-}
+require_once HTW_PT_DIR . 'src/Text.php';
+require_once HTW_PT_DIR . 'hooks/early/woocommerce.php';
 
-register_activation_hook( HTW_PT_FILE, array( \HowToWP\PluginTemplate\Core\Activator::class, 'activate' ) );
-register_deactivation_hook( HTW_PT_FILE, array( \HowToWP\PluginTemplate\Core\Deactivator::class, 'deactivate' ) );
-
-add_action(
-	'plugins_loaded',
+register_activation_hook(
+	HTW_PT_FILE,
 	static function () {
-		\HowToWP\PluginTemplate\Plugin::instance()->boot();
+		do_action( 'htw_pt_activated' );
+	}
+);
+register_deactivation_hook(
+	HTW_PT_FILE,
+	static function () {
+		do_action( 'htw_pt_deactivated' );
 	}
 );

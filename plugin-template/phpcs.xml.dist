@@ -53,6 +53,11 @@
 		</properties>
 	</rule>
 
+	<!-- PHPCompatibility does not treat enum methods as object context. -->
+	<rule ref="PHPCompatibility.Variables.ForbiddenThisUseContexts">
+		<exclude-pattern>*/src/Text.php</exclude-pattern>
+	</rule>
+
 	<!-- PSR-4 class files are named after the class (Plugin.php), not class-plugin.php. -->
 	<rule ref="WordPress.Files.FileName">
 		<properties>

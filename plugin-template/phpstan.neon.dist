@@ -1,14 +1,23 @@
 # szepeviktor/phpstan-wordpress is loaded automatically by phpstan/extension-installer.
 parameters:
 	level: 6
+	phpVersion: 80100
 	paths:
 		- plugin-template.php
 		- uninstall.php
+		- bootstrap
+		- pages
+		- routes
+		- app
 		- src
+		- hooks
+		- crons
+		- database
 	excludePaths:
 		- vendor
 	scanFiles:
 		- plugin-template.php
 	bootstrapFiles:
 		- tests/phpstan-bootstrap.php
+		- tests/stubs/bluwp.php
 	treatPhpDocTypesAsCertain: false

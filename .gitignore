@@ -12,6 +12,11 @@ vendor/
 composer.lock
 build/
 *.zip
+# Admin bundle produced by bluwp-vuejs. Do not commit compiled kit CSS or IranSans.
+plugin-template/assets/js/
+plugin-template/assets/css/
+plugin-template/assets/fonts/
+plugin-template/assets/build-manifest.json
 /dist/
 *.log
 .phpunit.cache/

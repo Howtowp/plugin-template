@@ -1,17 +1,11 @@
 {
 	"name": "plugin-template",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"private": true,
-	"description": "Block build for the Plugin Template plugin.",
+	"description": "Builds the Bluwp admin bundle from bluwp-vuejs into assets/. The kit is not a dependency of this package.",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"build": "wp-scripts build --experimental-modules --webpack-src-dir=blocks --output-path=build --blocks-manifest",
-		"postbuild": "node bin/add-index.js",
-		"start": "wp-scripts start --experimental-modules --webpack-src-dir=blocks --output-path=build --blocks-manifest",
-		"lint:js": "wp-scripts lint-js blocks",
-		"format": "wp-scripts format blocks"
-	},
-	"devDependencies": {
-		"@wordpress/scripts": "^37.0.0"
+		"build": "node development/build-admin.mjs",
+		"build:strict": "node development/build-admin.mjs --strict"
 	}
 }

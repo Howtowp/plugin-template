@@ -1,0 +1,6 @@
+{
+	"bluwp": ">=0.2.1 <0.3.0",
+	"bluwpVuejs": "0.2.x",
+	"app": "plugin-template",
+	"assetHandle": "plugin-template-vue-admin"
+}

@@ -4,7 +4,9 @@
 > برای **Cursor**: نسخه‌ی خلاصه‌ی این قوانین در `.cursor/rules/wordpress.mdc` است (همیشه فعال).
 > برای **Claude Code** و بقیه‌ی ایجنت‌ها: `CLAUDE.md` و `AGENTS.md` در ریشه‌ی پروژه به این فایل ارجاع می‌دهند.
 >
-> **پایه‌ی فنی:** PHP ≥ 8.1 و WordPress ≥ 6.8. کد افزونه در `src/` با PSR-4 و namespace مثل `HowToWP\PluginTemplate\` است (نه `includes/`). پیشوند همه‌چیز `htw_pt_` / `HTW_PT_` و text domain برابر slug (`plugin-template`) است؛ بعد از `scripts/init.sh` این نام‌ها عوض می‌شوند.
+> **پایه‌ی فنی:** PHP ≥ 8.1 و WordPress ≥ 6.8. Bluwp `>= 0.2.1` و `< 0.3` لازم است. کد دامنه در `src/` و لایه‌ی HTTP در `app/` با namespace `HowToWP\PluginTemplate\` است. پیشوند `htw_pt_` / `HTW_PT_` و text domain برابر slug (`plugin-template`) است؛ بعد از `scripts/init.sh` این نام‌ها عوض می‌شوند.
+>
+> **اسکلت Bluwp:** چیدمان در `docs/architecture.md`. رشته‌های فارسی در `src/Text.php` (enum) هستند و در خروجی با `esc_html()` فرار می‌شوند؛ فقط اخطار نسخه‌ی PHP/وردپرس در فایل اصلی از `__()` استفاده می‌کند. فایل اصلی فقط با ثابت `HTW_PT_FILE` (مقدار `__FILE__`) به ووکامرس و Bluwp داده می‌شود. capability صفحه و REST همان `HTW_PT_CAPABILITY` است. CSS کیت را کپی نکنید (`docs/design-system.md`).
 >
 > **قانون طلایی**: هیچ کدی «تمام‌شده» محسوب نمی‌شود مگر اینکه از فیلتر ۴ لایه عبور کند:
 > **Validate → Sanitize (ورودی) → Prepare (کوئری) → Escape (خروجی)**. اگر هر لایه جا افتاد، کد ناقص است.
@@ -415,7 +417,7 @@ $filename = sanitize_file_name( $user_input ); // جلوگیری از ../
 - توابع، کلاس‌ها، ثابت‌ها، option keys، meta keys، hookها، متغیرهای global.
 - پیشوند این قالب `htw_pt_` (توابع، option، hook، transient، جدول، shortcode)، `HTW_PT_` (ثابت) و `htw-pt-` (کلاس CSS و handle) است. کلاس‌ها با **namespace** PSR-4 (`HowToWP\PluginTemplate\…`) در `src/` هستند، یک کلاس در هر فایل و نام فایل = نام کلاس.
 
-**i18n** — همه‌ی رشته‌های قابل‌نمایش قابل ترجمه باشند، با text domain ثابت و برابر با slug پلاگین:
+**متن رابط** — رشته‌های فارسی محصول در `src/Text.php` هستند (enum). این‌ها را داخل `__()` نگذار. در خروجی `esc_html( Text::…->text() )` بزن. اگر رشته‌ای هنوز از gettext می‌آید، text domain ثابت و برابر slug است:
 ```php
 __( 'Save', 'plugin-template' );
 esc_html_e( 'Settings', 'plugin-template' );
@@ -439,25 +441,22 @@ add_action( 'init', function () {
 ```
 my-plugin/                  # ریشه‌ی ریپو = پروژه
 ├── my-plugin/              # خود پلاگین (نام پوشه = slug = ریشه‌ی zip)
-│   ├── my-plugin.php       # فایل اصلی + هدر پلاگین + ABSPATH guard + تعریف ثابت‌ها
-│   ├── uninstall.php       # پاکسازی هنگام حذف (بدون die؛ با WP_UNINSTALL_PLUGIN guard)
-│   ├── readme.txt          # فرمت استاندارد وردپرس (== نه README.md ==)
-│   ├── index.php           # فایل silence: <?php // Silence is golden.
-│   ├── src/                # کلاس‌های PSR-4 (به‌جای includes/)
-│   │   ├── index.php       # silence در هر پوشه و زیرپوشه
-│   │   └── ...
-│   ├── blocks/             # سورس بلوک‌ها  ->  build/ (بیلد؛ index.php را postbuild می‌سازد)
-│   ├── templates/          # index.php
-│   ├── assets/             # src/ (منتشر نمی‌شود) و dist/ (منتشر می‌شود)
-│   ├── languages/
-│   └── bin/add-index.js    # postbuild: index.php در build/ (bin/ منتشر نمی‌شود)
+│   ├── my-plugin.php       # هدر + ABSPATH + ثابت‌ها؛ HTW_*_FILE = __FILE__
+│   ├── bootstrap/app.php   # پیکربندی Bluwp
+│   ├── hooks/early/        # سازگاری HPOS با همان فایل اصلی
+│   ├── pages/  routes/     # منو، اسکیمای صفحه، نقشه‌ی REST
+│   ├── app/  src/          # کنترلر و اسکیما؛ دامنه و Text.php
+│   ├── crons/  database/migrations/   # Bluwp همه‌ی phpها را لود می‌کند (بدون index.php)
+│   ├── assets/             # خروجی بیلد bluwp-vuejs، نه CSS کپی‌شده
+│   ├── uninstall.php  readme.txt  AI-GUIDE.md  languages/  index.php
+│   └── development/        # اسکریپت بیلد؛ داخل zip نیست
 ├── docs/  data/  design/  research/  scripts/  dev/
 ├── .release.yml            # plugin_dir: my-plugin
 └── AGENTS.md  CLAUDE.md  .cursor/rules/
 ```
 
 **قوانین:**
-- در ریشه‌ی پلاگین و **هر پوشه‌ی داخل آن** (`src` و زیرپوشه‌ها، `templates`، `assets/*`، `languages`، `blocks/*`) یک `index.php` با محتوای `<?php // Silence is golden.` بگذار (جلوگیری از directory listing). پوشه‌ی `build/` را `wp-scripts` در هر بیلد خالی می‌کند؛ پس اسکریپت npm `postbuild` (`bin/add-index.js`) بعد از `npm run build` خودکار در `build/` و زیرپوشه‌هایش `index.php` می‌سازد. تست `StructureTest` نبودن index را در پوشه‌های ارسالی گزارش می‌دهد.
+- در ریشه‌ی پلاگین و هر پوشه‌ای که Bluwp آن را با `glob('*.php')` لود **نمی‌کند** یک `index.php` با محتوای `<?php // Silence is golden.` بگذار. `crons/` و `database/migrations/` استثنا هستند: `index.html` و `.htaccess`، چون `index.php` به‌اشتباه به‌عنوان cron یا migration اجرا می‌شود. تست `StructureTest` همین قرارداد را چک می‌کند.
 - هدر `Update URI: https://howtowp.ir` را نگه دار.
 - ثابت‌های اصلی را در فایل اصلی تعریف کن:
   ```php
@@ -466,13 +465,13 @@ my-plugin/                  # ریشه‌ی ریپو = پروژه
   define( 'HTW_PT_DIR', plugin_dir_path( __FILE__ ) );
   define( 'HTW_PT_URL', plugin_dir_url( __FILE__ ) );
   ```
-- autoload با Composer و در غیاب `vendor/` با autoloader ساده‌ی PSR-4 داخل فایل اصلی (پلاگین بدون vendor هم کار کند).
+- autoload اجرایی را Bluwp از `bootstrap/app.php` انجام می‌دهد (`App` → `app/`، بقیه → `src/`). Composer فقط برای PHPStan و PHPUnit است و `vendor/` در zip نمی‌رود.
 - `uninstall.php` با guard شروع شود:
   ```php
   <?php
   defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
   ```
-- Activation/Deactivation hook تعریف شود؛ ساخت جدول با `dbDelta()`، نه کوئری خام.
+- Activation/Deactivation هوک تعریف شود. جدول با مهاجرت Bluwp در `database/migrations` ساخته می‌شود، نه با کوئری خام در فایل اصلی.
 
 ---
 
@@ -525,7 +524,7 @@ composer test
 - [ ] همه‌ی CSS/JS با `wp_enqueue_*` ثبت شده، نه echo دستی؛ داده به JS با `wp_add_inline_script` / `wp_interactivity_state` (نه `wp_localize_script`).
 - [ ] همه‌ی route های REST و همه‌ی Abilityها دارای `permission_callback` واقعی‌اند (نوشتن/حذف هرگز کاملاً باز نیست).
 - [ ] `readme.txt`، `uninstall.php` و `index.php` (silence) در ریشه‌ی پلاگین و هر زیرپوشه (و `build/` پس از `npm run build`) موجودند.
-- [ ] همه‌ی رشته‌ها i18n شده‌اند با text domain برابر slug.
+- [ ] رشته‌های فارسی در `Text.php` هستند و در خروجی escape شده‌اند؛ هر رشتهٔ gettext دامنه‌اش برابر slug است. `Plugin-Version` در `AI-GUIDE.md` با هدر یکی است.
 - [ ] همه‌ی نام‌های global (تابع/کلاس/hook/option) prefix دارند؛ کلاس‌ها در `src/` با namespace PSR-4.
 - [ ] `composer phpcs` (WordPress-Extra + WordPress-Docs + PHPCompatibilityWP، `testVersion 8.1-`، `minimum_wp_version 6.8`) بدون error و بدون warning پاس می‌شود؛ `composer phpstan` و `composer test` هم سبز.
 - [ ] هیچ خط بیش از ۱۲۰ کاراکتر، هیچ warning/notice در PHP.

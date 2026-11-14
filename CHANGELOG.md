@@ -4,7 +4,17 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 The WordPress-facing changelog lives in `plugin-template/readme.txt`.
 
 ## [Unreleased]
-- docs: release process (`docs/releasing.md`, `.cursor/rules/release.mdc`, Release section in `AGENTS.md`).
+
+## [0.3.0] - 2026-11-14
+### Changed
+- The starter now follows the Bluwp layout used by How to WP plugins: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/Text.php`, `hooks/early/`, `crons/`, `database/migrations/`.
+- Admin UI is a JSON schema rendered by Bluwp and bluwp-vuejs (`>= 0.2.1 < 0.3`). Compiled kit CSS is not vendored. IranSans redistribution is documented as an open license question.
+- The sample settings page and its REST route share `HTW_PT_CAPABILITY` and require a `wp_rest` nonce. WooCommerce HPOS/blocks compatibility uses `HTW_PT_FILE`, not a hardcoded filename.
+- The previous sample block, Settings API page, and Abilities sample are no longer in the skeleton. Abilities stay documented as optional in `docs/abilities.md`.
+### Added
+- `scripts/check-catalog.php` keeps the plugin header, readme Stable tag, `package.json`, and `AI-GUIDE.md` `Plugin-Version` aligned. `product.json` still has no version field.
+- CI lints PHP on 8.1 and runs the catalog check, and still runs Plugin Check.
+- `docs/design-system.md` and `docs/migrating.md`.
 
 ## [0.2.0]
 - Added `docs/security-rules.md` (the Persian Security & Standards ruleset, adapted to `src/` PSR-4, PHP 8.1 / WP 6.8, Abilities API, `wp_add_inline_script` / `wp_interactivity_state`), the condensed `.cursor/rules/wordpress.mdc`, and the Definition of Done in `AGENTS.md`.

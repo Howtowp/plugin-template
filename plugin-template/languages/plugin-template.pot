@@ -12,54 +12,6 @@ msgstr ""
 "Language-Team: How to WP\n"
 "X-Domain: plugin-template\n"
 
-#: blocks/sample-block/render.php:20
-msgid "Toggle"
-msgstr ""
-
-#: blocks/sample-block/render.php:23
-msgid "Hello from the Interactivity API!"
-msgstr ""
-
-#: plugin-template.php:48
+#: plugin-template.php:57
 msgid "%1$s requires PHP %2$s+ and WordPress %3$s+."
-msgstr ""
-
-#: src/Abilities/Abilities.php:50 src/Admin/SettingsPage.php:40 src/Admin/SettingsPage.php:41
-msgid "Plugin Template"
-msgstr ""
-
-#: src/Abilities/Abilities.php:51
-msgid "Abilities provided by Plugin Template."
-msgstr ""
-
-#: src/Abilities/Abilities.php:67
-msgid "Get site info"
-msgstr ""
-
-#: src/Abilities/Abilities.php:68
-msgid "Returns the site name, WordPress, PHP and plugin versions. Read-only."
-msgstr ""
-
-#: src/Admin/SettingsPage.php:63
-msgid "General"
-msgstr ""
-
-#: src/Admin/SettingsPage.php:67
-msgid "Greeting"
-msgstr ""
-
-#: src/Admin/SettingsPage.php:74
-msgid "Remove data on uninstall"
-msgstr ""
-
-#: src/Admin/SettingsPage.php:117
-msgid "Delete all plugin data when the plugin is deleted."
-msgstr ""
-
-#: src/Admin/SettingsPage.php:144
-msgid "Settings"
-msgstr ""
-
-#: src/Frontend/Shortcode.php:42
-msgid "Hello"
 msgstr ""
