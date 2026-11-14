@@ -102,7 +102,7 @@ cat > README.md <<README_EOF
 افزونه‌ی وردپرس · WordPress plugin by [How to WP](https://howtowp.ir).
 
 - Plugin folder: \`$SLUG/\` (the only thing that ships). Project material stays in \`docs/\`, \`data/\`, \`design/\`, \`research/\`, \`scripts/\`, \`dev/\`.
-- Requires Bluwp \`>= 0.2.1 < 0.3\`. Admin UI is built from bluwp-vuejs into \`$SLUG/assets/\`. Do not commit compiled kit CSS. See \`docs/design-system.md\`.
+- Bluwp is embedded in \`$SLUG/lib/bluwp\` (one install for customers). Update it with \`./scripts/update-bluwp.sh\`. Admin CSS is an optional bluwp-vuejs build into \`$SLUG/assets/\`. See \`docs/design-system.md\`.
 - Store copy: [product.json](./product.json) (bilingual; no version field). Customer AI guide: \`$SLUG/AI-GUIDE.md\` (\`Plugin-Version\` must match the plugin header).
 - Coding agents: read [AGENTS.md](./AGENTS.md).
 - Checks: \`php scripts/check-catalog.php\` and \`cd $SLUG && composer install && composer lint && composer phpcs && composer phpstan && composer test\`.
@@ -137,5 +137,5 @@ fi
 echo "Done. Next:"
 echo "  php scripts/check-catalog.php"
 echo "  cd $SLUG && composer install && composer test"
-echo "  # Admin CSS/JS: Bluwp >=0.2.1 <0.3 on the site, then npm run build against bluwp-vuejs (docs/design-system.md)."
+echo "  # Bluwp is already in $SLUG/lib/bluwp. Admin CSS is optional until bluwp-vuejs is available (docs/design-system.md)."
 echo "  git add -A && git commit -m 'chore: initialise $SLUG'"

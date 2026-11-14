@@ -50,7 +50,7 @@ function htw_catalog_php_files( string $plugin_dir ): array {
 			continue;
 		}
 		$path = $file->getPathname();
-		if ( preg_match( '#/(vendor|node_modules|tests|build)/#', $path ) ) {
+		if ( preg_match( '#/(vendor|node_modules|tests|build|lib/bluwp)/#', $path ) ) {
 			continue;
 		}
 		$files[] = $path;
@@ -109,11 +109,12 @@ function htw_catalog_main(): int {
 	}
 	if ( 1 === preg_match( '/^\s*\*\s*Requires Plugins:\s*([^\r\n*]+)/m', $main_src, $requires ) ) {
 		$plugins = array_map( 'trim', explode( ',', $requires[1] ) );
-		if ( ! in_array( 'bluwp', $plugins, true ) ) {
-			$errors[] = 'Requires Plugins must include bluwp.';
+		if ( in_array( 'bluwp', $plugins, true ) ) {
+			$errors[] = 'Do not require the standalone bluwp plugin. Embed lib/bluwp and call BluwpBridgeV1::consume.';
 		}
-	} else {
-		$errors[] = 'Main file is missing the Requires Plugins header.';
+	}
+	if ( ! str_contains( $main_src, 'BluwpBridgeV1::consume' ) || ! str_contains( $main_src, 'lib/bluwp/bridge.php' ) ) {
+		$errors[] = 'Main file must require lib/bluwp/bridge.php and call BluwpBridgeV1::consume.';
 	}
 
 	$slug_const = '';
@@ -219,6 +220,30 @@ function htw_catalog_main(): int {
 		$range = isset( $kit['bluwp'] ) ? (string) $kit['bluwp'] : '';
 		if ( ! str_contains( $main_src, "'0.2.1'" ) || ! str_contains( $range, '0.2.1' ) || ! str_contains( $range, '0.3.0' ) ) {
 			$errors[] = 'Bluwp must stay pinned to >=0.2.1 <0.3.0 in the main file and development/kit.json.';
+		}
+		$meta_path = $plugin_dir . '/lib/bluwp/metadata.php';
+		$meta_src  = is_file( $meta_path ) ? (string) file_get_contents( $meta_path ) : '';
+		$embedded  = '';
+		if ( ! is_file( $plugin_dir . '/lib/bluwp/bridge.php' ) ) {
+			$errors[] = 'Embedded Bluwp is missing lib/bluwp/bridge.php.';
+		}
+		if ( 1 !== preg_match( "/['\"]version['\"]\\s*=>\\s*['\"](\\d+\\.\\d+\\.\\d+)['\"]/", $meta_src, $meta_match ) ) {
+			$errors[] = 'lib/bluwp/metadata.php must declare a version.';
+		} else {
+			$embedded = $meta_match[1];
+		}
+		$min   = '';
+		$below = '';
+		if ( 1 === preg_match( "/define\\(\\s*'HTW_[A-Z0-9]+_BLUWP_MIN'\\s*,\\s*'([^']+)'\\s*\\)/", $main_src, $min_match ) ) {
+			$min = $min_match[1];
+		}
+		if ( 1 === preg_match( "/define\\(\\s*'HTW_[A-Z0-9]+_BLUWP_BELOW'\\s*,\\s*'([^']+)'\\s*\\)/", $main_src, $below_match ) ) {
+			$below = $below_match[1];
+		}
+		if ( '' === $min || '' === $below ) {
+			$errors[] = 'Main file must define HTW_*_BLUWP_MIN and HTW_*_BLUWP_BELOW.';
+		} elseif ( '' !== $embedded && ( version_compare( $embedded, $min, '<' ) || version_compare( $embedded, $below, '>=' ) ) ) {
+			$errors[] = 'Embedded Bluwp ' . $embedded . ' is outside ' . $min . ' <= version < ' . $below . '.';
 		}
 		if ( $slug !== '' && ( ( $kit['app'] ?? '' ) !== $slug || ( $kit['assetHandle'] ?? '' ) !== $slug . '-vue-admin' ) ) {
 			$errors[] = 'kit.json app and assetHandle must match the slug (' . $slug . ' / ' . $slug . '-vue-admin).';

@@ -6,7 +6,7 @@ All hooks use the `htw_pt_` prefix. Keep this list in sync with `plugin-template
 | --- | --- | --- | --- |
 | `htw_pt_activated` | action | — | Fires on activation, after the PHP / WordPress version gate. |
 | `htw_pt_deactivated` | action | — | Fires on deactivation. |
-| `htw_pt_loaded` | action | — | Fires after Bluwp `app()` boots. |
+| `htw_pt_loaded` | action | — | Fires on `init` priority 2, after Bluwp boots the plugin. |
 | `htw_pt_settings_schema` | filter | `array $schema` | Settings form schema before the REST response. |
 | `htw_pt_settings` | filter | `array $settings` | Sanitized settings before they are saved. |
 | `htw_pt_sample_cron` | action | — | Fired by `crons/sample.php`. Delete that file if the product has no use for it. |

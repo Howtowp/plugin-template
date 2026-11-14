@@ -3,7 +3,8 @@
 The shippable plugin lives in `plugin-template/`. Bluwp (the required plugin) boots it. The Vue kit is a build-time dependency, not a runtime Composer package.
 
 ```
-plugin-template.php          Headers, constants, version gate. No business logic.
+plugin-template.php          Headers, constants, BluwpBridgeV1::consume. No business logic.
+lib/bluwp/                   Embedded Bluwp. bridge.php selects one copy per request.
 bootstrap/app.php            Bluwp name, version constant, autoload, feature flags.
 hooks/early/woocommerce.php  HPOS / blocks via HTW_PT_FILE, then PluginBootstrap.
 pages/                       admin.php and admin-menu.php (closures). index.php there is only a directory guard.
@@ -24,8 +25,8 @@ Boot:
 1. The main file exits unless `ABSPATH` is defined, then refuses PHP older than 8.1 or WordPress older than 6.8 with a gettext notice.
 2. It loads `src/Text.php` and `hooks/early/woocommerce.php`.
 3. `before_woocommerce_init` declares `custom_order_tables` and `cart_checkout_blocks` for `HTW_PT_FILE` when WooCommerce is present. WooCommerce is not a required plugin.
-4. `plugins_loaded` (priority 20) requires Bluwp `>= 0.2.1` and `< 0.3.0`. Otherwise an admin notice is shown to users who can activate plugins, and the plugin stops.
-5. `PluginBootstrap::register( HTW_PT_FILE, HTW_PT_SLUG, … )` then `$plugin->app()` loads autoload, migrations, cron, REST, and the admin shell. `htw_pt_loaded` fires after that.
+4. `BluwpBridgeV1::consume()` registers this plugin. On `plugins_loaded` priority -1000 the bridge loads either the active standalone Bluwp or the highest embedded copy whose `metadata.php` version is inside `0.2.1`–`0.3.0`. It then registers `PluginBootstrap`, which boots the app on `init` priority 1.
+5. `htw_pt_loaded` fires on `init` priority 2. An incompatible or missing framework sets `bluwp_framework_error` and the plugin shows an admin notice instead of booting.
 
 Autoload (in `bootstrap/app.php`, not Composer at runtime):
 

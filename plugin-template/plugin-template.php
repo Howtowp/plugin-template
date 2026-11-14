@@ -6,7 +6,6 @@
  * Version:           0.3.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
- * Requires Plugins:  bluwp
  * Author:            How to WP
  * Author URI:        https://howtowp.ir
  * License:           GPL-2.0-or-later
@@ -15,8 +14,10 @@
  * Domain Path:       /languages
  * Update URI:        https://howtowp.ir
  *
- * WooCommerce plugins add "woocommerce" to Requires Plugins and the WC requires /
- * WC tested headers. Do not hardcode this file's name anywhere else: pass HTW_PT_FILE.
+ * Bluwp is embedded in lib/bluwp. A site that also has the standalone Bluwp
+ * plugin keeps using that copy when it is active (see BluwpBridgeV1).
+ * WooCommerce plugins add "Requires Plugins: woocommerce" and the WC headers.
+ * Do not hardcode this file's name anywhere else: pass HTW_PT_FILE.
  *
  * @package HowToWP\PluginTemplate
  */
@@ -67,6 +68,18 @@ if (
 }
 
 require_once HTW_PT_DIR . 'src/Text.php';
+require_once HTW_PT_DIR . 'lib/bluwp/bridge.php';
+
+// $embedded is this plugin's own Bluwp tree. consume() also registers the
+// Bluwp activation and deactivation hooks (migrations, cron cleanup).
+BluwpBridgeV1::consume(
+	HTW_PT_FILE,
+	HTW_PT_SLUG,
+	\HowToWP\PluginTemplate\Text::PluginName->text(),
+	HTW_PT_BLUWP_MIN,
+	HTW_PT_DIR . 'lib/bluwp'
+);
+
 require_once HTW_PT_DIR . 'hooks/early/woocommerce.php';
 
 register_activation_hook(

@@ -55,12 +55,6 @@ jobs:
             --exclude='phpcs.xml.dist' --exclude='phpstan.neon.dist' --exclude='phpunit.xml.dist' \
             plugin-template/ dist/plugin-template/
 
-          # The real header still requires Bluwp. This action installs every
-          # "Requires Plugins" slug from WordPress.org, and Bluwp is not published
-          # there, so the job exits before any check runs. Drop the line only
-          # in this CI copy.
-          sed -i '/Requires Plugins:/d' dist/plugin-template/plugin-template.php
-
       # wp-env would read the project's dev .wp-env.json (which already mounts the plugin);
       # the action builds its own config.
       - name: Use the action's own wp-env config
@@ -70,6 +64,8 @@ jobs:
         uses: WordPress/plugin-check-action@v1
         with:
           build-dir: dist/plugin-template
+          # Upstream Bluwp is vendored as-is. It is not rewritten to this repo's PHPCS rules.
+          exclude-directories: lib/bluwp
           # Update URI is intentional (plugins are distributed from howtowp.ir, not WordPress.org),
           # and load_plugin_textdomain() is needed outside WordPress.org. After renaming the
           # template, "trademarked_term" no longer applies; remove it from this list if you like.

@@ -20,11 +20,12 @@ After `scripts/init.sh` the folder, namespace, and prefixes below are renamed. U
 
 ## Architecture and key files
 
-Admin screens are JSON schemas rendered by the Bluwp Vue kit. This plugin does not ship the kit’s CSS. The look (IranSans, RTL, brand blue) comes from a build of `bluwp-vuejs` into `assets/`.
+Admin screens are JSON schemas rendered by the Bluwp Vue kit. Bluwp itself ships inside this plugin at `lib/bluwp` (customers do not install a second plugin). If the site already has the standalone Bluwp plugin active, that copy is used instead, as long as it is on the same 0.2 line. This plugin does not ship the kit’s CSS. The look (IranSans, RTL, brand blue) comes from a build of `bluwp-vuejs` into `assets/` when that kit source is available. The build is optional until then.
 
-- `plugin-template.php` — headers, constants (`HTW_PT_FILE`, `HTW_PT_VERSION`, `HTW_PT_SLUG`, `HTW_PT_CAPABILITY`), Bluwp version gate. The main filename is always `HTW_PT_FILE` (`__FILE__`). Do not hardcode it.
+- `plugin-template.php` — headers, constants (`HTW_PT_FILE`, `HTW_PT_VERSION`, `HTW_PT_SLUG`, `HTW_PT_CAPABILITY`), then `BluwpBridgeV1::consume()` for the embedded Bluwp. The main filename is always `HTW_PT_FILE` (`__FILE__`). Do not hardcode it. Do not add `Requires Plugins: bluwp`.
+- `lib/bluwp/` — embedded Bluwp. Do not edit it. A newer copy is installed by the product author with `scripts/update-bluwp.sh`.
 - `bootstrap/app.php` — Bluwp app name, autoload, REST namespace `plugin-template/v1`, admin asset handle.
-- `hooks/early/woocommerce.php` — declares WooCommerce HPOS and checkout-blocks compatibility with `HTW_PT_FILE`, then boots Bluwp when version `>= 0.2.1` and `< 0.3.0`.
+- `hooks/early/woocommerce.php` — declares WooCommerce HPOS and checkout-blocks compatibility with `HTW_PT_FILE`. `htw_pt_loaded` fires on `init` priority 2, after Bluwp boots the plugin.
 - `pages/admin.php` — one settings screen. Capability is `HTW_PT_CAPABILITY` (`manage_options`).
 - `routes/api.php` — REST map. Settings routes use the same `HTW_PT_CAPABILITY`.
 - `app/Controllers/SettingsController.php` — checks that capability again and a `wp_rest` nonce.
@@ -33,7 +34,7 @@ Admin screens are JSON schemas rendered by the Bluwp Vue kit. This plugin does n
 - `crons/sample.php` — sample schedule that fires `htw_pt_sample_cron`.
 - `database/migrations/001_create_notes.php` — example table `htw_pt_notes` (WordPress prefix + that name).
 
-Bluwp must be active. Without a compatible Bluwp the plugin shows an admin notice and does not boot.
+A compatible Bluwp (embedded, or a standalone plugin on the 0.2 line) must load. Otherwise the plugin shows an admin notice and does not boot.
 
 ## Hooks (real)
 
@@ -41,7 +42,7 @@ Bluwp must be active. Without a compatible Bluwp the plugin shows an admin notic
 | --- | --- | --- | --- |
 | `htw_pt_activated` | action | — | Plugin activation, after the PHP and WordPress version gate. |
 | `htw_pt_deactivated` | action | — | Plugin deactivation. |
-| `htw_pt_loaded` | action | — | After Bluwp `app()` has booted this plugin. |
+| `htw_pt_loaded` | action | — | On `init` priority 2, after Bluwp has booted this plugin. |
 | `htw_pt_settings_schema` | filter | `array $schema` | Change the settings form schema before it is sent to the admin kit. |
 | `htw_pt_settings` | filter | `array $settings` | Change sanitized settings immediately before they are saved. |
 | `htw_pt_sample_cron` | action | — | Fired by the sample cron in `crons/sample.php`. |

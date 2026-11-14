@@ -18,7 +18,7 @@ final class StructureTest extends TestCase {
 	}
 
 	public function test_every_shipped_folder_has_a_directory_guard(): void {
-		$skip    = array( 'vendor', 'node_modules', 'tests', 'bin', 'build', '.phpunit.cache' );
+		$skip    = array( 'vendor', 'node_modules', 'tests', 'bin', 'build', '.phpunit.cache', 'lib' );
 		$globbed = array( 'crons', 'database/migrations' );
 		$missing = array();
 		$plugin  = $this->plugin_dir();
@@ -61,7 +61,7 @@ final class StructureTest extends TestCase {
 				continue;
 			}
 			$path = $file->getPathname();
-			if ( preg_match( '#/(vendor|node_modules|tests|bin|build)/#', $path ) ) {
+			if ( preg_match( '#/(vendor|node_modules|tests|bin|build|lib/bluwp)/#', $path ) ) {
 				continue;
 			}
 			if ( str_ends_with( $path, '/uninstall.php' ) ) {
@@ -78,7 +78,7 @@ final class StructureTest extends TestCase {
 				continue;
 			}
 			$path = $file->getPathname();
-			if ( preg_match( '#/(vendor|node_modules|tests|bin|build)/#', $path ) ) {
+			if ( preg_match( '#/(vendor|node_modules|tests|bin|build|lib/bluwp)/#', $path ) ) {
 				continue;
 			}
 			$source = (string) file_get_contents( $path );

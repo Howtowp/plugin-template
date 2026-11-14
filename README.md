@@ -2,7 +2,7 @@
 
 **فارسی** · [English](#english)
 
-قالب مشترک افزونه‌های [How to WP](https://howtowp.ir). ظاهر پیشخوان از **Bluwp** و کیت **bluwp-vuejs** می‌آید (همان سیستم «درگاه پرداخت هوشمند»)، نه از CSS کپی‌شده داخل هر افزونه. برای افزونه‌ی جدید: Use this template، سپس `scripts/init.sh`.
+قالب مشترک افزونه‌های [How to WP](https://howtowp.ir). هر محصول **یک** افزونه است: هستهٔ Bluwp داخل `lib/bluwp` قرار دارد و مشتری افزونهٔ جداگانه‌ای نصب نمی‌کند. اگر Bluwp مستقل روی سایت فعال باشد، همان نسخه استفاده می‌شود. ظاهر پیشخوان از کیت **bluwp-vuejs** ساخته می‌شود؛ سورس کیت هنوز در دسترس این قالب نیست و بیلد ادمین اختیاری است.
 
 ## شروع سریع
 
@@ -14,7 +14,7 @@ composer lint && composer phpcs && composer phpstan && composer test
 php ../scripts/check-catalog.php
 ```
 
-روی سایت، افزونه‌ی Bluwp با نسخه‌ی `>= 0.2.1` و `< 0.3` باید فعال باشد. ساخت فایل‌های پیشخوان (وقتی صفحه‌ی تنظیمات را باز می‌کنید) در [docs/design-system.md](docs/design-system.md) است. `npm run build` بدون checkout کیت فقط هشدار می‌دهد و خارج می‌شود.
+Bluwp `0.2.1` داخل افزونه است (`lib/bluwp`). به‌روزرسانی آن: `./scripts/update-bluwp.sh <path-or-tgz>`. ساخت فایل‌های پیشخوان، وقتی سورس کیت را دارید، در [docs/design-system.md](docs/design-system.md) است. `npm run build` بدون checkout کیت فقط هشدار می‌دهد.
 
 ## ساختار
 
@@ -24,6 +24,7 @@ php ../scripts/check-catalog.php
 my-plugin/
 ├── my-plugin/                 خود افزونه (نام پوشه = slug)
 │   ├── my-plugin.php          هدر، ثابت‌ها، HTW_*_FILE = __FILE__
+│   ├── lib/bluwp/             هستهٔ Bluwp؛ مشتری جدا نصب نمی‌کند
 │   ├── bootstrap/  pages/  routes/  app/  src/Text.php
 │   ├── hooks/early/           سازگاری HPOS با همان فایل اصلی
 │   ├── crons/  database/  assets/  development/
@@ -47,7 +48,7 @@ my-plugin/
 
 ## English
 
-Shared starter for [How to WP](https://howtowp.ir) plugins. Admin UI comes from **Bluwp** and the **bluwp-vuejs** kit (the same system as the smart-gateway plugin). Plugins do not vendor a copy of the kit CSS.
+Shared starter for [How to WP](https://howtowp.ir) plugins. Each product is **one** install: Bluwp 0.2.1 is embedded in `lib/bluwp`. A site that already runs the standalone Bluwp plugin keeps using that copy when it is active. The bluwp-vuejs kit source is not in this repo yet, so the admin asset build stays optional.
 
 ### Quick start
 
@@ -59,10 +60,11 @@ composer lint && composer phpcs && composer phpstan && composer test
 php ../scripts/check-catalog.php
 ```
 
-The site needs Bluwp `>= 0.2.1` and `< 0.3`. Building the admin bundle is documented in [docs/design-system.md](docs/design-system.md). `npm run build` exits 0 with a warning when the kit checkout is absent.
+Bluwp `0.2.1` ships in `lib/bluwp`. Refresh it with `./scripts/update-bluwp.sh <path-or-tgz>`. Building the admin bundle is documented in [docs/design-system.md](docs/design-system.md) and is optional until the kit source is available. `npm run build` exits 0 with a warning when the kit checkout is absent.
 
 ### What you get
 
+- Embedded Bluwp in `lib/bluwp`, booted with `BluwpBridgeV1::consume()`. No `Requires Plugins: bluwp`.
 - Bluwp layout: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/Text.php`, `hooks/early/`, `crons/`, `database/migrations/`, `assets/`.
 - One schema-driven settings page, one REST route with the **same** capability constant and a `wp_rest` nonce.
 - HPOS and checkout-blocks compatibility declared with `HTW_PT_FILE` (the real main file, not a hardcoded name).

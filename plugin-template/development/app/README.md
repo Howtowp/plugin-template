@@ -1,6 +1,6 @@
 # Admin app
 
-The admin pixels live in **bluwp-vuejs**, not in this plugin.
+The admin pixels live in **bluwp-vuejs**, not in this plugin. That kit source is not available in this repository yet, so building the admin shell is optional. The embedded PHP framework is `lib/bluwp` and does not depend on this build.
 
 1. Check out `bluwp-vuejs` on the same minor line as `development/kit.json` (`bluwpVuejs`, currently `0.2.x`).
 2. Create `bluwp-vuejs/apps/<slug>/` for this plugin. `main.js` in this folder is only a sketch of the mount options (`fa-IR`, `rtl`, header navigation).

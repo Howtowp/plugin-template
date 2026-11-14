@@ -12,8 +12,10 @@ Shared starter for How to WP plugins. Admin UI is rendered by Bluwp from a JSON 
 
 == Description ==
 
-Plugin Template is the starting point for new How to WP plugins. It requires the Bluwp plugin
-(>= 0.2.1 and < 0.3). The settings screen is a JSON schema rendered by the bluwp-vuejs admin kit.
+Plugin Template is the starting point for new How to WP plugins. Bluwp 0.2.1 is included
+in lib/bluwp, so customers install this plugin only. A site that already runs standalone
+Bluwp keeps that copy when it is on the 0.2 line. The settings screen is a JSON schema
+rendered by the bluwp-vuejs admin kit once that kit has been built.
 WooCommerce HPOS and checkout-blocks compatibility is declared against this plugin's real main file.
 
 The compiled kit CSS is not stored in the template. Build it from a pinned bluwp-vuejs checkout
@@ -21,10 +23,9 @@ into assets/ before you ship a product that opens the settings screen.
 
 == Installation ==
 
-1. Install and activate Bluwp (>= 0.2.1 and < 0.3).
-2. Upload this plugin folder to `/wp-content/plugins/`, or install the zip.
-3. Activate it from the Plugins screen.
-4. Open the Plugin Template menu (capability: manage_options).
+1. Upload this plugin folder to `/wp-content/plugins/`, or install the zip.
+2. Activate it from the Plugins screen. Bluwp is inside the plugin.
+3. Open the Plugin Template menu (capability: manage_options).
 
 == Frequently Asked Questions ==
 
@@ -40,7 +41,8 @@ It is built from the shared bluwp-vuejs kit into assets/. The template repositor
 
 = 0.3.0 =
 * Bluwp skeleton: schema settings page, REST route with matching capability and nonce, Text enum, HPOS declaration via the real main file.
-* Admin assets build from bluwp-vuejs. Compiled kit CSS is not vendored.
+* Bluwp 0.2.1 is embedded in lib/bluwp. Customers install one plugin. A standalone Bluwp on the same line is still used when it is active.
+* Admin assets build from bluwp-vuejs when that kit source is available. Compiled kit CSS is not vendored.
 
 = 0.2.0 =
 * Security and standards ruleset, "Silence is golden" index.php files, stricter PHPCS.
@@ -51,4 +53,4 @@ It is built from the shared bluwp-vuejs kit into assets/. The template repositor
 == Upgrade Notice ==
 
 = 0.3.0 =
-Requires Bluwp >= 0.2.1 and < 0.3. The previous sample block and Settings API page are gone.
+Bluwp is included. Do not install a separate Bluwp unless you already run one on the 0.2 line.

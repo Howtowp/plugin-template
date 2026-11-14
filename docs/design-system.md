@@ -4,9 +4,13 @@ How to WP admin UI is not drawn inside each plugin. It comes from two shared pie
 
 | Piece | What it owns | Version |
 | --- | --- | --- |
-| **Bluwp** (required plugin) | Menus, page registry, REST router, migrations, cron, autoload | `>= 0.2.1` and `< 0.3.0` |
-| **bluwp-vuejs** (build-time kit) | Tokens, IranSans, `bluwp-*` components, WordPress admin chrome, RTL | same 0.2 line |
-| **This plugin** | Schemas, REST, domain code, a build of the kit in `assets/` | its own header version |
+| **Bluwp** (embedded in `lib/bluwp`) | Menus, page registry, REST router, migrations, cron, autoload | `>= 0.2.1` and `< 0.3.0` |
+| **bluwp-vuejs** (build-time kit, source not in this repo yet) | Tokens, IranSans, `bluwp-*` components, WordPress admin chrome, RTL | same 0.2 line, when the checkout exists |
+| **This plugin** | Schemas, REST, domain code, optional kit build in `assets/` | its own header version |
+
+Customers install one plugin. Bluwp is not a separate download. The main file loads `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. On `plugins_loaded` at priority -1000 the bridge uses an active standalone Bluwp plugin if one registered itself, otherwise it compares every embedded copy via `metadata.php` and loads the highest version once. `attach()` then refuses a copy outside the consumer's line (for `0.2.1`, that is `>= 0.2.1` and `< 0.3.0`).
+
+Replace the embedded tree with `./scripts/update-bluwp.sh <directory-or-tgz>`. Do not hand-edit files under `lib/bluwp/`. CI checks that `bridge.php` exists and that `metadata.php`'s version sits inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`.
 
 Do not copy compiled `style.css`, `admin.css`, or font files from another plugin into this repo. That freezes an old kit and copies the font into every zip. Build your own app instead.
 
@@ -30,7 +34,9 @@ The admin shell is mounted with `{ locale: 'fa-IR', direction: 'rtl', navigation
 
 ## How a plugin builds its admin app
 
-1. Pin the kit in `plugin-template/development/kit.json` (`bluwpVuejs`, currently `0.2.x`). Pin Bluwp in the main file (`HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`) to the same minor line.
+The bluwp-vuejs kit source is **not available in this repository yet**. Until a checkout exists, skip the build. `npm run build` warns and exits 0. The PHP admin (schemas, REST, embedded Bluwp) still runs; the Vue shell appears after a real kit build writes `assets/`.
+
+1. Pin the kit in `plugin-template/development/kit.json` (`bluwpVuejs`, currently `0.2.x`). Pin the embedded Bluwp in the main file (`HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`) to the same minor line.
 2. In the **bluwp-vuejs** checkout, add `apps/<slug>/`. A plugin that only uses table, form, and service schemas does not register a custom Vue page. `development/app/main.js` is a sketch of the mount options, not the build input.
 3. From the plugin directory:
 
@@ -50,10 +56,10 @@ Do not hand-edit the compiled CSS. When the kit’s minor version changes, bump 
 
 Stay on Bluwp 0.2 until every How to WP plugin moves together.
 
-1. Change `HTW_PT_BLUWP_MIN` and `HTW_PT_BLUWP_BELOW` in the main file (the early hook compares the running Bluwp version to these).
+1. Run `./scripts/update-bluwp.sh` with the new Bluwp tree. `metadata.php` must stay inside `HTW_PT_BLUWP_MIN` and `HTW_PT_BLUWP_BELOW` (the bridge enforces that line: a `0.2.x` minimum rejects `0.3.0` and newer).
 2. Change `bluwp` and `bluwpVuejs` in `development/kit.json` to the same line.
-3. Rebuild admin assets with `--strict`.
-4. Smoke-test the settings schema (form render, save, `422`, forbidden without the capability).
+3. Rebuild admin assets with `--strict` when the kit source exists.
+4. Smoke-test the settings schema (form render, save, `422`, forbidden without the capability). Confirm a site that still has standalone Bluwp 0.2.x active boots the standalone copy, and a site without it boots `lib/bluwp`.
 
 A 0.3 upgrade is a breaking framework bump. Do it in a dedicated change, not as a side effect of a product feature.
 

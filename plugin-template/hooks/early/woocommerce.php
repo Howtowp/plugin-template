@@ -1,17 +1,16 @@
 <?php
 /**
- * Early WooCommerce compatibility and Bluwp boot.
+ * Early WooCommerce compatibility.
  *
- * Loaded from the main plugin file before plugins_loaded so HPOS and
- * checkout-blocks compatibility are declared in time. The plugin file path is
- * HTW_PT_FILE (__FILE__ of the real main file). Never hardcode a filename here.
+ * HPOS and checkout-blocks compatibility are declared with HTW_PT_FILE
+ * (__FILE__ of the real main file). Never hardcode a filename here.
+ * Bluwp itself is started from the main file via BluwpBridgeV1::consume().
  *
  * @package HowToWP\PluginTemplate
  */
 
 declare(strict_types=1);
 
-use Forouzandea\Bluwp\Foundation\Bootstrap\PluginBootstrap;
 use HowToWP\PluginTemplate\Text;
 
 defined( 'ABSPATH' ) || exit;
@@ -40,42 +39,26 @@ add_action(
 );
 
 add_action(
-	'plugins_loaded',
+	'admin_notices',
 	static function (): void {
-		$version = '';
-		$loaded  = $GLOBALS['bluwp_framework_loaded'] ?? null;
-		if ( is_array( $loaded ) && isset( $loaded['version'] ) && is_string( $loaded['version'] ) ) {
-			$version = $loaded['version'];
-		}
-		$compatible = empty( $GLOBALS['bluwp_framework_error'] )
-			&& '' !== $version
-			&& version_compare( $version, HTW_PT_BLUWP_MIN, '>=' )
-			&& version_compare( $version, HTW_PT_BLUWP_BELOW, '<' );
-		if ( ! $compatible ) {
-			add_action(
-				'admin_notices',
-				static function (): void {
-					if ( ! current_user_can( 'activate_plugins' ) ) {
-						return;
-					}
-					printf(
-						'<div class="notice notice-error"><p>%s</p></div>',
-						esc_html( Text::BluwpRequired->text() )
-					);
-				}
-			);
+		if ( empty( $GLOBALS['bluwp_framework_error'] ) || ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
-
-		$plugin = PluginBootstrap::register(
-			HTW_PT_FILE,
-			HTW_PT_SLUG,
-			Text::PluginName->text(),
-			false
+		printf(
+			'<div class="notice notice-error"><p>%s</p></div>',
+			esc_html( Text::BluwpRequired->text() )
 		);
-		$plugin->app();
+	}
+);
 
+// Bluwp boots this plugin on init priority 1. Fire after that.
+add_action(
+	'init',
+	static function (): void {
+		if ( ! empty( $GLOBALS['bluwp_framework_error'] ) || empty( $GLOBALS['bluwp_framework_loaded'] ) ) {
+			return;
+		}
 		do_action( 'htw_pt_loaded' );
 	},
-	20
+	2
 );

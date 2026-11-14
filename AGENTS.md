@@ -2,14 +2,15 @@
 
 This repo is the **shared starter** for How to WP WordPress plugins. It is a project that contains one shippable plugin. Read this file first.
 
-The admin design system is Bluwp plus the bluwp-vuejs kit (the same stack as «درگاه پرداخت هوشمند»). Product-specific payment code is not part of the starter. Details: [docs/design-system.md](docs/design-system.md) and [docs/architecture.md](docs/architecture.md).
+The admin design system is Bluwp plus the bluwp-vuejs kit (the same stack as «درگاه پرداخت هوشمند»). Bluwp is **embedded** in each plugin (`lib/bluwp`) so a customer installs one zip. Product-specific payment code is not part of the starter. Details: [docs/design-system.md](docs/design-system.md) and [docs/architecture.md](docs/architecture.md).
 
 ## Layout (project layout)
 
 ```
 ./ repo root = project (never shipped as a whole)
 ├── plugin-template/ THE PLUGIN. Folder name = slug = zip root. Only this folder ships.
-│ ├── plugin-template.php   headers, constants, version gate (no business logic)
+│ ├── plugin-template.php   headers, constants, BluwpBridgeV1::consume (no business logic)
+│ ├── lib/bluwp/            embedded Bluwp 0.2.x (upstream; do not hand-edit)
 │ ├── bootstrap/app.php     Bluwp config: autoload, REST namespace, asset handle
 │ ├── hooks/early/          WooCommerce HPOS/blocks + Bluwp boot (uses HTW_PT_FILE)
 │ ├── pages/                admin menu + schema page registry
@@ -39,7 +40,7 @@ Persian UI strings live in `src/Text.php` (a backed enum), not in `__()`. Escape
 
 The plugin main file is `HTW_PT_FILE` (`__FILE__` in the main file). Never hardcode a previous filename in `declare_compatibility` or `PluginBootstrap::register`.
 
-Bluwp is required: `>= 0.2.1` and `< 0.3.0` (`HTW_PT_BLUWP_MIN`, `HTW_PT_BLUWP_BELOW`). Do not vendor compiled bluwp-vuejs CSS. Build `apps/<slug>` into `assets/` — [docs/design-system.md](docs/design-system.md).
+Bluwp is embedded: `>= 0.2.1` and `< 0.3.0` (`HTW_PT_BLUWP_MIN`, `HTW_PT_BLUWP_BELOW`). The main file requires `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. Do not set `Requires Plugins: bluwp`. If a standalone Bluwp plugin is active, the bridge uses that copy instead of the embedded one. Replace the embedded tree with `./scripts/update-bluwp.sh <path-or-tgz>`. Do not vendor compiled bluwp-vuejs CSS. The kit source is not available in this repo yet; `npm run build` is optional until it is. See [docs/design-system.md](docs/design-system.md).
 
 ## Naming (after `scripts/init.sh` these are renamed; use the current names)
 
@@ -66,8 +67,8 @@ Then install Bluwp on the site and, when the settings screen should render, buil
 - **Add a migration:** `database/migrations/NNN_*.php` extending Bluwp's migration. `down()` must not drop live data.
 - **Add a string:** a case on `src/Text.php`. Customer-facing cases go in `customer_map()` so they can be overridden.
 - **Add an ability (optional, not in the skeleton):** [docs/abilities.md](docs/abilities.md). Register it from something that runs on `htw_pt_loaded`. A real `permission_callback` is required.
-- **Build admin CSS/JS:** `npm run build` against bluwp-vuejs. Do not commit the kit's compiled CSS. IranSans licensing is an open question; see the design-system doc.
-- **Bump Bluwp or the kit:** change the constants and `development/kit.json` together, stay on one minor line, rebuild with `--strict`. A jump to 0.3 is a breaking framework upgrade, not a drive-by edit.
+- **Build admin CSS/JS:** optional until the bluwp-vuejs source is available. `npm run build` against a kit checkout. Do not commit the kit's compiled CSS. IranSans licensing is an open question; see the design-system doc.
+- **Update embedded Bluwp:** `./scripts/update-bluwp.sh <directory-or-tgz>`, then `php scripts/check-catalog.php`. Stay inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`. A jump to 0.3 is a breaking framework upgrade, not a drive-by edit.
 - **Extensibility:** `do_action` / `apply_filters` with the `htw_pt_` prefix, listed in `docs/hooks.md` and `AI-GUIDE.md`.
 
 ## Quality rules

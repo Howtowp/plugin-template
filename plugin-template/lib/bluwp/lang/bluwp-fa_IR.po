@@ -1,0 +1,692 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bluwp 0.5.7\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: bluwp\n"
+
+msgid "Invalid admin configuration."
+msgstr "تنظیمات پنل معتبر نیست."
+
+msgid "The server could not be reached."
+msgstr "ارتباط با سرور برقرار نشد."
+
+msgid "Invalid request endpoint."
+msgstr "مسیر درخواست معتبر نیست."
+
+msgid "Invalid page schema."
+msgstr "تعریف این صفحه معتبر نیست."
+
+msgid "The page could not be loaded."
+msgstr "بارگذاری صفحه ممکن نشد."
+
+msgid "No pages are available."
+msgstr "صفحه‌ای برای نمایش ثبت نشده است."
+
+msgid "The page list could not be loaded."
+msgstr "فهرست صفحه‌ها بارگذاری نشد."
+
+msgid "Sections"
+msgstr "بخش‌ها"
+
+msgid "Loading..."
+msgstr "در حال بارگذاری…"
+
+msgid "Try again"
+msgstr "تلاش دوباره"
+
+msgid "Dismiss notification"
+msgstr "بستن پیام"
+
+msgid "Changes saved."
+msgstr "تغییرات ذخیره شد."
+
+msgid "Changes could not be saved."
+msgstr "ذخیره‌سازی انجام نشد."
+
+msgid "Unsupported field type."
+msgstr "نوع فیلد پشتیبانی نمی‌شود."
+
+msgid "Unsupported page type."
+msgstr "نوع صفحه پشتیبانی نمی‌شود."
+
+msgid "Saving..."
+msgstr "در حال ذخیره…"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Choose an option"
+msgstr "انتخاب کنید"
+
+msgid "No results found"
+msgstr "موردی پیدا نشد"
+
+msgid "No options available"
+msgstr "گزینه‌ای وجود ندارد"
+
+msgid "This field is required."
+msgstr "تکمیل این فیلد الزامی است."
+
+msgid "Please correct the errors in the form."
+msgstr "لطفاً خطاهای فرم را برطرف کنید."
+
+msgid "Invalid form data."
+msgstr "اطلاعات واردشده در فرم معتبر نیست."
+
+msgid "Back"
+msgstr "بازگشت"
+
+msgid "Previous"
+msgstr "قبلی"
+
+msgid "Next"
+msgstr "بعدی"
+
+msgid "Pagination"
+msgstr "صفحه‌بندی"
+
+msgid "Refresh settings"
+msgstr "تازه‌سازی تنظیمات"
+
+msgid "Settings refreshed."
+msgstr "تنظیمات تازه‌سازی شد."
+
+msgid "Database migrations for %s could not complete. Inspect migration status before retrying."
+msgstr "اجرای تغییرات پایگاه داده برای %s کامل نشد. پیش از تلاش دوباره، وضعیت تغییرات را بررسی کنید."
+
+msgid "Schema not found."
+msgstr "ساختار موردنظر پیدا نشد."
+
+msgid "You cannot access this page."
+msgstr "شما اجازه دسترسی به این صفحه را ندارید."
+
+msgid "Invalid field value."
+msgstr "مقدار فیلد معتبر نیست."
+
+msgid "Complete the preceding fields first."
+msgstr "ابتدا فیلدهای قبلی را تکمیل کنید."
+
+msgid "Enter a valid number."
+msgstr "یک عدد معتبر وارد کنید."
+
+msgid "The number is outside the allowed range."
+msgstr "عدد خارج از بازه مجاز است."
+
+msgid "The number does not match the allowed step."
+msgstr "عدد با گام مجاز مطابقت ندارد."
+
+msgid "Choose an available option."
+msgstr "یکی از گزینه‌های موجود را انتخاب کنید."
+
+msgid "Complete the fields required by this option."
+msgstr "فیلدهای لازم برای این گزینه را تکمیل کنید."
+
+msgid "This option has already been selected."
+msgstr "این گزینه قبلاً انتخاب شده است."
+
+msgid "Enter a complete HTTP or HTTPS URL."
+msgstr "یک آدرس کامل HTTP یا HTTPS وارد کنید."
+
+msgid "Enter valid values."
+msgstr "مقادیر معتبر وارد کنید."
+
+msgid "Too many values were entered."
+msgstr "تعداد مقادیر واردشده بیش از حد مجاز است."
+
+msgid "Enter a valid value."
+msgstr "یک مقدار معتبر وارد کنید."
+
+msgid "Enter a valid time range."
+msgstr "یک بازه زمانی معتبر وارد کنید."
+
+msgid "Choose a valid switch state."
+msgstr "یک وضعیت معتبر انتخاب کنید."
+
+msgid "Enter a valid time."
+msgstr "یک ساعت معتبر وارد کنید."
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Add row"
+msgstr "افزودن ردیف"
+
+msgid "Choose available options."
+msgstr "گزینه‌های معتبر را انتخاب کنید."
+
+msgid "Table columns must be unique fields."
+msgstr "ستون‌های جدول باید فیلدهای یکتا باشند."
+
+msgid "An editable table requires columns."
+msgstr "جدول ویرایش‌پذیر باید ستون داشته باشد."
+
+msgid "Invalid table rows."
+msgstr "ردیف‌های جدول معتبر نیستند."
+
+msgid "Invalid table columns."
+msgstr "ستون‌های جدول معتبر نیستند."
+
+msgid "Invalid table row."
+msgstr "ردیف جدول معتبر نیست."
+
+msgid "Complete all table fields correctly."
+msgstr "فیلدهای جدول را درست تکمیل کنید."
+
+msgid "Delete selected"
+msgstr "حذف انتخاب‌شده‌ها"
+
+msgid "Cancel"
+msgstr "انصراف"
+
+msgid "Deleting..."
+msgstr "در حال حذف…"
+
+msgid "Delete {item}"
+msgstr "حذف {item}"
+
+msgid "Delete selected {items}"
+msgstr "حذف {items}‌های انتخاب‌شده"
+
+msgid "Are you sure you want to delete this {item}? This action cannot be undone."
+msgstr "آیا از حذف این {item} مطمئن هستید؟ این عملیات قابل بازگشت نیست."
+
+msgid "Are you sure you want to delete {count} selected {items}? This action cannot be undone."
+msgstr "آیا از حذف {count} {items} انتخاب‌شده مطمئن هستید؟ این عملیات قابل بازگشت نیست."
+
+#. translators: 1: number of deleted entities, 2: entity name
+msgid "%1$d %2$s was deleted successfully."
+msgstr "%1$d %2$s با موفقیت حذف شد."
+
+#. translators: 1: number of deleted entities, 2: entity name
+msgid "%1$d %2$s were deleted successfully."
+msgstr "%1$d %2$s با موفقیت حذف شدند."
+
+msgid "Invalid Bale bot token."
+msgstr "توکن بات بله معتبر نیست."
+
+msgid "Unsupported Bale API method."
+msgstr "متد API بله پشتیبانی نمی‌شود."
+
+msgid "Could not connect to Bale."
+msgstr "اتصال به بله برقرار نشد."
+
+msgid "Bale could not complete the request."
+msgstr "بله نتوانست درخواست را کامل کند."
+
+msgid "Bale did not confirm message delivery."
+msgstr "بله ارسال پیام را تایید نکرد."
+
+msgid "Bale returned an invalid webhook status."
+msgstr "بله وضعیت نامعتبری برای وب‌هوک بازگرداند."
+
+msgid "Bale did not confirm webhook registration."
+msgstr "بله ثبت وب‌هوک را تایید نکرد."
+
+msgid "Bale did not confirm webhook removal."
+msgstr "بله حذف وب‌هوک را تایید نکرد."
+
+msgid "Webhook payload too large."
+msgstr "داده ورودی وب‌هوک بیش از حد مجاز است."
+
+msgid "Distinct credential option names are required."
+msgstr "نام گزینه‌های اطلاعات ورود باید مجزا باشند."
+
+msgid "The Telegram API base URL must use public HTTPS."
+msgstr "آدرس پایه API تلگرام باید از HTTPS عمومی استفاده کند."
+
+msgid "Invalid Telegram bot token."
+msgstr "توکن بات تلگرام معتبر نیست."
+
+msgid "Unsupported Telegram API method."
+msgstr "متد API تلگرام پشتیبانی نمی‌شود."
+
+msgid "Could not connect to Telegram."
+msgstr "اتصال به تلگرام برقرار نشد."
+
+msgid "Telegram could not complete the request."
+msgstr "تلگرام نتوانست درخواست را کامل کند."
+
+msgid "Telegram did not confirm message delivery."
+msgstr "تلگرام ارسال پیام را تایید نکرد."
+
+msgid "Telegram returned an invalid webhook status."
+msgstr "تلگرام وضعیت نامعتبری برای وب‌هوک بازگرداند."
+
+msgid "Invalid Telegram webhook secret."
+msgstr "کلید امنیتی وب‌هوک تلگرام معتبر نیست."
+
+msgid "Telegram did not confirm webhook registration."
+msgstr "تلگرام ثبت وب‌هوک را تایید نکرد."
+
+msgid "Telegram did not confirm webhook removal."
+msgstr "تلگرام حذف وب‌هوک را تایید نکرد."
+
+msgid "A public HTTPS URL is required."
+msgstr "یک آدرس HTTPS عمومی لازم است."
+
+msgid "The URL uses an unsupported port."
+msgstr "پورت استفاده‌شده در آدرس پشتیبانی نمی‌شود."
+
+msgid "At least one allowed HTTPS port is required."
+msgstr "حداقل یک پورت HTTPS مجاز باید تعیین شود."
+
+msgid "Allowed ports must be integers between 1 and 65535."
+msgstr "پورت‌های مجاز باید عدد صحیحی بین ۱ تا ۶۵۵۳۵ باشند."
+
+msgid "HTTP request failed."
+msgstr "درخواست HTTP ناموفق بود."
+
+msgid "Invalid or duplicate SMS gateway name."
+msgstr "نام درگاه پیامک نامعتبر یا تکراری است."
+
+msgid "Unknown SMS gateway."
+msgstr "درگاه پیامک ناشناخته است."
+
+msgid "SMS factory must return an SMSGateway."
+msgstr "سازنده پیامک باید یک SMSGateway بازگرداند."
+
+msgid "The %s SMS gateway setting is missing or invalid."
+msgstr "%s درگاه پیامک وارد نشده یا معتبر نیست."
+
+msgid "Sender line number"
+msgstr "شماره خط ارسال‌کننده"
+
+msgid "SMS API key"
+msgstr "کلید وب‌سرویس پیامک"
+
+msgid "SMS service username"
+msgstr "نام کاربری سرویس پیامک"
+
+msgid "SMS service password"
+msgstr "رمز عبور سرویس پیامک"
+
+msgid "SMS configuration value"
+msgstr "مقدار تنظیمات پیامک"
+
+msgid "Invalid IPPanel sender."
+msgstr "شماره فرستنده IPPanel معتبر نیست."
+
+msgid "Kavenegar patterns require token and support token2, token3, token10 and token20."
+msgstr "الگوهای کاوه‌نگار به token نیاز دارند و از token2، token3، token10 و token20 پشتیبانی می‌کنند."
+
+msgid "Melipayamak requires a positive numeric template ID."
+msgstr "ملی‌پیامک به شناسه عددی مثبت برای قالب نیاز دارد."
+
+msgid "Melipayamak pattern values cannot contain semicolons."
+msgstr "مقادیر الگوی ملی‌پیامک نمی‌توانند شامل نقطه‌ویرگول باشند."
+
+msgid "SMS.ir requires a numeric sender."
+msgstr "SMS.ir به شماره فرستنده عددی نیاز دارد."
+
+msgid "SMS.ir requires a positive numeric template ID."
+msgstr "SMS.ir به شناسه عددی مثبت برای قالب نیاز دارد."
+
+msgid "Invalid Iranian mobile number."
+msgstr "شماره موبایل اشتباه است"
+
+msgid "Missing or invalid SMS placeholder: %s"
+msgstr "جای‌نگهدار پیامک وجود ندارد یا معتبر نیست: %s"
+
+msgid "Invalid SMS text."
+msgstr "متن پیامک معتبر نیست."
+
+msgid "SMS recipients are required."
+msgstr "تعیین گیرنده پیامک الزامی است."
+
+msgid "SMS text cannot be empty."
+msgstr "متن پیامک نمی‌تواند خالی باشد."
+
+msgid "Invalid SMS template identifier."
+msgstr "شناسه قالب پیامک معتبر نیست."
+
+msgid "Pattern variables require named, non-empty string values."
+msgstr "متغیرهای الگو باید نام‌دار و دارای مقدار متنی غیرخالی باشند."
+
+msgid "SMS content must be valid UTF-8."
+msgstr "محتوای پیامک باید UTF-8 معتبر باشد."
+
+msgid "Invalid bot token."
+msgstr "توکن بات معتبر نیست."
+
+msgid "Unsupported bot API method."
+msgstr "متد API بات پشتیبانی نمی‌شود."
+
+msgid "Could not connect to the bot service."
+msgstr "اتصال به سرویس بات برقرار نشد."
+
+msgid "The bot service could not complete the request."
+msgstr "سرویس بات نتوانست درخواست را کامل کند."
+
+msgid "The bot service did not confirm message delivery."
+msgstr "سرویس بات ارسال پیام را تایید نکرد."
+
+msgid "The bot service returned an invalid webhook status."
+msgstr "سرویس بات وضعیت نامعتبری برای وب‌هوک بازگرداند."
+
+msgid "Invalid webhook secret."
+msgstr "کلید امنیتی وب‌هوک معتبر نیست."
+
+msgid "The bot service did not confirm webhook registration."
+msgstr "سرویس بات ثبت وب‌هوک را تایید نکرد."
+
+msgid "The bot service did not confirm webhook removal."
+msgstr "سرویس بات حذف وب‌هوک را تایید نکرد."
+
+msgid "Invalid bot update."
+msgstr "به‌روزرسانی دریافتی از بات معتبر نیست."
+
+msgid "Invalid HTTP Basic authentication credentials."
+msgstr "اطلاعات احراز هویت Basic معتبر نیست."
+
+msgid "Invalid HTTP bearer token."
+msgstr "توکن Bearer معتبر نیست."
+
+msgid "A valid HTTP URL is required."
+msgstr "وارد کردن یک آدرس HTTP معتبر الزامی است."
+
+msgid "The HTTP timeout must be between 1 and 300 seconds."
+msgstr "مهلت درخواست HTTP باید بین ۱ تا ۳۰۰ ثانیه باشد."
+
+msgid "The HTTP response limit must be between 1 byte and 10 megabytes."
+msgstr "حداکثر اندازه پاسخ HTTP باید بین ۱ بایت تا ۱۰ مگابایت باشد."
+
+msgid "The HTTP redirect limit must be between 0 and 5."
+msgstr "حداکثر تعداد تغییر مسیر HTTP باید بین ۰ تا ۵ باشد."
+
+msgid "Invalid HTTP header."
+msgstr "هدر HTTP معتبر نیست."
+
+msgid "Invalid HTTP response status."
+msgstr "کد وضعیت پاسخ HTTP معتبر نیست."
+
+msgid "The HTTP retry loop ended unexpectedly."
+msgstr "چرخه تلاش مجدد HTTP به‌صورت غیرمنتظره پایان یافت."
+
+msgid "Invalid HTTP retry policy."
+msgstr "سیاست تلاش مجدد HTTP معتبر نیست."
+
+msgid "Invalid retryable HTTP status."
+msgstr "کد وضعیت HTTP برای تلاش مجدد معتبر نیست."
+
+msgid "A valid HTTPS OAuth token URL is required."
+msgstr "وارد کردن یک آدرس HTTPS معتبر برای توکن OAuth الزامی است."
+
+msgid "Invalid OAuth client credentials."
+msgstr "اطلاعات کاربری OAuth معتبر نیست."
+
+msgid "Invalid OAuth scope."
+msgstr "دامنه دسترسی OAuth معتبر نیست."
+
+msgid "The OAuth token request failed."
+msgstr "درخواست توکن OAuth ناموفق بود."
+
+msgid "The OAuth token response is invalid."
+msgstr "پاسخ توکن OAuth معتبر نیست."
+
+msgid "The OAuth access token could not be cached."
+msgstr "ذخیره موقت توکن دسترسی OAuth انجام نشد."
+
+msgid "Validation rules must be strings or Rule objects."
+msgstr "قواعد اعتبارسنجی باید رشته یا شیء Rule باشند."
+
+msgid "At least one validation rule is required."
+msgstr "حداقل یک قاعده اعتبارسنجی لازم است."
+
+msgid "The required_if rule needs a field and value."
+msgstr "قاعده required_if به نام فیلد و مقدار نیاز دارد."
+
+msgid "Invalid or duplicate validation rule name."
+msgstr "نام قاعده اعتبارسنجی نامعتبر یا تکراری است."
+
+msgid "Unknown validation rule: %s"
+msgstr "قاعده اعتبارسنجی ناشناخته است: %s"
+
+msgid "A validation rule factory returned a mismatched rule."
+msgstr "سازنده قاعده اعتبارسنجی، قاعده‌ای ناسازگار بازگرداند."
+
+msgid "The %s rule has invalid parameters."
+msgstr "پارامترهای قاعده %s معتبر نیستند."
+
+msgid "The %s rule requires one parameter."
+msgstr "قاعده %s به یک پارامتر نیاز دارد."
+
+msgid "The %s rule requires a numeric parameter."
+msgstr "قاعده %s به یک پارامتر عددی نیاز دارد."
+
+msgid "The in rule needs at least one allowed value."
+msgstr "قاعده in حداقل به یک مقدار مجاز نیاز دارد."
+
+msgid "The not_in rule needs at least one prohibited value."
+msgstr "قاعده not_in حداقل به یک مقدار غیرمجاز نیاز دارد."
+
+msgid "Invalid validation regular expression."
+msgstr "عبارت منظم اعتبارسنجی معتبر نیست."
+
+msgid "The same rule needs another field."
+msgstr "قاعده same به نام فیلد دیگر نیاز دارد."
+
+msgid "Database migrations could not complete. Tracking ID: %s"
+msgstr "به‌روزرسانی پایگاه داده کامل نشد. شناسه پیگیری: %s"
+
+msgid "Validation size limits must be finite."
+msgstr "حدود اندازه در اعتبارسنجی باید متناهی باشند."
+
+msgid "Validation size limits cannot be negative."
+msgstr "محدودیت اندازه در اعتبارسنجی نمی‌تواند منفی باشد."
+
+msgid "Invalid validation attribute path."
+msgstr "مسیر ویژگی اعتبارسنجی معتبر نیست."
+
+msgid "The :attribute field is required."
+msgstr "فیلد :attribute الزامی است."
+
+msgid "The :attribute field is required when :other is :value."
+msgstr "وقتی :other برابر :value است، فیلد :attribute الزامی است."
+
+msgid "The :attribute field must be a string."
+msgstr "فیلد :attribute باید رشته باشد."
+
+msgid "The :attribute field must be an integer."
+msgstr "فیلد :attribute باید عدد صحیح باشد."
+
+msgid "The :attribute field must be numeric."
+msgstr "فیلد :attribute باید عددی باشد."
+
+msgid "The :attribute field must be true or false."
+msgstr "فیلد :attribute باید درست یا نادرست باشد."
+
+msgid "The :attribute field must be an array."
+msgstr "فیلد :attribute باید آرایه باشد."
+
+msgid "The :attribute field must be a valid email address."
+msgstr "فیلد :attribute باید یک نشانی ایمیل معتبر باشد."
+
+msgid "The :attribute field must be a valid URL."
+msgstr "فیلد :attribute باید یک آدرس معتبر باشد."
+
+msgid "The :attribute field must be a valid UUID."
+msgstr "فیلد :attribute باید یک UUID معتبر باشد."
+
+msgid "The :attribute field must be at least :min."
+msgstr "فیلد :attribute باید حداقل :min باشد."
+
+msgid "The :attribute field must not be greater than :max."
+msgstr "فیلد :attribute نباید بیشتر از :max باشد."
+
+msgid "The selected :attribute is invalid."
+msgstr "مقدار انتخاب‌شده برای :attribute معتبر نیست."
+
+msgid "The :attribute field must match :other."
+msgstr "فیلد :attribute باید با :other یکسان باشد."
+
+msgid "The :attribute confirmation does not match."
+msgstr "تاییدیه :attribute مطابقت ندارد."
+
+msgid "The :attribute field format is invalid."
+msgstr "قالب فیلد :attribute معتبر نیست."
+
+msgid "The :attribute field must be a valid Iranian mobile number."
+msgstr "فیلد :attribute باید یک شماره موبایل معتبر ایران باشد."
+
+msgid "The :attribute field is invalid."
+msgstr "فیلد :attribute معتبر نیست."
+
+msgid "Invalid pagination limits."
+msgstr "محدوده صفحه‌بندی معتبر نیست."
+
+msgid "Page and page size must be integers."
+msgstr "شماره صفحه و تعداد موارد هر صفحه باید عدد صحیح باشند."
+
+msgid "Invalid page or page size."
+msgstr "شماره صفحه یا تعداد موارد هر صفحه معتبر نیست."
+
+msgid "Invalid UI schema contract."
+msgstr "قرارداد ساختار رابط کاربری معتبر نیست."
+
+msgid "Invalid API authentication configuration."
+msgstr "تنظیمات احراز هویت API معتبر نیست."
+
+msgid "Invalid API permission configuration."
+msgstr "تنظیمات دسترسی API معتبر نیست."
+
+msgid "API access denied."
+msgstr "اجازه دسترسی به API را ندارید."
+
+msgid "A valid Bearer token is required."
+msgstr "ارائه توکن Bearer معتبر الزامی است."
+
+msgid "API authentication is unavailable."
+msgstr "سرویس احراز هویت API در دسترس نیست."
+
+msgid "Invalid API route definition."
+msgstr "تعریف مسیر API معتبر نیست."
+
+msgid "API routes are already sealed."
+msgstr "تعریف مسیرهای API نهایی شده است."
+
+msgid "Duplicate API route: %s."
+msgstr "مسیر API تکراری است: %s."
+
+msgid "API routes cannot be collected now."
+msgstr "در این مرحله امکان جمع‌آوری مسیرهای API وجود ندارد."
+
+msgid "API routes cannot be published during collection."
+msgstr "ثبت مسیرهای API هنگام جمع‌آوری آن‌ها امکان‌پذیر نیست."
+
+msgid "API route registration failed."
+msgstr "ثبت مسیر API ناموفق بود."
+
+msgid "API route file is missing or unreadable."
+msgstr "فایل مسیرهای API وجود ندارد یا قابل خواندن نیست."
+
+msgid "API route file must return a closure."
+msgstr "فایل مسیرهای API باید یک تابع ناشناس برگرداند."
+
+msgid "Invalid API route handler."
+msgstr "پردازشگر مسیر API معتبر نیست."
+
+msgid "Invalid API permission service."
+msgstr "سرویس بررسی دسترسی API معتبر نیست."
+
+msgid "API route requires an explicit permission."
+msgstr "برای مسیر API باید مجوز دسترسی مشخص شود."
+
+msgid "The request body must be a valid JSON object."
+msgstr "بدنه درخواست باید یک شیء JSON معتبر باشد."
+
+msgid "Invalid API response status."
+msgstr "وضعیت پاسخ API معتبر نیست."
+
+msgid "Invalid API response messages."
+msgstr "پیام‌های پاسخ API معتبر نیستند."
+
+msgid "A validation error response requires errors."
+msgstr "پاسخ خطای اعتبارسنجی باید شامل خطا باشد."
+
+msgid "The request could not be completed."
+msgstr "انجام درخواست با خطا مواجه شد."
+
+msgid "Page identity, type and schema endpoint are required."
+msgstr "شناسه، نوع و مسیر طرح‌واره صفحه الزامی هستند."
+
+msgid "The :attribute field may contain only these keys: :keys."
+msgstr "فیلد :attribute فقط می‌تواند شامل این کلیدها باشد: :keys."
+
+msgid "Array keys must be nonempty literal attribute names."
+msgstr "کلیدهای آرایه باید نام‌های مستقیم و غیرخالی فیلد باشند."
+
+msgid "HTTP retry time budget exhausted."
+msgstr "بودجه زمانی تلاش‌های درخواست HTTP به پایان رسید."
+
+msgid "SMS batch size must be between 1 and %d."
+msgstr "اندازهٔ بستهٔ پیامک باید بین ۱ و %d باشد."
+
+msgid "Table column values must be unique."
+msgstr "مقادیر این ستون نباید در ردیف‌های جدول تکرار شوند."
+
+msgid "Could not save the bot webhook secret."
+msgstr "ذخیرهٔ رمز وب‌هوک بات انجام نشد."
+
+msgid "Could not restore the bot webhook secret after a failed token save."
+msgstr "پس از شکست ذخیرهٔ توکن، بازگرداندن رمز قبلی وب‌هوک بات انجام نشد."
+
+msgid "Could not save the bot token."
+msgstr "ذخیرهٔ توکن بات انجام نشد."
+
+msgid "Could not delete the bot credentials."
+msgstr "حذف اطلاعات دسترسی بات انجام نشد."
+
+msgid "6 times per minute"
+msgstr "۶ بار در دقیقه"
+
+msgid "3 times per minute"
+msgstr "۳ بار در دقیقه"
+
+msgid "Once per minute"
+msgstr "یک‌بار در دقیقه"
+
+msgid "12 times per hour"
+msgstr "۱۲ بار در ساعت"
+
+msgid "6 times per hour"
+msgstr "۶ بار در ساعت"
+
+msgid "4 times per hour"
+msgstr "۴ بار در ساعت"
+
+msgid "Twice per hour"
+msgstr "دو بار در ساعت"
+
+msgid "Once per hour"
+msgstr "یک‌بار در ساعت"
+
+msgid "6 times per day"
+msgstr "۶ بار در روز"
+
+msgid "3 times per day"
+msgstr "۳ بار در روز"
+
+msgid "Twice per day"
+msgstr "دو بار در روز"
+
+msgid "Once per day"
+msgstr "یک‌بار در روز"
+
+msgid "Twice per week"
+msgstr "دو بار در هفته"
+
+msgid "Once per week"
+msgstr "یک‌بار در هفته"
+
+msgid "Once per month (30 days)"
+msgstr "ماهی یک‌بار (هر ۳۰ روز)"
+
+msgid "3 times per month (every 10 days)"
+msgstr "سه بار در ماه (هر ۱۰ روز)"
+
+msgid "Twice per month (every 15 days)"
+msgstr "دو بار در ماه (هر ۱۵ روز)"

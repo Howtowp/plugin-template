@@ -26,12 +26,13 @@ final class PluginHeaderTest extends TestCase {
 
 	public function test_required_headers_exist(): void {
 		$source = $this->main_file();
-		foreach ( array( 'Update URI', 'Requires at least', 'Requires PHP', 'Requires Plugins', 'Text Domain', 'Domain Path' ) as $header ) {
+		foreach ( array( 'Update URI', 'Requires at least', 'Requires PHP', 'Text Domain', 'Domain Path' ) as $header ) {
 			$this->assertSame( 1, preg_match( '/^\s*\*\s*' . $header . ':\s*\S+/m', $source ), "Missing header: $header" );
 		}
 		$this->assertMatchesRegularExpression( '/Update URI:\s*https:\/\/howtowp\.ir/', $source );
 		$this->assertMatchesRegularExpression( '/Requires PHP:\s*8\.1/', $source );
-		$this->assertMatchesRegularExpression( '/Requires Plugins:\s*bluwp/', $source );
+		$this->assertDoesNotMatchRegularExpression( '/Requires Plugins:\s*.*\bbluwp\b/', $source );
+		$this->assertStringContainsString( 'BluwpBridgeV1::consume', $source );
 		$this->assertStringContainsString( 'declare(strict_types=1);', $source );
 	}
 

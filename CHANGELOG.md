@@ -8,7 +8,8 @@ The WordPress-facing changelog lives in `plugin-template/readme.txt`.
 ## [0.3.0] - 2026-11-14
 ### Changed
 - The starter now follows the Bluwp layout used by How to WP plugins: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/Text.php`, `hooks/early/`, `crons/`, `database/migrations/`.
-- Admin UI is a JSON schema rendered by Bluwp and bluwp-vuejs (`>= 0.2.1 < 0.3`). Compiled kit CSS is not vendored. IranSans redistribution is documented as an open license question.
+- Admin UI is a JSON schema rendered by Bluwp and bluwp-vuejs (`>= 0.2.1 < 0.3`). Compiled kit CSS is not vendored. The kit source is not in this repo yet, so the admin build is optional. IranSans redistribution is documented as an open license question.
+- Bluwp 0.2.1 is embedded in `lib/bluwp` and booted with `BluwpBridgeV1::consume()`. There is no `Requires Plugins: bluwp`. A standalone Bluwp plugin on the same line is preferred when it is already active.
 - The sample settings page and its REST route share `HTW_PT_CAPABILITY` and require a `wp_rest` nonce. WooCommerce HPOS/blocks compatibility uses `HTW_PT_FILE`, not a hardcoded filename.
 - The previous sample block, Settings API page, and Abilities sample are no longer in the skeleton. Abilities stay documented as optional in `docs/abilities.md`.
 ### Added
