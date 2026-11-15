@@ -1,0 +1,12 @@
+{
+  "admin/src/main.tsx": {
+    "file": "admin.js",
+    "name": "main",
+    "src": "admin/src/main.tsx",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "admin.css",
+    "src": "style.css"
+  }
+}

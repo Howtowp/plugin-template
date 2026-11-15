@@ -1,10 +1,8 @@
 # Abilities (Abilities API, WordPress 6.9+)
 
-Abilities make plugin features discoverable and callable by AI agents and tools, with JSON-Schema input/output and a permission check. They are registered in `src/Abilities/Abilities.php` and are skipped silently on WordPress < 6.9 (`function_exists( 'wp_register_ability' )`).
+The Bluwp skeleton does **not** ship a sample ability. Add one only when a product needs it. Register the category on `wp_abilities_api_categories_init` and the ability on `wp_abilities_api_init`, from code that runs on `htw_pt_loaded` (Bluwp has booted by then). Skip silently when `function_exists( 'wp_register_ability' )` is false.
 
-| Name | Category | Read-only | Permission | Description |
-| --- | --- | --- | --- | --- |
-| `plugin-template/site-info` | `plugin-template` | yes | `manage_options` | Site name, WordPress/PHP/plugin versions. |
+There is no `plugin-template/site-info` ability in this template.
 
 ## Rules
 

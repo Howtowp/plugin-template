@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Forouzandea\Bluwp\Support\Validation\Rules;
+
+use Forouzandea\Bluwp\Support\Validation\{Attribute, RuleViolation, ValidationContext};
+use Forouzandea\Bluwp\Support\Validation\Contracts\Rule;
+
+final class NotInRule implements Rule
+{
+    public function __construct(private array $values)
+    {
+        if ($values === []) {
+            throw new \InvalidArgumentException(__('The not_in rule needs at least one prohibited value.', BLUWP));
+        }
+    }
+    public function name(): string
+    {
+        return 'not_in';
+    }
+    public function validate(Attribute $attribute, ValidationContext $context): ?RuleViolation
+    {
+        return !in_array($attribute->value, $this->values, true) ? null : new RuleViolation($this->name());
+    }
+}

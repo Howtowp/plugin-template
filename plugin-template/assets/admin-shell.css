@@ -1,0 +1,17 @@
+/*
+ * Outside the React root. wp-admin .wrap adds a side offset and a max width
+ * that leaves a gray gutter. The app itself fills #wpbody-content.
+ */
+body.wp-admin #wpbody-content #htw-pt-wrap.wrap {
+	margin: 0 !important;
+	padding: 0 !important;
+	max-width: none !important;
+	float: none;
+}
+
+body.wp-admin #wpbody-content #htw-pt-admin {
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	box-sizing: border-box;
+}

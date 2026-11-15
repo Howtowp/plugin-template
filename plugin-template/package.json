@@ -1,17 +1,27 @@
 {
 	"name": "plugin-template",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"private": true,
-	"description": "Block build for the Plugin Template plugin.",
+	"description": "Builds the VibeFarsi admin app into assets/admin using WordPress's React.",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"build": "wp-scripts build --experimental-modules --webpack-src-dir=blocks --output-path=build --blocks-manifest",
-		"postbuild": "node bin/add-index.js",
-		"start": "wp-scripts start --experimental-modules --webpack-src-dir=blocks --output-path=build --blocks-manifest",
-		"lint:js": "wp-scripts lint-js blocks",
-		"format": "wp-scripts format blocks"
+		"build": "vite build --config admin/vite.config.ts",
+		"typecheck": "tsc -p admin/tsconfig.json --noEmit"
+	},
+	"dependencies": {
+		"lucide-react": "0.487.0"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^37.0.0"
+		"@tailwindcss/vite": "^4.1.11",
+		"@types/react": "^18.3.18",
+		"@types/react-dom": "^18.3.5",
+		"@vitejs/plugin-react": "^4.4.1",
+		"postcss": "^8.5.6",
+		"postcss-prefix-selector": "^2.1.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwindcss": "^4.1.11",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.5"
 	}
 }

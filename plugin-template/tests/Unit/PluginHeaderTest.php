@@ -30,10 +30,17 @@ final class PluginHeaderTest extends TestCase {
 			$this->assertSame( 1, preg_match( '/^\s*\*\s*' . $header . ':\s*\S+/m', $source ), "Missing header: $header" );
 		}
 		$this->assertMatchesRegularExpression( '/Update URI:\s*https:\/\/howtowp\.ir/', $source );
+		$this->assertMatchesRegularExpression( '/Requires PHP:\s*8\.1/', $source );
+		$this->assertDoesNotMatchRegularExpression( '/Requires Plugins:\s*.*\bbluwp\b/', $source );
+		$this->assertStringContainsString( 'BluwpBridgeV1::consume', $source );
+		$this->assertStringContainsString( 'declare(strict_types=1);', $source );
 	}
 
-	public function test_classes_are_autoloadable(): void {
-		$this->assertTrue( interface_exists( \HowToWP\PluginTemplate\Core\Module::class ) );
-		$this->assertTrue( class_exists( \HowToWP\PluginTemplate\Services\SiteInfoService::class ) );
+	public function test_catalog_check_passes(): void {
+		$script = dirname( __DIR__, 3 ) . '/scripts/check-catalog.php';
+		$lines  = array();
+		$code   = 1;
+		exec( escapeshellarg( PHP_BINARY ) . ' ' . escapeshellarg( $script ), $lines, $code );
+		$this->assertSame( 0, $code, implode( "\n", $lines ) );
 	}
 }

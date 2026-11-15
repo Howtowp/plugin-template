@@ -1,0 +1,4 @@
+WordPress 7.1.4 admin CSS (GPL-2.0-or-later), copied from github.com/WordPress/WordPress
+so the harness can load real wp-admin styles without the network: common.css, forms.css,
+buttons.css (from wp-includes/css), and the matching -rtl files.
+These files stay in admin/ and are excluded from the plugin zip.

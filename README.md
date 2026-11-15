@@ -2,93 +2,75 @@
 
 **فارسی** · [English](#english)
 
-قالب استاندارد و آماده‌ی ساخت افزونه‌های [How to WP](https://howtowp.ir). برای هر افزونه‌ی جدید روی «Use this template» بزنید، اسکریپت `init.sh` را اجرا کنید و شروع کنید.
+قالب مشترک افزونه‌های [How to WP](https://howtowp.ir). هر محصول **یک** افزونه است: هستهٔ Bluwp داخل `lib/bluwp` قرار دارد و مشتری افزونهٔ جداگانه‌ای نصب نمی‌کند. اگر Bluwp مستقل روی سایت فعال باشد، همان نسخه استفاده می‌شود. ظاهر پیشخوان با React و کامپوننت‌های VibeFarsi ساخته می‌شود (`npm run build` → `assets/admin`). React از خود وردپرس می‌آید.
 
 ## شروع سریع
 
 ```bash
-# ۱) در گیت‌هاب: Use this template → ریپوی جدید (برای محصول‌های فروشی: Private)
 git clone git@github.com:howtowp/my-plugin.git && cd my-plugin
-
-# ۲) تغییر نام‌ها: slug، نام افزونه، namespace، پیشوند کوتاه
 ./scripts/init.sh my-plugin "My Plugin" MyPlugin mp
-
-# ۳) بیلد و بررسی
-cd my-plugin && composer install && npm install && npm run build
+cd my-plugin && composer install
 composer lint && composer phpcs && composer phpstan && composer test
+php ../scripts/check-catalog.php
 ```
 
-## ساختار پروژه (پیشنهادی)
+Bluwp `0.2.1` داخل افزونه است (`lib/bluwp`). به‌روزرسانی آن: `./scripts/update-bluwp.sh <path-or-tgz>`. ساخت پیشخوان: `cd plugin-template && npm ci && npm run build`. جزئیات در [docs/design-system.md](docs/design-system.md).
 
-افزونه‌ی قابل‌انتشار فقط داخل **یک زیرپوشه** است؛ بقیه‌ی پروژه (مستندات، دیتا، طراحی، تحقیق، اسکریپت) کنارش می‌ماند و **هیچ‌وقت داخل zip نمی‌رود**.
+## ساختار
+
+افزونه‌ی قابل‌انتشار فقط داخل **یک زیرپوشه** است. `docs/`، `data/`، `design/`، `research/`، `scripts/` و `dev/` داخل zip نمی‌روند.
 
 ```
-my-plugin/                  ریشه‌ی ریپو = پروژه
-├── my-plugin/              خود افزونه (نام پوشه = slug = ریشه‌ی zip)
-│   ├── my-plugin.php  AI-GUIDE.md  src/  blocks/  templates/  assets/  languages/  tests/
-│   └── composer.json  package.json  readme.txt  LICENSE  uninstall.php  …
-├── docs/  data/  design/  research/  scripts/  dev/
-├── AGENTS.md  CLAUDE.md  .cursor/rules/
-├── product.json            bilingual store copy (not in the zip)
-├── product.schema.json     convenience copy; canonical schema is in howtowp/.github
-├── .release.yml            plugin_dir: my-plugin
-└── .github/workflows/      release.yml · plugin-check.yml
+my-plugin/
+├── my-plugin/                 خود افزونه (نام پوشه = slug)
+│   ├── my-plugin.php          هدر، ثابت‌ها، HTW_*_FILE = __FILE__
+│   ├── lib/bluwp/             هستهٔ Bluwp؛ مشتری جدا نصب نمی‌کند
+│   ├── bootstrap/  pages/  routes/  app/  src/Text.php
+│   ├── hooks/early/           سازگاری HPOS با همان فایل اصلی
+│   ├── crons/  database/  assets/  development/
+│   └── AI-GUIDE.md  readme.txt
+├── product.json  product.schema.json
+├── docs/  AGENTS.md  .release.yml  .github/
+└── scripts/init.sh  scripts/check-catalog.php
 ```
 
-اگر فقط خود افزونه را دارید (بدون پروژه)، **چیدمان ساده** هم پشتیبانی می‌شود: فایل‌های افزونه مستقیم در ریشه‌ی ریپو باشند و در `.release.yml` کلید `plugin_dir` را حذف کنید. جزئیات: [docs/wordpress-release.md](https://github.com/howtowp/.github/blob/main/docs/wordpress-release.md).
+## نسخه‌ها و کاتالوگ
 
+`product.json` فیلد version ندارد (اسکیما اجازه نمی‌دهد). خط `Plugin-Version` در `AI-GUIDE.md` باید با هدر افزونه یکی باشد. `php scripts/check-catalog.php` این را، به‌علاوه‌ی capability یکسان صفحه و REST و استفاده‌نکردن از نام فایل سخت‌کدشده، چک می‌کند.
 
-## محتوای محصول (`product.json` و `AI-GUIDE.md`)
-
-- `product.json` در ریشهٔ ریپو: متن دوزبانهٔ صفحهٔ محصول (ویژگی‌ها، کاربردها، FAQ و توضیحات بلند ساخت‌یافته در `description_sections`). داخل zip نمی‌رود؛ بعداً به‌عنوان asset به Release وصل می‌شود. اسکیمای مرجع: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json). الگوی نگارش: [docs/product-copy.md](https://github.com/Howtowp/.github/blob/main/docs/product-copy.md).
-- `<slug>/AI-GUIDE.md`: راهنمای مشتری و وایب‌کدر برای گسترش افزونه با Cursor یا Claude. این فایل **باید** داخل zip باشد. با `AGENTS.md` (توسعهٔ داخلی) فرق دارد.
-
-قیمت، نسخه، changelog و Requires از این فایل‌ها خوانده نمی‌شوند.
+مجوز بازتوزیع فونت IranSans هنوز باز است. جزئیات: [docs/design-system.md](docs/design-system.md). چک‌لیست مهاجرت افزونه‌های قدیمی: [docs/migrating.md](docs/migrating.md).
 
 ## ریلیز
 
-نسخه را در هدر افزونه، `HTW_*_VERSION`، `readme.txt`، `package.json` و `CHANGELOG.md` بالا ببرید، روی `main` تگ `vX.Y.Z` بزنید. GitHub Actions فایل `<slug>-X.Y.Z.zip` را می‌سازد و به Release اضافه می‌کند. آپدیت خودکار داخل پیشخوان وجود ندارد؛ مشتری از howtowp.ir دانلود می‌کند. راهنمای کامل: [docs/releasing.md](docs/releasing.md).
-
-## ویژگی‌ها
-
-PSR-4 و ماژول‌ها · صفحه‌ی تنظیمات (Settings API) · REST · Abilities API (برای ایجنت‌های AI/MCP) · AI Client اختیاری · سازگاری HPOS ووکامرس · بلاک تعاملی (Interactivity API) · Plugin Check و PHPCS و PHPStan · نمونه‌ی Playground · `AGENTS.md` برای ایجنت‌های کدنویسی.
+نسخه را در هدر، `HTW_*_VERSION`، `readme.txt`، `AI-GUIDE.md` و `package.json` بالا ببرید و روی `main` تگ `vX.Y.Z` بزنید. راهنما: [docs/releasing.md](docs/releasing.md).
 
 ---
 
 ## English
 
-Standard, ready-to-use skeleton for [How to WP](https://howtowp.ir) plugins. Click **Use this template**, run `scripts/init.sh`, start building.
+Shared starter for [How to WP](https://howtowp.ir) plugins. Each product is **one** install: Bluwp 0.2.1 is embedded in `lib/bluwp`. A site that already runs the standalone Bluwp plugin keeps using that copy when it is active. The admin UI is React + [VibeFarsi](https://vibefarsi.ir/components) (MIT), built with Vite. WordPress's React is reused via `wp-element`.
 
 ### Quick start
 
 ```bash
 git clone git@github.com:howtowp/my-plugin.git && cd my-plugin
 ./scripts/init.sh my-plugin "My Plugin" MyPlugin mp   # slug, name, namespace, short prefix
-cd my-plugin && composer install && npm install && npm run build
+cd my-plugin && composer install
 composer lint && composer phpcs && composer phpstan && composer test
+php ../scripts/check-catalog.php
 ```
 
-### Layouts
+Bluwp `0.2.1` ships in `lib/bluwp`. Refresh it with `./scripts/update-bluwp.sh <path-or-tgz>`. Build the admin with `cd plugin-template && npm ci && npm run build`. See [docs/design-system.md](docs/design-system.md).
 
-- **Project layout (default):** the shippable plugin is a subfolder (`<slug>/`); `docs/`, `data/`, `design/`, `research/`, `scripts/`, `dev/` live beside it and never ship. `.release.yml` sets `plugin_dir: <slug>` and `copy_root_files: false`.
-- **Simple layout:** plugin files at the repo root; omit `plugin_dir` in `.release.yml`.
+### What you get
 
-See [docs/wordpress-release.md](https://github.com/howtowp/.github/blob/main/docs/wordpress-release.md) for the full schema.
+- Embedded Bluwp in `lib/bluwp`, booted with `BluwpBridgeV1::consume()`. No `Requires Plugins: bluwp`.
+- Bluwp layout: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/Text.php`, `hooks/early/`, `crons/`, `database/migrations/`, `assets/`.
+- One schema-driven settings page, one REST route with the **same** capability constant and a `wp_rest` nonce.
+- HPOS and checkout-blocks compatibility declared with `HTW_PT_FILE` (the real main file, not a hardcoded name).
+- `scripts/init.sh` renames slug, namespace, and prefix. `scripts/check-catalog.php` keeps the header, `readme.txt`, `package.json`, and `AI-GUIDE.md` `Plugin-Version` in lockstep. `product.json` has no version field.
+- Release workflow, Plugin Check, security rules, and `product.schema.json` stay.
 
-### What is inside
-
-PSR-4 modules (`Core`, `Admin`, `Frontend`, `Rest`, `Abilities`, `AI`, `Integrations`, `Services`, `Repositories`, `Support`), Settings API page, REST route, Abilities API sample (WP 6.9+), optional AI Client stub (WP 7.0+, no API keys), WooCommerce HPOS/Checkout-blocks declaration, Interactivity-API block built with `@wordpress/scripts`, PHPCS (WPCS 3.4), PHPStan, PHPUnit, Plugin Check CI, Playground blueprint, `.wp-env.json`, and `AGENTS.md` for AI coding agents.
-
-
-### Product content (`product.json` and `AI-GUIDE.md`)
-
-- `product.json` at the repo root: bilingual store copy (features, use cases, FAQ, and structured `description_sections`). It does **not** ship in the plugin zip; it is attached to the GitHub Release later. Canonical schema: [Howtowp/.github/schemas/product.schema.json](https://github.com/Howtowp/.github/blob/main/schemas/product.schema.json). Writing guide: [docs/product-copy.md](https://github.com/Howtowp/.github/blob/main/docs/product-copy.md).
-- `<slug>/AI-GUIDE.md`: customer / vibe-coder guide for extending the plugin with Cursor or Claude. It **must** ship in the zip. This is not `AGENTS.md` (internal development).
-
-Price, version, changelog and requirement headers do not belong in `product.json`.
-
-### Release
-
-Bump the version everywhere, tag `vX.Y.Z` on `main`; the reusable workflow in [`howtowp/.github`](https://github.com/howtowp/.github) builds `<slug>-X.Y.Z.zip` and publishes a Release. There is no in-dashboard auto-updater. Full guide: [docs/releasing.md](docs/releasing.md).
+IranSans redistribution is an open licensing question. Migration checklist: [docs/migrating.md](docs/migrating.md). Release guide: [docs/releasing.md](docs/releasing.md).
 
 License: GPL-2.0-or-later. © How to WP.

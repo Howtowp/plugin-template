@@ -11,6 +11,36 @@ permissions:
   contents: read
 
 jobs:
+  template-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          coverage: none
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: plugin-template/package-lock.json
+
+      - name: PHP syntax (8.1)
+        run: bash scripts/lint-php.sh
+
+      - name: Header, product.json, and AI-GUIDE versions
+        run: php scripts/check-catalog.php
+
+      - name: Rebuild admin assets and fail if they are stale
+        working-directory: plugin-template
+        run: |
+          npm ci
+          npm run build
+          node admin/harness/check-reset.mjs
+          git diff --exit-code -- assets/admin
+
   plugin-check:
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +52,7 @@ jobs:
           cache: npm
           cache-dependency-path: plugin-template/package-lock.json
 
-      - name: Build blocks
+      - name: Build admin assets
         working-directory: plugin-template
         run: |
           npm ci
@@ -48,6 +78,8 @@ jobs:
         uses: WordPress/plugin-check-action@v1
         with:
           build-dir: dist/plugin-template
+          # Upstream Bluwp is vendored as-is. It is not rewritten to this repo's PHPCS rules.
+          exclude-directories: lib/bluwp
           # Update URI is intentional (plugins are distributed from howtowp.ir, not WordPress.org),
           # and load_plugin_textdomain() is needed outside WordPress.org. After renaming the
           # template, "trademarked_term" no longer applies; remove it from this list if you like.

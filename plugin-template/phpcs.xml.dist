@@ -4,6 +4,7 @@
 
 	<file>.</file>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/lib/bluwp/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/build/*</exclude-pattern>
 	<exclude-pattern>*/tests/*</exclude-pattern>
@@ -51,6 +52,11 @@
 				<element value="HTW_PT"/>
 			</property>
 		</properties>
+	</rule>
+
+	<!-- PHPCompatibility does not treat enum methods as object context. -->
+	<rule ref="PHPCompatibility.Variables.ForbiddenThisUseContexts">
+		<exclude-pattern>*/src/Text.php</exclude-pattern>
 	</rule>
 
 	<!-- PSR-4 class files are named after the class (Plugin.php), not class-plugin.php. -->

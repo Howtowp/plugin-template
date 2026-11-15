@@ -12,6 +12,8 @@ vendor/
 composer.lock
 build/
 *.zip
+# Do not commit IranSans. Vazirmatn in assets/shared-font is OFL and is shipped.
+plugin-template/assets/fonts/IranSans*
 /dist/
 *.log
 .phpunit.cache/

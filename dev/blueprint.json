@@ -2,7 +2,7 @@
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"meta": {
 		"title": "Plugin Template demo",
-		"description": "Opens WordPress Playground with the plugin installed. Replace the zip URL with a public release zip (the template itself ships at https://github.com/howtowp/plugin-template/releases).",
+		"description": "Opens WordPress Playground with the last published template zip. Bluwp >= 0.2.1 and < 0.3 must also be installed or the settings screen will not boot. Replace the zip URL when a newer release exists. Source of 0.3.0 uses the top-level menu (admin.php?page=plugin-template), not Settings.",
 		"author": "howtowp"
 	},
 	"landingPage": "/wp-admin/options-general.php?page=plugin-template",
