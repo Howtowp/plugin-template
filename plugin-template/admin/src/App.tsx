@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Alert } from "./kit/ui/alert";
 import { AlertDialog } from "./kit/ui/alert-dialog";
 import { AmountInput } from "./kit/ui/amount-input";
-import { Badge } from "./kit/ui/badge";
 import { Button } from "./kit/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./kit/ui/card";
 import { CardNumberInput } from "./kit/ui/card-number-input";
@@ -122,12 +121,9 @@ function Screen({ config }: { config: AdminConfig }) {
       ) : null}
       <Tabs value={screen} defaultValue="settings" onValueChange={(value) => setScreen(value as (typeof SCREENS)[number]["id"])} variant="underline">
         <header className="mb-4 space-y-3">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold text-brand">How to WP</p>
-              <h1 className="text-2xl font-bold text-foreground">{schema?.title ?? "قالب افزونه"}</h1>
-            </div>
-            <Badge variant="brand">VibeFarsi</Badge>
+          <div>
+            <p className="text-xs font-semibold text-brand">How to WP</p>
+            <h1 className="text-2xl font-bold text-foreground">{schema?.title ?? "قالب افزونه"}</h1>
           </div>
           <TabsList aria-label="بخش‌های افزونه" className="w-full">
             {SCREENS.map((item) => (
@@ -271,10 +267,15 @@ function FieldControl({
 }) {
   const ltr = field.direction === "ltr";
   if (field.type === "switch") {
+    const on = value === 1 || value === true || value === "1";
     return (
-      <FormField label={field.label} hint={field.description}>
-        <Switch checked={Boolean(value)} onCheckedChange={onChange} aria-label={field.label} />
-      </FormField>
+      <div className="flex w-fit items-center gap-3">
+        <div className="min-w-0 space-y-1">
+          <p className="text-sm font-medium text-foreground">{field.label}</p>
+          {field.description ? <p className="text-xs text-muted-foreground">{field.description}</p> : null}
+        </div>
+        <Switch checked={on} onCheckedChange={onChange} aria-label={field.label} />
+      </div>
     );
   }
   if (field.type === "textarea") {
