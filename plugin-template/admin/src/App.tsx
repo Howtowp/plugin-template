@@ -15,11 +15,13 @@ import { IbanInput } from "./kit/ui/iban-input";
 import { Input } from "./kit/ui/input";
 import { NationalIdInput } from "./kit/ui/national-id-input";
 import { PhoneInput } from "./kit/ui/phone-input";
-import { Skeleton } from "./kit/ui/skeleton";
+import { Select } from "./kit/ui/select";
 import { Switch } from "./kit/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./kit/ui/tabs";
 import { Textarea } from "./kit/ui/textarea";
 import { ToastProvider, useToast } from "./kit/ui/toast";
+import { FormSkeleton, TableSkeleton } from "./kit/ui/skeletons";
+import { LoadProvider, useLoadTask, useNavigationProgress } from "./load";
 import { loadSchema, saveSettings } from "./api";
 import type { AdminConfig, SchemaField, SettingsSchema } from "./types";
 
@@ -35,16 +37,25 @@ const SAMPLE_ROWS: Row[] = [
   { id: "2", title: "سفارش آزمایشی", amount: 890000, status: "بسته" },
 ];
 
+const SCREENS = [
+  { id: "settings", label: "تنظیمات" },
+  { id: "table", label: "فهرست" },
+  { id: "fields", label: "فیلدهای نمونه" },
+] as const;
+
 export function App({ config }: { config: AdminConfig }) {
   return (
     <ToastProvider position="bottom-start">
-      <Screen config={config} />
+      <LoadProvider>
+        <Screen config={config} />
+      </LoadProvider>
     </ToastProvider>
   );
 }
 
 function Screen({ config }: { config: AdminConfig }) {
   const { toast } = useToast();
+  const startTask = useLoadTask();
   const [schema, setSchema] = useState<SettingsSchema | null>(null);
   const [values, setValues] = useState<Record<string, unknown>>({});
   const [error, setError] = useState("");
@@ -52,9 +63,14 @@ function Screen({ config }: { config: AdminConfig }) {
   const [saving, setSaving] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [rows, setRows] = useState(SAMPLE_ROWS);
+  const [screen, setScreen] = useState<(typeof SCREENS)[number]["id"]>("settings");
+  const [section, setSection] = useState("general");
+  const [mode, setMode] = useState("live");
+  useNavigationProgress(screen + ":" + section);
 
   useEffect(() => {
     let active = true;
+    const finish = startTask();
     loadSchema(config)
       .then((next) => {
         if (!active) return;
@@ -70,11 +86,13 @@ function Screen({ config }: { config: AdminConfig }) {
       })
       .finally(() => {
         if (active) setLoading(false);
+        finish();
       });
     return () => {
       active = false;
+      finish();
     };
-  }, [config]);
+  }, [config, startTask]);
 
   async function onSave() {
     if (!schema) return;
@@ -92,68 +110,114 @@ function Screen({ config }: { config: AdminConfig }) {
     }
   }
 
+  const general = schema?.fields.filter((field) => field.type === "switch" || field.name === "site_url") ?? [];
+  const copy = schema?.fields.filter((field) => field.type !== "switch" && field.name !== "site_url") ?? [];
+
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
-        <h1 className="text-2xl font-bold">{schema?.title ?? "تنظیمات"}</h1>
-        <Badge variant="brand">VibeFarsi</Badge>
-      </div>
       {error ? (
         <Alert variant="destructive" title="خطا">
           {error}
         </Alert>
       ) : null}
-      <Tabs defaultValue="settings">
-        <TabsList>
-          <TabsTrigger value="settings">تنظیمات</TabsTrigger>
-          <TabsTrigger value="table">فهرست</TabsTrigger>
-          <TabsTrigger value="fields">فیلدهای نمونه</TabsTrigger>
-        </TabsList>
+      <Tabs value={screen} defaultValue="settings" onValueChange={(value) => setScreen(value as (typeof SCREENS)[number]["id"])} variant="underline">
+        <header className="mb-4 space-y-3">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-xs font-semibold text-brand">How to WP</p>
+              <h1 className="text-2xl font-bold text-foreground">{schema?.title ?? "قالب افزونه"}</h1>
+            </div>
+            <Badge variant="brand">VibeFarsi</Badge>
+          </div>
+          <TabsList aria-label="بخش‌های افزونه" className="w-full">
+            {SCREENS.map((item) => (
+              <TabsTrigger key={item.id} value={item.id}>
+                {item.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </header>
         <TabsContent value="settings">
-          <Card>
-            <CardHeader>
-              <CardTitle>فرم</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {loading ? <Skeleton className="h-24 w-full" /> : null}
-              {!loading && schema && schema.fields.length === 0 ? (
-                <EmptyState title="فیلدی نیست" description="اسکیمای تنظیمات خالی است." />
-              ) : null}
-              {schema?.fields.map((field) => (
-                <FieldControl
-                  key={field.name}
-                  field={field}
-                  value={values[field.name]}
-                  onChange={(value) => setValues((current) => ({ ...current, [field.name]: value }))}
-                />
-              ))}
-              <div className="flex gap-2">
-                <Button onClick={() => void onSave()} disabled={saving || !schema}>
-                  {saving ? "در حال ذخیره" : schema?.submit.label ?? "ذخیره"}
-                </Button>
-                <Button variant="outline" onClick={() => setConfirmOpen(true)}>
-                  پاک کردن یادداشت
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          {loading ? <FormSkeleton /> : null}
+          {!loading && schema && schema.fields.length === 0 ? (
+            <EmptyState title="فیلدی نیست" description="اسکیمای تنظیمات خالی است." />
+          ) : null}
+          {!loading && schema && schema.fields.length > 0 ? (
+            <Tabs value={section} defaultValue="general" onValueChange={setSection} variant="underline">
+              <TabsList aria-label="بخش‌های تنظیمات">
+                <TabsTrigger value="general">عمومی</TabsTrigger>
+                <TabsTrigger value="copy">متن‌ها</TabsTrigger>
+              </TabsList>
+              <TabsContent value="general">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>عمومی</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {general.map((field) => (
+                      <FieldControl
+                        key={field.name}
+                        field={field}
+                        value={values[field.name]}
+                        onChange={(value) => setValues((current) => ({ ...current, [field.name]: value }))}
+                      />
+                    ))}
+                    <FormField label="حالت" htmlFor="sample-mode">
+                      <Select
+                        id="sample-mode"
+                        value={mode}
+                        options={[
+                          { value: "live", label: "زنده" },
+                          { value: "test", label: "آزمایشی" },
+                        ]}
+                        onChange={(event) => setMode(event.target.value)}
+                      />
+                    </FormField>
+                    <FormActions schema={schema} saving={saving} onSave={() => void onSave()} onClear={() => setConfirmOpen(true)} />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="copy">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>متن‌ها</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {copy.map((field) => (
+                      <FieldControl
+                        key={field.name}
+                        field={field}
+                        value={values[field.name]}
+                        onChange={(value) => setValues((current) => ({ ...current, [field.name]: value }))}
+                      />
+                    ))}
+                    <FormActions schema={schema} saving={saving} onSave={() => void onSave()} onClear={() => setConfirmOpen(true)} />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          ) : null}
         </TabsContent>
         <TabsContent value="table">
-          <DataTable
-            rows={rows.map((row) => ({ ...row }) as Record<string, unknown>)}
-            rowKey={(row) => String(row.id)}
-            searchKeys={["title", "status"]}
-            searchPlaceholder="جستجو"
-            emptyTitle="ردیفی نیست"
-            columns={[
-              { key: "title", header: "عنوان", sortable: true },
-              { key: "amount", header: "مبلغ", numeric: true, sortable: true },
-              { key: "status", header: "وضعیت" },
-            ]}
-          />
+          {loading ? (
+            <TableSkeleton />
+          ) : (
+            <DataTable
+              rows={rows.map((row) => ({ ...row }) as Record<string, unknown>)}
+              rowKey={(row) => String(row.id)}
+              searchKeys={["title", "status"]}
+              searchPlaceholder="جستجو"
+              emptyTitle="ردیفی نیست"
+              columns={[
+                { key: "title", header: "عنوان", sortable: true },
+                { key: "amount", header: "مبلغ", numeric: true, sortable: true },
+                { key: "status", header: "وضعیت" },
+              ]}
+            />
+          )}
         </TabsContent>
         <TabsContent value="fields">
-          <SampleFields />
+          {loading ? <FormSkeleton /> : <SampleFields />}
         </TabsContent>
       </Tabs>
       <AlertDialog
@@ -169,6 +233,29 @@ function Screen({ config }: { config: AdminConfig }) {
           toast({ title: "یادداشت خالی شد.", variant: "default" });
         }}
       />
+    </div>
+  );
+}
+
+function FormActions({
+  schema,
+  saving,
+  onSave,
+  onClear,
+}: {
+  schema: SettingsSchema;
+  saving: boolean;
+  onSave: () => void;
+  onClear: () => void;
+}) {
+  return (
+    <div className="flex gap-2">
+      <Button busy={saving} onClick={onSave}>
+        {schema.submit.label}
+      </Button>
+      <Button variant="outline" onClick={onClear}>
+        پاک کردن یادداشت
+      </Button>
     </div>
   );
 }

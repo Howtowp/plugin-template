@@ -15,7 +15,7 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
  */
 export function Select({ className, options, placeholder, ...props }: SelectProps) {
   return (
-    <div className="relative">
+    <div className="htw-select relative w-full">
       <select
         className={cn(
           "h-10 w-full cursor-pointer appearance-none rounded-field border-line-field border-input bg-field shadow-field ps-3 pe-9 text-sm text-foreground",

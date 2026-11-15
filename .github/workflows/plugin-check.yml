@@ -38,6 +38,7 @@ jobs:
         run: |
           npm ci
           npm run build
+          node admin/harness/check-reset.mjs
           git diff --exit-code -- assets/admin
 
   plugin-check:

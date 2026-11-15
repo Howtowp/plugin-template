@@ -24,14 +24,17 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: Variant;
   size?: Size;
   asChild?: boolean;
+  /** Shows a spinner and disables the control. */
+  busy?: boolean;
 }
 
-export function Button({ className, variant = "default", size = "md", type = "button", ...props }: ButtonProps) {
+export function Button({ className, variant = "default", size = "md", type = "button", busy = false, disabled, children, ...props }: ButtonProps) {
   return (
     <button
       type={type}
+      aria-busy={busy || undefined}
+      disabled={disabled || busy}
       className={cn(
-        // Shape, depth, press and motion come from the design-system tokens.
         "inline-flex items-center justify-center whitespace-nowrap rounded-control font-semibold transition-all duration-(--motion) ease-motion",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "disabled:pointer-events-none disabled:opacity-50 active:[transform:var(--press)]",
@@ -41,6 +44,9 @@ export function Button({ className, variant = "default", size = "md", type = "bu
         className,
       )}
       {...props}
-    />
+    >
+      {busy ? <span className="htw-spin" aria-hidden="true" /> : null}
+      {children}
+    </button>
   );
 }

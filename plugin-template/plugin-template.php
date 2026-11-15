@@ -14,6 +14,9 @@
  * Domain Path:       /languages
  * Update URI:        https://howtowp.ir
  *
+ * Plugin Name needs at least five Latin letters (Plugin Check). The Persian
+ * title stays in Text::PluginName and in the React screen, not in this header.
+ *
  * Bluwp is embedded in lib/bluwp. A site that also has the standalone Bluwp
  * plugin keeps using that copy when it is active (see BluwpBridgeV1).
  * WooCommerce plugins add "Requires Plugins: woocommerce" and the WC headers.

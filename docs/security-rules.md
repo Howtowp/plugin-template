@@ -70,7 +70,7 @@ if ( ! is_email( $email ) ) {
 | نام فایل | `sanitize_file_name()` |
 | HTML مجاز (محتوا) | `wp_kses_post()` |
 | HTML با تگ‌های سفارشی | `wp_kses( $val, $allowed )` |
-| آرایه | حلقه + sanitize روی هر عضو، یا `map_deep()` |
+| آرایه در `$_POST` | `map_deep( wp_unslash( $_POST[ $key ] ), 'sanitize_text_field' )` قبل از هر استفاده. نمونه: `Support\Posted::array()` |
 | رنگ hex | `sanitize_hex_color()` |
 | JSON | `json_decode()` + اعتبارسنجی ساختار |
 

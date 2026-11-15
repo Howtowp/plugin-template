@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Plugin Template admin</title>
+    <link rel="stylesheet" href="wp/common.css" />
+    <link rel="stylesheet" href="wp/forms.css" />
+    <link rel="stylesheet" href="wp/buttons.css" />
+    <link rel="stylesheet" href="wp/common-rtl.css" />
+    <link rel="stylesheet" href="wp/forms-rtl.css" />
+    <link rel="stylesheet" href="wp/buttons-rtl.css" />
+    <link rel="stylesheet" href="../../assets/shared-font/fonts.css" />
+    <link rel="stylesheet" href="../../assets/admin-shell.css" />
+    <link rel="stylesheet" href="../../assets/admin/admin.css" />
+    <style>
+      body.wp-admin { margin: 0; background: #f0f0f1; }
+      #adminmenuwrap { width: 160px; }
+      #wpcontent { margin-right: 160px; margin-left: 0; }
+    </style>
+  </head>
+  <body class="wp-admin wp-core-ui rtl">
+    <div id="wpwrap">
+      <div id="adminmenuwrap"></div>
+      <div id="wpcontent">
+        <div id="wpbody">
+          <div id="wpbody-content">
+            <div id="htw-pt-wrap" class="wrap">
+              <div id="htw-pt-admin" class="htw-pt-admin" dir="rtl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../node_modules/react/umd/react.production.min.js"></script>
+    <script src="../../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+    <script>
+      window.ReactJSXRuntime = {
+        Fragment: React.Fragment,
+        jsx: function (type, props, key) {
+          return React.createElement(type, props == null ? props : Object.assign({}, props, { key: key }));
+        },
+        jsxs: function (type, props, key) {
+          return React.createElement(type, props == null ? props : Object.assign({}, props, { key: key }));
+        },
+      };
+      window.htwPtAdmin = { namespace: "plugin-template/v1", nonce: "harness" };
+      window.wp = {
+        apiFetch: function (options) {
+          if (options && options.method === "POST") {
+            return Promise.resolve({ success: true, messages: ["ذخیره شد."] });
+          }
+          return Promise.resolve({
+            success: true,
+            data: {
+              schema: {
+                id: "settings",
+                type: "form",
+                title: "قالب افزونه",
+                fields: [
+                  { name: "enabled", label: "فعال", type: "switch", default: true },
+                  { name: "site_url", label: "نشانی سایت", type: "text", direction: "ltr", default: "https://example.com" },
+                  { name: "notice", label: "یادداشت", type: "textarea", default: "نمونه" },
+                ],
+                submit: { label: "ذخیره", endpoint: "admin/settings" },
+              },
+            },
+          });
+        },
+      };
+    </script>
+    <script src="../../assets/admin/admin.js"></script>
+  </body>
+</html>

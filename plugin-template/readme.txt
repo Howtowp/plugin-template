@@ -8,7 +8,7 @@ Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Shared starter for How to WP plugins. Admin UI is rendered by Bluwp from a JSON schema.
+Shared starter for How to WP plugins. The admin screen is React (VibeFarsi) on an orange full-width layout.
 
 == Description ==
 
@@ -18,8 +18,7 @@ Bluwp keeps that copy when it is on the 0.2 line. The settings screen is a JSON 
 rendered by the bluwp-vuejs admin kit once that kit has been built.
 WooCommerce HPOS and checkout-blocks compatibility is declared against this plugin's real main file.
 
-The compiled kit CSS is not stored in the template. Build it from a pinned bluwp-vuejs checkout
-into assets/ before you ship a product that opens the settings screen.
+Build the admin with `npm run build` inside this folder. The zip ships `assets/admin`, not the `admin/` source.
 
 == Installation ==
 
@@ -35,14 +34,14 @@ No. Download new versions from https://howtowp.ir and upload them.
 
 = Where is the admin CSS? =
 
-It is built from the shared bluwp-vuejs kit into assets/. The template repository does not vendor a copy.
+`npm run build` writes `assets/admin`. Open `admin/harness/preview.html` to view it under real WordPress admin CSS.
 
 == Changelog ==
 
 = 0.3.0 =
 * Bluwp skeleton: schema settings page, REST route with matching capability and nonce, Text enum, HPOS declaration via the real main file.
 * Bluwp 0.2.1 is embedded in lib/bluwp. Customers install one plugin. A standalone Bluwp on the same line is still used when it is active.
-* Admin assets build from bluwp-vuejs when that kit source is available. Compiled kit CSS is not vendored.
+* Admin UI is the VibeFarsi kit: orange brand, full-width shell, unlayered wp-admin reset, underline tabs, skeletons and busy buttons.
 
 = 0.2.0 =
 * Security and standards ruleset, "Silence is golden" index.php files, stricter PHPCS.

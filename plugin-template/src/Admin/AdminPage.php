@@ -48,7 +48,9 @@ final class AdminPage {
 		if ( ! current_user_can( HTW_PT_CAPABILITY ) ) {
 			return;
 		}
+		echo '<div id="htw-pt-wrap" class="wrap">';
 		echo '<div id="htw-pt-admin" class="htw-pt-admin" dir="rtl"></div>';
+		echo '</div>';
 	}
 
 	/**
@@ -103,12 +105,18 @@ final class AdminPage {
 			array(),
 			HTW_PT_VERSION
 		);
+		wp_enqueue_style(
+			HTW_PT_SLUG . '-shell',
+			HTW_PT_URL . 'assets/admin-shell.css',
+			array( 'htw-admin-font' ),
+			HTW_PT_VERSION
+		);
 
 		if ( '' !== $style ) {
 			wp_enqueue_style(
 				HTW_PT_SLUG . '-admin',
 				HTW_PT_URL . 'assets/admin/' . $style,
-				array( 'htw-admin-font' ),
+				array( 'htw-admin-font', HTW_PT_SLUG . '-shell' ),
 				HTW_PT_VERSION
 			);
 		}

@@ -116,6 +116,14 @@ function htw_catalog_main(): int {
 	if ( ! str_contains( $main_src, 'BluwpBridgeV1::consume' ) || ! str_contains( $main_src, 'lib/bluwp/bridge.php' ) ) {
 		$errors[] = 'Main file must require lib/bluwp/bridge.php and call BluwpBridgeV1::consume.';
 	}
+	if ( 1 !== preg_match( '/^\s*\*\s*Plugin Name:\s*(.+)$/m', $main_src, $name_match ) ) {
+		$errors[] = 'Plugin header has no Plugin Name.';
+	} else {
+		$latin = preg_match_all( '/[A-Za-z]/', $name_match[1] );
+		if ( false === $latin || $latin < 5 ) {
+			$errors[] = 'Plugin Name needs at least 5 Latin letters (Plugin Check). Keep the Persian title in the app.';
+		}
+	}
 
 	$slug_const = '';
 	if ( 1 === preg_match( "/define\\(\\s*'HTW_[A-Z0-9]+_SLUG'\\s*,\\s*'([^']+)'\\s*\\)/", $main_src, $slug_match ) ) {
@@ -151,6 +159,11 @@ function htw_catalog_main(): int {
 		$errors[] = 'readme.txt has no Stable tag.';
 	} elseif ( $header !== '' && $stable[1] !== $header ) {
 		$errors[] = 'readme.txt Stable tag (' . $stable[1] . ') does not match header ' . $header . '.';
+	}
+	if ( 1 !== preg_match( '/^Tested up to:\s*(\d+\.\d+)/m', $readme, $tested ) ) {
+		$errors[] = 'readme.txt needs a Tested up to line.';
+	} elseif ( version_compare( $tested[1] . '.0', '7.1.0', '<' ) ) {
+		$errors[] = 'readme.txt Tested up to (' . $tested[1] . ') is behind the current WordPress line (7.1).';
 	}
 
 	$package_path = $plugin_dir . '/package.json';

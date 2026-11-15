@@ -19,7 +19,7 @@ export interface TabsProps {
 }
 
 /** تب‌ها. In RTL the first tab is on the right; ArrowLeft moves to the next tab. */
-export function Tabs({ value, defaultValue, onValueChange, variant = "segmented", className, children }: TabsProps) {
+export function Tabs({ value, defaultValue, onValueChange, variant = "underline", className, children }: TabsProps) {
   const [internal, setInternal] = React.useState(defaultValue);
   const id = React.useId();
   const v = value ?? internal;

@@ -35,14 +35,7 @@ export function Switch({
       )}
       {...props}
     >
-      <span
-        className={cn(
-          "pointer-events-none block size-5 rounded-[calc(var(--shape-control)*999)] shadow transition-[transform,background-color] duration-(--motion) ease-motion",
-          on ? "bg-primary-foreground" : "bg-foreground",
-          // RTL: the "on" position is the inline-start side; translate toward -x.
-          on ? "-translate-x-5" : "-translate-x-0.5",
-        )}
-      />
+      <span className="pointer-events-none block" />
     </button>
   );
 }

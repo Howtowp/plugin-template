@@ -20,7 +20,11 @@ Set on `#htw-pt-admin` (the id uses the `htw-pt-` prefix, so `scripts/init.sh` r
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `--htw-color-brand` | `#1767c1` | Primary actions, links, focus |
+| `--htw-color-brand` | `#f97316` | Accent, focus ring |
+| `--htw-color-brand-strong` | `#ea580c` | Primary buttons, white text (AA) |
+| `--htw-color-brand-hover` | `#c2410c` | Primary hover |
+| `--htw-color-brand-active` | `#9a3412` | Primary active |
+| `--htw-color-brand-soft` | `#fff7ed` | Soft orange background |
 | `--htw-color-canvas` | `#f5f7fb` | Page background |
 | `--htw-color-ink` | `#26323e` | Body text |
 | `--htw-color-danger` | `#b44555` | Errors, destructive actions |
@@ -28,13 +32,23 @@ Set on `#htw-pt-admin` (the id uses the `htw-pt-` prefix, so `scripts/init.sh` r
 | `--htw-radius-md` | `0.375rem` | Inputs, chips |
 | `--htw-radius-lg` | `0.5rem` | Cards, buttons, dialogs |
 
-The shell is `dir="rtl"`. Fields with schema `direction: ltr` (URLs, IBAN, mobile, card numbers) use the `htw-ltr` class. The font family is `HowToWP Sans`.
+Focus ring: `rgba(249, 115, 22, 0.35)`.
 
-### Old Vue tokens
+The shell is `dir="rtl"`, full width, with 20px padding. There is no max-width. `assets/admin-shell.css` (enqueued outside the React root) sets `#htw-pt-wrap.wrap` margin, padding, and max-width to zero so wp-admin's `.wrap` gutter does not inset the page. Fields with schema `direction: ltr` (URLs, IBAN, mobile, card numbers) use the `htw-ltr` class. The font family is `HowToWP Sans`.
 
-| Old (`--el-*`) | New |
+Screens use underline tabs (`Tabs` `variant="underline"`, the default). Settings sections use a second underline tab list. `LoadProvider` draws the top progress bar; `useLoadTask` / `useNavigationProgress` drive it. `FormSkeleton`, `TableSkeleton`, and `ScreenSkeleton` hold the layout while data loads. `Button` `busy` shows `.htw-spin` and disables the control.
+
+### wp-admin reset
+
+`admin/src/styles.css` keeps an **unlayered** block under `#htw-pt-admin` for `button`, `input`, `select`, `textarea`, and links. Preflight is off, so without this block `forms.css`, `common.css`, and `buttons.css` paint gray beveled tabs, a misaligned switch, and a second chevron on `select`. The switch thumb uses logical `inset-inline-*` (not `translateX`). The select sits in `.htw-select` at full width with one chevron. `npm run build` prefixes Tailwind utilities with the same id; selectors that already start with `#htw-pt-admin` are left as they are, so the reset stays one id deep and unlayered.
+
+### Previous brand
+
+`#1767c1` was the brand before the Pado pilot. It is not a current token.
+
+| Old | New |
 | --- | --- |
-| `--el-color-brand-600` `#1767c1` | `--htw-color-brand` |
+| `--el-color-brand-600` / `--htw-color-brand` `#1767c1` | `--htw-color-brand` `#f97316`, buttons `#ea580c` |
 | `--el-color-canvas` `#f5f7fb` | `--htw-color-canvas` |
 | `--el-color-ink` `#26323e` | `--htw-color-ink` |
 | `--el-color-danger` `#b44555` | `--htw-color-danger` |
@@ -43,6 +57,7 @@ The shell is `dir="rtl"`. Fields with schema `direction: ltr` (URLs, IBAN, mobil
 | `--el-radius-lg` `.5rem` | `--htw-radius-lg` |
 | `.bluwp-input--ltr` | `.htw-ltr` / `dir="ltr"` |
 | `bluwp-vuejs` compiled `style.css` | `assets/admin/admin.css` from `admin/` |
+| admin content `max-width: 1200px` | full width, 20px padding, `.wrap` neutralized |
 
 ## How a plugin builds its admin app
 

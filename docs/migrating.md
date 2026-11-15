@@ -16,7 +16,7 @@ Use this when an existing How to WP plugin should adopt the Bluwp admin and the 
 10. **Catalog honesty.** `Plugin-Version` in `AI-GUIDE.md` equals the plugin header. `product.json` has no `version` key (the schema forbids it). Hooks in the guide exist in PHP. `readme.txt` Stable tag matches the header. `php scripts/check-catalog.php` must pass.
 11. **Leave product code behind.** Do not import routing, drivers, relay, or Mana from «درگاه پرداخت هوشمند». Do not copy its bugs: hardcoded plugin filename, REST capability wider than the screen, a second checkout palette treated as the admin system.
 12. **Directory guards.** `index.php` (“Silence is golden”) in every folder Bluwp does not glob. `crons/` and `database/migrations/` are globbed: use `index.html` plus `.htaccess`, not `index.php`, or Bluwp will try to load the guard as a cron or migration.
-13. **Verify.** `php -l` on PHP 8.1, `composer lint && composer phpcs && composer phpstan && composer test`, and `npm run build:strict` when the kit checkout is available.
+13. **Verify.** `php -l` on PHP 8.1, `composer lint && composer phpcs && composer phpstan && composer test`, and `npm run build` inside the plugin directory. Open `admin/harness/preview.html` with WordPress admin CSS loaded before calling the screen done.
 
 ## From the required-plugin model (wc-iranian-smart-gateways)
 
@@ -41,4 +41,15 @@ cd my-plugin && composer install && composer test
 php ../scripts/check-catalog.php
 ```
 
-Install Bluwp `>= 0.2.1 < 0.3` on the site. Build admin assets when you are ready to open the settings screen (`docs/design-system.md`). Then replace the sample settings fields, the sample cron, and the sample migration with the product’s own.
+Bluwp 0.2.x is already in `lib/bluwp`. Build admin assets when you are ready to open the settings screen (`docs/design-system.md`). Then replace the sample settings fields, the sample cron, and the sample migration with the product’s own.
+
+## Lessons from the Pado pilot
+
+Pado (merge `b8745ac` on `Howtowp/pado`) was this template on a real wp-admin. Keep these when you copy `admin/`:
+
+- Brand is orange: accent `#f97316`, primary button `#ea580c` (white text), hover `#c2410c`, active `#9a3412`, soft `#fff7ed`, focus `rgba(249, 115, 22, 0.35)`. `#1767c1` is the previous brand only.
+- The page is full width. Neutralize `.wrap` with `assets/admin-shell.css`. Padding is 20px, aligned for RTL.
+- Leave the unlayered `#…-admin` reset in `styles.css`. It is what stops gray beveled tabs, a shifted switch, and a double chevron. The switch thumb uses logical insets. The select wrapper is `.htw-select`.
+- Use `LoadProvider`, `useLoadTask`, `useNavigationProgress`, `FormSkeleton`, `TableSkeleton`, `ScreenSkeleton`, and `Button busy`. Top tabs and settings sections are underline tabs.
+- Plugin Check: the header `Plugin Name` needs at least five Latin letters. Put the Persian title in `Text` and the React app. `readme.txt` `Tested up to` stays on the current WordPress line (7.1). A `$_POST` array goes through `HowToWP\PluginTemplate\Support\Posted::array()`, which runs `map_deep( …, 'sanitize_text_field' )` after the nonce check and before any use.
+- Before shipping, open `admin/harness/preview.html` so core `forms.css` / `common.css` / `buttons.css` are on the page. CI runs `node admin/harness/check-reset.mjs` after `npm run build`.
