@@ -1,0 +1,20 @@
+/*
+ * Shared face for every How to WP admin screen.
+ * Enqueue the handle htw-admin-font once. Do not rename the family.
+ * IranSans is opt-in: see docs/design-system.md. Vazirmatn is OFL.
+ */
+@font-face {
+	font-family: "HowToWP Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("vazirmatn-arabic-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "HowToWP Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("vazirmatn-arabic-700-normal.woff2") format("woff2");
+}

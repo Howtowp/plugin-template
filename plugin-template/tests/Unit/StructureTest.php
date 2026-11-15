@@ -18,7 +18,7 @@ final class StructureTest extends TestCase {
 	}
 
 	public function test_every_shipped_folder_has_a_directory_guard(): void {
-		$skip    = array( 'vendor', 'node_modules', 'tests', 'bin', 'build', '.phpunit.cache', 'lib' );
+		$skip    = array( 'vendor', 'node_modules', 'tests', 'bin', 'build', '.phpunit.cache', 'lib', 'admin' );
 		$globbed = array( 'crons', 'database/migrations' );
 		$missing = array();
 		$plugin  = $this->plugin_dir();
@@ -92,6 +92,16 @@ final class StructureTest extends TestCase {
 		$this->assertDoesNotMatchRegularExpression( "/declare_compatibility\\([^;]*'[^']+\\.php'/", $source );
 		$this->assertDoesNotMatchRegularExpression( "/PluginBootstrap::register\\(\\s*'[^']+\\.php'/", $source );
 		$this->assertStringNotContainsString( 'forouzandea-smart-gateway.php', $source );
+	}
+
+	public function test_admin_assets_enqueue_only_on_the_plugin_screen(): void {
+		$source = (string) file_get_contents( $this->plugin_dir() . '/src/Admin/AdminPage.php' );
+		$this->assertStringContainsString( 'admin_enqueue_scripts', $source );
+		$this->assertStringNotContainsString( 'wp_enqueue_scripts', $source );
+		$this->assertStringContainsString( "'toplevel_page_' . HTW_PT_SLUG", $source );
+		$this->assertStringContainsString( 'wp-element', $source );
+		$this->assertStringContainsString( 'wp-api-fetch', $source );
+		$this->assertStringContainsString( 'wp_add_inline_script', $source );
 	}
 
 	public function test_page_and_rest_share_the_capability_constant(): void {

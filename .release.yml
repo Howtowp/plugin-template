@@ -6,9 +6,7 @@ type: plugin
 plugin_dir: plugin-template # the shippable plugin; everything else in the repo never ships
 main: plugin-template.php   # relative to plugin_dir
 
-# Admin JS/CSS is built from the bluwp-vuejs kit (development/build-admin.mjs) into assets/.
-# The kit is not an npm dependency of this repo, so the default build warns and exits 0
-# when the kit checkout is absent. Pass --strict locally before a release that ships UI.
+# Vite builds admin/ into assets/admin (WordPress React externals, no bluwp-vuejs).
 # Paths are relative to the REPOSITORY root.
 node:
   enabled: true

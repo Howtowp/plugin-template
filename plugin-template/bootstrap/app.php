@@ -2,8 +2,8 @@
 /**
  * Bluwp application config. Loaded by PluginBootstrap; no business logic here.
  *
- * Version, slug, REST namespace, and the Vue asset handle all come from the
- * constants in the main plugin file so they cannot drift from the header.
+ * Version and slug come from the main plugin file. The admin screen is the
+ * React app in admin/, not Bluwp's Vue shell, so the admin feature stays off.
  *
  * @package HowToWP\PluginTemplate
  */
@@ -11,10 +11,6 @@
 declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
-
-use HowToWP\PluginTemplate\Text;
-
-require_once HTW_PT_DIR . 'src/Text.php';
 
 return array(
 	'name'      => HTW_PT_SLUG,
@@ -30,21 +26,11 @@ return array(
 		'migrations' => true,
 		'cron'       => true,
 		'api'        => true,
-		'admin'      => true,
+		'admin'      => false,
 		'hooks'      => false,
 	),
 	'routing'   => array(
 		'namespace' => HTW_PT_SLUG . '/v1',
 		'files'     => array( 'api' ),
-	),
-	'admin'     => array(
-		'title'          => Text::PluginName->text(),
-		'root_page'      => 'settings',
-		'navigation'     => true,
-		'rest_namespace' => HTW_PT_SLUG . '/v1',
-		'assets'         => array(
-			'handle'          => HTW_PT_SLUG . '-vue-admin',
-			'suppress_footer' => false,
-		),
 	),
 );

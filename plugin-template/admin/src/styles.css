@@ -1,0 +1,80 @@
+/*
+ * Scoped admin theme. Preflight is not imported, so wp-admin's base styles stay.
+ * A build step prefixes Tailwind utilities with #htw-pt-admin.
+ */
+@layer theme, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@source "./**/*.{tsx,ts}";
+
+@theme inline {
+  --color-background: var(--htw-color-canvas);
+  --color-foreground: var(--htw-color-ink);
+  --color-card: #ffffff;
+  --color-card-foreground: var(--htw-color-ink);
+  --color-popover: #ffffff;
+  --color-popover-foreground: var(--htw-color-ink);
+  --color-primary: var(--htw-color-brand);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e7eef6;
+  --color-secondary-foreground: var(--htw-color-ink);
+  --color-muted: #eef2f7;
+  --color-muted-foreground: #667585;
+  --color-accent: #edf5ff;
+  --color-accent-foreground: var(--htw-color-ink);
+  --color-destructive: var(--htw-color-danger);
+  --color-success: #147b65;
+  --color-warning: #9a6b12;
+  --color-border: #dce4ed;
+  --color-input: #dce4ed;
+  --color-ring: var(--htw-color-brand);
+  --color-brand: var(--htw-color-brand);
+  --color-brand-foreground: #ffffff;
+  --color-field: #ffffff;
+  --radius-control: var(--htw-radius-md);
+  --radius-field: var(--htw-radius-md);
+  --radius-surface: var(--htw-radius-lg);
+  --radius-overlay: var(--htw-radius-lg);
+  --border-width-line: 1px;
+  --border-width-line-field: 1px;
+  --shadow-control: 0 1px 2px rgb(38 50 62 / 8%);
+  --shadow-press: none;
+  --shadow-field: none;
+  --shadow-surface: 0 1px 2px rgb(38 50 62 / 6%);
+  --shadow-overlay: 0 16px 40px rgb(38 50 62 / 18%);
+  --ease-motion: cubic-bezier(0.2, 0, 0, 1);
+  --font-sans: "HowToWP Sans", Tahoma, sans-serif;
+}
+
+#htw-pt-admin {
+  --htw-color-brand: #1767c1;
+  --htw-color-canvas: #f5f7fb;
+  --htw-color-ink: #26323e;
+  --htw-color-danger: #b44555;
+  --htw-spacing: 0.25rem;
+  --htw-radius-md: 0.375rem;
+  --htw-radius-lg: 0.5rem;
+  --motion: 160ms;
+  --shape-control: var(--htw-radius-md);
+  --shape-field: var(--htw-radius-md);
+  --line: 1px;
+  --line-field: 1px;
+  --field: #ffffff;
+  --depth-control: 0 1px 2px rgb(38 50 62 / 8%);
+  --depth-press: none;
+  --depth-field: none;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+  font-family: "HowToWP Sans", Tahoma, sans-serif;
+  background: var(--htw-color-canvas);
+  color: var(--htw-color-ink);
+  direction: rtl;
+  padding: calc(var(--htw-spacing) * 4);
+  max-width: 1200px;
+}
+
+.htw-ltr {
+  direction: ltr;
+  text-align: left;
+}

@@ -2,7 +2,7 @@
 
 This repo is the **shared starter** for How to WP WordPress plugins. It is a project that contains one shippable plugin. Read this file first.
 
-The admin design system is Bluwp plus the bluwp-vuejs kit (the same stack as «درگاه پرداخت هوشمند»). Bluwp is **embedded** in each plugin (`lib/bluwp`) so a customer installs one zip. Product-specific payment code is not part of the starter. Details: [docs/design-system.md](docs/design-system.md) and [docs/architecture.md](docs/architecture.md).
+The admin UI is a VibeFarsi React app in `admin/`, built with Vite into `assets/admin`. WordPress supplies React (`wp-element`). Bluwp is **embedded** in each plugin (`lib/bluwp`) for REST, cron, and migrations, so a customer installs one zip. Product-specific payment code is not part of the starter. Details: [docs/design-system.md](docs/design-system.md) and [docs/architecture.md](docs/architecture.md).
 
 ## Layout (project layout)
 
@@ -18,8 +18,8 @@ The admin design system is Bluwp plus the bluwp-vuejs kit (the same stack as «�
 │ ├── app/                  Controllers, Schemas, Repositories, Http
 │ ├── src/Text.php          Persian string enum (PSR-4 HowToWP\PluginTemplate\)
 │ ├── crons/  database/     sample cron and migration (Bluwp globs these)
-│ ├── assets/               build output of bluwp-vuejs (do not vendor the kit CSS)
-│ ├── development/          build-admin.mjs + kit.json (not in the zip)
+│ ├── admin/                VibeFarsi React source (not in the zip)
+│ ├── assets/admin/         Vite build (manifest, JS, CSS). React is external.
 │ ├── AI-GUIDE.md  readme.txt  uninstall.php  languages/  tests/
 │ └── composer.json  package.json  phpcs.xml.dist  phpstan.neon.dist  phpunit.xml.dist
 ├── docs/ data/ design/ research/ scripts/ dev/   project material, NEVER ships
@@ -40,7 +40,7 @@ Persian UI strings live in `src/Text.php` (a backed enum), not in `__()`. Escape
 
 The plugin main file is `HTW_PT_FILE` (`__FILE__` in the main file). Never hardcode a previous filename in `declare_compatibility` or `PluginBootstrap::register`.
 
-Bluwp is embedded: `>= 0.2.1` and `< 0.3.0` (`HTW_PT_BLUWP_MIN`, `HTW_PT_BLUWP_BELOW`). The main file requires `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. Do not set `Requires Plugins: bluwp`. If a standalone Bluwp plugin is active, the bridge uses that copy instead of the embedded one. Replace the embedded tree with `./scripts/update-bluwp.sh <path-or-tgz>`. Do not vendor compiled bluwp-vuejs CSS. The kit source is not available in this repo yet; `npm run build` is optional until it is. See [docs/design-system.md](docs/design-system.md).
+Bluwp is embedded: `>= 0.2.1` and `< 0.3.0` (`HTW_PT_BLUWP_MIN`, `HTW_PT_BLUWP_BELOW`). The main file requires `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. Do not set `Requires Plugins: bluwp`. If a standalone Bluwp plugin is active, the bridge uses that copy instead of the embedded one. Replace the embedded tree with `./scripts/update-bluwp.sh <path-or-tgz>`. Admin CSS/JS come from `npm run build` (Vite). Do not add a bluwp-vuejs dependency. See [docs/design-system.md](docs/design-system.md).
 
 ## Naming (after `scripts/init.sh` these are renamed; use the current names)
 
@@ -67,7 +67,7 @@ Then install Bluwp on the site and, when the settings screen should render, buil
 - **Add a migration:** `database/migrations/NNN_*.php` extending Bluwp's migration. `down()` must not drop live data.
 - **Add a string:** a case on `src/Text.php`. Customer-facing cases go in `customer_map()` so they can be overridden.
 - **Add an ability (optional, not in the skeleton):** [docs/abilities.md](docs/abilities.md). Register it from something that runs on `htw_pt_loaded`. A real `permission_callback` is required.
-- **Build admin CSS/JS:** optional until the bluwp-vuejs source is available. `npm run build` against a kit checkout. Do not commit the kit's compiled CSS. IranSans licensing is an open question; see the design-system doc.
+- **Build admin CSS/JS:** `cd plugin-template && npm run build`. Commit `assets/admin` when the source changes. CI fails if the build is stale. IranSans needs a commercial license; Vazirmatn (OFL) is the bundled face. See the design-system doc.
 - **Update embedded Bluwp:** `./scripts/update-bluwp.sh <directory-or-tgz>`, then `php scripts/check-catalog.php`. Stay inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`. A jump to 0.3 is a breaking framework upgrade, not a drive-by edit.
 - **Extensibility:** `do_action` / `apply_filters` with the `htw_pt_` prefix, listed in `docs/hooks.md` and `AI-GUIDE.md`.
 
@@ -78,7 +78,7 @@ Then install Bluwp on the site and, when the settings screen should render, buil
 - AI features, if a product adds them, use the core AI Client (`wp_ai_client_prompt`), feature-detected. Never store or request API keys.
 - Checks (run inside `plugin-template/`): `composer install && composer lint && composer phpcs && composer phpstan && composer test`.
 - From the repo root: `bash scripts/lint-php.sh` (PHP 8.1 in CI) and `php scripts/check-catalog.php`.
-- `npm run build` needs a bluwp-vuejs checkout. Without it the script warns and exits 0. Use `--strict` when the UI must be rebuilt.
+- `npm run build` compiles `admin/` into `assets/admin`. Do not point it at a bluwp-vuejs checkout.
 
 ## Definition of Done
 
@@ -90,7 +90,7 @@ Same list as section 13 of `docs/security-rules.md`, with these starter-specific
 - [ ] Every state-changing action checks nonce **and** `current_user_can()`. Page capability and REST capability are the same constant.
 - [ ] WooCommerce / Bluwp receive `HTW_PT_FILE`, never a hardcoded plugin filename.
 - [ ] No unauthorised `die`/`exit`; errors via `WP_Error` or `ResponseFactory`.
-- [ ] Admin CSS/JS comes from a bluwp-vuejs build (or Bluwp's enqueue of that build). No copied kit stylesheet in git. Data to JS via Bluwp / `wp_add_inline_script`, not `wp_localize_script`.
+- [ ] Admin CSS/JS is the Vite build in `assets/admin`, enqueued only on the plugin screen, with `wp-element` / `wp-api-fetch` / `wp-i18n`. Data to JS via `wp_add_inline_script`, not `wp_localize_script`.
 - [ ] Every REST route has a real capability check. Write/delete is never wide open.
 - [ ] `readme.txt`, `uninstall.php`, and directory guards exist (`index.php`, or `index.html` where Bluwp globs PHP).
 - [ ] User-facing Persian strings are `Text` cases; any gettext string uses text domain = slug.

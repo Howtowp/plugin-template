@@ -59,6 +59,7 @@ add_action(
 			return;
 		}
 		do_action( 'htw_pt_loaded' );
+		\HowToWP\PluginTemplate\Admin\AdminPage::register();
 	},
 	2
 );

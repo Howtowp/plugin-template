@@ -212,15 +212,10 @@ function htw_catalog_main(): int {
 		}
 	}
 
-	$kit_path = $plugin_dir . '/development/kit.json';
-	$kit      = is_file( $kit_path ) ? json_decode( (string) file_get_contents( $kit_path ), true ) : null;
-	if ( ! is_array( $kit ) ) {
-		$errors[] = 'development/kit.json is missing or invalid.';
-	} else {
-		$range = isset( $kit['bluwp'] ) ? (string) $kit['bluwp'] : '';
-		if ( ! str_contains( $main_src, "'0.2.1'" ) || ! str_contains( $range, '0.2.1' ) || ! str_contains( $range, '0.3.0' ) ) {
-			$errors[] = 'Bluwp must stay pinned to >=0.2.1 <0.3.0 in the main file and development/kit.json.';
-		}
+	if ( ! str_contains( $main_src, "'0.2.1'" ) || ! str_contains( $main_src, "'0.3.0'" ) ) {
+		$errors[] = 'Bluwp must stay pinned to >=0.2.1 <0.3.0 in the main file.';
+	}
+	{
 		$meta_path = $plugin_dir . '/lib/bluwp/metadata.php';
 		$meta_src  = is_file( $meta_path ) ? (string) file_get_contents( $meta_path ) : '';
 		$embedded  = '';
@@ -244,9 +239,6 @@ function htw_catalog_main(): int {
 			$errors[] = 'Main file must define HTW_*_BLUWP_MIN and HTW_*_BLUWP_BELOW.';
 		} elseif ( '' !== $embedded && ( version_compare( $embedded, $min, '<' ) || version_compare( $embedded, $below, '>=' ) ) ) {
 			$errors[] = 'Embedded Bluwp ' . $embedded . ' is outside ' . $min . ' <= version < ' . $below . '.';
-		}
-		if ( $slug !== '' && ( ( $kit['app'] ?? '' ) !== $slug || ( $kit['assetHandle'] ?? '' ) !== $slug . '-vue-admin' ) ) {
-			$errors[] = 'kit.json app and assetHandle must match the slug (' . $slug . ' / ' . $slug . '-vue-admin).';
 		}
 	}
 

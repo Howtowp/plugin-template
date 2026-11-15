@@ -2,10 +2,26 @@
 	"name": "plugin-template",
 	"version": "0.3.0",
 	"private": true,
-	"description": "Builds the Bluwp admin bundle from bluwp-vuejs into assets/. The kit is not a dependency of this package.",
+	"description": "Builds the VibeFarsi admin app into assets/admin using WordPress's React.",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"build": "node development/build-admin.mjs",
-		"build:strict": "node development/build-admin.mjs --strict"
+		"build": "vite build --config admin/vite.config.ts",
+		"typecheck": "tsc -p admin/tsconfig.json --noEmit"
+	},
+	"dependencies": {
+		"lucide-react": "0.487.0"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.11",
+		"@types/react": "^18.3.18",
+		"@types/react-dom": "^18.3.5",
+		"@vitejs/plugin-react": "^4.4.1",
+		"postcss": "^8.5.6",
+		"postcss-prefix-selector": "^2.1.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwindcss": "^4.1.11",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.5"
 	}
 }

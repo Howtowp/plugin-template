@@ -21,11 +21,24 @@ jobs:
           php-version: "8.1"
           coverage: none
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: plugin-template/package-lock.json
+
       - name: PHP syntax (8.1)
         run: bash scripts/lint-php.sh
 
       - name: Header, product.json, and AI-GUIDE versions
         run: php scripts/check-catalog.php
+
+      - name: Rebuild admin assets and fail if they are stale
+        working-directory: plugin-template
+        run: |
+          npm ci
+          npm run build
+          git diff --exit-code -- assets/admin
 
   plugin-check:
     runs-on: ubuntu-latest

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Plugin Template
  * Plugin URI:        https://howtowp.ir/plugins/plugin-template
- * Description:       Shared starter for How to WP plugins. Admin UI comes from Bluwp and the bluwp-vuejs kit.
+ * Description:       Shared starter for How to WP plugins. Admin UI is React and VibeFarsi.
  * Version:           0.3.0
  * Requires at least: 6.8
  * Requires PHP:      8.1

@@ -2,7 +2,7 @@
 
 **فارسی** · [English](#english)
 
-قالب مشترک افزونه‌های [How to WP](https://howtowp.ir). هر محصول **یک** افزونه است: هستهٔ Bluwp داخل `lib/bluwp` قرار دارد و مشتری افزونهٔ جداگانه‌ای نصب نمی‌کند. اگر Bluwp مستقل روی سایت فعال باشد، همان نسخه استفاده می‌شود. ظاهر پیشخوان از کیت **bluwp-vuejs** ساخته می‌شود؛ سورس کیت هنوز در دسترس این قالب نیست و بیلد ادمین اختیاری است.
+قالب مشترک افزونه‌های [How to WP](https://howtowp.ir). هر محصول **یک** افزونه است: هستهٔ Bluwp داخل `lib/bluwp` قرار دارد و مشتری افزونهٔ جداگانه‌ای نصب نمی‌کند. اگر Bluwp مستقل روی سایت فعال باشد، همان نسخه استفاده می‌شود. ظاهر پیشخوان با React و کامپوننت‌های VibeFarsi ساخته می‌شود (`npm run build` → `assets/admin`). React از خود وردپرس می‌آید.
 
 ## شروع سریع
 
@@ -14,7 +14,7 @@ composer lint && composer phpcs && composer phpstan && composer test
 php ../scripts/check-catalog.php
 ```
 
-Bluwp `0.2.1` داخل افزونه است (`lib/bluwp`). به‌روزرسانی آن: `./scripts/update-bluwp.sh <path-or-tgz>`. ساخت فایل‌های پیشخوان، وقتی سورس کیت را دارید، در [docs/design-system.md](docs/design-system.md) است. `npm run build` بدون checkout کیت فقط هشدار می‌دهد.
+Bluwp `0.2.1` داخل افزونه است (`lib/bluwp`). به‌روزرسانی آن: `./scripts/update-bluwp.sh <path-or-tgz>`. ساخت پیشخوان: `cd plugin-template && npm ci && npm run build`. جزئیات در [docs/design-system.md](docs/design-system.md).
 
 ## ساختار
 
@@ -48,7 +48,7 @@ my-plugin/
 
 ## English
 
-Shared starter for [How to WP](https://howtowp.ir) plugins. Each product is **one** install: Bluwp 0.2.1 is embedded in `lib/bluwp`. A site that already runs the standalone Bluwp plugin keeps using that copy when it is active. The bluwp-vuejs kit source is not in this repo yet, so the admin asset build stays optional.
+Shared starter for [How to WP](https://howtowp.ir) plugins. Each product is **one** install: Bluwp 0.2.1 is embedded in `lib/bluwp`. A site that already runs the standalone Bluwp plugin keeps using that copy when it is active. The admin UI is React + [VibeFarsi](https://vibefarsi.ir/components) (MIT), built with Vite. WordPress's React is reused via `wp-element`.
 
 ### Quick start
 
@@ -60,7 +60,7 @@ composer lint && composer phpcs && composer phpstan && composer test
 php ../scripts/check-catalog.php
 ```
 
-Bluwp `0.2.1` ships in `lib/bluwp`. Refresh it with `./scripts/update-bluwp.sh <path-or-tgz>`. Building the admin bundle is documented in [docs/design-system.md](docs/design-system.md) and is optional until the kit source is available. `npm run build` exits 0 with a warning when the kit checkout is absent.
+Bluwp `0.2.1` ships in `lib/bluwp`. Refresh it with `./scripts/update-bluwp.sh <path-or-tgz>`. Build the admin with `cd plugin-template && npm ci && npm run build`. See [docs/design-system.md](docs/design-system.md).
 
 ### What you get
 

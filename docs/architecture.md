@@ -16,8 +16,9 @@ app/Http                     REST capability + nonce helper.
 src/Text.php                 Persian string enum + customer overrides.
 crons/                       Bluwp cron definitions (glob; no index.php).
 database/migrations          Ordered migrations (glob; no index.php).
-assets/                      Build output of bluwp-vuejs. Not hand-written CSS.
-development/                 build-admin.mjs + kit pin. Not in the zip.
+admin/                       VibeFarsi React source. Not in the zip.
+assets/admin/                Vite build and manifest. React is a WordPress external.
+assets/shared-font/          Vazirmatn (OFL), handle htw-admin-font, family HowToWP Sans.
 ```
 
 Boot:
