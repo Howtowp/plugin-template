@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database;
+namespace Howtowp\Bluwp\Database;
 
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Connection\WPDBConnection;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Connection\WPDBConnection;
 
 final class DatabaseRegistry
 {

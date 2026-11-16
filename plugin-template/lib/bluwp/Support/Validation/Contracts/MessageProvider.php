@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation\Contracts;
+namespace Howtowp\Bluwp\Support\Validation\Contracts;
 
 interface MessageProvider
 {

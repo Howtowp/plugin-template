@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Contracts;
+namespace Howtowp\Bluwp\Contracts;
 
 interface Arrayable
 {

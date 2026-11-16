@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Contracts;
+namespace Howtowp\Bluwp\UI\Contracts;
 
 interface StartupNotice
 {

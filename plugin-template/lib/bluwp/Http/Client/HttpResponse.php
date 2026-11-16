@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client;
+namespace Howtowp\Bluwp\Http\Client;
 
 final class HttpResponse
 {

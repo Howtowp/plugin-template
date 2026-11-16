@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client;
+namespace Howtowp\Bluwp\Http\Client;
 
-use Forouzandea\Bluwp\Http\HttpMethod;
+use Howtowp\Bluwp\Http\HttpMethod;
 
 final class HttpRequest
 {

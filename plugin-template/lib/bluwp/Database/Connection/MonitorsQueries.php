@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Connection;
+namespace Howtowp\Bluwp\Database\Connection;
 
 trait MonitorsQueries
 {

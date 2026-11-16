@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Authentication;
+namespace Howtowp\Bluwp\Http\API\Authentication;
 
 final class AuthContextStore
 {

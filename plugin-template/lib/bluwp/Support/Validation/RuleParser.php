@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation;
+namespace Howtowp\Bluwp\Support\Validation;
 
-use Forouzandea\Bluwp\Support\Validation\Contracts\Rule;
-use Forouzandea\Bluwp\Support\Validation\Rules\IntegerRule;
-use Forouzandea\Bluwp\Support\Validation\Rules\NumericRule;
-use Forouzandea\Bluwp\Support\Validation\Rules\SizeRule;
+use Howtowp\Bluwp\Support\Validation\Contracts\Rule;
+use Howtowp\Bluwp\Support\Validation\Rules\IntegerRule;
+use Howtowp\Bluwp\Support\Validation\Rules\NumericRule;
+use Howtowp\Bluwp\Support\Validation\Rules\SizeRule;
 
 final class RuleParser
 {

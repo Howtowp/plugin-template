@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Pages;
+namespace Howtowp\Bluwp\UI\Pages;
 
-use Forouzandea\Bluwp\UI\Contracts\Page as PageContract;
-use Forouzandea\Bluwp\UI\Support\DefinitionValidator;
+use Howtowp\Bluwp\UI\Contracts\Page as PageContract;
+use Howtowp\Bluwp\UI\Support\DefinitionValidator;
 use InvalidArgumentException;
 
 final class PageRegistry

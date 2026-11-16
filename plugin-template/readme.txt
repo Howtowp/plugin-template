@@ -12,9 +12,9 @@ Shared starter for How to WP plugins. The admin screen is React (VibeFarsi) on a
 
 == Description ==
 
-Plugin Template is the starting point for new How to WP plugins. Bluwp 0.2.1 is included
-in lib/bluwp, so customers install this plugin only. A site that already runs standalone
-Bluwp keeps that copy when it is on the 0.2 line. The settings screen is a JSON schema
+Plugin Template is the starting point for new How to WP plugins. Bluwp 0.3.0 is included
+in lib/bluwp (PHP namespace Howtowp\Bluwp), so customers install this plugin only. A site
+that already runs standalone Bluwp keeps that copy when it is on the 0.3 line. The settings screen is a JSON schema
 rendered by the bluwp-vuejs admin kit once that kit has been built.
 WooCommerce HPOS and checkout-blocks compatibility is declared against this plugin's real main file.
 
@@ -52,4 +52,4 @@ No. Download new versions from https://howtowp.ir and upload them.
 == Upgrade Notice ==
 
 = 0.3.0 =
-Bluwp is included. Do not install a separate Bluwp unless you already run one on the 0.2 line.
+Bluwp is included. Do not install a separate Bluwp unless you already run one on the 0.3 line (namespace Howtowp\Bluwp).

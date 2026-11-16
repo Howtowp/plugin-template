@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Menus;
+namespace Howtowp\Bluwp\Admin\Menus;
 
-use Forouzandea\Bluwp\Admin\Support\DefinitionValidator;
+use Howtowp\Bluwp\Admin\Support\DefinitionValidator;
 
 final class MainMenu
 {

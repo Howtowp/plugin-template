@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Validation;
+namespace Howtowp\Bluwp\Communications\Bots\Validation;
 
 final class BotToken
 {

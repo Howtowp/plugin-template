@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Foundation\Bootstrap;
+namespace Howtowp\Bluwp\Foundation\Bootstrap;
 
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Hooks\HooksServiceProvider;
-use Forouzandea\Bluwp\Http\API\APIServiceProvider;
-use Forouzandea\Bluwp\Admin\AdminServiceProvider;
-use Forouzandea\Bluwp\Cron\CronServiceProvider;
-use Forouzandea\Bluwp\Database\Providers\DatabaseServiceProvider;
-use Forouzandea\Bluwp\Database\Providers\MigrationServiceProvider;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Hooks\HooksServiceProvider;
+use Howtowp\Bluwp\Http\API\APIServiceProvider;
+use Howtowp\Bluwp\Admin\AdminServiceProvider;
+use Howtowp\Bluwp\Cron\CronServiceProvider;
+use Howtowp\Bluwp\Database\Providers\DatabaseServiceProvider;
+use Howtowp\Bluwp\Database\Providers\MigrationServiceProvider;
 
 final class DefaultProviders
 {
-    /** @return list<class-string<\Forouzandea\Bluwp\Foundation\ServiceProvider>> */
+    /** @return list<class-string<\Howtowp\Bluwp\Foundation\ServiceProvider>> */
     public function forApplication(Application $app): array
     {
         $features = $app->config('features', []);

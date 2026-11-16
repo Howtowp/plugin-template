@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database;
+namespace Howtowp\Bluwp\Database;
 
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Query\Bindings;
-use Forouzandea\Bluwp\Database\Query\Builder;
-use Forouzandea\Bluwp\Database\Schema\Builder as SchemaBuilder;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Query\Bindings;
+use Howtowp\Bluwp\Database\Query\Builder;
+use Howtowp\Bluwp\Database\Schema\Builder as SchemaBuilder;
 
 /** Public connection API; wpdb-specific placeholders stay inside the adapter. */
 final class Connection

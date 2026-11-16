@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation;
+namespace Howtowp\Bluwp\Support\Validation;
 
-use Forouzandea\Bluwp\Support\Validation\Contracts\MessageProvider;
+use Howtowp\Bluwp\Support\Validation\Contracts\MessageProvider;
 
 final class WordPressMessageProvider implements MessageProvider
 {

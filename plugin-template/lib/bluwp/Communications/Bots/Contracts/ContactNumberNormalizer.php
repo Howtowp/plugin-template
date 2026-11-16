@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Contracts;
+namespace Howtowp\Bluwp\Communications\Bots\Contracts;
 
 interface ContactNumberNormalizer
 {

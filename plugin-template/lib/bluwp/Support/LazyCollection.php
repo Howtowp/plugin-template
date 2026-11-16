@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support;
+namespace Howtowp\Bluwp\Support;
 
 final class LazyCollection implements \IteratorAggregate
 {

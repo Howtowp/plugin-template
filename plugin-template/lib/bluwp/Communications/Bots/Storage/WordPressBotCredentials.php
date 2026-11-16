@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Storage;
+namespace Howtowp\Bluwp\Communications\Bots\Storage;
 
 class WordPressBotCredentials
 {

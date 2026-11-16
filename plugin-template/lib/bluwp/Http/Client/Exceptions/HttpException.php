@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client\Exceptions;
+namespace Howtowp\Bluwp\Http\Client\Exceptions;
 
 final class HttpException extends \RuntimeException
 {

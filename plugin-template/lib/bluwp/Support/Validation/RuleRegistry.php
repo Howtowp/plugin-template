@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation;
+namespace Howtowp\Bluwp\Support\Validation;
 
-use Forouzandea\Bluwp\Support\Validation\Contracts\Rule;
-use Forouzandea\Bluwp\Support\Validation\Rules;
+use Howtowp\Bluwp\Support\Validation\Contracts\Rule;
+use Howtowp\Bluwp\Support\Validation\Rules;
 
 final class RuleRegistry
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Enums;
+namespace Howtowp\Bluwp\Communications\Enums;
 
 /** Provider acceptance is not a delivery receipt; unavailable means no usable channel. */
 enum MessageStatus: string

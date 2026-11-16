@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation\Rules;
+namespace Howtowp\Bluwp\Support\Validation\Rules;
 
-use Forouzandea\Bluwp\Support\Phone\MobileNumber;
-use Forouzandea\Bluwp\Support\Validation\Attribute;
-use Forouzandea\Bluwp\Support\Validation\Contracts\Rule;
-use Forouzandea\Bluwp\Support\Validation\RuleViolation;
-use Forouzandea\Bluwp\Support\Validation\ValidationContext;
+use Howtowp\Bluwp\Support\Phone\MobileNumber;
+use Howtowp\Bluwp\Support\Validation\Attribute;
+use Howtowp\Bluwp\Support\Validation\Contracts\Rule;
+use Howtowp\Bluwp\Support\Validation\RuleViolation;
+use Howtowp\Bluwp\Support\Validation\ValidationContext;
 
 final class Mobile implements Rule
 {

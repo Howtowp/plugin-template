@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Cron;
+namespace Howtowp\Bluwp\Cron;
 
 final class CronScheduler
 {

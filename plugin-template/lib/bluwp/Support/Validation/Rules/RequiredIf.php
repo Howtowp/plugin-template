@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation\Rules;
+namespace Howtowp\Bluwp\Support\Validation\Rules;
 
-use Forouzandea\Bluwp\Support\Validation\Attribute;
-use Forouzandea\Bluwp\Support\Validation\Contracts\ImplicitRule;
-use Forouzandea\Bluwp\Support\Validation\RuleViolation;
-use Forouzandea\Bluwp\Support\Validation\ValidationContext;
+use Howtowp\Bluwp\Support\Validation\Attribute;
+use Howtowp\Bluwp\Support\Validation\Contracts\ImplicitRule;
+use Howtowp\Bluwp\Support\Validation\RuleViolation;
+use Howtowp\Bluwp\Support\Validation\ValidationContext;
 
 final class RequiredIf implements ImplicitRule
 {

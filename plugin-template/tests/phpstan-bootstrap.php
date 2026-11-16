@@ -14,8 +14,8 @@ define( 'HTW_PT_SLUG', 'plugin-template' );
 define( 'HTW_PT_CAPABILITY', 'manage_options' );
 define( 'HTW_PT_MIN_PHP', '8.1' );
 define( 'HTW_PT_MIN_WP', '6.8' );
-define( 'HTW_PT_BLUWP_MIN', '0.2.1' );
-define( 'HTW_PT_BLUWP_BELOW', '0.3.0' );
+define( 'HTW_PT_BLUWP_MIN', '0.3.0' );
+define( 'HTW_PT_BLUWP_BELOW', '0.4.0' );
 
 if ( ! class_exists( 'BluwpBridgeV1', false ) ) {
 	/**

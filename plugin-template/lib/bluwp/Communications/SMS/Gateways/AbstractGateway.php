@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways;
 
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SimpleSMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\PatternSMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
-use Forouzandea\Bluwp\Communications\SMS\Security\SMSDataFilter;
-use Forouzandea\Bluwp\Http\Client\HttpResponse;
-use Forouzandea\Bluwp\Communications\SMS\Sending\SMSExecutor;
-use Forouzandea\Bluwp\Communications\SMS\Exceptions\SMSConfigurationException;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SimpleSMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\PatternSMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Security\SMSDataFilter;
+use Howtowp\Bluwp\Http\Client\HttpResponse;
+use Howtowp\Bluwp\Communications\SMS\Sending\SMSExecutor;
+use Howtowp\Bluwp\Communications\SMS\Exceptions\SMSConfigurationException;
 
 abstract class AbstractGateway implements SMSGateway, SimpleSMSGateway, PatternSMSGateway
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support;
+namespace Howtowp\Bluwp\Support;
 
-use Forouzandea\Bluwp\Contracts\Htmlable;
+use Howtowp\Bluwp\Contracts\Htmlable;
 
 final class HtmlString implements Htmlable, \Stringable
 {

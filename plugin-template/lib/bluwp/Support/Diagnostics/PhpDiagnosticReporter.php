@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Diagnostics;
+namespace Howtowp\Bluwp\Support\Diagnostics;
 
 final class PhpDiagnosticReporter implements DiagnosticReporter
 {

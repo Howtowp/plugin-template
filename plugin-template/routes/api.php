@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-use Forouzandea\Bluwp\Http\API\Routing\Router;
+use Howtowp\Bluwp\Http\API\Routing\Router;
 use HowToWP\PluginTemplate\App\Controllers\SettingsController;
 
 defined( 'ABSPATH' ) || exit;

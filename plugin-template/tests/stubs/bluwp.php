@@ -1,6 +1,6 @@
 <?php
 /**
- * Minimal Bluwp 0.2 symbols for PHPStan and for loading plugin classes in unit tests.
+ * Minimal Bluwp 0.3 symbols for PHPStan and for loading plugin classes in unit tests.
  *
  * Do not load this file in a process that also loads the real Bluwp plugin.
  *
@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Foundation\Bootstrap {
+namespace Howtowp\Bluwp\Foundation\Bootstrap {
 
 	class PluginBootstrap {
 		public static function register( string $file, string $slug, string $title, bool $load_hooks ): self {
@@ -22,7 +22,7 @@ namespace Forouzandea\Bluwp\Foundation\Bootstrap {
 	}
 }
 
-namespace Forouzandea\Bluwp\UI\Pages {
+namespace Howtowp\Bluwp\UI\Pages {
 
 	class PageDefinition {
 		public function title( string $title ): self {
@@ -52,9 +52,9 @@ namespace Forouzandea\Bluwp\UI\Pages {
 	}
 }
 
-namespace Forouzandea\Bluwp\Admin\Menus {
+namespace Howtowp\Bluwp\Admin\Menus {
 
-	use Forouzandea\Bluwp\UI\Pages\PageRegistry;
+	use Howtowp\Bluwp\UI\Pages\PageRegistry;
 
 	class MenuDefinition {
 		public function slug( string $slug ): self {
@@ -88,7 +88,7 @@ namespace Forouzandea\Bluwp\Admin\Menus {
 	}
 }
 
-namespace Forouzandea\Bluwp\Admin {
+namespace Howtowp\Bluwp\Admin {
 
 	class AdminServiceProvider {
 		public const PAGES_CONTROLLER = 'pages';
@@ -96,7 +96,7 @@ namespace Forouzandea\Bluwp\Admin {
 	}
 }
 
-namespace Forouzandea\Bluwp\Http\API\Routing {
+namespace Howtowp\Bluwp\Http\API\Routing {
 
 	class RouteRegistrar {
 		public function permission( string $permission ): self {
@@ -128,13 +128,13 @@ namespace Forouzandea\Bluwp\Http\API\Routing {
 	}
 }
 
-namespace Forouzandea\Bluwp\Http\API {
+namespace Howtowp\Bluwp\Http\API {
 
 	class Controller {
 	}
 }
 
-namespace Forouzandea\Bluwp\Http\API\Responses {
+namespace Howtowp\Bluwp\Http\API\Responses {
 
 	class ResponseFactory {
 		/**
@@ -156,9 +156,9 @@ namespace Forouzandea\Bluwp\Http\API\Responses {
 	}
 }
 
-namespace Forouzandea\Bluwp\Cron {
+namespace Howtowp\Bluwp\Cron {
 
-	use Forouzandea\Bluwp\Foundation\Application;
+	use Howtowp\Bluwp\Foundation\Application;
 
 	interface CronDefinition {
 		public function register( CronScheduler $scheduler, Application $app ): void;
@@ -173,7 +173,7 @@ namespace Forouzandea\Bluwp\Cron {
 	}
 }
 
-namespace Forouzandea\Bluwp\Foundation {
+namespace Howtowp\Bluwp\Foundation {
 
 	class Application {
 		public function config( string $key ): string {
@@ -183,7 +183,7 @@ namespace Forouzandea\Bluwp\Foundation {
 	}
 }
 
-namespace Forouzandea\Bluwp\Database\Schema {
+namespace Howtowp\Bluwp\Database\Schema {
 
 	class Blueprint {
 		public function id(): void {
@@ -209,9 +209,9 @@ namespace Forouzandea\Bluwp\Database\Schema {
 	}
 }
 
-namespace Forouzandea\Bluwp\Database\Migrations {
+namespace Howtowp\Bluwp\Database\Migrations {
 
-	use Forouzandea\Bluwp\Database\Schema\Schema;
+	use Howtowp\Bluwp\Database\Schema\Schema;
 
 	abstract class Migration {
 		abstract public function up(): void;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Fields;
+namespace Howtowp\Bluwp\UI\Fields;
 
 final class TagsField extends Field
 {

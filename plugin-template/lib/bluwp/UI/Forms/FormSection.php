@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Forms;
+namespace Howtowp\Bluwp\UI\Forms;
 
 final class FormSection implements \JsonSerializable
 {

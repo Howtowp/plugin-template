@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Fields;
+namespace Howtowp\Bluwp\UI\Fields;
 
-use Forouzandea\Bluwp\UI\Forms\FieldSetProcessor;
+use Howtowp\Bluwp\UI\Forms\FieldSetProcessor;
 
 final class EditableTableField extends Field
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Tabs;
+namespace Howtowp\Bluwp\UI\Tabs;
 
-use Forouzandea\Bluwp\UI\Contracts\Schema;
+use Howtowp\Bluwp\UI\Contracts\Schema;
 
 abstract class TabbedSchema implements Schema
 {

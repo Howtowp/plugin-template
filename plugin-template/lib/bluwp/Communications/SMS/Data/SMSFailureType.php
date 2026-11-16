@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Data;
+namespace Howtowp\Bluwp\Communications\SMS\Data;
 
 /** Only a documented temporary rejection qualifies for automatic retry. */
 enum SMSFailureType: string

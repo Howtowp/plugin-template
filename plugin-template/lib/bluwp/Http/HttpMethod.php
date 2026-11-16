@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http;
+namespace Howtowp\Bluwp\Http;
 
 enum HttpMethod: string
 {

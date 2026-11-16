@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Messages;
+namespace Howtowp\Bluwp\Communications\Bots\Messages;
 
 final class PrivateMessage
 {

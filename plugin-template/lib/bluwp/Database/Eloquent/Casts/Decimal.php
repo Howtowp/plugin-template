@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Casts;
+namespace Howtowp\Bluwp\Database\Eloquent\Casts;
 
 final class Decimal
 {

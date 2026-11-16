@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Pagination;
+namespace Howtowp\Bluwp\Database\Pagination;
 
-use Forouzandea\Bluwp\Contracts\Arrayable;
+use Howtowp\Bluwp\Contracts\Arrayable;
 
 final class Cursor implements Arrayable
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Contracts;
+namespace Howtowp\Bluwp\Communications\SMS\Contracts;
 
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
 
 interface PatternSMSGateway
 {

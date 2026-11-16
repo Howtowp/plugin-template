@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Data;
+namespace Howtowp\Bluwp\Communications\SMS\Data;
 
 final class PatternSMSMessage extends SMSMessage
 {

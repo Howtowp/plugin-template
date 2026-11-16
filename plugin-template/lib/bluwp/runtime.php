@@ -4,18 +4,18 @@ declare(strict_types=1);
 /**
  * Bluwp shared framework loader.
  *
- * @package Forouzandea\Bluwp
+ * @package Howtowp\Bluwp
  */
 
-use Forouzandea\Bluwp\Foundation\Bootstrap\Loader;
-use Forouzandea\Bluwp\Foundation\Bootstrap\PluginBootstrap;
+use Howtowp\Bluwp\Foundation\Bootstrap\Loader;
+use Howtowp\Bluwp\Foundation\Bootstrap\PluginBootstrap;
 
 defined('ABSPATH') || exit;
 
 defined('BLUWP') || define('BLUWP', 'bluwp');
 
 $bluwp_framework_loader_file = __DIR__ . DIRECTORY_SEPARATOR . 'Foundation/Bootstrap/Loader.php';
-$bluwp_framework_loader_class = '\Forouzandea\Bluwp\Foundation\Bootstrap\Loader';
+$bluwp_framework_loader_class = '\Howtowp\Bluwp\Foundation\Bootstrap\Loader';
 
 if (!class_exists($bluwp_framework_loader_class, false) && file_exists($bluwp_framework_loader_file)) {
     require_once $bluwp_framework_loader_file;
@@ -24,7 +24,7 @@ if (!class_exists($bluwp_framework_loader_class, false) && file_exists($bluwp_fr
 if (!function_exists('bluwpFrameworkRegister')) {
     function bluwpFrameworkRegister(string $version, string $path, string $source): void
     {
-        if (class_exists('\Forouzandea\Bluwp\Foundation\Bootstrap\Loader', false)) {
+        if (class_exists('\Howtowp\Bluwp\Foundation\Bootstrap\Loader', false)) {
             Loader::register($version, $path, $source);
         }
     }
@@ -35,7 +35,7 @@ if (class_exists($bluwp_framework_loader_class, false)) {
 }
 
 $bluwp_plugin_bootstrap_file = __DIR__ . '/Foundation/Bootstrap/PluginBootstrap.php';
-if (!class_exists('\\Forouzandea\\Bluwp\\Foundation\\Bootstrap\\PluginBootstrap', false)
+if (!class_exists('\\Howtowp\\Bluwp\\Foundation\\Bootstrap\\PluginBootstrap', false)
     && is_readable($bluwp_plugin_bootstrap_file)) {
     require_once $bluwp_plugin_bootstrap_file;
 }
@@ -56,7 +56,7 @@ if (!function_exists('bluwpPluginRegister')) {
             && preg_match('/^\d+\.\d+\.\d+$/D', $metadata['version'])) {
             bluwpFrameworkRegister($metadata['version'], $path, plugin_basename($file));
         }
-        if (!class_exists('\\Forouzandea\\Bluwp\\Foundation\\Bootstrap\\PluginBootstrap', false)) {
+        if (!class_exists('\\Howtowp\\Bluwp\\Foundation\\Bootstrap\\PluginBootstrap', false)) {
             throw new \RuntimeException('The plugin lifecycle bridge is missing.');
         }
         PluginBootstrap::register($file, $name, $title);

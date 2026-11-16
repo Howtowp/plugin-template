@@ -35,7 +35,7 @@ enum Text: string {
 	case InvalidSettings   = 'مقدار واردشده معتبر نیست.';
 	case InvalidUrl        = 'نشانی باید یک URL معتبر http یا https باشد.';
 	case Forbidden         = 'اجازهٔ این کار را ندارید.';
-	case BluwpRequired     = 'Bluwp همراه افزونه نیست یا با شاخهٔ ۰.۲ سازگار نیست.';
+	case BluwpRequired     = 'Bluwp همراه افزونه نیست یا با شاخهٔ ۰.۳ سازگار نیست.';
 	case SampleCron        = 'نمونهٔ زمان‌بندی';
 
 	public const OPTION = 'htw_pt_texts';

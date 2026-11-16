@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Pagination;
+namespace Howtowp\Bluwp\Database\Pagination;
 
-use Forouzandea\Bluwp\Support\Collection;
-use Forouzandea\Bluwp\Contracts\Arrayable;
-use Forouzandea\Bluwp\Contracts\Jsonable;
+use Howtowp\Bluwp\Support\Collection;
+use Howtowp\Bluwp\Contracts\Arrayable;
+use Howtowp\Bluwp\Contracts\Jsonable;
 
 class CursorPaginator implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable, Arrayable, Jsonable
 {

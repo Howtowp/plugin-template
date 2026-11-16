@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Drivers\Bale;
+namespace Howtowp\Bluwp\Communications\Bots\Drivers\Bale;
 
-use Forouzandea\Bluwp\Communications\Bots\API\AbstractBotAPIClient;
+use Howtowp\Bluwp\Communications\Bots\API\AbstractBotAPIClient;
 
 final class BaleAPIClient extends AbstractBotAPIClient
 {

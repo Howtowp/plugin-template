@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Query;
+namespace Howtowp\Bluwp\Database\Query;
 
 final class Expression
 {

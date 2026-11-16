@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client\Contracts;
+namespace Howtowp\Bluwp\Http\Client\Contracts;
 
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
-use Forouzandea\Bluwp\Http\Client\HttpResponse;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Http\Client\HttpResponse;
 
 interface HttpClient
 {

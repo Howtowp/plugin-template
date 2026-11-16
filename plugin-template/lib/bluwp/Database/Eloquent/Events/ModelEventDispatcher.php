@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Events;
+namespace Howtowp\Bluwp\Database\Eloquent\Events;
 
-use Forouzandea\Bluwp\Database\Eloquent\Model;
+use Howtowp\Bluwp\Database\Eloquent\Model;
 
 final class ModelEventDispatcher
 {

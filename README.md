@@ -14,7 +14,7 @@ composer lint && composer phpcs && composer phpstan && composer test
 php ../scripts/check-catalog.php
 ```
 
-Bluwp `0.2.1` داخل افزونه است (`lib/bluwp`). به‌روزرسانی آن: `./scripts/update-bluwp.sh <path-or-tgz>`. ساخت پیشخوان: `cd plugin-template && npm ci && npm run build`. جزئیات در [docs/design-system.md](docs/design-system.md).
+Bluwp `0.3.0` داخل افزونه است (`lib/bluwp`، namespace `Howtowp\Bluwp`، بازهٔ `>= 0.3.0 < 0.4.0`). به‌روزرسانی آن: `./scripts/update-bluwp.sh <path-or-tgz>`. ساخت پیشخوان: `cd plugin-template && npm ci && npm run build`. جزئیات در [docs/design-system.md](docs/design-system.md). افزونه‌ای که از این قالب ساخته شده باید همان namespace را به کار ببرد؛ فهرست دقیق تغییرها در [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## ساختار
 
@@ -48,7 +48,7 @@ my-plugin/
 
 ## English
 
-Shared starter for [How to WP](https://howtowp.ir) plugins. Each product is **one** install: Bluwp 0.2.1 is embedded in `lib/bluwp`. A site that already runs the standalone Bluwp plugin keeps using that copy when it is active. The admin UI is React + [VibeFarsi](https://vibefarsi.ir/components) (MIT), built with Vite. WordPress's React is reused via `wp-element`.
+Shared starter for [How to WP](https://howtowp.ir) plugins. Each product is **one** install: Bluwp 0.3.0 is embedded in `lib/bluwp` under the PHP namespace `Howtowp\Bluwp` (`>= 0.3.0` and `< 0.4.0`). A site that already runs the standalone Bluwp plugin keeps using that copy when it is active and on the same line. The admin UI is React + [VibeFarsi](https://vibefarsi.ir/components) (MIT), built with Vite. WordPress's React is reused via `wp-element`.
 
 ### Quick start
 
@@ -60,11 +60,11 @@ composer lint && composer phpcs && composer phpstan && composer test
 php ../scripts/check-catalog.php
 ```
 
-Bluwp `0.2.1` ships in `lib/bluwp`. Refresh it with `./scripts/update-bluwp.sh <path-or-tgz>`. Build the admin with `cd plugin-template && npm ci && npm run build`. See [docs/design-system.md](docs/design-system.md).
+Bluwp `0.3.0` ships in `lib/bluwp` (`Howtowp\Bluwp`). Refresh it with `./scripts/update-bluwp.sh <path-or-tgz>`. Build the admin with `cd plugin-template && npm ci && npm run build`. See [docs/design-system.md](docs/design-system.md). A plugin that already consumes this template must follow [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### What you get
 
-- Embedded Bluwp in `lib/bluwp`, booted with `BluwpBridgeV1::consume()`. No `Requires Plugins: bluwp`.
+- Embedded Bluwp 0.3.0 in `lib/bluwp`, namespace `Howtowp\Bluwp`, booted with `BluwpBridgeV1::consume()`. No `Requires Plugins: bluwp`.
 - Bluwp layout: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/Text.php`, `hooks/early/`, `crons/`, `database/migrations/`, `assets/`.
 - One schema-driven settings page, one REST route with the **same** capability constant and a `wp_rest` nonce.
 - HPOS and checkout-blocks compatibility declared with `HTW_PT_FILE` (the real main file, not a hardcoded name).

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Providers;
+namespace Howtowp\Bluwp\Database\Providers;
 
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Database\DatabaseManager;
-use Forouzandea\Bluwp\Database\DatabaseRegistry;
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Schema\Builder;
-use Forouzandea\Bluwp\Database\Pagination\WordPressResolvers;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Database\DatabaseManager;
+use Howtowp\Bluwp\Database\DatabaseRegistry;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Schema\Builder;
+use Howtowp\Bluwp\Database\Pagination\WordPressResolvers;
 
 final class DatabaseServiceProvider extends ServiceProvider
 {

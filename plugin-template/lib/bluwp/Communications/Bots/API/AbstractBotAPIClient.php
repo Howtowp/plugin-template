@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\API;
+namespace Howtowp\Bluwp\Communications\Bots\API;
 
-use Forouzandea\Bluwp\Communications\Bots\Contracts\BotAPIClient;
-use Forouzandea\Bluwp\Communications\Bots\Enums\BotErrorReason;
-use Forouzandea\Bluwp\Communications\Bots\Exceptions\BotAPIException;
-use Forouzandea\Bluwp\Communications\Bots\Validation\BotToken;
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Http\Client\Exceptions\HttpException;
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Communications\Bots\Contracts\BotAPIClient;
+use Howtowp\Bluwp\Communications\Bots\Enums\BotErrorReason;
+use Howtowp\Bluwp\Communications\Bots\Exceptions\BotAPIException;
+use Howtowp\Bluwp\Communications\Bots\Validation\BotToken;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Http\Client\Exceptions\HttpException;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
 
 abstract class AbstractBotAPIClient implements BotAPIClient
 {

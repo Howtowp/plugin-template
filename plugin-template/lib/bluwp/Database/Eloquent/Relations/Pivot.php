@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
-final class Pivot implements \ArrayAccess, \JsonSerializable, \Forouzandea\Bluwp\Contracts\Arrayable
+final class Pivot implements \ArrayAccess, \JsonSerializable, \Howtowp\Bluwp\Contracts\Arrayable
 {
     public function __construct(private array $attributes)
     {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Contracts\Eloquent;
+namespace Howtowp\Bluwp\Database\Contracts\Eloquent;
 
-use Forouzandea\Bluwp\Database\Eloquent\Model;
+use Howtowp\Bluwp\Database\Eloquent\Model;
 
 interface CastsAttributes
 {

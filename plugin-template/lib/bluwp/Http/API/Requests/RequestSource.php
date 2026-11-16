@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Requests;
+namespace Howtowp\Bluwp\Http\API\Requests;
 
 enum RequestSource
 {

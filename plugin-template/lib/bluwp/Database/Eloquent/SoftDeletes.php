@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent;
+namespace Howtowp\Bluwp\Database\Eloquent;
 
-use Forouzandea\Bluwp\Database\Query\Builder;
+use Howtowp\Bluwp\Database\Query\Builder;
 
 trait SoftDeletes
 {

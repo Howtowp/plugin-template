@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Contracts;
+namespace Howtowp\Bluwp\Database\Contracts;
 
 interface MonitorsQueries
 {

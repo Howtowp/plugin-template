@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Foundation;
+namespace Howtowp\Bluwp\Foundation;
 
 /** Providers with service bindings only; event listeners belong to eager bootstrapping. */
 interface DeferrableProvider

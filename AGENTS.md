@@ -10,7 +10,7 @@ The admin UI is a VibeFarsi React app in `admin/`, built with Vite into `assets/
 ./ repo root = project (never shipped as a whole)
 ├── plugin-template/ THE PLUGIN. Folder name = slug = zip root. Only this folder ships.
 │ ├── plugin-template.php   headers, constants, BluwpBridgeV1::consume (no business logic)
-│ ├── lib/bluwp/            embedded Bluwp 0.2.x (upstream; do not hand-edit)
+│ ├── lib/bluwp/            embedded Bluwp 0.3.x, namespace Howtowp\Bluwp (upstream; do not hand-edit)
 │ ├── bootstrap/app.php     Bluwp config: autoload, REST namespace, asset handle
 │ ├── hooks/early/          WooCommerce HPOS/blocks + Bluwp boot (uses HTW_PT_FILE)
 │ ├── pages/                admin menu + schema page registry
@@ -40,7 +40,7 @@ Persian UI strings live in `src/Text.php` (a backed enum), not in `__()`. Escape
 
 The plugin main file is `HTW_PT_FILE` (`__FILE__` in the main file). Never hardcode a previous filename in `declare_compatibility` or `PluginBootstrap::register`.
 
-Bluwp is embedded: `>= 0.2.1` and `< 0.3.0` (`HTW_PT_BLUWP_MIN`, `HTW_PT_BLUWP_BELOW`). The main file requires `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. Do not set `Requires Plugins: bluwp`. If a standalone Bluwp plugin is active, the bridge uses that copy instead of the embedded one. Replace the embedded tree with `./scripts/update-bluwp.sh <path-or-tgz>`. Admin CSS/JS come from `npm run build` (Vite). Do not add a bluwp-vuejs dependency. See [docs/design-system.md](docs/design-system.md).
+Bluwp is embedded: `>= 0.3.0` and `< 0.4.0` (`HTW_PT_BLUWP_MIN`, `HTW_PT_BLUWP_BELOW`). The PHP namespace is `Howtowp\Bluwp`. The main file requires `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. Do not set `Requires Plugins: bluwp`. If a standalone Bluwp plugin is active on the same line, the bridge uses that copy instead of the embedded one. Replace the embedded tree with `./scripts/update-bluwp.sh <path-or-tgz>`. Admin CSS/JS come from `npm run build` (Vite). Do not add a bluwp-vuejs dependency. See [docs/design-system.md](docs/design-system.md).
 
 ## Naming (after `scripts/init.sh` these are renamed; use the current names)
 
@@ -68,12 +68,12 @@ Then install Bluwp on the site and, when the settings screen should render, buil
 - **Add a string:** a case on `src/Text.php`. Customer-facing cases go in `customer_map()` so they can be overridden.
 - **Add an ability (optional, not in the skeleton):** [docs/abilities.md](docs/abilities.md). Register it from something that runs on `htw_pt_loaded`. A real `permission_callback` is required.
 - **Build admin CSS/JS:** `cd plugin-template && npm run build`. Commit `assets/admin` when the source changes. CI fails if the build is stale. IranSans needs a commercial license; Vazirmatn (OFL) is the bundled face. See the design-system doc.
-- **Update embedded Bluwp:** `./scripts/update-bluwp.sh <directory-or-tgz>`, then `php scripts/check-catalog.php`. Stay inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`. A jump to 0.3 is a breaking framework upgrade, not a drive-by edit.
+- **Update embedded Bluwp:** `./scripts/update-bluwp.sh <directory-or-tgz>`, then `php scripts/check-catalog.php`. Stay inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW` (`>= 0.3.0 < 0.4.0`). A jump to 0.4 is a breaking framework upgrade, not a drive-by edit. The namespace stays `Howtowp\Bluwp`.
 - **Extensibility:** `do_action` / `apply_filters` with the `htw_pt_` prefix, listed in `docs/hooks.md` and `AI-GUIDE.md`.
 
 ## Quality rules
 
-- PHP ≥ 8.1, WordPress ≥ 6.8, Bluwp `>= 0.2.1 < 0.3`. Escape late, sanitize input, nonce + capability on every state change.
+- PHP ≥ 8.1, WordPress ≥ 6.8, Bluwp `>= 0.3.0 < 0.4.0` (`Howtowp\Bluwp`). Escape late, sanitize input, nonce + capability on every state change.
 - WooCommerce compatibility is declared with `HTW_PT_FILE`. Read orders with `wc_get_order()` (HPOS) when you add order code. Do not require WooCommerce unless the product is a Woo plugin (`Requires Plugins` and the WC headers).
 - AI features, if a product adds them, use the core AI Client (`wp_ai_client_prompt`), feature-detected. Never store or request API keys.
 - Checks (run inside `plugin-template/`): `composer install && composer lint && composer phpcs && composer phpstan && composer test`.

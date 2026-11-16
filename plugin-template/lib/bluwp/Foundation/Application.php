@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Foundation;
+namespace Howtowp\Bluwp\Foundation;
 
-use Forouzandea\Bluwp\Container\Container;
-use Forouzandea\Bluwp\Foundation\Bootstrap\DefaultProviders;
+use Howtowp\Bluwp\Container\Container;
+use Howtowp\Bluwp\Foundation\Bootstrap\DefaultProviders;
 use Throwable;
 
 class Application extends Container

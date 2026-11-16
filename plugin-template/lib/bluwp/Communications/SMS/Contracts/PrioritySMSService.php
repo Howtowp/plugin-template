@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Contracts;
+namespace Howtowp\Bluwp\Communications\SMS\Contracts;
 
-use Forouzandea\Bluwp\Communications\SMS\Sending\SMSPriorityBuilder;
+use Howtowp\Bluwp\Communications\SMS\Sending\SMSPriorityBuilder;
 
 interface PrioritySMSService
 {

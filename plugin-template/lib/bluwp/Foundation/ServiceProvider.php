@@ -4,10 +4,10 @@ declare(strict_types=1);
 /**
  * Base service provider contract.
  *
- * @package Forouzandea\Bluwp
+ * @package Howtowp\Bluwp
  */
 
-namespace Forouzandea\Bluwp\Foundation;
+namespace Howtowp\Bluwp\Foundation;
 
 defined('ABSPATH') || exit;
 

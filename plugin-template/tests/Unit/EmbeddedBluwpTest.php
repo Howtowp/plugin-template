@@ -21,7 +21,7 @@ final class EmbeddedBluwpTest extends TestCase {
 			dirname( __DIR__, 2 ) . '/plugin-template.php',
 			'plugin-template',
 			'Plugin Template',
-			'0.2.1',
+			'0.3.0',
 			dirname( __DIR__, 2 ) . '/lib/bluwp'
 		);
 
@@ -31,9 +31,9 @@ final class EmbeddedBluwpTest extends TestCase {
 
 		$loaded = $GLOBALS['bluwp_framework_loaded'] ?? null;
 		$this->assertIsArray( $loaded );
-		$this->assertSame( '0.2.1', $loaded['version'] );
+		$this->assertSame( '0.3.0', $loaded['version'] );
 		$this->assertArrayNotHasKey( 'bluwp_framework_error', $GLOBALS );
-		$this->assertTrue( class_exists( \Forouzandea\Bluwp\Foundation\Bootstrap\PluginBootstrap::class, false ) );
+		$this->assertTrue( class_exists( \Howtowp\Bluwp\Foundation\Bootstrap\PluginBootstrap::class, false ) );
 		$this->assertNotEmpty( $GLOBALS['htw_test_actions']['init'][1] ?? array() );
 	}
 }

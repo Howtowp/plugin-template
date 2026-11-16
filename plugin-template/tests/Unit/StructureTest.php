@@ -91,7 +91,6 @@ final class StructureTest extends TestCase {
 		$this->assertStringContainsString( 'HTW_PT_FILE', $source );
 		$this->assertDoesNotMatchRegularExpression( "/declare_compatibility\\([^;]*'[^']+\\.php'/", $source );
 		$this->assertDoesNotMatchRegularExpression( "/PluginBootstrap::register\\(\\s*'[^']+\\.php'/", $source );
-		$this->assertStringNotContainsString( 'forouzandea-smart-gateway.php', $source );
 	}
 
 	public function test_admin_assets_enqueue_only_on_the_plugin_screen(): void {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways\Kavenegar;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways\Kavenegar;
 
-use Forouzandea\Bluwp\Communications\SMS\Gateways\AbstractGateway;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Gateways\AbstractGateway;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
 
 final class Kavenegar extends AbstractGateway
 {
-    protected function creditRequest(): \Forouzandea\Bluwp\Http\Client\HttpRequest
+    protected function creditRequest(): \Howtowp\Bluwp\Http\Client\HttpRequest
     {
-        return new \Forouzandea\Bluwp\Http\Client\HttpRequest(\Forouzandea\Bluwp\Http\HttpMethod::Get, 'https://api.kavenegar.com/v1/' . rawurlencode($this->required('api_key')) . '/account/info.json');
+        return new \Howtowp\Bluwp\Http\Client\HttpRequest(\Howtowp\Bluwp\Http\HttpMethod::Get, 'https://api.kavenegar.com/v1/' . rawurlencode($this->required('api_key')) . '/account/info.json');
     }
 
     protected function creditValue(array $body): mixed

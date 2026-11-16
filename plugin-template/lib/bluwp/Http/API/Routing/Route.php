@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Routing;
+namespace Howtowp\Bluwp\Http\API\Routing;
 
-use Forouzandea\Bluwp\Http\API\Contracts\Permission;
-use Forouzandea\Bluwp\Http\HttpMethod;
+use Howtowp\Bluwp\Http\API\Contracts\Permission;
+use Howtowp\Bluwp\Http\HttpMethod;
 
 final class Route
 {

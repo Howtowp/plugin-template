@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways\Melipayamak;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways\Melipayamak;
 
-use Forouzandea\Bluwp\Communications\SMS\Gateways\AbstractGateway;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Communications\SMS\Gateways\AbstractGateway;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
 
 final class Melipayamak extends AbstractGateway
 {

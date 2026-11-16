@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Providers;
+namespace Howtowp\Bluwp\Database\Providers;
 
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Migrations\MigrationRepository;
-use Forouzandea\Bluwp\Database\Migrations\Migrator;
-use Forouzandea\Bluwp\Database\Migrations\AutomaticMigrator;
-use Forouzandea\Bluwp\Support\Diagnostics\DiagnosticReporter;
-use Forouzandea\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Migrations\MigrationRepository;
+use Howtowp\Bluwp\Database\Migrations\Migrator;
+use Howtowp\Bluwp\Database\Migrations\AutomaticMigrator;
+use Howtowp\Bluwp\Support\Diagnostics\DiagnosticReporter;
+use Howtowp\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
 
 final class MigrationServiceProvider extends ServiceProvider
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Notices;
+namespace Howtowp\Bluwp\Admin\Notices;
 
-use Forouzandea\Bluwp\UI\Contracts\StartupNotice;
-use Forouzandea\Bluwp\Database\Migrations\AutomaticMigrator;
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\UI\Contracts\StartupNotice;
+use Howtowp\Bluwp\Database\Migrations\AutomaticMigrator;
+use Howtowp\Bluwp\Foundation\Application;
 
 final class MigrationFailureNotice implements StartupNotice
 {

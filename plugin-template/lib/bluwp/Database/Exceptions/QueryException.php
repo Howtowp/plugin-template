@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Exceptions;
+namespace Howtowp\Bluwp\Database\Exceptions;
 
 final class QueryException extends \RuntimeException
 {

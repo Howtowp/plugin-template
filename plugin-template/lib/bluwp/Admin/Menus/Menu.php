@@ -4,12 +4,12 @@ declare(strict_types=1);
 /**
  * Reusable WordPress admin menu registrar.
  *
- * @package Forouzandea\Bluwp\Admin
+ * @package Howtowp\Bluwp\Admin
  */
 
-namespace Forouzandea\Bluwp\Admin\Menus;
+namespace Howtowp\Bluwp\Admin\Menus;
 
-use Forouzandea\Bluwp\Admin\Support\DefinitionValidator;
+use Howtowp\Bluwp\Admin\Support\DefinitionValidator;
 
 defined('ABSPATH') || exit;
 

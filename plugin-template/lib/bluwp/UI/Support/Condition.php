@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Support;
+namespace Howtowp\Bluwp\UI\Support;
 
 /** Value rules shared with Vue forms/conditions.js. */
 final class Condition

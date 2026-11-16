@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Container;
+namespace Howtowp\Bluwp\Container;
 
 class Container
 {

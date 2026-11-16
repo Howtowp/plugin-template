@@ -20,7 +20,7 @@ After `scripts/init.sh` the folder, namespace, and prefixes below are renamed. U
 
 ## Architecture and key files
 
-Admin screens are JSON schemas rendered by a React app (VibeFarsi components, Tailwind) built into `assets/admin`. React comes from WordPress (`wp-element`), not from this plugin. Bluwp itself ships inside this plugin at `lib/bluwp` (customers do not install a second plugin). If the site already has the standalone Bluwp plugin active, that copy is used instead, as long as it is on the same 0.2 line. The screen is RTL. IranSans is not bundled; the face is Vazirmatn unless a licensed IranSans file is added.
+Admin screens are JSON schemas rendered by a React app (VibeFarsi components, Tailwind) built into `assets/admin`. React comes from WordPress (`wp-element`), not from this plugin. Bluwp itself ships inside this plugin at `lib/bluwp` (customers do not install a second plugin). Its PHP namespace is `Howtowp\Bluwp`. If the site already has the standalone Bluwp plugin active, that copy is used instead, as long as it is on the same 0.3 line (`>= 0.3.0` and `< 0.4.0`). The screen is RTL. IranSans is not bundled; the face is Vazirmatn unless a licensed IranSans file is added.
 
 - `plugin-template.php` — headers, constants (`HTW_PT_FILE`, `HTW_PT_VERSION`, `HTW_PT_SLUG`, `HTW_PT_CAPABILITY`), then `BluwpBridgeV1::consume()` for the embedded Bluwp. The main filename is always `HTW_PT_FILE` (`__FILE__`). Do not hardcode it. Do not add `Requires Plugins: bluwp`.
 - `lib/bluwp/` — embedded Bluwp. Do not edit it. A newer copy is installed by the product author with `scripts/update-bluwp.sh`.
@@ -34,7 +34,7 @@ Admin screens are JSON schemas rendered by a React app (VibeFarsi components, Ta
 - `crons/sample.php` — sample schedule that fires `htw_pt_sample_cron`.
 - `database/migrations/001_create_notes.php` — example table `htw_pt_notes` (WordPress prefix + that name).
 
-A compatible Bluwp (embedded, or a standalone plugin on the 0.2 line) must load. Otherwise the plugin shows an admin notice and does not boot.
+A compatible Bluwp (embedded, or a standalone plugin on the 0.3 line, namespace `Howtowp\Bluwp`) must load. Otherwise the plugin shows an admin notice and does not boot.
 
 ## Hooks (real)
 

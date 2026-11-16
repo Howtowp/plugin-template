@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Policies;
+namespace Howtowp\Bluwp\Communications\SMS\Policies;
 
-use Forouzandea\Bluwp\Communications\Enums\MessageStatus;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSRoutingPolicy;
+use Howtowp\Bluwp\Communications\Enums\MessageStatus;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSRoutingPolicy;
 
 final class SMSPriorityPolicy implements SMSRoutingPolicy
 {

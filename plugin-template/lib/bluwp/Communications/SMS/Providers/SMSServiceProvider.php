@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Providers;
+namespace Howtowp\Bluwp\Communications\SMS\Providers;
 
-use Forouzandea\Bluwp\Communications\SMS\Sending\SMSManager;
-use Forouzandea\Bluwp\Communications\SMS\Gateways\GatewayRegistry;
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Foundation\DeferrableProvider;
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Http\Client\WordPressHttpClient;
+use Howtowp\Bluwp\Communications\SMS\Sending\SMSManager;
+use Howtowp\Bluwp\Communications\SMS\Gateways\GatewayRegistry;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Foundation\DeferrableProvider;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Http\Client\WordPressHttpClient;
 
 final class SMSServiceProvider extends ServiceProvider implements DeferrableProvider
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Exceptions;
+namespace Howtowp\Bluwp\Communications\Bots\Exceptions;
 
-use Forouzandea\Bluwp\Communications\Bots\Enums\BotErrorReason;
+use Howtowp\Bluwp\Communications\Bots\Enums\BotErrorReason;
 
 final class BotAPIException extends \RuntimeException
 {

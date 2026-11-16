@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Pages;
+namespace Howtowp\Bluwp\UI\Pages;
 
 final class PendingPage
 {

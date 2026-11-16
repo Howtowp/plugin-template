@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Contracts;
+namespace Howtowp\Bluwp\Communications\SMS\Contracts;
 
-use Forouzandea\Bluwp\Communications\Enums\MessageStatus;
+use Howtowp\Bluwp\Communications\Enums\MessageStatus;
 
 interface SMSRoutingPolicy
 {

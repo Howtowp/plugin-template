@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Authorization;
+namespace Howtowp\Bluwp\UI\Authorization;
 
-use Forouzandea\Bluwp\UI\Pages\PageRegistry;
-use Forouzandea\Bluwp\Http\API\Contracts\Permission;
+use Howtowp\Bluwp\UI\Pages\PageRegistry;
+use Howtowp\Bluwp\Http\API\Contracts\Permission;
 use WP_Error;
 use WP_REST_Request;
 

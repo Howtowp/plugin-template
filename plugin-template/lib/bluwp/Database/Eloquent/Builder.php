@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent;
+namespace Howtowp\Bluwp\Database\Eloquent;
 
-use Forouzandea\Bluwp\Database\Query\Builder as QueryBuilder;
-use Forouzandea\Bluwp\Database\Query\QueryState;
-use Forouzandea\Bluwp\Database\Eloquent\Relations\Relation;
+use Howtowp\Bluwp\Database\Query\Builder as QueryBuilder;
+use Howtowp\Bluwp\Database\Query\QueryState;
+use Howtowp\Bluwp\Database\Eloquent\Relations\Relation;
 
 /** @phpstan-consistent-constructor */
 class Builder extends QueryBuilder
@@ -260,7 +260,7 @@ class Builder extends QueryBuilder
         }
         try {
             return $this->create(array_merge($attributes, $values));
-        } catch (\Forouzandea\Bluwp\Database\Exceptions\QueryException $error) {
+        } catch (\Howtowp\Bluwp\Database\Exceptions\QueryException $error) {
             if (!$error->isUniqueConstraintViolation()) {
                 throw $error;
             }
@@ -283,15 +283,15 @@ class Builder extends QueryBuilder
         }
         throw new \BadMethodCallException('Unknown model query method: ' . $method);
     }
-    public function paginate(?int $perPage = null, array|string $columns = ['*'], string $pageName = 'page', ?int $page = null, int|\Closure|null $total = null): \Forouzandea\Bluwp\Database\Pagination\LengthAwarePaginator
+    public function paginate(?int $perPage = null, array|string $columns = ['*'], string $pageName = 'page', ?int $page = null, int|\Closure|null $total = null): \Howtowp\Bluwp\Database\Pagination\LengthAwarePaginator
     {
         return parent::paginate($perPage ?? $this->model->getPerPage(), $columns, $pageName, $page, $total);
     }
-    public function simplePaginate(?int $perPage = null, array|string $columns = ['*'], string $pageName = 'page', ?int $page = null): \Forouzandea\Bluwp\Database\Pagination\Paginator
+    public function simplePaginate(?int $perPage = null, array|string $columns = ['*'], string $pageName = 'page', ?int $page = null): \Howtowp\Bluwp\Database\Pagination\Paginator
     {
         return parent::simplePaginate($perPage ?? $this->model->getPerPage(), $columns, $pageName, $page);
     }
-    public function cursorPaginate(?int $perPage = null, array|string $columns = ['*'], string $cursorName = 'cursor', \Forouzandea\Bluwp\Database\Pagination\Cursor|string|null $cursor = null): \Forouzandea\Bluwp\Database\Pagination\CursorPaginator
+    public function cursorPaginate(?int $perPage = null, array|string $columns = ['*'], string $cursorName = 'cursor', \Howtowp\Bluwp\Database\Pagination\Cursor|string|null $cursor = null): \Howtowp\Bluwp\Database\Pagination\CursorPaginator
     {
         $query = clone $this;
         $key = $this->model->getKeyName();
@@ -303,7 +303,7 @@ class Builder extends QueryBuilder
         }
         return $query->cursorPage($perPage ?? $this->model->getPerPage(), $columns, $cursorName, $cursor);
     }
-    private function cursorPage(int $perPage, array|string $columns, string $cursorName, \Forouzandea\Bluwp\Database\Pagination\Cursor|string|null $cursor): \Forouzandea\Bluwp\Database\Pagination\CursorPaginator
+    private function cursorPage(int $perPage, array|string $columns, string $cursorName, \Howtowp\Bluwp\Database\Pagination\Cursor|string|null $cursor): \Howtowp\Bluwp\Database\Pagination\CursorPaginator
     {
         return parent::cursorPaginate($perPage, $columns, $cursorName, $cursor);
     }

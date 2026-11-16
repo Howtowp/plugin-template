@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Keyboards;
+namespace Howtowp\Bluwp\Communications\Bots\Keyboards;
 
 final class ReplyKeyboard
 {

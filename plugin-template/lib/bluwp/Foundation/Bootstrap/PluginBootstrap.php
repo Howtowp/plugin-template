@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Foundation\Bootstrap;
+namespace Howtowp\Bluwp\Foundation\Bootstrap;
 
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Cron\CronScheduler;
-use Forouzandea\Bluwp\Cron\CronServiceProvider;
-use Forouzandea\Bluwp\Database\Migrations\AutomaticMigrator;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Cron\CronScheduler;
+use Howtowp\Bluwp\Cron\CronServiceProvider;
+use Howtowp\Bluwp\Database\Migrations\AutomaticMigrator;
 
 // Like Loader, this small lifecycle bridge is available before shared-framework selection.
 if (!class_exists(PluginBootstrap::class, false)) {

@@ -5,6 +5,10 @@ The WordPress-facing changelog lives in `plugin-template/readme.txt`.
 
 ## [Unreleased]
 
+### Changed
+- Embedded Bluwp is 0.3.0. Its PHP namespace is `Howtowp\Bluwp`. The template pin is `>= 0.3.0 < 0.4.0` (`HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`).
+- Option names, transients, cron hooks, table names, and user meta were not renamed. They already use `bluwp_` or the plugin slug, so existing sites keep their settings without a data migration.
+
 ## [0.3.0] - 2026-11-14
 ### Changed
 - The starter now follows the Bluwp layout used by How to WP plugins: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/Text.php`, `hooks/early/`, `crons/`, `database/migrations/`.

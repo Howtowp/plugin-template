@@ -4,10 +4,10 @@ declare(strict_types=1);
 /**
  * Stable selection protocol. All copies register before plugins_loaded.
  *
- * @package Forouzandea\Bluwp
+ * @package Howtowp\Bluwp
  */
 
-namespace Forouzandea\Bluwp\Foundation\Bootstrap;
+namespace Howtowp\Bluwp\Foundation\Bootstrap;
 
 defined('ABSPATH') || exit;
 
@@ -59,7 +59,7 @@ if (!class_exists(Loader::class, false)) {
                 }
                 // Check bootstrap requirements; other classes are loaded only on demand.
                 require_once $candidate['path'] . 'Foundation/Bootstrap/Autoloader.php';
-                Autoloader::register('Forouzandea\\Bluwp', $candidate['path']);
+                Autoloader::register('Howtowp\\Bluwp', $candidate['path']);
                 $GLOBALS[self::LOADED_KEY] = $candidate;
                 unset($GLOBALS['bluwp_framework_error']);
                 if (did_action('init')) {

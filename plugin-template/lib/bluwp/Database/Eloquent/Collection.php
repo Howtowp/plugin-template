@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent;
+namespace Howtowp\Bluwp\Database\Eloquent;
 
-use Forouzandea\Bluwp\Support\Collection as BaseCollection;
+use Howtowp\Bluwp\Support\Collection as BaseCollection;
 
 class Collection extends BaseCollection
 {

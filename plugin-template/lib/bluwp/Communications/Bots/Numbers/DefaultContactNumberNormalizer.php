@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Numbers;
+namespace Howtowp\Bluwp\Communications\Bots\Numbers;
 
-use Forouzandea\Bluwp\Communications\Bots\Contracts\ContactNumberNormalizer;
-use Forouzandea\Bluwp\Support\Phone\MobileNumber;
+use Howtowp\Bluwp\Communications\Bots\Contracts\ContactNumberNormalizer;
+use Howtowp\Bluwp\Support\Phone\MobileNumber;
 
 final class DefaultContactNumberNormalizer implements ContactNumberNormalizer
 {
