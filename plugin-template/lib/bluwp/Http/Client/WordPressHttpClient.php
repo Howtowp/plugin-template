@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client;
+namespace Howtowp\Bluwp\Http\Client;
 
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Http\Client\Exceptions\HttpException;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Http\Client\Exceptions\HttpException;
 
 final class WordPressHttpClient implements HttpClient
 {

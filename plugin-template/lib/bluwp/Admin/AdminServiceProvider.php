@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin;
+namespace Howtowp\Bluwp\Admin;
 
-use Forouzandea\Bluwp\UI\Controllers\PagesController;
-use Forouzandea\Bluwp\UI\AppConfig;
-use Forouzandea\Bluwp\UI\AppAssets;
-use Forouzandea\Bluwp\UI\Authorization\ViewPages;
-use Forouzandea\Bluwp\Admin\Menus\MenuRegistry;
-use Forouzandea\Bluwp\Admin\Menus\AppMenu;
-use Forouzandea\Bluwp\Admin\Menus\Menu;
-use Forouzandea\Bluwp\UI\Views\AppView;
-use Forouzandea\Bluwp\UI\Views\AppViewConfiguration;
-use Forouzandea\Bluwp\UI\Pages\PageRegistry;
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\UI\UIServiceProvider;
-use Forouzandea\Bluwp\Admin\Contracts\NoticePolicy;
-use Forouzandea\Bluwp\Admin\Notices\WordPressNoticePolicy;
-use Forouzandea\Bluwp\Admin\Notices\MigrationFailureNotice;
+use Howtowp\Bluwp\UI\Controllers\PagesController;
+use Howtowp\Bluwp\UI\AppConfig;
+use Howtowp\Bluwp\UI\AppAssets;
+use Howtowp\Bluwp\UI\Authorization\ViewPages;
+use Howtowp\Bluwp\Admin\Menus\MenuRegistry;
+use Howtowp\Bluwp\Admin\Menus\AppMenu;
+use Howtowp\Bluwp\Admin\Menus\Menu;
+use Howtowp\Bluwp\UI\Views\AppView;
+use Howtowp\Bluwp\UI\Views\AppViewConfiguration;
+use Howtowp\Bluwp\UI\Pages\PageRegistry;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\UI\UIServiceProvider;
+use Howtowp\Bluwp\Admin\Contracts\NoticePolicy;
+use Howtowp\Bluwp\Admin\Notices\WordPressNoticePolicy;
+use Howtowp\Bluwp\Admin\Notices\MigrationFailureNotice;
 
 final class AdminServiceProvider extends ServiceProvider
 {

@@ -17,8 +17,9 @@
  * Plugin Name needs at least five Latin letters (Plugin Check). The Persian
  * title stays in Text::PluginName and in the React screen, not in this header.
  *
- * Bluwp is embedded in lib/bluwp. A site that also has the standalone Bluwp
- * plugin keeps using that copy when it is active (see BluwpBridgeV1).
+ * Bluwp 0.3.x (namespace Howtowp\Bluwp) is embedded in lib/bluwp. A site that
+ * also has the standalone Bluwp plugin keeps using that copy when it is active
+ * and on this line (see BluwpBridgeV1).
  * WooCommerce plugins add "Requires Plugins: woocommerce" and the WC headers.
  * Do not hardcode this file's name anywhere else: pass HTW_PT_FILE.
  *
@@ -38,8 +39,8 @@ define( 'HTW_PT_SLUG', 'plugin-template' );
 define( 'HTW_PT_CAPABILITY', 'manage_options' ); // Admin page and REST must both use this.
 define( 'HTW_PT_MIN_PHP', '8.1' );
 define( 'HTW_PT_MIN_WP', '6.8' );
-define( 'HTW_PT_BLUWP_MIN', '0.2.1' );
-define( 'HTW_PT_BLUWP_BELOW', '0.3.0' ); // Exclusive upper bound. Stay on Bluwp 0.2.x.
+define( 'HTW_PT_BLUWP_MIN', '0.3.0' );
+define( 'HTW_PT_BLUWP_BELOW', '0.4.0' ); // Exclusive upper bound. Stay on Bluwp 0.3.x.
 
 /*
  * Keep this block free of namespaces, return types, and enums so an old PHP

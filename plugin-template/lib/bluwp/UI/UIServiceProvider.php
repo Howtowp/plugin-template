@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI;
+namespace Howtowp\Bluwp\UI;
 
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Foundation\DeferrableProvider;
-use Forouzandea\Bluwp\UI\Fields\FieldRegistry;
-use Forouzandea\Bluwp\UI\Forms\FormProcessor;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Foundation\DeferrableProvider;
+use Howtowp\Bluwp\UI\Fields\FieldRegistry;
+use Howtowp\Bluwp\UI\Forms\FormProcessor;
 
 final class UIServiceProvider extends ServiceProvider implements DeferrableProvider
 {

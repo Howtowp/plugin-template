@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Controllers;
+namespace Howtowp\Bluwp\UI\Controllers;
 
-use Forouzandea\Bluwp\UI\AppConfig;
-use Forouzandea\Bluwp\UI\Pages\PageRegistry;
-use Forouzandea\Bluwp\Http\API\Controller;
+use Howtowp\Bluwp\UI\AppConfig;
+use Howtowp\Bluwp\UI\Pages\PageRegistry;
+use Howtowp\Bluwp\Http\API\Controller;
 use WP_REST_Response;
 
 final class PagesController extends Controller

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Connection;
+namespace Howtowp\Bluwp\Database\Connection;
 
-use Forouzandea\Bluwp\Database\Query\SqlCompiler;
+use Howtowp\Bluwp\Database\Query\SqlCompiler;
 
 /** SQL preview only: SELECT returns no rows; migration PHP must not have external side effects. */
 final class PretendConnection implements ConnectionInterface
@@ -40,12 +40,12 @@ final class PretendConnection implements ConnectionInterface
     }
     public function update(string $table, array $data, array $where): int
     {
-        $query = new \Forouzandea\Bluwp\Database\Query\Builder($this, $table);
+        $query = new \Howtowp\Bluwp\Database\Query\Builder($this, $table);
         return $query->where($where)->update($data);
     }
     public function delete(string $table, array $where): int
     {
-        $query = new \Forouzandea\Bluwp\Database\Query\Builder($this, $table);
+        $query = new \Howtowp\Bluwp\Database\Query\Builder($this, $table);
         return $query->where($where)->delete();
     }
     public function getPrefix(): string

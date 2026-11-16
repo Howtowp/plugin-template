@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Views;
+namespace Howtowp\Bluwp\UI\Views;
 
-use Forouzandea\Bluwp\UI\AppConfig;
-use Forouzandea\Bluwp\UI\Contracts\StartupNotice;
+use Howtowp\Bluwp\UI\AppConfig;
+use Howtowp\Bluwp\UI\Contracts\StartupNotice;
 
 final class AppViewConfiguration
 {

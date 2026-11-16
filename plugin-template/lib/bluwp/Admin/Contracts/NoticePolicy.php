@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Contracts;
+namespace Howtowp\Bluwp\Admin\Contracts;
 
 interface NoticePolicy
 {

@@ -13,8 +13,8 @@ namespace HowToWP\PluginTemplate\App\Controllers;
 
 defined( 'ABSPATH' ) || exit;
 
-use Forouzandea\Bluwp\Http\API\Controller;
-use Forouzandea\Bluwp\Http\API\Responses\ResponseFactory;
+use Howtowp\Bluwp\Http\API\Controller;
+use Howtowp\Bluwp\Http\API\Responses\ResponseFactory;
 use HowToWP\PluginTemplate\App\Http\RestAuthorization;
 use HowToWP\PluginTemplate\App\Repositories\SettingsRepository;
 use HowToWP\PluginTemplate\App\Schemas\SettingsSchema;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Views;
+namespace Howtowp\Bluwp\UI\Views;
 
-use Forouzandea\Bluwp\UI\Pages\PageRegistry;
+use Howtowp\Bluwp\UI\Pages\PageRegistry;
 
 final class AppView
 {

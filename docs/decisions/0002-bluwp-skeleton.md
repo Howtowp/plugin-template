@@ -2,7 +2,7 @@
 
 **Status:** accepted
 
-How to WP plugins share one admin design system: the Bluwp PHP framework (`>= 0.2.1 < 0.3`) and the bluwp-vuejs kit. This repository is that starter.
+How to WP plugins share one admin design system: the Bluwp PHP framework (`Howtowp\Bluwp`, `>= 0.3.0 < 0.4.0`). This repository is that starter. The admin UI is the React app in `admin/`, not a Vue kit.
 
 The plugin folder follows Bluwp’s layout (`bootstrap`, `pages`, `routes`, `app`, `src`, `hooks/early`, `crons`, `database`, `assets`). Admin pages are JSON schemas. Persian copy lives in `src/Text.php`. The compiled kit is built per plugin into `assets/` and is not copied from another product.
 

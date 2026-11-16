@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API;
+namespace Howtowp\Bluwp\Http\API;
 
-use Forouzandea\Bluwp\Http\API\Requests\PaginationParameters;
-use Forouzandea\Bluwp\Http\API\Responses\ResponseFactory;
-use Forouzandea\Bluwp\UI\Contracts\Schema;
+use Howtowp\Bluwp\Http\API\Requests\PaginationParameters;
+use Howtowp\Bluwp\Http\API\Responses\ResponseFactory;
+use Howtowp\Bluwp\UI\Contracts\Schema;
 use LogicException;
 use ReflectionClass;
 use WP_Error;

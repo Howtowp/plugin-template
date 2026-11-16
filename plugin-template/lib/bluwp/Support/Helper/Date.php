@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Helper;
+namespace Howtowp\Bluwp\Support\Helper;
 
 use DateTimeImmutable;
 use DateTimeInterface;

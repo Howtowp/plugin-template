@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client\Validation;
+namespace Howtowp\Bluwp\Http\Client\Validation;
 
 final class PublicHttpsUrl
 {

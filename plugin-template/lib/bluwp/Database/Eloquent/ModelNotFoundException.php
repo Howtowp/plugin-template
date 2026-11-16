@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent;
+namespace Howtowp\Bluwp\Database\Eloquent;
 
-use Forouzandea\Bluwp\Database\Exceptions\ModelNotFoundException as BaseModelNotFoundException;
+use Howtowp\Bluwp\Database\Exceptions\ModelNotFoundException as BaseModelNotFoundException;
 
 class ModelNotFoundException extends BaseModelNotFoundException
 {

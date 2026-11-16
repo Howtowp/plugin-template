@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Drivers\Telegram;
+namespace Howtowp\Bluwp\Communications\Bots\Drivers\Telegram;
 
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Foundation\DeferrableProvider;
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Http\Client\WordPressHttpClient;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Foundation\DeferrableProvider;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Http\Client\WordPressHttpClient;
 
 final class TelegramServiceProvider extends ServiceProvider implements DeferrableProvider
 {

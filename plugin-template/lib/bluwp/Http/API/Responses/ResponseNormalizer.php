@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Responses;
+namespace Howtowp\Bluwp\Http\API\Responses;
 
 final class ResponseNormalizer
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation;
+namespace Howtowp\Bluwp\Support\Validation;
 
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Foundation\DeferrableProvider;
-use Forouzandea\Bluwp\Support\Validation\Contracts\MessageProvider;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Foundation\DeferrableProvider;
+use Howtowp\Bluwp\Support\Validation\Contracts\MessageProvider;
 
 final class ValidationServiceProvider extends ServiceProvider implements DeferrableProvider
 {

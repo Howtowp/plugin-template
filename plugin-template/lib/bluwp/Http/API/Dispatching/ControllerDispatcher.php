@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Dispatching;
+namespace Howtowp\Bluwp\Http\API\Dispatching;
 
-use Forouzandea\Bluwp\Http\API\Controller;
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Http\API\Controller;
+use Howtowp\Bluwp\Foundation\Application;
 
 final class ControllerDispatcher
 {

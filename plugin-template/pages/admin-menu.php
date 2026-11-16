@@ -10,8 +10,8 @@
 
 declare(strict_types=1);
 
-use Forouzandea\Bluwp\Admin\Menus\MenuRegistry;
-use Forouzandea\Bluwp\UI\Pages\PageRegistry;
+use Howtowp\Bluwp\Admin\Menus\MenuRegistry;
+use Howtowp\Bluwp\UI\Pages\PageRegistry;
 use HowToWP\PluginTemplate\Text;
 
 defined( 'ABSPATH' ) || exit;

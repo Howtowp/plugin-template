@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Migrations;
+namespace Howtowp\Bluwp\Database\Migrations;
 
-use Forouzandea\Bluwp\Support\Diagnostics\DiagnosticReporter;
-use Forouzandea\Bluwp\Support\Diagnostics\FailureContext;
-use Forouzandea\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
+use Howtowp\Bluwp\Support\Diagnostics\DiagnosticReporter;
+use Howtowp\Bluwp\Support\Diagnostics\FailureContext;
+use Howtowp\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
 
 final class AutomaticMigrator
 {

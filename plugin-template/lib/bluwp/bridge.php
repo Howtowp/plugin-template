@@ -58,7 +58,7 @@ if (!class_exists('BluwpBridgeV1', false)) {
                 throw new RuntimeException('A complete, compatible Bluwp framework is required.');
             }
             $c = self::$consumers[$file];
-            return \Forouzandea\Bluwp\Foundation\Bootstrap\PluginBootstrap::register($file, $c['name'], $c['title'], false);
+            return \Howtowp\Bluwp\Foundation\Bootstrap\PluginBootstrap::register($file, $c['name'], $c['title'], false);
         }
 
         private static function attach(string $file): void
@@ -120,7 +120,7 @@ if (!class_exists('BluwpBridgeV1', false)) {
                 foreach ($candidates as $candidate) {
                     bluwpFrameworkRegister($candidate['version'], $candidate['path'], $candidate['source']);
                 }
-                \Forouzandea\Bluwp\Foundation\Bootstrap\Loader::load();
+                \Howtowp\Bluwp\Foundation\Bootstrap\Loader::load();
                 foreach (array_keys(self::$consumers) as $file) {
                     self::attach($file);
                 }

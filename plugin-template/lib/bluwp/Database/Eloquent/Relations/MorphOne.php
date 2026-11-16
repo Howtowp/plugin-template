@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
 final class MorphOne extends MorphMany
 {
-    public function getResults(): ?\Forouzandea\Bluwp\Database\Eloquent\Model
+    public function getResults(): ?\Howtowp\Bluwp\Database\Eloquent\Model
     {
         return $this->query()->first();
     }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 /**
  * Plugin Name: Bluwp
  * Description: Shared Bluwp framework provider.
- * Version: 0.2.1
+ * Version: 0.3.0
  * Requires at least: 6.0
  * Requires PHP: 8.1
  * Text Domain: bluwp

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Sending;
+namespace Howtowp\Bluwp\Communications\SMS\Sending;
 
-use Forouzandea\Bluwp\Communications\Enums\MessageStatus;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
-use Forouzandea\Bluwp\Communications\SMS\Security\SMSDataFilter;
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Http\Client\Exceptions\HttpException;
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
-use Forouzandea\Bluwp\Http\Client\HttpResponse;
+use Howtowp\Bluwp\Communications\Enums\MessageStatus;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Security\SMSDataFilter;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Http\Client\Exceptions\HttpException;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Http\Client\HttpResponse;
 
 /** Executes one exchange; gateway-specific decisions are supplied by the adapter. */
 final class SMSExecutor

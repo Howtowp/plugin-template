@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Connection;
+namespace Howtowp\Bluwp\Database\Connection;
 
-use Forouzandea\Bluwp\Database\Exceptions\QueryException;
-use Forouzandea\Bluwp\Database\Query\Builder;
-use Forouzandea\Bluwp\Database\Query\SqlCompiler;
+use Howtowp\Bluwp\Database\Exceptions\QueryException;
+use Howtowp\Bluwp\Database\Query\Builder;
+use Howtowp\Bluwp\Database\Query\SqlCompiler;
 
-final class WPDBConnection implements ConnectionInterface, \Forouzandea\Bluwp\Database\Contracts\MonitorsQueries
+final class WPDBConnection implements ConnectionInterface, \Howtowp\Bluwp\Database\Contracts\MonitorsQueries
 {
     use MonitorsQueries;
     private array $afterCommitCallbacks = [];

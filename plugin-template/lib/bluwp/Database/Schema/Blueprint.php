@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Schema;
+namespace Howtowp\Bluwp\Database\Schema;
 
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Query\SqlCompiler;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Query\SqlCompiler;
 
 final class Blueprint
 {

@@ -24,7 +24,7 @@
 | `dev/blueprint.json` | آدرس zip نسخه (اگر استفاده می‌کنی) |
 | `CHANGELOG.md` | ورودی جدید به سبک [Keep a Changelog](https://keepachangelog.com) |
 
-`product.json` فیلد version ندارد. بازه‌ی Bluwp (`>=0.2.1 <0.3` در ثابت‌ها و `development/kit.json`) نسخه‌ی خود افزونه نیست. بعد از بالا بردن نسخه: `php scripts/check-catalog.php`.
+`product.json` فیلد version ندارد. بازه‌ی Bluwp (`>=0.3.0 <0.4.0` در ثابت‌های `HTW_*_BLUWP_MIN` / `HTW_*_BLUWP_BELOW`) نسخه‌ی خود افزونه نیست. namespace هسته `Howtowp\Bluwp` است. بعد از بالا بردن نسخه: `php scripts/check-catalog.php`.
 
 نمونه‌ی `CHANGELOG.md`:
 

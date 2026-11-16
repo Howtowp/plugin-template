@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
-use Forouzandea\Bluwp\Database\Eloquent\Model;
-use Forouzandea\Bluwp\Database\Eloquent\Builder;
-use Forouzandea\Bluwp\Database\Eloquent\Collection;
-use Forouzandea\Bluwp\Database\Query\Builder as QueryBuilder;
+use Howtowp\Bluwp\Database\Eloquent\Model;
+use Howtowp\Bluwp\Database\Eloquent\Builder;
+use Howtowp\Bluwp\Database\Eloquent\Collection;
+use Howtowp\Bluwp\Database\Query\Builder as QueryBuilder;
 
 final class BelongsToMany extends Relation
 {
@@ -26,7 +26,7 @@ final class BelongsToMany extends Relation
     public function withPivot(string ...$columns): static
     {
         foreach ($columns as $column) {
-            \Forouzandea\Bluwp\Database\Query\SqlCompiler::identifier($column);
+            \Howtowp\Bluwp\Database\Query\SqlCompiler::identifier($column);
         }
         $this->pivotColumns = array_values(array_unique(array_merge($this->pivotColumns, $columns)));
         return $this;

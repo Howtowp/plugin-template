@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Authorization;
+namespace Howtowp\Bluwp\Http\API\Authorization;
 
-use Forouzandea\Bluwp\Http\API\Authentication\AuthContext;
-use Forouzandea\Bluwp\Http\API\Authentication\BearerTokenAuthenticator;
-use Forouzandea\Bluwp\Http\API\Contracts\Permission;
+use Howtowp\Bluwp\Http\API\Authentication\AuthContext;
+use Howtowp\Bluwp\Http\API\Authentication\BearerTokenAuthenticator;
+use Howtowp\Bluwp\Http\API\Contracts\Permission;
 
 final class BearerTokenPermission implements Permission
 {

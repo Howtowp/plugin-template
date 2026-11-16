@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client\Cache;
+namespace Howtowp\Bluwp\Http\Client\Cache;
 
-use Forouzandea\Bluwp\Http\Client\Contracts\AccessTokenCache;
+use Howtowp\Bluwp\Http\Client\Contracts\AccessTokenCache;
 
 final class WordPressTransientAccessTokenCache implements AccessTokenCache
 {

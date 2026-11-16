@@ -4,7 +4,7 @@
 > برای **Cursor**: نسخه‌ی خلاصه‌ی این قوانین در `.cursor/rules/wordpress.mdc` است (همیشه فعال).
 > برای **Claude Code** و بقیه‌ی ایجنت‌ها: `CLAUDE.md` و `AGENTS.md` در ریشه‌ی پروژه به این فایل ارجاع می‌دهند.
 >
-> **پایه‌ی فنی:** PHP ≥ 8.1 و WordPress ≥ 6.8. Bluwp `>= 0.2.1` و `< 0.3` لازم است. کد دامنه در `src/` و لایه‌ی HTTP در `app/` با namespace `HowToWP\PluginTemplate\` است. پیشوند `htw_pt_` / `HTW_PT_` و text domain برابر slug (`plugin-template`) است؛ بعد از `scripts/init.sh` این نام‌ها عوض می‌شوند.
+> **پایه‌ی فنی:** PHP ≥ 8.1 و WordPress ≥ 6.8. Bluwp `>= 0.3.0` و `< 0.4.0` لازم است و namespace آن `Howtowp\Bluwp` است. کد دامنه در `src/` و لایه‌ی HTTP در `app/` با namespace `HowToWP\PluginTemplate\` است. پیشوند `htw_pt_` / `HTW_PT_` و text domain برابر slug (`plugin-template`) است؛ بعد از `scripts/init.sh` این نام‌ها عوض می‌شوند.
 >
 > **اسکلت Bluwp:** چیدمان در `docs/architecture.md`. رشته‌های فارسی در `src/Text.php` (enum) هستند و در خروجی با `esc_html()` فرار می‌شوند؛ فقط اخطار نسخه‌ی PHP/وردپرس در فایل اصلی از `__()` استفاده می‌کند. فایل اصلی فقط با ثابت `HTW_PT_FILE` (مقدار `__FILE__`) به ووکامرس و Bluwp داده می‌شود. capability صفحه و REST همان `HTW_PT_CAPABILITY` است. CSS کیت را کپی نکنید (`docs/design-system.md`).
 >

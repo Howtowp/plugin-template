@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Query;
+namespace Howtowp\Bluwp\Database\Query;
 
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Support\Collection;
-use Forouzandea\Bluwp\Database\Pagination\LengthAwarePaginator;
-use Forouzandea\Bluwp\Database\Pagination\Paginator;
-use Forouzandea\Bluwp\Database\Pagination\Cursor;
-use Forouzandea\Bluwp\Database\Pagination\CursorPaginator;
-use Forouzandea\Bluwp\Database\Exceptions\ModelNotFoundException;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Support\Collection;
+use Howtowp\Bluwp\Database\Pagination\LengthAwarePaginator;
+use Howtowp\Bluwp\Database\Pagination\Paginator;
+use Howtowp\Bluwp\Database\Pagination\Cursor;
+use Howtowp\Bluwp\Database\Pagination\CursorPaginator;
+use Howtowp\Bluwp\Database\Exceptions\ModelNotFoundException;
 
 class Builder
 {
@@ -642,7 +642,7 @@ class Builder
     {
         return $this->increment($column, -$amount, $extra);
     }
-    public function lazy(int $chunkSize = 1000): \Forouzandea\Bluwp\Support\LazyCollection
+    public function lazy(int $chunkSize = 1000): \Howtowp\Bluwp\Support\LazyCollection
     {
         if ($chunkSize < 1) {
             throw new \InvalidArgumentException('Chunk size must be positive.');
@@ -653,7 +653,7 @@ class Builder
             throw new \LogicException('Lazy queries require an explicit orderBy.');
         }
         $query->setExecutionState($state);
-        return new \Forouzandea\Bluwp\Support\LazyCollection(function () use ($query, $state, $chunkSize) {
+        return new \Howtowp\Bluwp\Support\LazyCollection(function () use ($query, $state, $chunkSize) {
             $remaining = $state->limit;
             $offset = $state->offset ?? 0;
             $key = 0;
@@ -673,7 +673,7 @@ class Builder
             }
         });
     }
-    public function lazyById(int $chunkSize = 1000, ?string $column = null, ?string $alias = null): \Forouzandea\Bluwp\Support\LazyCollection
+    public function lazyById(int $chunkSize = 1000, ?string $column = null, ?string $alias = null): \Howtowp\Bluwp\Support\LazyCollection
     {
         if ($chunkSize < 1 || $this->hasLimitOrOffset()) {
             throw new \InvalidArgumentException('Keyset iteration requires positive size and no limit/offset.');
@@ -691,7 +691,7 @@ class Builder
             $state->wheres = [['type' => 'nested', 'wheres' => $state->wheres, 'boolean' => 'AND']];
         }
         $query->setExecutionState($state);
-        return new \Forouzandea\Bluwp\Support\LazyCollection(function () use ($query, $chunkSize, $column, $alias) {
+        return new \Howtowp\Bluwp\Support\LazyCollection(function () use ($query, $chunkSize, $column, $alias) {
             $last = null;
             $key = 0;
             do {

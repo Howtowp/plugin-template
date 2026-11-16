@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Fields;
+namespace Howtowp\Bluwp\UI\Fields;
 
-use Forouzandea\Bluwp\UI\Support\Condition;
+use Howtowp\Bluwp\UI\Support\Condition;
 
 /** @phpstan-consistent-constructor */
 abstract class Field implements \JsonSerializable

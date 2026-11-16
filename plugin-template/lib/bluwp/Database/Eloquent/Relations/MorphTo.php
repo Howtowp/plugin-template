@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
-use Forouzandea\Bluwp\Database\Eloquent\Model;
-use Forouzandea\Bluwp\Database\Eloquent\Builder;
-use Forouzandea\Bluwp\Database\Eloquent\Collection;
+use Howtowp\Bluwp\Database\Eloquent\Model;
+use Howtowp\Bluwp\Database\Eloquent\Builder;
+use Howtowp\Bluwp\Database\Eloquent\Collection;
 
 final class MorphTo extends Relation
 {

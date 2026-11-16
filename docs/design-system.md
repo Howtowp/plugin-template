@@ -4,11 +4,11 @@ How to WP admin UI is not drawn inside each plugin. It comes from two shared pie
 
 | Piece | What it owns | Version |
 | --- | --- | --- |
-| **Bluwp** (embedded in `lib/bluwp`) | REST router, migrations, cron, autoload | `>= 0.2.1` and `< 0.3.0` |
+| **Bluwp** (embedded in `lib/bluwp`) | REST router, migrations, cron, autoload. PHP namespace `Howtowp\Bluwp` | `>= 0.3.0` and `< 0.4.0` |
 | **VibeFarsi** (copied into `admin/src/kit`, MIT) | Buttons, fields, tabs, table, dialog, toast | source of the React components |
 | **This plugin** | Schema, REST, tokens, Vite build in `assets/admin/` | its own header version |
 
-Customers install one plugin. Bluwp is not a separate download. The main file loads `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. On `plugins_loaded` at priority -1000 the bridge uses an active standalone Bluwp plugin if one registered itself, otherwise it compares every embedded copy via `metadata.php` and loads the highest version once. `attach()` then refuses a copy outside the consumer's line (for `0.2.1`, that is `>= 0.2.1` and `< 0.3.0`).
+Customers install one plugin. Bluwp is not a separate download. The main file loads `lib/bluwp/bridge.php` and calls `BluwpBridgeV1::consume()`. On `plugins_loaded` at priority -1000 the bridge uses an active standalone Bluwp plugin if one registered itself, otherwise it compares every embedded copy via `metadata.php` and loads the highest version once. `attach()` then refuses a copy outside the consumer's line (for `0.3.0`, that is `>= 0.3.0` and `< 0.4.0`). The loaded classes are `Howtowp\Bluwp\...`.
 
 Replace the embedded tree with `./scripts/update-bluwp.sh <directory-or-tgz>`. Do not hand-edit files under `lib/bluwp/`. CI checks that `bridge.php` exists and that `metadata.php`'s version sits inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`.
 
@@ -75,12 +75,12 @@ CI rebuilds and fails if `assets/admin` does not match the source. The release w
 
 ## Bumping Bluwp
 
-Stay on Bluwp 0.2 until every How to WP plugin moves together.
+The current line is Bluwp 0.3 (`Howtowp\Bluwp`). Stay inside `>= 0.3.0` and `< 0.4.0` until every How to WP plugin moves together again.
 
 1. Run `./scripts/update-bluwp.sh` with the new Bluwp tree. `metadata.php` must stay inside `HTW_PT_BLUWP_MIN` and `HTW_PT_BLUWP_BELOW`.
-2. Smoke-test the settings schema (form render, save, `422`, forbidden without the capability). Confirm a site that still has standalone Bluwp 0.2.x active boots the standalone copy, and a site without it boots `lib/bluwp`.
+2. Smoke-test the settings schema (form render, save, `422`, forbidden without the capability). Confirm a site that still has standalone Bluwp 0.3.x active boots the standalone copy, and a site without it boots `lib/bluwp`.
 
-A 0.3 upgrade is a breaking framework bump. Do it in a dedicated change.
+A 0.4 upgrade is a breaking framework bump. Do it in a dedicated change. What an existing plugin must edit to adopt 0.3.0 is listed in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## Fonts
 

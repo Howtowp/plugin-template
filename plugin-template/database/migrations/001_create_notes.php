@@ -13,8 +13,8 @@
 
 declare(strict_types=1);
 
-use Forouzandea\Bluwp\Database\Migrations\Migration;
-use Forouzandea\Bluwp\Database\Schema\Blueprint;
+use Howtowp\Bluwp\Database\Migrations\Migration;
+use Howtowp\Bluwp\Database\Schema\Blueprint;
 
 defined( 'ABSPATH' ) || exit;
 

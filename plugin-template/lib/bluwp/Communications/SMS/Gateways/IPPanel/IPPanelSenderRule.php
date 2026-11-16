@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways\IPPanel;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways\IPPanel;
 
-use Forouzandea\Bluwp\Communications\SMS\Gateways\IPPanel\IPPanel;
-use Forouzandea\Bluwp\Support\Validation\Rules\TypeRule;
+use Howtowp\Bluwp\Communications\SMS\Gateways\IPPanel\IPPanel;
+use Howtowp\Bluwp\Support\Validation\Rules\TypeRule;
 
 final class IPPanelSenderRule extends TypeRule
 {

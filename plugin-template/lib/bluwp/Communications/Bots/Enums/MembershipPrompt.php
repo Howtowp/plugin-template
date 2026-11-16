@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Enums;
+namespace Howtowp\Bluwp\Communications\Bots\Enums;
 
 enum MembershipPrompt
 {

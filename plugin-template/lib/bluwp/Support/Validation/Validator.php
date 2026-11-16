@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation;
+namespace Howtowp\Bluwp\Support\Validation;
 
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\Application;
 
 final class Validator
 {

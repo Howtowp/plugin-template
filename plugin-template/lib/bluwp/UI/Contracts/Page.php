@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Contracts;
+namespace Howtowp\Bluwp\UI\Contracts;
 
-use Forouzandea\Bluwp\Contracts\Arrayable;
+use Howtowp\Bluwp\Contracts\Arrayable;
 
 interface Page extends Arrayable
 {

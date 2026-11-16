@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Dispatching;
+namespace Howtowp\Bluwp\Http\API\Dispatching;
 
-use Forouzandea\Bluwp\Http\API\Contracts\ErrorReporter;
-use Forouzandea\Bluwp\Http\API\Responses\ResponseFactory;
+use Howtowp\Bluwp\Http\API\Contracts\ErrorReporter;
+use Howtowp\Bluwp\Http\API\Responses\ResponseFactory;
 
 final class EndpointExecutor
 {

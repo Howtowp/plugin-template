@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Authentication;
+namespace Howtowp\Bluwp\Http\API\Authentication;
 
-use Forouzandea\Bluwp\Http\API\Contracts\ErrorReporter;
-use Forouzandea\Bluwp\Http\API\Contracts\TokenValidator;
+use Howtowp\Bluwp\Http\API\Contracts\ErrorReporter;
+use Howtowp\Bluwp\Http\API\Contracts\TokenValidator;
 
 final class BearerTokenAuthenticator
 {

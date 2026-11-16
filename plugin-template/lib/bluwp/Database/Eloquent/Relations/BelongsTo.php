@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
-use Forouzandea\Bluwp\Database\Eloquent\Model;
+use Howtowp\Bluwp\Database\Eloquent\Model;
 
 final class BelongsTo extends Relation
 {
@@ -12,7 +12,7 @@ final class BelongsTo extends Relation
     {
         parent::__construct($parent, $related, $foreignKey, $localKey);
     }
-    public function query(): \Forouzandea\Bluwp\Database\Eloquent\Builder
+    public function query(): \Howtowp\Bluwp\Database\Eloquent\Builder
     {
         if (!$this->applyParentConstraint) {
             return $this->query;
@@ -21,7 +21,7 @@ final class BelongsTo extends Relation
         return $this->constrainedQuery ??= ($key === null ? $this->relatedQuery()->whereIn($this->localKey, [])
             : $this->relatedQuery()->where($this->localKey, $key));
     }
-    public function get(): \Forouzandea\Bluwp\Database\Eloquent\Collection
+    public function get(): \Howtowp\Bluwp\Database\Eloquent\Collection
     {
         return $this->query()->get();
     }
@@ -29,7 +29,7 @@ final class BelongsTo extends Relation
     {
         return $this->query()->first();
     }
-    public function existenceQuery(string $parentTable): \Forouzandea\Bluwp\Database\Eloquent\Builder
+    public function existenceQuery(string $parentTable): \Howtowp\Bluwp\Database\Eloquent\Builder
     {
         $query = $this->relatedQuery();
         if ($query->getTableName() === $parentTable) {

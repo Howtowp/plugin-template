@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Support;
+namespace Howtowp\Bluwp\Admin\Support;
 
 use InvalidArgumentException;
-use Forouzandea\Bluwp\UI\Support\DefinitionValidator as ValueValidator;
+use Howtowp\Bluwp\UI\Support\DefinitionValidator as ValueValidator;
 
 final class DefinitionValidator
 {

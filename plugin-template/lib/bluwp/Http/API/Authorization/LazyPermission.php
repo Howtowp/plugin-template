@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Authorization;
+namespace Howtowp\Bluwp\Http\API\Authorization;
 
-use Forouzandea\Bluwp\Http\API\Contracts\Permission;
-use Forouzandea\Bluwp\Http\API\Authentication\AuthContext;
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Http\API\Contracts\Permission;
+use Howtowp\Bluwp\Http\API\Authentication\AuthContext;
+use Howtowp\Bluwp\Foundation\Application;
 
 final class LazyPermission implements Permission
 {

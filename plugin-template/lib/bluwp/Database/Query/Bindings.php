@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Query;
+namespace Howtowp\Bluwp\Database\Query;
 
 /** Translate positional SQL parameters without interpreting quoted text or comments. */
 final class Bindings

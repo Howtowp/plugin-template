@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Authorization;
+namespace Howtowp\Bluwp\Http\API\Authorization;
 
-use Forouzandea\Bluwp\Http\API\Authentication\AuthContext;
-use Forouzandea\Bluwp\Http\API\Authentication\AuthContextStore;
-use Forouzandea\Bluwp\Http\API\Contracts\ErrorReporter;
-use Forouzandea\Bluwp\Http\API\Contracts\Permission;
+use Howtowp\Bluwp\Http\API\Authentication\AuthContext;
+use Howtowp\Bluwp\Http\API\Authentication\AuthContextStore;
+use Howtowp\Bluwp\Http\API\Contracts\ErrorReporter;
+use Howtowp\Bluwp\Http\API\Contracts\Permission;
 
 /** Commits identity only after the complete policy succeeds. */
 final class PermissionEvaluator

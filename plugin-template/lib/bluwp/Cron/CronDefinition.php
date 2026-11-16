@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Cron;
+namespace Howtowp\Bluwp\Cron;
 
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\Application;
 
 interface CronDefinition
 {

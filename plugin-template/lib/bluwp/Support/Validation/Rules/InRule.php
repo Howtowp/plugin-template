@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation\Rules;
+namespace Howtowp\Bluwp\Support\Validation\Rules;
 
-use Forouzandea\Bluwp\Support\Validation\{Attribute, RuleViolation, ValidationContext};
-use Forouzandea\Bluwp\Support\Validation\Contracts\Rule;
+use Howtowp\Bluwp\Support\Validation\{Attribute, RuleViolation, ValidationContext};
+use Howtowp\Bluwp\Support\Validation\Contracts\Rule;
 
 final class InRule implements Rule
 {

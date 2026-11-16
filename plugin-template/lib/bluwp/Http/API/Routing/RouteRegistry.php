@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Routing;
+namespace Howtowp\Bluwp\Http\API\Routing;
 
-use Forouzandea\Bluwp\Http\API\Contracts\RouteRegistrar;
+use Howtowp\Bluwp\Http\API\Contracts\RouteRegistrar;
 
 final class RouteRegistry
 {

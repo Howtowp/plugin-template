@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Menus;
+namespace Howtowp\Bluwp\Admin\Menus;
 
-use Forouzandea\Bluwp\UI\Views\AppView;
-use Forouzandea\Bluwp\UI\Pages\PageRegistry;
-use Forouzandea\Bluwp\Admin\Contracts\NoticePolicy;
-use Forouzandea\Bluwp\Admin\Notices\WordPressNoticePolicy;
+use Howtowp\Bluwp\UI\Views\AppView;
+use Howtowp\Bluwp\UI\Pages\PageRegistry;
+use Howtowp\Bluwp\Admin\Contracts\NoticePolicy;
+use Howtowp\Bluwp\Admin\Notices\WordPressNoticePolicy;
 
 final class AppMenu
 {

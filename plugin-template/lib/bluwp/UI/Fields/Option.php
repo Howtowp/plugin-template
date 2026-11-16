@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI\Fields;
+namespace Howtowp\Bluwp\UI\Fields;
 
 use JsonSerializable;
-use Forouzandea\Bluwp\UI\Support\Condition;
+use Howtowp\Bluwp\UI\Support\Condition;
 
 defined('ABSPATH') || exit;
 

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS;
+namespace Howtowp\Bluwp\Communications\SMS;
 
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSService;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\PrioritySMSService;
-use Forouzandea\Bluwp\Communications\SMS\Sending\SMSPriorityBuilder;
-use Forouzandea\Bluwp\Communications\SMS\Sending\SMSBuilder;
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSService;
+use Howtowp\Bluwp\Communications\SMS\Contracts\PrioritySMSService;
+use Howtowp\Bluwp\Communications\SMS\Sending\SMSPriorityBuilder;
+use Howtowp\Bluwp\Communications\SMS\Sending\SMSBuilder;
+use Howtowp\Bluwp\Foundation\Application;
 
 /** Stateless entry point; application integrations select their own scope. */
 class SMS

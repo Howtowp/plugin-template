@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Phone;
+namespace Howtowp\Bluwp\Support\Phone;
 
 final class MobileNumber
 {

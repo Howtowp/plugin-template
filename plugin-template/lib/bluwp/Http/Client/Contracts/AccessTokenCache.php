@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client\Contracts;
+namespace Howtowp\Bluwp\Http\Client\Contracts;
 
 interface AccessTokenCache
 {

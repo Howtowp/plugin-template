@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Hooks;
+namespace Howtowp\Bluwp\Hooks;
 
-use Forouzandea\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\Application;
 
 final class HookRegistry
 {

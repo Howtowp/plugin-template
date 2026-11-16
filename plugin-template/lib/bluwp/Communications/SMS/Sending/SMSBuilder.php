@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Sending;
+namespace Howtowp\Bluwp\Communications\SMS\Sending;
 
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SimpleSMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\PatternSMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSGatewayCredit;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SimpleSMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\PatternSMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSGatewayCredit;
 
 /** A request-scoped builder. The manager never stores active credentials or message state. */
 final class SMSBuilder

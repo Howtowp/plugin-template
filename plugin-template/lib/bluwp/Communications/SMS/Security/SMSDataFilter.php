@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Security;
+namespace Howtowp\Bluwp\Communications\SMS\Security;
 
 /** Filters diagnostic copies only; the transport and provider parser receive original data. */
 final class SMSDataFilter

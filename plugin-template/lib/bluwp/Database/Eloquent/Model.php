@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent;
+namespace Howtowp\Bluwp\Database\Eloquent;
 
-use Forouzandea\Bluwp\Database\DatabaseRegistry;
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Eloquent\Events\ModelEventDispatcher;
-use Forouzandea\Bluwp\Database\Eloquent\Relations\BelongsTo;
-use Forouzandea\Bluwp\Database\Eloquent\Relations\HasMany;
+use Howtowp\Bluwp\Database\DatabaseRegistry;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Eloquent\Events\ModelEventDispatcher;
+use Howtowp\Bluwp\Database\Eloquent\Relations\BelongsTo;
+use Howtowp\Bluwp\Database\Eloquent\Relations\HasMany;
 
 /** @phpstan-consistent-constructor */
-abstract class Model implements \JsonSerializable, \ArrayAccess, \Forouzandea\Bluwp\Contracts\Arrayable, \Forouzandea\Bluwp\Contracts\Jsonable
+abstract class Model implements \JsonSerializable, \ArrayAccess, \Howtowp\Bluwp\Contracts\Arrayable, \Howtowp\Bluwp\Contracts\Jsonable
 {
     protected $table;
     protected $primaryKey = 'id';
@@ -380,7 +380,7 @@ abstract class Model implements \JsonSerializable, \ArrayAccess, \Forouzandea\Bl
                 throw new \LogicException('Lazy loading is disabled: ' . static::class . '::' . $key);
             }
             $relation = $this->$key();
-            if (!$relation instanceof \Forouzandea\Bluwp\Database\Eloquent\Relations\Relation) {
+            if (!$relation instanceof \Howtowp\Bluwp\Database\Eloquent\Relations\Relation) {
                 throw new \LogicException('Relationship methods must return a Relation.');
             }
             return $this->relations[$key] = $relation->getResults();
@@ -400,7 +400,7 @@ abstract class Model implements \JsonSerializable, \ArrayAccess, \Forouzandea\Bl
         if (is_string($cast) && is_subclass_of($cast, \BackedEnum::class)) {
             return $this->castEnum($cast, $value);
         }
-        if (is_string($cast) && is_subclass_of($cast, \Forouzandea\Bluwp\Database\Contracts\Eloquent\CastsAttributes::class)) {
+        if (is_string($cast) && is_subclass_of($cast, \Howtowp\Bluwp\Database\Contracts\Eloquent\CastsAttributes::class)) {
             return (new $cast())->get($this, $key, $value, $this->attributes);
         }
         return match ($this->getCasts()[$key] ?? null) {
@@ -422,7 +422,7 @@ abstract class Model implements \JsonSerializable, \ArrayAccess, \Forouzandea\Bl
             return $this;
         }
         $cast = $this->getCasts()[$key] ?? null;
-        if (is_string($cast) && is_subclass_of($cast, \Forouzandea\Bluwp\Database\Contracts\Eloquent\CastsAttributes::class)) {
+        if (is_string($cast) && is_subclass_of($cast, \Howtowp\Bluwp\Database\Contracts\Eloquent\CastsAttributes::class)) {
             $attributes = (new $cast())->set($this, $key, $value, $this->attributes);
             foreach (is_array($attributes) ? $attributes : [$key => $attributes] as $name => $stored) {
                 $this->attributes[$name] = $stored;
@@ -891,10 +891,10 @@ abstract class Model implements \JsonSerializable, \ArrayAccess, \Forouzandea\Bl
         $foreignKey ??= strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $relation)) . '_' . $ownerKey;
         return new BelongsTo($this, $related, $foreignKey, $ownerKey, $relation);
     }
-    public function hasOne(string $related, ?string $foreignKey = null, ?string $localKey = null): \Forouzandea\Bluwp\Database\Eloquent\Relations\HasOne
+    public function hasOne(string $related, ?string $foreignKey = null, ?string $localKey = null): \Howtowp\Bluwp\Database\Eloquent\Relations\HasOne
     {
         $foreignKey ??= $this->getForeignKey();
-        return new \Forouzandea\Bluwp\Database\Eloquent\Relations\HasOne($this, $related, $foreignKey, $localKey ?? $this->getKeyName());
+        return new \Howtowp\Bluwp\Database\Eloquent\Relations\HasOne($this, $related, $foreignKey, $localKey ?? $this->getKeyName());
     }
     public function getForeignKey(): string
     {

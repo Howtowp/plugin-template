@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Notices;
+namespace Howtowp\Bluwp\Admin\Notices;
 
-use Forouzandea\Bluwp\Admin\Contracts\NoticePolicy;
+use Howtowp\Bluwp\Admin\Contracts\NoticePolicy;
 
 final class WordPressNoticePolicy implements NoticePolicy
 {

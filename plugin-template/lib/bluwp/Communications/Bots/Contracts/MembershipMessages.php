@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Contracts;
+namespace Howtowp\Bluwp\Communications\Bots\Contracts;
 
-use Forouzandea\Bluwp\Communications\Bots\Enums\MembershipPrompt;
+use Howtowp\Bluwp\Communications\Bots\Enums\MembershipPrompt;
 
 interface MembershipMessages
 {

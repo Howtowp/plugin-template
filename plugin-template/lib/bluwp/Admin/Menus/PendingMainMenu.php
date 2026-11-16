@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Admin\Menus;
+namespace Howtowp\Bluwp\Admin\Menus;
 
 final class PendingMainMenu
 {

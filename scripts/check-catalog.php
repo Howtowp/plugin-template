@@ -225,8 +225,8 @@ function htw_catalog_main(): int {
 		}
 	}
 
-	if ( ! str_contains( $main_src, "'0.2.1'" ) || ! str_contains( $main_src, "'0.3.0'" ) ) {
-		$errors[] = 'Bluwp must stay pinned to >=0.2.1 <0.3.0 in the main file.';
+	if ( ! str_contains( $main_src, "'0.3.0'" ) || ! str_contains( $main_src, "'0.4.0'" ) ) {
+		$errors[] = 'Bluwp must stay pinned to >=0.3.0 <0.4.0 in the main file.';
 	}
 	{
 		$meta_path = $plugin_dir . '/lib/bluwp/metadata.php';
@@ -259,7 +259,7 @@ function htw_catalog_main(): int {
 		foreach ( htw_catalog_php_files( $plugin_dir ) as $file ) {
 			$source   = (string) file_get_contents( $file );
 			$relative = substr( $file, strlen( $plugin_dir ) + 1 );
-			if ( str_contains( $source, 'forouzandea-smart-gateway.php' ) || str_contains( $source, 'wc-iranian-smart-gateways.php' ) ) {
+			if ( str_contains( $source, 'wc-iranian-smart-gateways.php' ) ) {
 				$errors[] = $relative . ' hardcodes a stale plugin filename.';
 			}
 			if ( 1 === preg_match( "/declare_compatibility\\([^;]*'[^']+\\.php'/", $source ) ) {

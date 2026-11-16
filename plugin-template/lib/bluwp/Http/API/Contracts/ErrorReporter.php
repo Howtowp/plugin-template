@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Contracts;
+namespace Howtowp\Bluwp\Http\API\Contracts;
 
 interface ErrorReporter
 {

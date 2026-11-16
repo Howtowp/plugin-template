@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Drivers\Telegram;
+namespace Howtowp\Bluwp\Communications\Bots\Drivers\Telegram;
 
-use Forouzandea\Bluwp\Communications\Bots\API\AbstractBotAPIClient;
-use Forouzandea\Bluwp\Http\Client\Validation\PublicHttpsUrl;
+use Howtowp\Bluwp\Communications\Bots\API\AbstractBotAPIClient;
+use Howtowp\Bluwp\Http\Client\Validation\PublicHttpsUrl;
 
 final class TelegramAPIClient extends AbstractBotAPIClient
 {

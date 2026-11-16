@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Data;
+namespace Howtowp\Bluwp\Communications\SMS\Data;
 
-use Forouzandea\Bluwp\Support\Phone\MobileNumber;
+use Howtowp\Bluwp\Support\Phone\MobileNumber;
 use InvalidArgumentException;
 
 /** Shared recipient contract; the factories preserve the original creation API. */

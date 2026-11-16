@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Sending;
+namespace Howtowp\Bluwp\Communications\SMS\Sending;
 
 /** Resolves the colon template once; values cannot introduce additional placeholders. */
 final class SMSPatternTemplate

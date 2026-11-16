@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Requests;
+namespace Howtowp\Bluwp\Http\API\Requests;
 
-use Forouzandea\Bluwp\Support\Validation\ValidationResult;
-use Forouzandea\Bluwp\Support\Validation\ValidatorFactory;
+use Howtowp\Bluwp\Support\Validation\ValidationResult;
+use Howtowp\Bluwp\Support\Validation\ValidatorFactory;
 
 final class RequestValidator
 {

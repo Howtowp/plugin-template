@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation\Rules;
+namespace Howtowp\Bluwp\Support\Validation\Rules;
 
 final class UrlRule extends TypeRule
 {

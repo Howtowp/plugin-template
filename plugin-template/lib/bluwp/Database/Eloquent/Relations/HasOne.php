@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
-use Forouzandea\Bluwp\Database\Eloquent\Model;
+use Howtowp\Bluwp\Database\Eloquent\Model;
 
 final class HasOne extends HasMany
 {

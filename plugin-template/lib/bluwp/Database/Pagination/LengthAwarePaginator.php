@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Pagination;
+namespace Howtowp\Bluwp\Database\Pagination;
 
-use Forouzandea\Bluwp\Support\Collection;
+use Howtowp\Bluwp\Support\Collection;
 
 class LengthAwarePaginator extends AbstractPaginator
 {

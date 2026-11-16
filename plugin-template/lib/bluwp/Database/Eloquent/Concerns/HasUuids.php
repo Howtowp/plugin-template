@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Concerns;
+namespace Howtowp\Bluwp\Database\Eloquent\Concerns;
 
 trait HasUuids
 {

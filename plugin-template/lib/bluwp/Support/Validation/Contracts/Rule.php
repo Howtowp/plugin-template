@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support\Validation\Contracts;
+namespace Howtowp\Bluwp\Support\Validation\Contracts;
 
-use Forouzandea\Bluwp\Support\Validation\Attribute;
-use Forouzandea\Bluwp\Support\Validation\RuleViolation;
-use Forouzandea\Bluwp\Support\Validation\ValidationContext;
+use Howtowp\Bluwp\Support\Validation\Attribute;
+use Howtowp\Bluwp\Support\Validation\RuleViolation;
+use Howtowp\Bluwp\Support\Validation\ValidationContext;
 
 interface Rule
 {

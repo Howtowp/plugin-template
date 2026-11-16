@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Foundation\Bootstrap;
+namespace Howtowp\Bluwp\Foundation\Bootstrap;
 
 final class Autoloader
 {

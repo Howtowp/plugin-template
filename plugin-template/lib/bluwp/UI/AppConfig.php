@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\UI;
+namespace Howtowp\Bluwp\UI;
 
-use Forouzandea\Bluwp\UI\ClientMessages;
+use Howtowp\Bluwp\UI\ClientMessages;
 
 final class AppConfig
 {

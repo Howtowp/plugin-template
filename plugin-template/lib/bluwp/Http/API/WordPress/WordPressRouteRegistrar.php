@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\WordPress;
+namespace Howtowp\Bluwp\Http\API\WordPress;
 
-use Forouzandea\Bluwp\Http\API\Contracts\RouteRegistrar;
-use Forouzandea\Bluwp\Http\API\Routing\Route;
-use Forouzandea\Bluwp\Http\API\Dispatching\EndpointExecutor;
-use Forouzandea\Bluwp\Http\API\Authorization\PermissionEvaluator;
+use Howtowp\Bluwp\Http\API\Contracts\RouteRegistrar;
+use Howtowp\Bluwp\Http\API\Routing\Route;
+use Howtowp\Bluwp\Http\API\Dispatching\EndpointExecutor;
+use Howtowp\Bluwp\Http\API\Authorization\PermissionEvaluator;
 
 final class WordPressRouteRegistrar implements RouteRegistrar
 {

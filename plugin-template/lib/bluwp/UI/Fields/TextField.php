@@ -4,10 +4,10 @@ declare(strict_types=1);
 /**
  * Text field.
  *
- * @package Forouzandea\Bluwp\UI\Fields
+ * @package Howtowp\Bluwp\UI\Fields
  */
 
-namespace Forouzandea\Bluwp\UI\Fields;
+namespace Howtowp\Bluwp\UI\Fields;
 
 defined('ABSPATH') || exit;
 

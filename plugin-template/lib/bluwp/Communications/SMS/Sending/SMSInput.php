@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Sending;
+namespace Howtowp\Bluwp\Communications\SMS\Sending;
 
-use Forouzandea\Bluwp\Support\Phone\MobileNumber;
+use Howtowp\Bluwp\Support\Phone\MobileNumber;
 
 final class SMSInput
 {

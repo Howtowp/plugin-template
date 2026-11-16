@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways\IPPanel;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways\IPPanel;
 
-use Forouzandea\Bluwp\Communications\SMS\Gateways\AbstractGateway;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
-use Forouzandea\Bluwp\Communications\SMS\Exceptions\SMSConfigurationException;
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
-use Forouzandea\Bluwp\Http\Client\HttpResponse;
-use Forouzandea\Bluwp\Http\HttpMethod;
+use Howtowp\Bluwp\Communications\SMS\Gateways\AbstractGateway;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Exceptions\SMSConfigurationException;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Http\Client\HttpResponse;
+use Howtowp\Bluwp\Http\HttpMethod;
 
 final class IPPanel extends AbstractGateway
 {

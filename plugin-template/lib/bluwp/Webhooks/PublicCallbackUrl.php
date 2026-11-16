@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Webhooks;
+namespace Howtowp\Bluwp\Webhooks;
 
-use Forouzandea\Bluwp\Http\Client\Validation\PublicHttpsUrl;
+use Howtowp\Bluwp\Http\Client\Validation\PublicHttpsUrl;
 
 final class PublicCallbackUrl
 {

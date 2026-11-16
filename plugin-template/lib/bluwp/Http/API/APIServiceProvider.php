@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API;
+namespace Howtowp\Bluwp\Http\API;
 
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Foundation\ServiceProvider;
-use Forouzandea\Bluwp\Http\API\Authentication\AuthContextStore;
-use Forouzandea\Bluwp\Http\API\Authorization\PermissionEvaluator;
-use Forouzandea\Bluwp\Http\API\Contracts\ErrorReporter;
-use Forouzandea\Bluwp\Http\API\Contracts\RouteRegistrar;
-use Forouzandea\Bluwp\Http\API\Dispatching\ControllerDispatcher;
-use Forouzandea\Bluwp\Http\API\Dispatching\EndpointExecutor;
-use Forouzandea\Bluwp\Http\API\Requests\RequestValidator;
-use Forouzandea\Bluwp\Http\API\Responses\ResponseNormalizer;
-use Forouzandea\Bluwp\Http\API\Routing\RouteRegistry;
-use Forouzandea\Bluwp\Http\API\Routing\Router;
-use Forouzandea\Bluwp\Http\API\WordPress\PhpErrorReporter;
-use Forouzandea\Bluwp\Http\API\WordPress\WordPressRouteRegistrar;
-use Forouzandea\Bluwp\Support\Validation\ValidationServiceProvider;
-use Forouzandea\Bluwp\Support\Validation\ValidatorFactory;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Foundation\ServiceProvider;
+use Howtowp\Bluwp\Http\API\Authentication\AuthContextStore;
+use Howtowp\Bluwp\Http\API\Authorization\PermissionEvaluator;
+use Howtowp\Bluwp\Http\API\Contracts\ErrorReporter;
+use Howtowp\Bluwp\Http\API\Contracts\RouteRegistrar;
+use Howtowp\Bluwp\Http\API\Dispatching\ControllerDispatcher;
+use Howtowp\Bluwp\Http\API\Dispatching\EndpointExecutor;
+use Howtowp\Bluwp\Http\API\Requests\RequestValidator;
+use Howtowp\Bluwp\Http\API\Responses\ResponseNormalizer;
+use Howtowp\Bluwp\Http\API\Routing\RouteRegistry;
+use Howtowp\Bluwp\Http\API\Routing\Router;
+use Howtowp\Bluwp\Http\API\WordPress\PhpErrorReporter;
+use Howtowp\Bluwp\Http\API\WordPress\WordPressRouteRegistrar;
+use Howtowp\Bluwp\Support\Validation\ValidationServiceProvider;
+use Howtowp\Bluwp\Support\Validation\ValidatorFactory;
 use Throwable;
-use Forouzandea\Bluwp\Support\Diagnostics\DiagnosticReporter;
-use Forouzandea\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
+use Howtowp\Bluwp\Support\Diagnostics\DiagnosticReporter;
+use Howtowp\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
 
 final class APIServiceProvider extends ServiceProvider
 {

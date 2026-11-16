@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Eloquent\Relations;
+namespace Howtowp\Bluwp\Database\Eloquent\Relations;
 
-use Forouzandea\Bluwp\Database\Eloquent\Collection;
+use Howtowp\Bluwp\Database\Eloquent\Collection;
 
 class HasMany extends Relation
 {
-    public function query(): \Forouzandea\Bluwp\Database\Eloquent\Builder
+    public function query(): \Howtowp\Bluwp\Database\Eloquent\Builder
     {
         if (!$this->applyParentConstraint) {
             return $this->query;
@@ -21,7 +21,7 @@ class HasMany extends Relation
     {
         return $this->query()->get();
     }
-    public function create(array $attributes = []): \Forouzandea\Bluwp\Database\Eloquent\Model
+    public function create(array $attributes = []): \Howtowp\Bluwp\Database\Eloquent\Model
     {
         $key = $this->parent->getAttribute($this->localKey);
         if ($key === null) {

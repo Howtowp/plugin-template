@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Routing;
+namespace Howtowp\Bluwp\Http\API\Routing;
 
-use Forouzandea\Bluwp\Http\API\Dispatching\ControllerDispatcher;
-use Forouzandea\Bluwp\Http\API\Contracts\Permission;
-use Forouzandea\Bluwp\Http\API\Authorization\AllOf;
-use Forouzandea\Bluwp\Http\API\Authorization\Capability;
-use Forouzandea\Bluwp\Http\API\Authorization\LazyPermission;
-use Forouzandea\Bluwp\Http\API\Authorization\PublicAccess;
-use Forouzandea\Bluwp\Foundation\Application;
-use Forouzandea\Bluwp\Http\HttpMethod;
+use Howtowp\Bluwp\Http\API\Dispatching\ControllerDispatcher;
+use Howtowp\Bluwp\Http\API\Contracts\Permission;
+use Howtowp\Bluwp\Http\API\Authorization\AllOf;
+use Howtowp\Bluwp\Http\API\Authorization\Capability;
+use Howtowp\Bluwp\Http\API\Authorization\LazyPermission;
+use Howtowp\Bluwp\Http\API\Authorization\PublicAccess;
+use Howtowp\Bluwp\Foundation\Application;
+use Howtowp\Bluwp\Http\HttpMethod;
 
 final class Router
 {

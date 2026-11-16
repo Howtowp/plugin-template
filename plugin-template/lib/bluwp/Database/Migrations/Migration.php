@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Migrations;
+namespace Howtowp\Bluwp\Database\Migrations;
 
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
-use Forouzandea\Bluwp\Database\Schema\Builder as Schema;
-use Forouzandea\Bluwp\Database\Query\Builder;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Schema\Builder as Schema;
+use Howtowp\Bluwp\Database\Query\Builder;
 
 abstract class Migration
 {

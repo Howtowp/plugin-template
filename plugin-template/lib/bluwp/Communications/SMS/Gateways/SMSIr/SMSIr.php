@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways\SMSIr;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways\SMSIr;
 
-use Forouzandea\Bluwp\Communications\SMS\Gateways\AbstractGateway;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\PatternSMSMessage;
-use Forouzandea\Bluwp\Communications\SMS\Data\SMSResult;
-use Forouzandea\Bluwp\Communications\SMS\Exceptions\SMSConfigurationException;
+use Howtowp\Bluwp\Communications\SMS\Gateways\AbstractGateway;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SimpleSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\PatternSMSMessage;
+use Howtowp\Bluwp\Communications\SMS\Data\SMSResult;
+use Howtowp\Bluwp\Communications\SMS\Exceptions\SMSConfigurationException;
 
 final class SMSIr extends AbstractGateway
 {
@@ -20,9 +20,9 @@ final class SMSIr extends AbstractGateway
             && filter_var($sender, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) !== false;
     }
 
-    protected function creditRequest(): \Forouzandea\Bluwp\Http\Client\HttpRequest
+    protected function creditRequest(): \Howtowp\Bluwp\Http\Client\HttpRequest
     {
-        return new \Forouzandea\Bluwp\Http\Client\HttpRequest(\Forouzandea\Bluwp\Http\HttpMethod::Get, 'https://api.sms.ir/v1/credit', headers: ['X-API-KEY' => $this->required('api_key')]);
+        return new \Howtowp\Bluwp\Http\Client\HttpRequest(\Howtowp\Bluwp\Http\HttpMethod::Get, 'https://api.sms.ir/v1/credit', headers: ['X-API-KEY' => $this->required('api_key')]);
     }
 
     protected function creditValue(array $body): mixed

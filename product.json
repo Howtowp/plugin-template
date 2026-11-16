@@ -28,8 +28,8 @@
   "video_url": null,
   "product_page": null,
   "requirements_notes": {
-    "fa": "هستهٔ Bluwp ۰.۲ داخل خود افزونه است و نصب جدا لازم نیست. اگر Bluwp مستقل روی سایت فعال باشد، همان نسخه استفاده می‌شود به شرطی که شاخهٔ ۰.۲ باشد.",
-    "en": "Bluwp 0.2 is included in the plugin. A separate install is not required. An already-active standalone Bluwp is used instead when it is on the 0.2 line."
+    "fa": "هستهٔ Bluwp ۰.۳ با namespace برابر Howtowp\\Bluwp داخل خود افزونه است و نصب جدا لازم نیست. اگر Bluwp مستقل روی سایت فعال باشد، همان نسخه استفاده می‌شود به شرطی که شاخهٔ ۰.۳ باشد.",
+    "en": "Bluwp 0.3 (namespace Howtowp\\Bluwp) is included in the plugin. A separate install is not required. An already-active standalone Bluwp is used instead when it is on the 0.3 line."
   },
   "ai_guide": "plugin-template/AI-GUIDE.md",
   "description_sections": [

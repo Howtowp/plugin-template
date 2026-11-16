@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Migrations;
+namespace Howtowp\Bluwp\Database\Migrations;
 
 final class Migrator
 {
@@ -35,7 +35,7 @@ final class Migrator
         uksort($pending, static fn ($a, $b) => ($pending[$a]->getPriority() <=> $pending[$b]->getPriority()) ?: strcmp($a, $b));
         $result = [];
         foreach ($pending as $name => $migration) {
-            $connection = new \Forouzandea\Bluwp\Database\Connection\PretendConnection($this->repository->getConnection());
+            $connection = new \Howtowp\Bluwp\Database\Connection\PretendConnection($this->repository->getConnection());
             $migration->useConnection($connection);
             $migration->up();
             $result[$name] = $connection->queries();

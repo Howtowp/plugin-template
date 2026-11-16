@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Sending;
+namespace Howtowp\Bluwp\Communications\SMS\Sending;
 
 /** Bounded synchronous processing groups, independent of provider wire batch limits. */
 final class SMSBatching

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Drivers\Bale;
+namespace Howtowp\Bluwp\Communications\Bots\Drivers\Bale;
 
-use Forouzandea\Bluwp\Communications\Bots\Webhooks\WebhookManager;
+use Howtowp\Bluwp\Communications\Bots\Webhooks\WebhookManager;
 
 final class BaleWebhookManager extends WebhookManager
 {

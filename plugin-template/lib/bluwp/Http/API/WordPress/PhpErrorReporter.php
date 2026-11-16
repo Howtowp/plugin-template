@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\WordPress;
+namespace Howtowp\Bluwp\Http\API\WordPress;
 
-use Forouzandea\Bluwp\Http\API\Contracts\ErrorReporter;
-use Forouzandea\Bluwp\Support\Diagnostics\DiagnosticReporter;
-use Forouzandea\Bluwp\Support\Diagnostics\FailureContext;
-use Forouzandea\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
+use Howtowp\Bluwp\Http\API\Contracts\ErrorReporter;
+use Howtowp\Bluwp\Support\Diagnostics\DiagnosticReporter;
+use Howtowp\Bluwp\Support\Diagnostics\FailureContext;
+use Howtowp\Bluwp\Support\Diagnostics\PhpDiagnosticReporter;
 
 final class PhpErrorReporter implements ErrorReporter
 {

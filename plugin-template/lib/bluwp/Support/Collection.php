@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Support;
+namespace Howtowp\Bluwp\Support;
 
-use Forouzandea\Bluwp\Contracts\Arrayable;
-use Forouzandea\Bluwp\Contracts\Jsonable;
+use Howtowp\Bluwp\Contracts\Arrayable;
+use Howtowp\Bluwp\Contracts\Jsonable;
 
 /**
  * @template TKey of array-key

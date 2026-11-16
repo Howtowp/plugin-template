@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Data;
+namespace Howtowp\Bluwp\Communications\SMS\Data;
 
-use Forouzandea\Bluwp\Communications\Enums\MessageStatus;
+use Howtowp\Bluwp\Communications\Enums\MessageStatus;
 
 final class SMSPriorityResult
 {

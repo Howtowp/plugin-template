@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Validation;
+namespace Howtowp\Bluwp\Communications\Bots\Validation;
 
-use Forouzandea\Bluwp\Communications\Bots\Drivers\Telegram\TelegramAPIClient;
-use Forouzandea\Bluwp\Support\Validation\Rules\TypeRule;
+use Howtowp\Bluwp\Communications\Bots\Drivers\Telegram\TelegramAPIClient;
+use Howtowp\Bluwp\Support\Validation\Rules\TypeRule;
 
 final class TelegramBaseUrlRule extends TypeRule
 {

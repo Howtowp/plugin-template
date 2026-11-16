@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database;
+namespace Howtowp\Bluwp\Database;
 
-use Forouzandea\Bluwp\Database\Connection\ConnectionInterface;
+use Howtowp\Bluwp\Database\Connection\ConnectionInterface;
 
 final class DatabaseManager
 {

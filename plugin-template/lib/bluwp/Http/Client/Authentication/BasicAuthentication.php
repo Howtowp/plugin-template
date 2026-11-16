@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\Client\Authentication;
+namespace Howtowp\Bluwp\Http\Client\Authentication;
 
-use Forouzandea\Bluwp\Http\Client\Contracts\RequestAuthenticator;
-use Forouzandea\Bluwp\Http\Client\HttpRequest;
+use Howtowp\Bluwp\Http\Client\Contracts\RequestAuthenticator;
+use Howtowp\Bluwp\Http\Client\HttpRequest;
 
 final class BasicAuthentication implements RequestAuthenticator
 {

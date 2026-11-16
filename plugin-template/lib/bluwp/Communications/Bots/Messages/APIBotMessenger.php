@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Messages;
+namespace Howtowp\Bluwp\Communications\Bots\Messages;
 
-use Forouzandea\Bluwp\Communications\Bots\Contracts\BotAPIClient;
-use Forouzandea\Bluwp\Communications\Bots\Contracts\BotMessenger;
-use Forouzandea\Bluwp\Communications\Bots\Enums\BotErrorReason;
-use Forouzandea\Bluwp\Communications\Bots\Exceptions\BotAPIException;
+use Howtowp\Bluwp\Communications\Bots\Contracts\BotAPIClient;
+use Howtowp\Bluwp\Communications\Bots\Contracts\BotMessenger;
+use Howtowp\Bluwp\Communications\Bots\Enums\BotErrorReason;
+use Howtowp\Bluwp\Communications\Bots\Exceptions\BotAPIException;
 
 final class APIBotMessenger implements BotMessenger
 {

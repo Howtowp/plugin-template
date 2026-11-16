@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways;
 
-use Forouzandea\Bluwp\Http\Client\Contracts\HttpClient;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SimpleSMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\PatternSMSGateway;
-use Forouzandea\Bluwp\Communications\SMS\Contracts\SMSGatewayCredit;
+use Howtowp\Bluwp\Http\Client\Contracts\HttpClient;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SimpleSMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\PatternSMSGateway;
+use Howtowp\Bluwp\Communications\SMS\Contracts\SMSGatewayCredit;
 
 final class GatewayRegistry
 {

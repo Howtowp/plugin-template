@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Facades;
+namespace Howtowp\Bluwp\Database\Facades;
 
-use Forouzandea\Bluwp\Database\DatabaseRegistry;
-use Forouzandea\Bluwp\Database\Schema\Builder;
+use Howtowp\Bluwp\Database\DatabaseRegistry;
+use Howtowp\Bluwp\Database\Schema\Builder;
 
 class Schema
 {

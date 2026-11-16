@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots\Webhooks;
+namespace Howtowp\Bluwp\Communications\Bots\Webhooks;
 
-use Forouzandea\Bluwp\Communications\Bots\Contracts\BotAPIClient;
-use Forouzandea\Bluwp\Communications\Bots\Enums\BotErrorReason;
-use Forouzandea\Bluwp\Communications\Bots\Exceptions\BotAPIException;
-use Forouzandea\Bluwp\Webhooks\PublicCallbackUrl;
+use Howtowp\Bluwp\Communications\Bots\Contracts\BotAPIClient;
+use Howtowp\Bluwp\Communications\Bots\Enums\BotErrorReason;
+use Howtowp\Bluwp\Communications\Bots\Exceptions\BotAPIException;
+use Howtowp\Bluwp\Webhooks\PublicCallbackUrl;
 
 class WebhookManager
 {

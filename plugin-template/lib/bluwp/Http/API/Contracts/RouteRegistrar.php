@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Http\API\Contracts;
+namespace Howtowp\Bluwp\Http\API\Contracts;
 
-use Forouzandea\Bluwp\Http\API\Routing\Route;
+use Howtowp\Bluwp\Http\API\Routing\Route;
 
 interface RouteRegistrar
 {

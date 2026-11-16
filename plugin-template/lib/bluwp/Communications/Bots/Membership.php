@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\Bots;
+namespace Howtowp\Bluwp\Communications\Bots;
 
-use Forouzandea\Bluwp\Communications\Bots\Contracts\BotMessenger;
-use Forouzandea\Bluwp\Communications\Bots\Contracts\ContactNumberNormalizer;
-use Forouzandea\Bluwp\Communications\Bots\Contracts\MembershipContacts;
-use Forouzandea\Bluwp\Communications\Bots\Contracts\MembershipMessages;
-use Forouzandea\Bluwp\Communications\Bots\Enums\MembershipPrompt;
-use Forouzandea\Bluwp\Communications\Bots\Keyboards\ReplyKeyboard;
-use Forouzandea\Bluwp\Communications\Bots\Messages\PrivateMessage;
+use Howtowp\Bluwp\Communications\Bots\Contracts\BotMessenger;
+use Howtowp\Bluwp\Communications\Bots\Contracts\ContactNumberNormalizer;
+use Howtowp\Bluwp\Communications\Bots\Contracts\MembershipContacts;
+use Howtowp\Bluwp\Communications\Bots\Contracts\MembershipMessages;
+use Howtowp\Bluwp\Communications\Bots\Enums\MembershipPrompt;
+use Howtowp\Bluwp\Communications\Bots\Keyboards\ReplyKeyboard;
+use Howtowp\Bluwp\Communications\Bots\Messages\PrivateMessage;
 
 final class Membership
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Communications\SMS\Gateways\SMSIr;
+namespace Howtowp\Bluwp\Communications\SMS\Gateways\SMSIr;
 
-use Forouzandea\Bluwp\Communications\SMS\Gateways\SMSIr\SMSIr;
-use Forouzandea\Bluwp\Support\Validation\Rules\TypeRule;
+use Howtowp\Bluwp\Communications\SMS\Gateways\SMSIr\SMSIr;
+use Howtowp\Bluwp\Support\Validation\Rules\TypeRule;
 
 final class SMSIrSenderRule extends TypeRule
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Forouzandea\Bluwp\Database\Facades;
+namespace Howtowp\Bluwp\Database\Facades;
 
-use Forouzandea\Bluwp\Database\DatabaseManager;
-use Forouzandea\Bluwp\Database\DatabaseRegistry;
+use Howtowp\Bluwp\Database\DatabaseManager;
+use Howtowp\Bluwp\Database\DatabaseRegistry;
 
 class DB
 {
