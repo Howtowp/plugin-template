@@ -16,10 +16,27 @@ final class Date
         '5' => '۵', '6' => '۶', '7' => '۷', '8' => '۸', '9' => '۹',
     ];
 
-    private const MONTHS = [
-        1 => 'فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
-        'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند',
-    ];
+    /**
+     * Jalali month name. English is the source; fa_IR lives in lang/bluwp-fa_IR.po.
+     */
+    private static function monthName(int $month): string
+    {
+        return match ($month) {
+            1 => function_exists('_x') ? _x('Farvardin', 'Jalali month', 'bluwp') : 'Farvardin',
+            2 => function_exists('_x') ? _x('Ordibehesht', 'Jalali month', 'bluwp') : 'Ordibehesht',
+            3 => function_exists('_x') ? _x('Khordad', 'Jalali month', 'bluwp') : 'Khordad',
+            4 => function_exists('_x') ? _x('Tir', 'Jalali month', 'bluwp') : 'Tir',
+            5 => function_exists('_x') ? _x('Mordad', 'Jalali month', 'bluwp') : 'Mordad',
+            6 => function_exists('_x') ? _x('Shahrivar', 'Jalali month', 'bluwp') : 'Shahrivar',
+            7 => function_exists('_x') ? _x('Mehr', 'Jalali month', 'bluwp') : 'Mehr',
+            8 => function_exists('_x') ? _x('Aban', 'Jalali month', 'bluwp') : 'Aban',
+            9 => function_exists('_x') ? _x('Azar', 'Jalali month', 'bluwp') : 'Azar',
+            10 => function_exists('_x') ? _x('Dey', 'Jalali month', 'bluwp') : 'Dey',
+            11 => function_exists('_x') ? _x('Bahman', 'Jalali month', 'bluwp') : 'Bahman',
+            12 => function_exists('_x') ? _x('Esfand', 'Jalali month', 'bluwp') : 'Esfand',
+            default => '',
+        };
+    }
 
     public static function getDateTime(
         DateTimeInterface|int|string $timestamp = 'now',
@@ -74,8 +91,8 @@ final class Date
             'n' => (string) $month,
             'd' => sprintf('%02d', $day),
             'j' => (string) $day,
-            'F' => self::MONTHS[$month],
-            'M' => self::MONTHS[$month],
+            'F' => self::monthName($month),
+            'M' => self::monthName($month),
         ];
 
         $result = '';

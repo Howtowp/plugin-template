@@ -8,11 +8,11 @@ Full ruleset (Persian, authoritative): `docs/security-rules.md`. Read it before 
 
 **Golden rule: Validate -> Sanitize (input) -> Prepare (query) -> Escape (output).** Code missing a layer is incomplete.
 
-Baseline: PHP 8.1, WordPress 6.8, embedded Bluwp `>= 0.3.0 < 0.4.0` (`Howtowp\Bluwp`) in `lib/bluwp` via `BluwpBridgeV1::consume()` (do not require a separate bluwp plugin). Layout: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/` (`HowToWP\PluginTemplate\`). Prefix `htw_pt_` / `HTW_PT_` / `htw-pt-`. Persian UI strings live in `src/Text.php` (enum), escaped at output. The main file is passed as `HTW_PT_FILE` (`__FILE__`), never a hardcoded filename. Admin page capability and REST capability are the same constant `HTW_PT_CAPABILITY`. Do not hand-edit `lib/bluwp` or vendor compiled bluwp-vuejs CSS (`docs/design-system.md`).
+Baseline: PHP 8.1, WordPress 6.8, embedded Bluwp `>= 0.3.0 < 0.4.0` (`Howtowp\Bluwp`) in `lib/bluwp` via `BluwpBridgeV1::consume()` (do not require a separate bluwp plugin). Layout: `bootstrap/`, `pages/`, `routes/`, `app/`, `src/` (`HowToWP\PluginTemplate\`). Prefix `htw_pt_` / `HTW_PT_` / `htw-pt-`. English is the source language. User-facing strings are i18n literals (`__()`, `esc_html__()`, `@wordpress/i18n`) with text domain = slug. `src/Text.php` catalogs shared strings; Persian ships in `languages/`. Escape at output. The main file is passed as `HTW_PT_FILE` (`__FILE__`), never a hardcoded filename. Admin page capability and REST capability are the same constant `HTW_PT_CAPABILITY`. Do not hand-edit `lib/bluwp` or vendor compiled bluwp-vuejs CSS (`docs/design-system.md`).
 
 Non-negotiable:
 1. Never use `$_POST/$_GET/$_REQUEST/$_SERVER/$_COOKIE` raw: `isset` -> `wp_unslash` -> sanitize -> validate. Whitelist (`in_array(..., true)`) for fixed choices.
-2. Escape every output late (`esc_html`, `esc_attr`, `esc_url`, `esc_textarea`, `wp_kses_post`). Persian product copy is a `Text` case, then escaped. Any other user-facing literal goes through `esc_html__()` / `__()` with the plugin text domain.
+2. Escape every output late (`esc_html`, `esc_attr`, `esc_url`, `esc_textarea`, `wp_kses_post`). User-facing literals go through `esc_html__()` / `__()` / `@wordpress/i18n` with the plugin text domain. A `Text` case is the shared catalog; escape `text()` at output.
 3. Every query with variable input goes through `$wpdb->prepare()` (`%d %f %s`, `esc_like()` for LIKE); table/column names from whitelists. Prefer WP APIs.
 4. Every PHP file starts with `defined( 'ABSPATH' ) || exit;` (`uninstall.php`: `defined( 'WP_UNINSTALL_PLUGIN' ) || exit;`).
 5. Every state-changing action (form, AJAX, REST, link) checks **nonce AND capability** (never only `is_admin()`).

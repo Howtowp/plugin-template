@@ -26,3 +26,39 @@ Do this in every plugin that embeds Bluwp (including Pado, Smart Manager, and th
 6. **Verify.** From the repo root, `php scripts/check-catalog.php`. Inside the plugin directory, `composer lint && composer phpcs && composer phpstan && composer test`. A case-insensitive search of the plugin must find no copy of the previous Bluwp vendor prefix.
 
 `docs/migrating.md` is the longer layout checklist (admin UI, capability, HPOS). This file is only the namespace and version move.
+
+## Strings and translations
+
+English is the source language. Write every user-facing string as a literal inside a WordPress i18n function. The text domain is the plugin slug (`plugin-template` until `scripts/init.sh` renames it).
+
+- PHP: `__()`, `esc_html__()`, `esc_attr__()`, `_x()`, `_n()`, and `sprintf()`. Put a `translators:` comment on the line above any string that contains a placeholder. Escape at output. Shared strings and the one customer override stay on `src/Text.php`; `catalog()` calls `__()` with a literal, and `text()` applies the override.
+- React (`admin/`): `import { __, _x, _n, sprintf } from "@wordpress/i18n"`. The text domain argument is the slug literal, not a variable. Vite marks that package external as `wp.i18n`, and the build keeps the `.__()` calls so `wp i18n make-pot` can see them. The bundle is `assets/admin/screen.js` (a name ending in `admin.js` is mishandled by `make-json`).
+- `src/Admin/AdminPage.php` enqueues `wp-i18n` and calls `wp_set_script_translations()`. On `init`, the main file calls `load_plugin_textdomain()` so the bundled `languages/` catalog is found. WordPress 6.7+ then loads the `.mo` just in time.
+- The admin root gets `dir="rtl"` or `dir="ltr"` from `is_rtl()`. Prefer logical Tailwind utilities (`ms-`, `me-`, `ps-`, `pe-`, `start`, `end`). LTR uses a Latin system font. RTL uses Vazirmatn, family `HowToWP Sans`. Do not add IRANSansX.
+
+Regenerate after changing a string. WP-CLI must be on `PATH`. From the plugin directory:
+
+```bash
+npm run build
+npm run i18n
+```
+
+`npm run i18n` (and `composer i18n`) writes `languages/{slug}.pot`, updates `languages/{slug}-fa_IR.po`, compiles the `.mo`, and builds the JS JSON. `npm run i18n:check` fails when the pot is stale. CI runs that check.
+
+### Add a language
+
+1. Copy `languages/plugin-template-fa_IR.po` to `languages/plugin-template-{locale}.po` (for example `plugin-template-ar.po`).
+2. Set `Language:` and `Plural-Forms:` in the header. Translate every `msgstr`.
+3. Run `npm run i18n` so the `.mo` and the JS JSON for that locale are compiled.
+4. Commit the `.po`, `.mo`, and JSON. WordPress loads them when the site locale matches.
+
+### Adopt this in an existing plugin
+
+Do this in Pado, Smart Manager, and the payment gateway, then ship those updates together. A plugin that still prints Persian literals will stay Persian on an English site.
+
+1. **Source language.** Replace hardcoded Persian (and any other locale) with English literals in `__()`, `esc_html__()`, `esc_attr__()`, `_x()`, or `_n()`. The text domain is that plugin's slug, a string literal. Keep one catalog for shared strings if the plugin has one; customer overrides stay user content, not translations.
+2. **React admin.** Import `__`, `_x`, `_n`, and `sprintf` from `@wordpress/i18n`. Externalize that module as `wp.i18n`. Depend on `wp-i18n` and call `wp_set_script_translations( $handle, $slug, $dir . 'languages' )`. Name the built script so it does not end in `admin.js`.
+3. **Catalog.** Add `Text Domain` and `Domain Path: /languages` to the plugin header. On `init`, call `load_plugin_textdomain()` with the bundled `languages` directory. Add `npm run i18n` / `composer i18n` as in this template. Commit `{slug}.pot`, `{slug}-fa_IR.po`, `{slug}-fa_IR.mo`, and the JS JSON. Move the old Persian copy into the `fa_IR` `msgstr` entries.
+4. **Direction and type.** Set the admin root `dir` from `is_rtl()`. Use logical CSS (`ms-` / `me-` / `ps-` / `pe-` / `start` / `end`). LTR: a Latin system font. RTL: Vazirmatn as `HowToWP Sans`. Do not bundle IRANSansX.
+5. **Bluwp.** If you edit the embedded tree, keep Bluwp's own text domain (`bluwp`) and its `lang/` catalog. Do not put those strings in the product text domain. Prefer `./scripts/update-bluwp.sh` for anything that is not a translation of a hardcoded Persian string.
+6. **Verify.** `composer lint && composer phpcs && composer phpstan && composer test`, `php scripts/check-catalog.php`, `npm run build`, and `npm run i18n:check`. Open the screen once in `en_US` and once in `fa_IR`.

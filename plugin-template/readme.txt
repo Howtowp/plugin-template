@@ -4,7 +4,7 @@ Tags: howtowp, starter, bluwp
 Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.0
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ No. Download new versions from https://howtowp.ir and upload them.
 `npm run build` writes `assets/admin`. Open `admin/harness/preview.html` to view it under real WordPress admin CSS.
 
 == Changelog ==
+
+= 0.4.0 =
+* English is the source language. Persian (fa_IR) ships in languages/. The admin direction follows the site locale.
+* User-facing PHP and React strings use the plugin text domain. Regenerate catalogs with npm run i18n.
 
 = 0.3.0 =
 * Bluwp skeleton: schema settings page, REST route with matching capability and nonce, Text enum, HPOS declaration via the real main file.

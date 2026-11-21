@@ -1,0 +1,877 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugin Template 0.4.0\n"
+"Report-Msgid-Bugs-To: https://howtowp.ir\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: How to WP <https://howtowp.ir>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-21T17:52:07+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: plugin-template\n"
+
+#. Plugin Name of the plugin
+#: plugin-template.php
+#: src/Text.php:78
+#: assets/admin/screen.js:116
+msgid "Plugin Template"
+msgstr "قالب افزونه"
+
+#. Plugin URI of the plugin
+#: plugin-template.php
+msgid "https://howtowp.ir/plugins/plugin-template"
+msgstr "https://howtowp.ir/plugins/plugin-template"
+
+#. Description of the plugin
+#: plugin-template.php
+msgid "Shared starter for How to WP plugins. Admin UI is React and VibeFarsi."
+msgstr "نقطهٔ شروع مشترک افزونه‌های How to WP. پیشخوان با React و VibeFarsi ساخته شده است."
+
+#. Author of the plugin
+#: plugin-template.php
+msgid "How to WP"
+msgstr "How to WP"
+
+#. Author URI of the plugin
+#: plugin-template.php
+msgid "https://howtowp.ir"
+msgstr "https://howtowp.ir"
+
+#. translators: 1: plugin name, 2: PHP version, 3: WordPress version
+#: plugin-template.php:79
+#, php-format
+msgid "%1$s requires PHP %2$s+ and WordPress %3$s+."
+msgstr "%1$s به PHP %2$s به بالا و وردپرس %3$s به بالا نیاز دارد."
+
+#: src/Admin/AdminPage.php:78
+msgid "Admin assets are missing. Run npm run build in the plugin."
+msgstr "فایل‌های پیشخوان موجود نیست. در پوشهٔ افزونه npm run build را اجرا کنید."
+
+#: src/Text.php:79
+#: assets/admin/screen.js:116
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: src/Text.php:80
+msgid "Enabled"
+msgstr "فعال"
+
+#: src/Text.php:81
+msgid "Admin note"
+msgstr "یادداشت مدیریت"
+
+#: src/Text.php:82
+msgid "This text is shown only in the dashboard."
+msgstr "این متن فقط در پیشخوان نشان داده می‌شود."
+
+#: src/Text.php:83
+msgid "Site address"
+msgstr "نشانی سایت"
+
+#: src/Text.php:84
+msgid "An http or https address, left to right."
+msgstr "نشانی http یا https، چپ‌به‌راست."
+
+#: src/Text.php:85
+msgid "Hello, welcome."
+msgstr "سلام، خوش آمدید."
+
+#: src/Text.php:86
+msgid "Customer text. Leave empty to use the default."
+msgstr "متن مشتری. خالی یعنی متن پیش‌فرض."
+
+#: src/Text.php:87
+msgid "Delete data when the plugin is deleted"
+msgstr "هنگام حذف افزونه، داده‌ها پاک شوند"
+
+#: src/Text.php:88
+msgid "Save"
+msgstr "ذخیره"
+
+#: src/Text.php:89
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شد."
+
+#: src/Text.php:90
+msgid "Settings could not be saved."
+msgstr "ذخیرهٔ تنظیمات انجام نشد."
+
+#: src/Text.php:91
+msgid "The value is not valid."
+msgstr "مقدار واردشده معتبر نیست."
+
+#: src/Text.php:92
+msgid "The address must be a valid http or https URL."
+msgstr "نشانی باید یک نشانی معتبر http یا https باشد."
+
+#: src/Text.php:93
+msgid "You are not allowed to do this."
+msgstr "اجازهٔ این کار را ندارید."
+
+#: src/Text.php:94
+msgid "Bluwp is not bundled with this plugin, or it is not compatible with the 0.3 line."
+msgstr "Bluwp همراه افزونه نیست یا با شاخهٔ ۰.۳ سازگار نیست."
+
+#: src/Text.php:98
+msgid "Sample schedule"
+msgstr "نمونهٔ زمان‌بندی"
+
+#: assets/admin/screen.js:116
+msgid "Close"
+msgstr "بستن"
+
+#: assets/admin/screen.js:116
+msgid "Confirm"
+msgstr "تأیید"
+
+#: assets/admin/screen.js:116
+msgid "Cancel"
+msgstr "انصراف"
+
+#: assets/admin/screen.js:116
+msgid "Please wait…"
+msgstr "لطفاً صبر کنید…"
+
+#: assets/admin/screen.js:116
+msgid "one"
+msgstr "یک"
+
+#: assets/admin/screen.js:116
+msgid "two"
+msgstr "دو"
+
+#: assets/admin/screen.js:116
+msgid "three"
+msgstr "سه"
+
+#: assets/admin/screen.js:116
+msgid "four"
+msgstr "چهار"
+
+#: assets/admin/screen.js:116
+msgid "five"
+msgstr "پنج"
+
+#: assets/admin/screen.js:116
+msgid "six"
+msgstr "شش"
+
+#: assets/admin/screen.js:116
+msgid "seven"
+msgstr "هفت"
+
+#: assets/admin/screen.js:116
+msgid "eight"
+msgstr "هشت"
+
+#: assets/admin/screen.js:116
+msgid "nine"
+msgstr "نه"
+
+#: assets/admin/screen.js:116
+msgid "ten"
+msgstr "ده"
+
+#: assets/admin/screen.js:116
+msgid "eleven"
+msgstr "یازده"
+
+#: assets/admin/screen.js:116
+msgid "twelve"
+msgstr "دوازده"
+
+#: assets/admin/screen.js:116
+msgid "thirteen"
+msgstr "سیزده"
+
+#: assets/admin/screen.js:116
+msgid "fourteen"
+msgstr "چهارده"
+
+#: assets/admin/screen.js:116
+msgid "fifteen"
+msgstr "پانزده"
+
+#: assets/admin/screen.js:116
+msgid "sixteen"
+msgstr "شانزده"
+
+#: assets/admin/screen.js:116
+msgid "seventeen"
+msgstr "هفده"
+
+#: assets/admin/screen.js:116
+msgid "eighteen"
+msgstr "هجده"
+
+#: assets/admin/screen.js:116
+msgid "nineteen"
+msgstr "نوزده"
+
+#: assets/admin/screen.js:116
+msgid "twenty"
+msgstr "بیست"
+
+#: assets/admin/screen.js:116
+msgid "thirty"
+msgstr "سی"
+
+#: assets/admin/screen.js:116
+msgid "forty"
+msgstr "چهل"
+
+#: assets/admin/screen.js:116
+msgid "fifty"
+msgstr "پنجاه"
+
+#: assets/admin/screen.js:116
+msgid "sixty"
+msgstr "شصت"
+
+#: assets/admin/screen.js:116
+msgid "seventy"
+msgstr "هفتاد"
+
+#: assets/admin/screen.js:116
+msgid "eighty"
+msgstr "هشتاد"
+
+#: assets/admin/screen.js:116
+msgid "ninety"
+msgstr "نود"
+
+#: assets/admin/screen.js:116
+msgid "one hundred"
+msgstr "صد"
+
+#: assets/admin/screen.js:116
+msgid "two hundred"
+msgstr "دویست"
+
+#: assets/admin/screen.js:116
+msgid "three hundred"
+msgstr "سیصد"
+
+#: assets/admin/screen.js:116
+msgid "four hundred"
+msgstr "چهارصد"
+
+#: assets/admin/screen.js:116
+msgid "five hundred"
+msgstr "پانصد"
+
+#: assets/admin/screen.js:116
+msgid "six hundred"
+msgstr "ششصد"
+
+#: assets/admin/screen.js:116
+msgid "seven hundred"
+msgstr "هفتصد"
+
+#: assets/admin/screen.js:116
+msgid "eight hundred"
+msgstr "هشتصد"
+
+#: assets/admin/screen.js:116
+msgid "nine hundred"
+msgstr "نهصد"
+
+#: assets/admin/screen.js:116
+msgid "thousand"
+msgstr "هزار"
+
+#: assets/admin/screen.js:116
+msgid "million"
+msgstr "میلیون"
+
+#: assets/admin/screen.js:116
+msgid "billion"
+msgstr "میلیارد"
+
+#: assets/admin/screen.js:116
+msgid "trillion"
+msgstr "تریلیون"
+
+#: assets/admin/screen.js:116
+msgid "quadrillion"
+msgstr "کوادریلیون"
+
+#: assets/admin/screen.js:116
+msgid "quintillion"
+msgstr "کوینتیلیون"
+
+#: assets/admin/screen.js:116
+msgid "sextillion"
+msgstr "سکستیلیون"
+
+#: assets/admin/screen.js:116
+msgid "zero"
+msgstr "صفر"
+
+#: assets/admin/screen.js:116
+msgctxt "number words"
+msgid "and"
+msgstr "و"
+
+#: assets/admin/screen.js:116
+msgctxt "number sign"
+msgid "negative"
+msgstr "منفی"
+
+#: assets/admin/screen.js:116
+msgid "toman"
+msgstr "تومان"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%s million"
+msgstr "%s میلیون"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%s thousand"
+msgstr "%s هزار"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Minimum %1$s %2$s"
+msgstr "حداقل %1$s %2$s"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Maximum %1$s %2$s"
+msgstr "حداکثر %1$s %2$s"
+
+#: assets/admin/screen.js:116
+msgid "Hamrah Aval"
+msgstr "همراه اول"
+
+#: assets/admin/screen.js:116
+msgid "Irancell"
+msgstr "ایرانسل"
+
+#: assets/admin/screen.js:116
+msgid "Rightel"
+msgstr "رایتل"
+
+#: assets/admin/screen.js:116
+msgid "Shatel Mobile"
+msgstr "شاتل موبایل"
+
+#: assets/admin/screen.js:116
+msgid "Samantel"
+msgstr "سامانتل"
+
+#: assets/admin/screen.js:116
+msgid "Central Bank"
+msgstr "بانک مرکزی"
+
+#: assets/admin/screen.js:116
+msgid "Bank of Industry and Mine"
+msgstr "بانک صنعت و معدن"
+
+#: assets/admin/screen.js:116
+msgid "Bank Mellat"
+msgstr "بانک ملت"
+
+#: assets/admin/screen.js:116
+msgid "Refah Kargaran Bank"
+msgstr "بانک رفاه کارگران"
+
+#: assets/admin/screen.js:116
+msgid "Bank Maskan"
+msgstr "بانک مسکن"
+
+#: assets/admin/screen.js:116
+msgid "Bank Sepah"
+msgstr "بانک سپه"
+
+#: assets/admin/screen.js:116
+msgid "Bank Keshavarzi"
+msgstr "بانک کشاورزی"
+
+#: assets/admin/screen.js:116
+msgid "Bank Melli"
+msgstr "بانک ملی"
+
+#: assets/admin/screen.js:116
+msgid "Bank Tejarat"
+msgstr "بانک تجارت"
+
+#: assets/admin/screen.js:116
+msgid "Bank Saderat"
+msgstr "بانک صادرات"
+
+#: assets/admin/screen.js:116
+msgid "Export Development Bank"
+msgstr "بانک توسعه صادرات"
+
+#: assets/admin/screen.js:116
+msgid "Post Bank"
+msgstr "پست بانک"
+
+#: assets/admin/screen.js:116
+msgid "Tose'e Taavon Bank"
+msgstr "بانک توسعه تعاون"
+
+#: assets/admin/screen.js:116
+msgid "Tose'e Credit Institute"
+msgstr "مؤسسه توسعه"
+
+#: assets/admin/screen.js:116
+msgid "Karafarin Bank"
+msgstr "بانک کارآفرین"
+
+#: assets/admin/screen.js:116
+msgid "Parsian Bank"
+msgstr "بانک پارسیان"
+
+#: assets/admin/screen.js:116
+msgid "Eghtesad Novin Bank"
+msgstr "بانک اقتصاد نوین"
+
+#: assets/admin/screen.js:116
+msgid "Saman Bank"
+msgstr "بانک سامان"
+
+#: assets/admin/screen.js:116
+msgid "Pasargad Bank"
+msgstr "بانک پاسارگاد"
+
+#: assets/admin/screen.js:116
+msgid "Sarmayeh Bank"
+msgstr "بانک سرمایه"
+
+#: assets/admin/screen.js:116
+msgid "Sina Bank"
+msgstr "بانک سینا"
+
+#: assets/admin/screen.js:116
+msgid "Mehr Iran Qard al-Hasan"
+msgstr "قرض‌الحسنه مهر ایران"
+
+#: assets/admin/screen.js:116
+msgid "Shahr Bank"
+msgstr "بانک شهر"
+
+#: assets/admin/screen.js:116
+msgid "Ayandeh Bank"
+msgstr "بانک آینده"
+
+#: assets/admin/screen.js:116
+msgid "Tourism Bank"
+msgstr "بانک گردشگری"
+
+#: assets/admin/screen.js:116
+msgid "Day Bank"
+msgstr "بانک دی"
+
+#: assets/admin/screen.js:116
+msgid "Iran Zamin Bank"
+msgstr "بانک ایران زمین"
+
+#: assets/admin/screen.js:116
+msgid "Resalat Bank"
+msgstr "بانک رسالت"
+
+#: assets/admin/screen.js:116
+msgid "Middle East Bank"
+msgstr "بانک خاورمیانه"
+
+#: assets/admin/screen.js:116
+msgid "Melal Credit Institute"
+msgstr "مؤسسه ملل"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Bank %s"
+msgstr "بانک %s"
+
+#: assets/admin/screen.js:116
+msgid "Iran-Venezuela Bank"
+msgstr "بانک ایران‌ونزوئلا"
+
+#: assets/admin/screen.js:116
+msgid "Noor Credit Institute"
+msgstr "مؤسسه نور"
+
+#: assets/admin/screen.js:116
+msgid "The card number is not valid."
+msgstr "شماره‌ی کارت معتبر نیست"
+
+#: assets/admin/screen.js:116
+msgid "This card's bank was not recognized."
+msgstr "بانک این کارت شناخته نشد"
+
+#: assets/admin/screen.js:116
+msgid "16 digits on the card"
+msgstr "۱۶ رقم روی کارت"
+
+#: assets/admin/screen.js:116
+msgid "Pagination"
+msgstr "صفحه‌بندی"
+
+#: assets/admin/screen.js:116
+msgid "Previous page"
+msgstr "صفحه‌ی قبل"
+
+#: assets/admin/screen.js:116
+msgid "Next page"
+msgstr "صفحه‌ی بعد"
+
+#: assets/admin/screen.js:116
+msgid "Search…"
+msgstr "جست‌وجو…"
+
+#: assets/admin/screen.js:116
+msgid "Nothing found"
+msgstr "چیزی پیدا نشد"
+
+#: assets/admin/screen.js:116
+msgid "Change the filter or add a new item."
+msgstr "فیلتر را عوض کنید یا مورد جدیدی اضافه کنید."
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] "%s مورد"
+msgstr[1] "%s مورد"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Page %1$s of %2$s"
+msgstr "صفحه‌ی %1$s از %2$s"
+
+#: assets/admin/screen.js:116
+msgid "Farvardin"
+msgstr "فروردین"
+
+#: assets/admin/screen.js:116
+msgid "Ordibehesht"
+msgstr "اردیبهشت"
+
+#: assets/admin/screen.js:116
+msgid "Khordad"
+msgstr "خرداد"
+
+#: assets/admin/screen.js:116
+msgid "Tir"
+msgstr "تیر"
+
+#: assets/admin/screen.js:116
+msgid "Mordad"
+msgstr "مرداد"
+
+#: assets/admin/screen.js:116
+msgid "Shahrivar"
+msgstr "شهریور"
+
+#: assets/admin/screen.js:116
+msgid "Mehr"
+msgstr "مهر"
+
+#: assets/admin/screen.js:116
+msgid "Aban"
+msgstr "آبان"
+
+#: assets/admin/screen.js:116
+msgid "Azar"
+msgstr "آذر"
+
+#: assets/admin/screen.js:116
+msgid "Dey"
+msgstr "دی"
+
+#: assets/admin/screen.js:116
+msgid "Bahman"
+msgstr "بهمن"
+
+#: assets/admin/screen.js:116
+msgid "Esfand"
+msgstr "اسفند"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Saturday"
+msgstr "شنبه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Sunday"
+msgstr "یکشنبه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Monday"
+msgstr "دوشنبه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Tuesday"
+msgstr "سه‌شنبه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Wednesday"
+msgstr "چهارشنبه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Thursday"
+msgstr "پنجشنبه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Friday"
+msgstr "جمعه"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Saturday"
+msgid "Sa"
+msgstr "ش"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Sunday"
+msgid "Su"
+msgstr "ی"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Monday"
+msgid "Mo"
+msgstr "د"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Tuesday"
+msgid "Tu"
+msgstr "س"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Wednesday"
+msgid "We"
+msgstr "چ"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Thursday"
+msgid "Th"
+msgstr "پ"
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Friday"
+msgid "Fr"
+msgstr "ج"
+
+#: assets/admin/screen.js:116
+msgid "Previous month"
+msgstr "ماه قبل"
+
+#: assets/admin/screen.js:116
+msgid "Next month"
+msgstr "ماه بعد"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%1$s %2$s, holiday: %3$s"
+msgstr "%1$s %2$s، تعطیل: %3$s"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: assets/admin/screen.js:116
+msgid "Choose a date"
+msgstr "انتخاب تاریخ"
+
+#: assets/admin/screen.js:116
+msgid "Clear"
+msgstr "پاک کردن"
+
+#: assets/admin/screen.js:116
+msgid "The IBAN is not valid."
+msgstr "شماره‌ی شبا معتبر نیست"
+
+#: assets/admin/screen.js:116
+msgid "24 digits after IR"
+msgstr "۲۴ رقم بعد از IR"
+
+#: assets/admin/screen.js:116
+msgid "The national ID is valid."
+msgstr "کد ملی معتبر است"
+
+#: assets/admin/screen.js:116
+msgid "The national ID is not valid. Check the digits."
+msgstr "کد ملی معتبر نیست؛ رقم‌ها را دوباره بررسی کنید"
+
+#: assets/admin/screen.js:116
+msgid "Ten digits, as printed on the national ID card."
+msgstr "ده رقم، همان‌طور که روی کارت ملی چاپ شده"
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Operator: %s"
+msgstr "اپراتور: %s"
+
+#: assets/admin/screen.js:116
+msgid "The number must start with 9 and have 10 digits."
+msgstr "شماره باید با ۹ شروع شود و ۱۰ رقم باشد"
+
+#: assets/admin/screen.js:116
+msgid "You can omit the leading zero."
+msgstr "بدون صفر اول هم می‌توانید وارد کنید"
+
+#: assets/admin/screen.js:116
+msgid "useToast must be used within ToastProvider."
+msgstr "useToast باید داخل ToastProvider استفاده شود."
+
+#: assets/admin/screen.js:116
+msgid "The settings could not be read."
+msgstr "خواندن تنظیمات انجام نشد."
+
+#: assets/admin/screen.js:116
+msgid "Save failed."
+msgstr "ذخیره انجام نشد."
+
+#: assets/admin/screen.js:116
+msgid "Saved."
+msgstr "ذخیره شد."
+
+#: assets/admin/screen.js:116
+msgid "Sample note"
+msgstr "یادداشت نمونه"
+
+#: assets/admin/screen.js:116
+msgid "Active"
+msgstr "فعال"
+
+#: assets/admin/screen.js:116
+msgid "Test order"
+msgstr "سفارش آزمایشی"
+
+#: assets/admin/screen.js:116
+msgid "Closed"
+msgstr "بسته"
+
+#: assets/admin/screen.js:116
+msgid "List"
+msgstr "فهرست"
+
+#: assets/admin/screen.js:116
+msgid "Sample fields"
+msgstr "فیلدهای نمونه"
+
+#: assets/admin/screen.js:116
+msgid "Error"
+msgstr "خطا"
+
+#: assets/admin/screen.js:116
+msgid "Plugin sections"
+msgstr "بخش‌های افزونه"
+
+#: assets/admin/screen.js:116
+msgid "No fields"
+msgstr "فیلدی نیست"
+
+#: assets/admin/screen.js:116
+msgid "The settings schema is empty."
+msgstr "اسکیمای تنظیمات خالی است."
+
+#: assets/admin/screen.js:116
+msgid "Settings sections"
+msgstr "بخش‌های تنظیمات"
+
+#: assets/admin/screen.js:116
+msgid "General"
+msgstr "عمومی"
+
+#: assets/admin/screen.js:116
+msgid "Text"
+msgstr "متن‌ها"
+
+#: assets/admin/screen.js:116
+msgid "Mode"
+msgstr "حالت"
+
+#: assets/admin/screen.js:116
+msgid "Live"
+msgstr "زنده"
+
+#: assets/admin/screen.js:116
+msgid "Test"
+msgstr "آزمایشی"
+
+#: assets/admin/screen.js:116
+msgid "Search"
+msgstr "جستجو"
+
+#: assets/admin/screen.js:116
+msgid "No rows"
+msgstr "ردیفی نیست"
+
+#: assets/admin/screen.js:116
+msgid "Title"
+msgstr "عنوان"
+
+#: assets/admin/screen.js:116
+msgid "Amount"
+msgstr "مبلغ"
+
+#: assets/admin/screen.js:116
+msgid "Status"
+msgstr "وضعیت"
+
+#: assets/admin/screen.js:116
+msgid "Clear the note?"
+msgstr "یادداشت پاک شود؟"
+
+#: assets/admin/screen.js:116
+msgid "Only this form's note is cleared."
+msgstr "فقط مقدار همین فرم خالی می‌شود."
+
+#: assets/admin/screen.js:116
+msgid "The note was cleared."
+msgstr "یادداشت خالی شد."
+
+#: assets/admin/screen.js:116
+msgid "Clear note"
+msgstr "پاک کردن یادداشت"
+
+#: assets/admin/screen.js:116
+msgid "Ready-made fields"
+msgstr "فیلدهای آماده"
+
+#: assets/admin/screen.js:116
+msgid "Date"
+msgstr "تاریخ"
+
+#: assets/admin/screen.js:116
+msgid "IBAN"
+msgstr "شبا"
+
+#: assets/admin/screen.js:116
+msgid "Mobile"
+msgstr "موبایل"
+
+#: assets/admin/screen.js:116
+msgid "National ID"
+msgstr "کد ملی"
+
+#: assets/admin/screen.js:116
+msgid "Card number"
+msgstr "شماره کارت"
+
+#: assets/admin/screen.js:116
+msgid "Notices"
+msgstr "اعلان‌ها"
+
+#: assets/admin/screen.js:116
+msgid "Email"
+msgstr "ایمیل"
+
+#: assets/admin/screen.js:116
+msgid "SMS"
+msgstr "پیامک"

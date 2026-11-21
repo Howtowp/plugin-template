@@ -1,4 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { __ } from "@wordpress/i18n";
+import { isRtl } from "../../locale";
 import { cn, fa } from "../lib/utils";
 
 export interface PaginationProps {
@@ -27,9 +29,9 @@ function range(page: number, total: number, siblings: number): (number | "…")[
 export function Pagination({ page, total, onChange, siblings = 1, size = "md", className }: PaginationProps) {
   const btn = cn(size === "sm" ? "size-8 text-xs" : "size-9 text-sm", "flex cursor-pointer items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40");
   return (
-    <nav aria-label="صفحه‌بندی" className={cn("flex items-center gap-1", className)}>
-      <button type="button" aria-label="صفحه‌ی قبل" disabled={page <= 1} onClick={() => onChange(page - 1)} className={btn}>
-        <ChevronRight className="size-4" />
+    <nav aria-label={__("Pagination", "plugin-template")} className={cn("flex items-center gap-1", className)}>
+      <button type="button" aria-label={__("Previous page", "plugin-template")} disabled={page <= 1} onClick={() => onChange(page - 1)} className={btn}>
+        {isRtl() ? <ChevronRight className="size-4" /> : <ChevronLeft className="size-4" />}
       </button>
       {range(page, total, siblings).map((p, i) =>
         p === "…" ? (
@@ -46,8 +48,8 @@ export function Pagination({ page, total, onChange, siblings = 1, size = "md", c
           </button>
         ),
       )}
-      <button type="button" aria-label="صفحه‌ی بعد" disabled={page >= total} onClick={() => onChange(page + 1)} className={btn}>
-        <ChevronLeft className="size-4" />
+      <button type="button" aria-label={__("Next page", "plugin-template")} disabled={page >= total} onClick={() => onChange(page + 1)} className={btn}>
+        {isRtl() ? <ChevronLeft className="size-4" /> : <ChevronRight className="size-4" />}
       </button>
     </nav>
   );

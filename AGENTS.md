@@ -16,7 +16,7 @@ The admin UI is a VibeFarsi React app in `admin/`, built with Vite into `assets/
 │ ├── pages/                admin menu + schema page registry
 │ ├── routes/api.php        REST map
 │ ├── app/                  Controllers, Schemas, Repositories, Http
-│ ├── src/Text.php          Persian string enum (PSR-4 HowToWP\PluginTemplate\)
+│ ├── src/Text.php          English string catalog (PSR-4 HowToWP\PluginTemplate\)
 │ ├── crons/  database/     sample cron and migration (Bluwp globs these)
 │ ├── admin/                VibeFarsi React source (not in the zip)
 │ ├── assets/admin/         Vite build (manifest, JS, CSS). React is external.
@@ -36,7 +36,7 @@ Full ruleset (Persian, authoritative): [`docs/security-rules.md`](docs/security-
 
 Golden rule: **Validate -> Sanitize (input) -> Prepare (query) -> Escape (output)**. Nonce **and** capability on every state change. The settings page and its REST routes share `HTW_PT_CAPABILITY`. `exit` only for the `ABSPATH` / `WP_UNINSTALL_PLUGIN` guards and right after `wp_safe_redirect()`, `wp_send_json_*`, or a streamed download.
 
-Persian UI strings live in `src/Text.php` (a backed enum), not in `__()`. Escape them at output (`esc_html( Text::Save->text() )`). The pre-boot PHP/WordPress notice in the main file is the gettext exception, so an old PHP can show it before the enum loads.
+English is the source language. User-facing strings are literals in `__()`, `esc_html__()`, `esc_attr__()`, `_x()`, or `_n()` with the text domain equal to the slug. `src/Text.php` catalogs the shared ones (`catalog()` calls `__()`; `text()` applies a customer override). Persian (`fa_IR`) ships in `languages/`. Escape at output (`esc_html( Text::Save->text() )`). The pre-boot notice in the main file uses `__()` directly so an old PHP can show it before the enum loads.
 
 The plugin main file is `HTW_PT_FILE` (`__FILE__` in the main file). Never hardcode a previous filename in `declare_compatibility` or `PluginBootstrap::register`.
 
@@ -65,7 +65,7 @@ Then install Bluwp on the site and, when the settings screen should render, buil
 - **Add domain code:** `src/<Area>/<Name>.php` under `HowToWP\PluginTemplate\` (not `App`). Controllers stay thin.
 - **Add a cron:** `crons/<name>.php` returning a Bluwp `CronDefinition`. No `index.php` in that folder.
 - **Add a migration:** `database/migrations/NNN_*.php` extending Bluwp's migration. `down()` must not drop live data.
-- **Add a string:** a case on `src/Text.php`. Customer-facing cases go in `customer_map()` so they can be overridden.
+- **Add a string:** an English literal in `__()`, `esc_html__()`, or `@wordpress/i18n`. Shared or overridable copy is also a case on `src/Text.php` whose `catalog()` match arm calls `__()` with that same literal. Then `npm run build && npm run i18n` and translate the new `msgstr` in `languages/{slug}-fa_IR.po`.
 - **Add an ability (optional, not in the skeleton):** [docs/abilities.md](docs/abilities.md). Register it from something that runs on `htw_pt_loaded`. A real `permission_callback` is required.
 - **Build admin CSS/JS:** `cd plugin-template && npm run build`. Commit `assets/admin` when the source changes. CI fails if the build is stale. IranSans needs a commercial license; Vazirmatn (OFL) is the bundled face. See the design-system doc.
 - **Update embedded Bluwp:** `./scripts/update-bluwp.sh <directory-or-tgz>`, then `php scripts/check-catalog.php`. Stay inside `HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW` (`>= 0.3.0 < 0.4.0`). A jump to 0.4 is a breaking framework upgrade, not a drive-by edit. The namespace stays `Howtowp\Bluwp`.
@@ -93,7 +93,7 @@ Same list as section 13 of `docs/security-rules.md`, with these starter-specific
 - [ ] Admin CSS/JS is the Vite build in `assets/admin`, enqueued only on the plugin screen, with `wp-element` / `wp-api-fetch` / `wp-i18n`. Data to JS via `wp_add_inline_script`, not `wp_localize_script`.
 - [ ] Every REST route has a real capability check. Write/delete is never wide open.
 - [ ] `readme.txt`, `uninstall.php`, and directory guards exist (`index.php`, or `index.html` where Bluwp globs PHP).
-- [ ] User-facing Persian strings are `Text` cases; any gettext string uses text domain = slug.
+- [ ] User-facing strings are English inside i18n functions with text domain = slug. `languages/{slug}.pot` is current (`npm run i18n:check`). Persian lives in the `fa_IR` catalog.
 - [ ] `composer phpcs` (0 errors, 0 warnings), `composer phpstan`, `composer test` green; no line over 120 characters.
 - [ ] `php scripts/check-catalog.php` is green (header, constant, readme Stable tag, package.json, AI-GUIDE `Plugin-Version`).
 - [ ] No API key or secret in code. AI only via the core AI Client.

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Check, IdCard } from "lucide-react";
-import { cn } from "../lib/utils";
+import { __ } from "@wordpress/i18n";
+import { cn, fa } from "../lib/utils";
 import { formatNationalId, isNationalId, normalizeNationalId } from "../lib/persian";
 
 export interface NationalIdInputProps {
@@ -50,7 +51,7 @@ export function NationalIdInput({ value, onChange, className, id, autoFocus, dis
           disabled={disabled}
           value={formatNationalId(digits)}
           onChange={(e) => set(e.target.value)}
-          placeholder="۰۰۱-۲۳۴۵۶۷-۸"
+          placeholder={fa("001-234567-8")}
           maxLength={12}
           className="h-full min-w-0 flex-1 bg-transparent text-sm tabular-nums outline-none placeholder:text-muted-foreground/50 disabled:cursor-not-allowed"
           aria-invalid={invalid ? true : undefined}
@@ -59,7 +60,7 @@ export function NationalIdInput({ value, onChange, className, id, autoFocus, dis
         {valid && <Check className="size-4 shrink-0 text-success" />}
       </div>
       <p id={id ? `${id}-hint` : undefined} className="text-[11px] text-muted-foreground" aria-live="polite">
-        {valid ? "کد ملی معتبر است" : invalid ? <span className="text-destructive">کد ملی معتبر نیست؛ رقم‌ها را دوباره بررسی کنید</span> : "ده رقم، همان‌طور که روی کارت ملی چاپ شده"}
+        {valid ? __("The national ID is valid.", "plugin-template") : invalid ? <span className="text-destructive">{__("The national ID is not valid. Check the digits.", "plugin-template")}</span> : __("Ten digits, as printed on the national ID card.", "plugin-template")}
       </p>
     </div>
   );

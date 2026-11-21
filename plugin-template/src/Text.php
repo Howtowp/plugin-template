@@ -1,13 +1,12 @@
 <?php
 /**
- * Persian UI strings.
+ * User-facing strings.
  *
- * Admin and customer copy for a How to WP plugin lives in this enum, not in a
- * gettext catalog. Customer-facing cases listed in customer_map() may be
- * overridden in the option htw_pt_texts. Every other case returns its value.
+ * English is the source language. Each case value is the msgid. catalog()
+ * passes that literal to __() so the fa_IR catalog can replace it. Customer
+ * cases listed in customer_map() may still be overridden in htw_pt_texts.
  *
  * PluginName stays the human plugin name so scripts/init.sh can rename it.
- * Rewrite the other cases in Persian for the product.
  *
  * @package HowToWP\PluginTemplate
  */
@@ -20,23 +19,23 @@ defined( 'ABSPATH' ) || exit;
 
 enum Text: string {
 	case PluginName        = 'Plugin Template';
-	case Settings          = 'تنظیمات';
-	case Enabled           = 'فعال';
-	case Notice            = 'یادداشت مدیریت';
-	case NoticeHint        = 'این متن فقط در پیشخوان نشان داده می‌شود.';
-	case SiteUrl           = 'نشانی سایت';
-	case SiteUrlHint       = 'نشانی http یا https، چپ‌به‌راست.';
-	case CustomerHello     = 'سلام، خوش آمدید.';
-	case CustomerHelloHint = 'متن مشتری. خالی یعنی متن پیش‌فرض.';
-	case DeleteData        = 'هنگام حذف افزونه، داده‌ها پاک شوند';
-	case Save              = 'ذخیره';
-	case Saved             = 'تنظیمات ذخیره شد.';
-	case SaveFailed        = 'ذخیرهٔ تنظیمات انجام نشد.';
-	case InvalidSettings   = 'مقدار واردشده معتبر نیست.';
-	case InvalidUrl        = 'نشانی باید یک URL معتبر http یا https باشد.';
-	case Forbidden         = 'اجازهٔ این کار را ندارید.';
-	case BluwpRequired     = 'Bluwp همراه افزونه نیست یا با شاخهٔ ۰.۳ سازگار نیست.';
-	case SampleCron        = 'نمونهٔ زمان‌بندی';
+	case Settings          = 'Settings';
+	case Enabled           = 'Enabled';
+	case Notice            = 'Admin note';
+	case NoticeHint        = 'This text is shown only in the dashboard.';
+	case SiteUrl           = 'Site address';
+	case SiteUrlHint       = 'An http or https address, left to right.';
+	case CustomerHello     = 'Hello, welcome.';
+	case CustomerHelloHint = 'Customer text. Leave empty to use the default.';
+	case DeleteData        = 'Delete data when the plugin is deleted';
+	case Save              = 'Save';
+	case Saved             = 'Settings saved.';
+	case SaveFailed        = 'Settings could not be saved.';
+	case InvalidSettings   = 'The value is not valid.';
+	case InvalidUrl        = 'The address must be a valid http or https URL.';
+	case Forbidden         = 'You are not allowed to do this.';
+	case BluwpRequired     = 'Bluwp is not bundled with this plugin, or it is not compatible with the 0.3 line.';
+	case SampleCron        = 'Sample schedule';
 
 	public const OPTION = 'htw_pt_texts';
 
@@ -69,18 +68,51 @@ enum Text: string {
 	}
 
 	/**
-	 * Resolved string: override for customer cases, otherwise the enum value.
+	 * Translated catalog string. Customer overrides are not applied.
+	 */
+	public function catalog(): string {
+		if ( ! function_exists( '__' ) ) {
+			return $this->value;
+		}
+		return match ( $this ) {
+			self::PluginName => __( 'Plugin Template', 'plugin-template' ),
+			self::Settings => __( 'Settings', 'plugin-template' ),
+			self::Enabled => __( 'Enabled', 'plugin-template' ),
+			self::Notice => __( 'Admin note', 'plugin-template' ),
+			self::NoticeHint => __( 'This text is shown only in the dashboard.', 'plugin-template' ),
+			self::SiteUrl => __( 'Site address', 'plugin-template' ),
+			self::SiteUrlHint => __( 'An http or https address, left to right.', 'plugin-template' ),
+			self::CustomerHello => __( 'Hello, welcome.', 'plugin-template' ),
+			self::CustomerHelloHint => __( 'Customer text. Leave empty to use the default.', 'plugin-template' ),
+			self::DeleteData => __( 'Delete data when the plugin is deleted', 'plugin-template' ),
+			self::Save => __( 'Save', 'plugin-template' ),
+			self::Saved => __( 'Settings saved.', 'plugin-template' ),
+			self::SaveFailed => __( 'Settings could not be saved.', 'plugin-template' ),
+			self::InvalidSettings => __( 'The value is not valid.', 'plugin-template' ),
+			self::InvalidUrl => __( 'The address must be a valid http or https URL.', 'plugin-template' ),
+			self::Forbidden => __( 'You are not allowed to do this.', 'plugin-template' ),
+			self::BluwpRequired => __(
+				'Bluwp is not bundled with this plugin, or it is not compatible with the 0.3 line.',
+				'plugin-template'
+			),
+			self::SampleCron => __( 'Sample schedule', 'plugin-template' ),
+		};
+	}
+
+	/**
+	 * Resolved string: override for customer cases, otherwise the translation.
 	 */
 	public function text(): string {
 		$map = self::customer_map();
 		if ( ! isset( $map[ $this->name ] ) ) {
-			return $this->value;
+			return $this->catalog();
 		}
 		$overrides = self::overrides();
-		if ( isset( $overrides[ $this->name ] ) && is_string( $overrides[ $this->name ] ) ) {
-			return $overrides[ $this->name ];
+		$override  = $overrides[ $this->name ] ?? null;
+		if ( is_string( $override ) && '' !== $override ) {
+			return $override;
 		}
-		return $this->value;
+		return $this->catalog();
 	}
 
 	/**
@@ -144,7 +176,8 @@ enum Text: string {
 		$name     = self::CustomerHello->name;
 		$stored   = self::overrides();
 		$previous = $stored;
-		if ( '' === trim( $value ) || self::CustomerHello->value === $value ) {
+		$default  = self::CustomerHello->catalog();
+		if ( '' === trim( $value ) || self::CustomerHello->value === $value || $default === $value ) {
 			unset( $stored[ $name ] );
 		} else {
 			$stored[ $name ] = $value;

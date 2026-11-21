@@ -3,6 +3,7 @@
  * bank cards (with BIN → bank), and car plates (پلاک).
  * Dependency-free; accepts Persian or Latin digits everywhere.
  */
+import { __, _n, sprintf } from "@wordpress/i18n";
 import { en, fa } from "./utils";
 
 /* ---------- mobile ---------- */
@@ -26,18 +27,20 @@ export function formatIranMobile(input: string): string {
   return [d.slice(0, 3), d.slice(3, 6), d.slice(6, 10)].filter(Boolean).join(" ");
 }
 
-const OPERATORS: [RegExp, string][] = [
-  [/^(91\d|99[0-6])/, "همراه اول"],
-  [/^(93[0-9]|90[1-5])/, "ایرانسل"],
-  [/^92[0-2]/, "رایتل"],
-  [/^998/, "شاتل موبایل"],
-  [/^999/, "سامانتل"],
-];
+function operators(): [RegExp, string][] {
+  return [
+    [/^(91\d|99[0-6])/, __("Hamrah Aval", "plugin-template")],
+    [/^(93[0-9]|90[1-5])/, __("Irancell", "plugin-template")],
+    [/^92[0-2]/, __("Rightel", "plugin-template")],
+    [/^998/, __("Shatel Mobile", "plugin-template")],
+    [/^999/, __("Samantel", "plugin-template")],
+  ];
+}
 
 export function mobileOperator(input: string): string | null {
   const d = normalizeIranMobile(input);
   if (d.length < 3) return null;
-  return OPERATORS.find(([re]) => re.test(d))?.[1] ?? null;
+  return operators().find(([re]) => re.test(d))?.[1] ?? null;
 }
 
 /* ---------- شبا / IBAN ---------- */
@@ -65,24 +68,53 @@ export function formatIban(input: string): string {
   return iban.replace(/(.{4})/g, "$1 ").trim();
 }
 
-const BANKS: Record<string, string> = {
-  "010": "بانک مرکزی", "011": "صنعت و معدن", "012": "ملت", "013": "رفاه کارگران", "014": "مسکن", "015": "سپه", "016": "کشاورزی",
-  "017": "ملی", "018": "تجارت", "019": "صادرات", "020": "توسعه صادرات", "021": "پست بانک", "022": "توسعه تعاون", "051": "مؤسسه توسعه",
-  "053": "کارآفرین", "054": "پارسیان", "055": "اقتصاد نوین", "056": "سامان", "057": "پاسارگاد", "058": "سرمایه", "059": "سینا",
-  "060": "قرض‌الحسنه مهر ایران", "061": "شهر", "062": "آینده", "064": "گردشگری", "066": "دی", "069": "ایران زمین", "070": "رسالت",
-  "078": "خاورمیانه", "079": "مؤسسه ملل",
-};
+function banks(): Record<string, string> {
+  return {
+    "010": __("Central Bank", "plugin-template"),
+    "011": __("Bank of Industry and Mine", "plugin-template"),
+    "012": __("Bank Mellat", "plugin-template"),
+    "013": __("Refah Kargaran Bank", "plugin-template"),
+    "014": __("Bank Maskan", "plugin-template"),
+    "015": __("Bank Sepah", "plugin-template"),
+    "016": __("Bank Keshavarzi", "plugin-template"),
+    "017": __("Bank Melli", "plugin-template"),
+    "018": __("Bank Tejarat", "plugin-template"),
+    "019": __("Bank Saderat", "plugin-template"),
+    "020": __("Export Development Bank", "plugin-template"),
+    "021": __("Post Bank", "plugin-template"),
+    "022": __("Tose'e Taavon Bank", "plugin-template"),
+    "051": __("Tose'e Credit Institute", "plugin-template"),
+    "053": __("Karafarin Bank", "plugin-template"),
+    "054": __("Parsian Bank", "plugin-template"),
+    "055": __("Eghtesad Novin Bank", "plugin-template"),
+    "056": __("Saman Bank", "plugin-template"),
+    "057": __("Pasargad Bank", "plugin-template"),
+    "058": __("Sarmayeh Bank", "plugin-template"),
+    "059": __("Sina Bank", "plugin-template"),
+    "060": __("Mehr Iran Qard al-Hasan", "plugin-template"),
+    "061": __("Shahr Bank", "plugin-template"),
+    "062": __("Ayandeh Bank", "plugin-template"),
+    "064": __("Tourism Bank", "plugin-template"),
+    "066": __("Day Bank", "plugin-template"),
+    "069": __("Iran Zamin Bank", "plugin-template"),
+    "070": __("Resalat Bank", "plugin-template"),
+    "078": __("Middle East Bank", "plugin-template"),
+    "079": __("Melal Credit Institute", "plugin-template"),
+  };
+}
 
 /** Bank name from the 3-digit bank code inside the IBAN, or null. */
 export function ibanBank(input: string): string | null {
   const iban = normalizeIban(input);
   if (iban.length < 7) return null;
-  return BANKS[iban.slice(4, 7)] ?? null;
+  return banks()[iban.slice(4, 7)] ?? null;
 }
 
-/** «ملت» → «بانک ملت»; names that already carry بانک/مؤسسه («پست بانک», «مؤسسه ملل») are left alone. */
+/** Leaves names that already say Bank or Institute unchanged. */
 export function bankLabel(name: string): string {
-  return /بانک|مؤسسه/.test(name) ? name : `بانک ${name}`;
+  if (/\b(Bank|Institute)\b|بانک|مؤسسه/u.test(name)) return name;
+  // translators: %s: short bank name.
+  return sprintf(__("Bank %s", "plugin-template"), name);
 }
 
 /* ---------- کد ملی ---------- */
@@ -121,22 +153,62 @@ export function formatCardNumber(input: string): string {
 }
 
 /** First six digits (BIN / پیش‌شماره) of Iranian bank cards. Merged banks (انصار، قوامین، حکمت، مهر اقتصاد، کوثر) now issue under سپه. */
-const CARD_BINS: Record<string, string> = {
-  "603799": "ملی", "589210": "سپه", "627381": "سپه", "639599": "سپه", "636949": "سپه", "639370": "سپه", "505801": "سپه",
-  "627648": "توسعه صادرات", "207177": "توسعه صادرات", "627961": "صنعت و معدن", "603770": "کشاورزی", "639217": "کشاورزی",
-  "628023": "مسکن", "627760": "پست بانک", "502908": "توسعه تعاون", "627412": "اقتصاد نوین", "622106": "پارسیان", "639194": "پارسیان",
-  "627884": "پارسیان", "502229": "پاسارگاد", "639347": "پاسارگاد", "627488": "کارآفرین", "502910": "کارآفرین", "621986": "سامان",
-  "639346": "سینا", "639607": "سرمایه", "636214": "آینده", "502806": "شهر", "504706": "شهر", "502938": "دی", "603769": "صادرات",
-  "610433": "ملت", "991975": "ملت", "627353": "تجارت", "585983": "تجارت", "589463": "رفاه کارگران", "504172": "رسالت",
-  "606373": "قرض‌الحسنه مهر ایران", "628157": "مؤسسه توسعه", "505785": "ایران زمین", "505416": "گردشگری", "606256": "مؤسسه ملل",
-  "585947": "خاورمیانه", "581874": "ایران‌ونزوئلا", "636795": "بانک مرکزی", "507677": "مؤسسه نور",
-};
+function cardBins(): Record<string, string> {
+  return {
+    "603799": __("Bank Melli", "plugin-template"),
+    "589210": __("Bank Sepah", "plugin-template"),
+    "627381": __("Bank Sepah", "plugin-template"),
+    "639599": __("Bank Sepah", "plugin-template"),
+    "636949": __("Bank Sepah", "plugin-template"),
+    "639370": __("Bank Sepah", "plugin-template"),
+    "505801": __("Bank Sepah", "plugin-template"),
+    "627648": __("Export Development Bank", "plugin-template"),
+    "207177": __("Export Development Bank", "plugin-template"),
+    "627961": __("Bank of Industry and Mine", "plugin-template"),
+    "603770": __("Bank Keshavarzi", "plugin-template"),
+    "639217": __("Bank Keshavarzi", "plugin-template"),
+    "628023": __("Bank Maskan", "plugin-template"),
+    "627760": __("Post Bank", "plugin-template"),
+    "502908": __("Tose'e Taavon Bank", "plugin-template"),
+    "627412": __("Eghtesad Novin Bank", "plugin-template"),
+    "622106": __("Parsian Bank", "plugin-template"),
+    "639194": __("Parsian Bank", "plugin-template"),
+    "627884": __("Parsian Bank", "plugin-template"),
+    "502229": __("Pasargad Bank", "plugin-template"),
+    "639347": __("Pasargad Bank", "plugin-template"),
+    "627488": __("Karafarin Bank", "plugin-template"),
+    "502910": __("Karafarin Bank", "plugin-template"),
+    "621986": __("Saman Bank", "plugin-template"),
+    "639346": __("Sina Bank", "plugin-template"),
+    "639607": __("Sarmayeh Bank", "plugin-template"),
+    "636214": __("Ayandeh Bank", "plugin-template"),
+    "502806": __("Shahr Bank", "plugin-template"),
+    "504706": __("Shahr Bank", "plugin-template"),
+    "502938": __("Day Bank", "plugin-template"),
+    "603769": __("Bank Saderat", "plugin-template"),
+    "610433": __("Bank Mellat", "plugin-template"),
+    "991975": __("Bank Mellat", "plugin-template"),
+    "627353": __("Bank Tejarat", "plugin-template"),
+    "585983": __("Bank Tejarat", "plugin-template"),
+    "589463": __("Refah Kargaran Bank", "plugin-template"),
+    "504172": __("Resalat Bank", "plugin-template"),
+    "606373": __("Mehr Iran Qard al-Hasan", "plugin-template"),
+    "628157": __("Tose'e Credit Institute", "plugin-template"),
+    "505785": __("Iran Zamin Bank", "plugin-template"),
+    "505416": __("Tourism Bank", "plugin-template"),
+    "606256": __("Melal Credit Institute", "plugin-template"),
+    "585947": __("Middle East Bank", "plugin-template"),
+    "581874": __("Iran-Venezuela Bank", "plugin-template"),
+    "636795": __("Central Bank", "plugin-template"),
+    "507677": __("Noor Credit Institute", "plugin-template"),
+  };
+}
 
 /** Bank name from the first six digits of the card, or null while fewer than six are typed / unknown. */
 export function cardBank(input: string): string | null {
   const d = normalizeCardNumber(input);
   if (d.length < 6) return null;
-  return CARD_BINS[d.slice(0, 6)] ?? null;
+  return cardBins()[d.slice(0, 6)] ?? null;
 }
 
 /** Luhn check for 16-digit bank cards. */
@@ -162,24 +234,29 @@ export const EMPTY_PLATE: PlateValue = { left: "", letter: "", middle: "", regio
  * Letters that appear on Iranian car plates and what they stand for.
  * «شخصی» letters come first; the rest mark a vehicle class.
  */
-export const PLATE_LETTERS: { letter: string; label: string }[] = [
-  ...["ب", "ج", "د", "س", "ص", "ط", "ق", "ل", "م", "ن", "و", "ه", "ی"].map((letter) => ({ letter, label: "شخصی" })),
-  { letter: "الف", label: "دولتی" },
-  { letter: "ت", label: "تاکسی" },
-  { letter: "ع", label: "حمل‌ونقل عمومی" },
-  { letter: "ک", label: "کشاورزی" },
-  { letter: "ژ", label: "جانبازان و معلولان" },
-  { letter: "پ", label: "نیروی انتظامی" },
-  { letter: "ث", label: "ارتش" },
-  { letter: "ز", label: "وزارت دفاع" },
-  { letter: "ش", label: "سپاه" },
-  { letter: "ف", label: "ستاد کل نیروهای مسلح" },
-  { letter: "گ", label: "گذر موقت" },
-  { letter: "D", label: "دیپلماتیک" },
-  { letter: "S", label: "کارکنان سفارت" },
-];
+const PLATE_LETTER_CHARS = ["ب", "ج", "د", "س", "ص", "ط", "ق", "ل", "م", "ن", "و", "ه", "ی", "الف", "ت", "ع", "ک", "ژ", "پ", "ث", "ز", "ش", "ف", "گ", "D", "S"];
 
-const PLATE_LETTER_SET = new Set(PLATE_LETTERS.map((l) => l.letter));
+export function plateLetters(): { letter: string; label: string }[] {
+  const personal = __("Private", "plugin-template");
+  const labeled: Record<string, string> = {
+    "الف": __("Government", "plugin-template"),
+    "ت": __("Taxi", "plugin-template"),
+    "ع": __("Public transport", "plugin-template"),
+    "ک": __("Agricultural", "plugin-template"),
+    "ژ": __("Veterans and disabled", "plugin-template"),
+    "پ": __("Police", "plugin-template"),
+    "ث": __("Army", "plugin-template"),
+    "ز": __("Ministry of Defense", "plugin-template"),
+    "ش": __("IRGC", "plugin-template"),
+    "ف": __("General Staff of the Armed Forces", "plugin-template"),
+    "گ": __("Temporary transit", "plugin-template"),
+    "D": __("Diplomatic", "plugin-template"),
+    "S": __("Embassy staff", "plugin-template"),
+  };
+  return PLATE_LETTER_CHARS.map((letter) => ({ letter, label: labeled[letter] ?? personal }));
+}
+
+const PLATE_LETTER_SET = new Set(PLATE_LETTER_CHARS);
 
 /** Maps a typed key to a plate letter: Arabic ي/ك → ی/ک, «ا» → «الف», d/s → D/S. Null if not a plate letter. */
 export function plateLetterFromKey(key: string): string | null {
@@ -212,7 +289,8 @@ export function parsePlate(input: string): PlateValue {
 /** Display form «۱۲ ب ۳۴۵ ایران ۱۱». */
 export function formatPlate(value: PlateValue): string {
   if (!value.left && !value.letter && !value.middle && !value.region) return "";
-  return `${fa(value.left)} ${value.letter} ${fa(value.middle)} ایران ${fa(value.region)}`.replace(/\s+/g, " ").trim();
+  const iran = __("Iran", "plugin-template");
+  return `${fa(value.left)} ${value.letter} ${fa(value.middle)} ${iran} ${fa(value.region)}`.replace(/\s+/g, " ").trim();
 }
 
 /* ---------- postal code ---------- */
@@ -236,17 +314,32 @@ export function isPostalCode(input: string): boolean {
 
 /* ---------- relative time ---------- */
 
-/** «همین حالا»، «۵ دقیقه پیش»، «۳ ساعت پیش»، «دیروز»، «۴ روز پیش» */
+/** "Just now", "5 minutes ago", "3 hours ago", "Yesterday", "4 days ago". */
 export function timeAgo(date: Date, now = new Date()): string {
   const s = Math.max(0, Math.round((now.getTime() - date.getTime()) / 1000));
-  if (s < 60) return "همین حالا";
+  if (s < 60) return __("Just now", "plugin-template");
   const m = Math.round(s / 60);
-  if (m < 60) return `${fa(m)} دقیقه پیش`;
+  if (m < 60) {
+    // translators: %s: number of minutes.
+    return sprintf(_n("%s minute ago", "%s minutes ago", m, "plugin-template"), fa(m));
+  }
   const h = Math.round(m / 60);
-  if (h < 24) return `${fa(h)} ساعت پیش`;
+  if (h < 24) {
+    // translators: %s: number of hours.
+    return sprintf(_n("%s hour ago", "%s hours ago", h, "plugin-template"), fa(h));
+  }
   const d = Math.round(h / 24);
-  if (d === 1) return "دیروز";
-  if (d < 30) return `${fa(d)} روز پیش`;
+  if (d === 1) return __("Yesterday", "plugin-template");
+  if (d < 30) {
+    // translators: %s: number of days.
+    return sprintf(_n("%s day ago", "%s days ago", d, "plugin-template"), fa(d));
+  }
   const mo = Math.round(d / 30);
-  return mo < 12 ? `${fa(mo)} ماه پیش` : `${fa(Math.round(mo / 12))} سال پیش`;
+  if (mo < 12) {
+    // translators: %s: number of months.
+    return sprintf(_n("%s month ago", "%s months ago", mo, "plugin-template"), fa(mo));
+  }
+  const years = Math.round(mo / 12);
+  // translators: %s: number of years.
+  return sprintf(_n("%s year ago", "%s years ago", years, "plugin-template"), fa(years));
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Check, CreditCard, Landmark } from "lucide-react";
-import { cn } from "../lib/utils";
+import { __ } from "@wordpress/i18n";
+import { cn, fa } from "../lib/utils";
 import { bankLabel, cardBank, formatCardNumber, isCardNumber, normalizeCardNumber } from "../lib/persian";
 
 export interface CardNumberInputProps {
@@ -51,7 +52,7 @@ export function CardNumberInput({ value, onChange, className, id, autoFocus, dis
           disabled={disabled}
           value={formatCardNumber(digits)}
           onChange={(e) => set(e.target.value)}
-          placeholder="۰۰۰۰ ۰۰۰۰ ۰۰۰۰ ۰۰۰۰"
+          placeholder={fa("0000 0000 0000 0000")}
           maxLength={19}
           className="h-full min-w-0 flex-1 bg-transparent text-sm tracking-wide tabular-nums outline-none placeholder:text-muted-foreground/50 disabled:cursor-not-allowed"
           aria-invalid={invalid ? true : undefined}
@@ -61,13 +62,13 @@ export function CardNumberInput({ value, onChange, className, id, autoFocus, dis
       </div>
       <p id={id ? `${id}-hint` : undefined} className="flex items-center gap-1.5 text-[11px] text-muted-foreground" aria-live="polite">
         {invalid ? (
-          <span className="text-destructive">شماره‌ی کارت معتبر نیست</span>
+          <span className="text-destructive">{__("The card number is not valid.", "plugin-template")}</span>
         ) : bank ? (
           <><Landmark className="size-3" />{bankLabel(bank)}</>
         ) : digits.length >= 6 ? (
-          "بانک این کارت شناخته نشد"
+          __("This card's bank was not recognized.", "plugin-template")
         ) : (
-          "۱۶ رقم روی کارت"
+          __("16 digits on the card", "plugin-template")
         )}
       </p>
     </div>

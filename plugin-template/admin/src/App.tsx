@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { __ } from "@wordpress/i18n";
 import { Alert } from "./kit/ui/alert";
 import { AlertDialog } from "./kit/ui/alert-dialog";
 import { AmountInput } from "./kit/ui/amount-input";
@@ -32,14 +33,14 @@ interface Row {
 }
 
 const SAMPLE_ROWS: Row[] = [
-  { id: "1", title: "یادداشت نمونه", amount: 1250000, status: "فعال" },
-  { id: "2", title: "سفارش آزمایشی", amount: 890000, status: "بسته" },
+  { id: "1", title: __("Sample note", "plugin-template"), amount: 1250000, status: __("Active", "plugin-template") },
+  { id: "2", title: __("Test order", "plugin-template"), amount: 890000, status: __("Closed", "plugin-template") },
 ];
 
 const SCREENS = [
-  { id: "settings", label: "تنظیمات" },
-  { id: "table", label: "فهرست" },
-  { id: "fields", label: "فیلدهای نمونه" },
+  { id: "settings", label: __("Settings", "plugin-template") },
+  { id: "table", label: __("List", "plugin-template") },
+  { id: "fields", label: __("Sample fields", "plugin-template") },
 ] as const;
 
 export function App({ config }: { config: AdminConfig }) {
@@ -81,7 +82,7 @@ function Screen({ config }: { config: AdminConfig }) {
         setValues(initial);
       })
       .catch((reason: unknown) => {
-        if (active) setError(reason instanceof Error ? reason.message : "خواندن تنظیمات انجام نشد.");
+        if (active) setError(reason instanceof Error ? reason.message : __("The settings could not be read.", "plugin-template"));
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -101,7 +102,7 @@ function Screen({ config }: { config: AdminConfig }) {
       const message = await saveSettings(config, schema.submit.endpoint, values);
       toast({ title: message, variant: "success" });
     } catch (reason: unknown) {
-      const message = reason instanceof Error ? reason.message : "ذخیره انجام نشد.";
+      const message = reason instanceof Error ? reason.message : __("Save failed.", "plugin-template");
       setError(message);
       toast({ title: message, variant: "error" });
     } finally {
@@ -115,7 +116,7 @@ function Screen({ config }: { config: AdminConfig }) {
   return (
     <div className="space-y-4">
       {error ? (
-        <Alert variant="destructive" title="خطا">
+        <Alert variant="destructive" title={__("Error", "plugin-template")}>
           {error}
         </Alert>
       ) : null}
@@ -123,9 +124,9 @@ function Screen({ config }: { config: AdminConfig }) {
         <header className="mb-4 space-y-3">
           <div>
             <p className="text-xs font-semibold text-brand">How to WP</p>
-            <h1 className="text-2xl font-bold text-foreground">{schema?.title ?? "قالب افزونه"}</h1>
+            <h1 className="text-2xl font-bold text-foreground">{schema?.title ?? __("Plugin Template", "plugin-template")}</h1>
           </div>
-          <TabsList aria-label="بخش‌های افزونه" className="w-full">
+          <TabsList aria-label={__("Plugin sections", "plugin-template")} className="w-full">
             {SCREENS.map((item) => (
               <TabsTrigger key={item.id} value={item.id}>
                 {item.label}
@@ -136,18 +137,18 @@ function Screen({ config }: { config: AdminConfig }) {
         <TabsContent value="settings">
           {loading ? <FormSkeleton /> : null}
           {!loading && schema && schema.fields.length === 0 ? (
-            <EmptyState title="فیلدی نیست" description="اسکیمای تنظیمات خالی است." />
+            <EmptyState title={__("No fields", "plugin-template")} description={__("The settings schema is empty.", "plugin-template")} />
           ) : null}
           {!loading && schema && schema.fields.length > 0 ? (
             <Tabs value={section} defaultValue="general" onValueChange={setSection} variant="underline">
-              <TabsList aria-label="بخش‌های تنظیمات">
-                <TabsTrigger value="general">عمومی</TabsTrigger>
-                <TabsTrigger value="copy">متن‌ها</TabsTrigger>
+              <TabsList aria-label={__("Settings sections", "plugin-template")}>
+                <TabsTrigger value="general">{__("General", "plugin-template")}</TabsTrigger>
+                <TabsTrigger value="copy">{__("Text", "plugin-template")}</TabsTrigger>
               </TabsList>
               <TabsContent value="general">
                 <Card>
                   <CardHeader>
-                    <CardTitle>عمومی</CardTitle>
+                    <CardTitle>{__("General", "plugin-template")}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {general.map((field) => (
@@ -158,13 +159,13 @@ function Screen({ config }: { config: AdminConfig }) {
                         onChange={(value) => setValues((current) => ({ ...current, [field.name]: value }))}
                       />
                     ))}
-                    <FormField label="حالت" htmlFor="sample-mode">
+                    <FormField label={__("Mode", "plugin-template")} htmlFor="sample-mode">
                       <Select
                         id="sample-mode"
                         value={mode}
                         options={[
-                          { value: "live", label: "زنده" },
-                          { value: "test", label: "آزمایشی" },
+                          { value: "live", label: __("Live", "plugin-template") },
+                          { value: "test", label: __("Test", "plugin-template") },
                         ]}
                         onChange={(event) => setMode(event.target.value)}
                       />
@@ -176,7 +177,7 @@ function Screen({ config }: { config: AdminConfig }) {
               <TabsContent value="copy">
                 <Card>
                   <CardHeader>
-                    <CardTitle>متن‌ها</CardTitle>
+                    <CardTitle>{__("Text", "plugin-template")}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {copy.map((field) => (
@@ -202,12 +203,12 @@ function Screen({ config }: { config: AdminConfig }) {
               rows={rows.map((row) => ({ ...row }) as Record<string, unknown>)}
               rowKey={(row) => String(row.id)}
               searchKeys={["title", "status"]}
-              searchPlaceholder="جستجو"
-              emptyTitle="ردیفی نیست"
+              searchPlaceholder={__("Search", "plugin-template")}
+              emptyTitle={__("No rows", "plugin-template")}
               columns={[
-                { key: "title", header: "عنوان", sortable: true },
-                { key: "amount", header: "مبلغ", numeric: true, sortable: true },
-                { key: "status", header: "وضعیت" },
+                { key: "title", header: __("Title", "plugin-template"), sortable: true },
+                { key: "amount", header: __("Amount", "plugin-template"), numeric: true, sortable: true },
+                { key: "status", header: __("Status", "plugin-template") },
               ]}
             />
           )}
@@ -219,14 +220,14 @@ function Screen({ config }: { config: AdminConfig }) {
       <AlertDialog
         open={confirmOpen}
         onOpenChange={setConfirmOpen}
-        title="یادداشت پاک شود؟"
-        description="فقط مقدار همین فرم خالی می‌شود."
+        title={__("Clear the note?", "plugin-template")}
+        description={__("Only this form's note is cleared.", "plugin-template")}
         destructive
-        confirmText="پاک شود"
+        confirmText={__("Clear", "plugin-template")}
         onConfirm={() => {
           setValues((current) => ({ ...current, notice: "" }));
           setRows([]);
-          toast({ title: "یادداشت خالی شد.", variant: "default" });
+          toast({ title: __("The note was cleared.", "plugin-template"), variant: "default" });
         }}
       />
     </div>
@@ -250,7 +251,7 @@ function FormActions({
         {schema.submit.label}
       </Button>
       <Button variant="outline" onClick={onClear}>
-        پاک کردن یادداشت
+        {__("Clear note", "plugin-template")}
       </Button>
     </div>
   );
@@ -316,35 +317,35 @@ function SampleFields() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>فیلدهای آماده</CardTitle>
+        <CardTitle>{__("Ready-made fields", "plugin-template")}</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4 md:grid-cols-2">
-        <FormField label="تاریخ">
+        <FormField label={__("Date", "plugin-template")}>
           <DatePicker value={date ?? null} onChange={(next) => setDate(next ?? undefined)} />
         </FormField>
-        <FormField label="مبلغ">
+        <FormField label={__("Amount", "plugin-template")}>
           <AmountInput value={amount} onChange={setAmount} />
         </FormField>
-        <FormField label="شبا">
+        <FormField label={__("IBAN", "plugin-template")}>
           <IbanInput value={iban} onChange={setIban} />
         </FormField>
-        <FormField label="موبایل">
+        <FormField label={__("Mobile", "plugin-template")}>
           <PhoneInput value={mobile} onChange={setMobile} />
         </FormField>
-        <FormField label="کد ملی">
+        <FormField label={__("National ID", "plugin-template")}>
           <NationalIdInput value={nationalId} onChange={setNationalId} />
         </FormField>
-        <FormField label="شماره کارت">
+        <FormField label={__("Card number", "plugin-template")}>
           <CardNumberInput value={card} onChange={setCard} />
         </FormField>
-        <FormField label="اعلان‌ها">
+        <FormField label={__("Notices", "plugin-template")}>
           <CheckboxGroup
             name="notices"
             value={checks}
             onChange={setChecks}
             options={[
-              { value: "email", label: "ایمیل" },
-              { value: "sms", label: "پیامک" },
+              { value: "email", label: __("Email", "plugin-template") },
+              { value: "sms", label: __("SMS", "plugin-template") },
             ]}
           />
         </FormField>

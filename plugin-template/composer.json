@@ -38,6 +38,8 @@
 		"phpcs": "phpcs",
 		"phpcbf": "phpcbf",
 		"phpstan": "phpstan analyse --memory-limit=1G",
-		"test": "phpunit"
+		"test": "phpunit",
+		"i18n": "bash bin/i18n.sh",
+		"i18n:check": "bash bin/i18n-check.sh"
 	}
 }

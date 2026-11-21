@@ -6,7 +6,7 @@
 >
 > **پایه‌ی فنی:** PHP ≥ 8.1 و WordPress ≥ 6.8. Bluwp `>= 0.3.0` و `< 0.4.0` لازم است و namespace آن `Howtowp\Bluwp` است. کد دامنه در `src/` و لایه‌ی HTTP در `app/` با namespace `HowToWP\PluginTemplate\` است. پیشوند `htw_pt_` / `HTW_PT_` و text domain برابر slug (`plugin-template`) است؛ بعد از `scripts/init.sh` این نام‌ها عوض می‌شوند.
 >
-> **اسکلت Bluwp:** چیدمان در `docs/architecture.md`. رشته‌های فارسی در `src/Text.php` (enum) هستند و در خروجی با `esc_html()` فرار می‌شوند؛ فقط اخطار نسخه‌ی PHP/وردپرس در فایل اصلی از `__()` استفاده می‌کند. فایل اصلی فقط با ثابت `HTW_PT_FILE` (مقدار `__FILE__`) به ووکامرس و Bluwp داده می‌شود. capability صفحه و REST همان `HTW_PT_CAPABILITY` است. CSS کیت را کپی نکنید (`docs/design-system.md`).
+> **اسکلت Bluwp:** چیدمان در `docs/architecture.md`. زبان مبدأ انگلیسی است. رشتهٔ رو به کاربر داخل `__()`, `esc_html__()` یا `@wordpress/i18n` با text domain برابر slug است. `src/Text.php` فهرست رشته‌های مشترک است و `catalog()` همان literal را به `__()` می‌دهد. فارسی در `languages/` منتشر می‌شود و در خروجی با `esc_html()` فرار می‌شود. فایل اصلی فقط با ثابت `HTW_PT_FILE` (مقدار `__FILE__`) به ووکامرس و Bluwp داده می‌شود. capability صفحه و REST همان `HTW_PT_CAPABILITY` است. CSS کیت را کپی نکنید (`docs/design-system.md`).
 >
 > **قانون طلایی**: هیچ کدی «تمام‌شده» محسوب نمی‌شود مگر اینکه از فیلتر ۴ لایه عبور کند:
 > **Validate → Sanitize (ورودی) → Prepare (کوئری) → Escape (خروجی)**. اگر هر لایه جا افتاد، کد ناقص است.
@@ -417,7 +417,7 @@ $filename = sanitize_file_name( $user_input ); // جلوگیری از ../
 - توابع، کلاس‌ها، ثابت‌ها، option keys، meta keys، hookها، متغیرهای global.
 - پیشوند این قالب `htw_pt_` (توابع، option، hook، transient، جدول، shortcode)، `HTW_PT_` (ثابت) و `htw-pt-` (کلاس CSS و handle) است. کلاس‌ها با **namespace** PSR-4 (`HowToWP\PluginTemplate\…`) در `src/` هستند، یک کلاس در هر فایل و نام فایل = نام کلاس.
 
-**متن رابط** — رشته‌های فارسی محصول در `src/Text.php` هستند (enum). این‌ها را داخل `__()` نگذار. در خروجی `esc_html( Text::…->text() )` بزن. اگر رشته‌ای هنوز از gettext می‌آید، text domain ثابت و برابر slug است:
+**متن رابط** — زبان مبدأ انگلیسی است. هر رشتهٔ رو به کاربر literal داخل تابع i18n است و text domain ثابت و برابر slug. رشتهٔ مشترک در `src/Text.php` هم همان literal را داخل `__()` دارد. در خروجی `esc_html( Text::…->text() )` بزن. فارسی فقط در `languages/{slug}-fa_IR.po` است:
 ```php
 __( 'Save', 'plugin-template' );
 esc_html_e( 'Settings', 'plugin-template' );
@@ -524,7 +524,7 @@ composer test
 - [ ] همه‌ی CSS/JS با `wp_enqueue_*` ثبت شده، نه echo دستی؛ داده به JS با `wp_add_inline_script` / `wp_interactivity_state` (نه `wp_localize_script`).
 - [ ] همه‌ی route های REST و همه‌ی Abilityها دارای `permission_callback` واقعی‌اند (نوشتن/حذف هرگز کاملاً باز نیست).
 - [ ] `readme.txt`، `uninstall.php` و `index.php` (silence) در ریشه‌ی پلاگین و هر زیرپوشه (و `build/` پس از `npm run build`) موجودند.
-- [ ] رشته‌های فارسی در `Text.php` هستند و در خروجی escape شده‌اند؛ هر رشتهٔ gettext دامنه‌اش برابر slug است. `Plugin-Version` در `AI-GUIDE.md` با هدر یکی است.
+- [ ] رشته‌های رو به کاربر انگلیسی و داخل تابع i18n‌اند و دامنه‌شان برابر slug است. `languages/{slug}.pot` به‌روز است. `Plugin-Version` در `AI-GUIDE.md` با هدر یکی است.
 - [ ] همه‌ی نام‌های global (تابع/کلاس/hook/option) prefix دارند؛ کلاس‌ها در `src/` با namespace PSR-4.
 - [ ] `composer phpcs` (WordPress-Extra + WordPress-Docs + PHPCompatibilityWP، `testVersion 8.1-`، `minimum_wp_version 6.8`) بدون error و بدون warning پاس می‌شود؛ `composer phpstan` و `composer test` هم سبز.
 - [ ] هیچ خط بیش از ۱۲۰ کاراکتر، هیچ warning/notice در PHP.

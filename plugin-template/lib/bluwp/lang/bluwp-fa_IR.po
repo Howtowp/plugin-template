@@ -690,3 +690,51 @@ msgstr "سه بار در ماه (هر ۱۰ روز)"
 
 msgid "Twice per month (every 15 days)"
 msgstr "دو بار در ماه (هر ۱۵ روز)"
+
+msgctxt "Jalali month"
+msgid "Farvardin"
+msgstr "فروردین"
+
+msgctxt "Jalali month"
+msgid "Ordibehesht"
+msgstr "اردیبهشت"
+
+msgctxt "Jalali month"
+msgid "Khordad"
+msgstr "خرداد"
+
+msgctxt "Jalali month"
+msgid "Tir"
+msgstr "تیر"
+
+msgctxt "Jalali month"
+msgid "Mordad"
+msgstr "مرداد"
+
+msgctxt "Jalali month"
+msgid "Shahrivar"
+msgstr "شهریور"
+
+msgctxt "Jalali month"
+msgid "Mehr"
+msgstr "مهر"
+
+msgctxt "Jalali month"
+msgid "Aban"
+msgstr "آبان"
+
+msgctxt "Jalali month"
+msgid "Azar"
+msgstr "آذر"
+
+msgctxt "Jalali month"
+msgid "Dey"
+msgstr "دی"
+
+msgctxt "Jalali month"
+msgid "Bahman"
+msgstr "بهمن"
+
+msgctxt "Jalali month"
+msgid "Esfand"
+msgstr "اسفند"

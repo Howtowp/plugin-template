@@ -1,5 +1,6 @@
 import * as React from "react";
 import { AlertCircle, Check, Info, X } from "lucide-react";
+import { __ } from "@wordpress/i18n";
 import { cn, fa } from "../lib/utils";
 
 export type Toast = {
@@ -59,7 +60,7 @@ export function ToastProvider({ children, max = 3, position = "bottom-start" }: 
 
 export function useToast() {
   const ctx = React.useContext(ToastCtx);
-  if (!ctx) throw new Error("useToast باید داخل <ToastProvider> استفاده شود.");
+  if (!ctx) throw new Error(__("useToast must be used within ToastProvider.", "plugin-template"));
   return ctx;
 }
 
@@ -90,7 +91,7 @@ export function ToastCard({ toast, onClose, className }: { toast: Omit<Toast, "i
         </button>
       )}
       {onClose && (
-        <button type="button" aria-label="بستن" onClick={onClose} className="-me-1 cursor-pointer rounded p-1 text-muted-foreground hover:text-foreground">
+        <button type="button" aria-label={__("Close", "plugin-template")} onClick={onClose} className="-me-1 cursor-pointer rounded p-1 text-muted-foreground hover:text-foreground">
           <X className="size-3.5" />
         </button>
       )}

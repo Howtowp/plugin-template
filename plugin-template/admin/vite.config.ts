@@ -41,17 +41,18 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       input: resolve(__dirname, "src/main.tsx"),
-      external: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
+      external: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@wordpress/i18n"],
       output: {
         format: "iife",
         inlineDynamicImports: true,
-        entryFileNames: "admin.js",
+        entryFileNames: "screen.js",
         assetFileNames: "admin.css",
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "ReactJSXRuntime",
           "react/jsx-dev-runtime": "ReactJSXRuntime",
+          "@wordpress/i18n": "wp.i18n",
         },
       },
     },

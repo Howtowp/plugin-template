@@ -1,17 +1,877 @@
-# Copyright (C) How to WP
+# Copyright (C) 2026 How to WP
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: plugin-template\n"
+"Project-Id-Version: Plugin Template 0.4.0\n"
 "Report-Msgid-Bugs-To: https://howtowp.ir\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: How to WP <https://howtowp.ir>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-01T00:00:00+00:00\n"
+"POT-Creation-Date: 2026-11-21T17:53:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team: How to WP\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: plugin-template\n"
 
-#: plugin-template.php:57
+#. Plugin Name of the plugin
+#: plugin-template.php
+#: src/Text.php:78
+#: assets/admin/screen.js:116
+msgid "Plugin Template"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: plugin-template.php
+msgid "https://howtowp.ir/plugins/plugin-template"
+msgstr ""
+
+#. Description of the plugin
+#: plugin-template.php
+msgid "Shared starter for How to WP plugins. Admin UI is React and VibeFarsi."
+msgstr ""
+
+#. Author of the plugin
+#: plugin-template.php
+msgid "How to WP"
+msgstr ""
+
+#. Author URI of the plugin
+#: plugin-template.php
+msgid "https://howtowp.ir"
+msgstr ""
+
+#. translators: 1: plugin name, 2: PHP version, 3: WordPress version
+#: plugin-template.php:79
+#, php-format
 msgid "%1$s requires PHP %2$s+ and WordPress %3$s+."
+msgstr ""
+
+#: src/Admin/AdminPage.php:78
+msgid "Admin assets are missing. Run npm run build in the plugin."
+msgstr ""
+
+#: src/Text.php:79
+#: assets/admin/screen.js:116
+msgid "Settings"
+msgstr ""
+
+#: src/Text.php:80
+msgid "Enabled"
+msgstr ""
+
+#: src/Text.php:81
+msgid "Admin note"
+msgstr ""
+
+#: src/Text.php:82
+msgid "This text is shown only in the dashboard."
+msgstr ""
+
+#: src/Text.php:83
+msgid "Site address"
+msgstr ""
+
+#: src/Text.php:84
+msgid "An http or https address, left to right."
+msgstr ""
+
+#: src/Text.php:85
+msgid "Hello, welcome."
+msgstr ""
+
+#: src/Text.php:86
+msgid "Customer text. Leave empty to use the default."
+msgstr ""
+
+#: src/Text.php:87
+msgid "Delete data when the plugin is deleted"
+msgstr ""
+
+#: src/Text.php:88
+msgid "Save"
+msgstr ""
+
+#: src/Text.php:89
+msgid "Settings saved."
+msgstr ""
+
+#: src/Text.php:90
+msgid "Settings could not be saved."
+msgstr ""
+
+#: src/Text.php:91
+msgid "The value is not valid."
+msgstr ""
+
+#: src/Text.php:92
+msgid "The address must be a valid http or https URL."
+msgstr ""
+
+#: src/Text.php:93
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: src/Text.php:94
+msgid "Bluwp is not bundled with this plugin, or it is not compatible with the 0.3 line."
+msgstr ""
+
+#: src/Text.php:98
+msgid "Sample schedule"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Close"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Confirm"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Cancel"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Please wait…"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "one"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "two"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "three"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "four"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "five"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "six"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "seven"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "eight"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "nine"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "ten"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "eleven"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "twelve"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "thirteen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "fourteen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "fifteen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "sixteen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "seventeen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "eighteen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "nineteen"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "twenty"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "thirty"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "forty"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "fifty"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "sixty"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "seventy"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "eighty"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "ninety"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "one hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "two hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "three hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "four hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "five hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "six hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "seven hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "eight hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "nine hundred"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "thousand"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "million"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "billion"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "trillion"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "quadrillion"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "quintillion"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "sextillion"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "zero"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "number words"
+msgid "and"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "number sign"
+msgid "negative"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "toman"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%s million"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%s thousand"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Minimum %1$s %2$s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Maximum %1$s %2$s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Hamrah Aval"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Irancell"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Rightel"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Shatel Mobile"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Samantel"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Central Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank of Industry and Mine"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Mellat"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Refah Kargaran Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Maskan"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Sepah"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Keshavarzi"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Melli"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Tejarat"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bank Saderat"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Export Development Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Post Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Tose'e Taavon Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Tose'e Credit Institute"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Karafarin Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Parsian Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Eghtesad Novin Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Saman Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Pasargad Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Sarmayeh Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Sina Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Mehr Iran Qard al-Hasan"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Shahr Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Ayandeh Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Tourism Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Day Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Iran Zamin Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Resalat Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Middle East Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Melal Credit Institute"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Bank %s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Iran-Venezuela Bank"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Noor Credit Institute"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The card number is not valid."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "This card's bank was not recognized."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "16 digits on the card"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Pagination"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Previous page"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Next page"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Search…"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Nothing found"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Change the filter or add a new item."
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Page %1$s of %2$s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Farvardin"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Ordibehesht"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Khordad"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Tir"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Mordad"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Shahrivar"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Mehr"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Aban"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Azar"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Dey"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Bahman"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Esfand"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Saturday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Sunday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Monday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Tuesday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Wednesday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Thursday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday, week starts Saturday"
+msgid "Friday"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Saturday"
+msgid "Sa"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Sunday"
+msgid "Su"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Monday"
+msgid "Mo"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Tuesday"
+msgid "Tu"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Wednesday"
+msgid "We"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Thursday"
+msgid "Th"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgctxt "Jalali weekday abbreviation, Friday"
+msgid "Fr"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Previous month"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Next month"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%1$s %2$s, holiday: %3$s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "%1$s %2$s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Choose a date"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Clear"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The IBAN is not valid."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "24 digits after IR"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The national ID is valid."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The national ID is not valid. Check the digits."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Ten digits, as printed on the national ID card."
+msgstr ""
+
+#: assets/admin/screen.js:116
+#, js-format
+msgid "Operator: %s"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The number must start with 9 and have 10 digits."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "You can omit the leading zero."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "useToast must be used within ToastProvider."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The settings could not be read."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Save failed."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Saved."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Sample note"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Active"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Test order"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Closed"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "List"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Sample fields"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Error"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Plugin sections"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "No fields"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The settings schema is empty."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Settings sections"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "General"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Text"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Mode"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Live"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Test"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Search"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "No rows"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Title"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Amount"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Status"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Clear the note?"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Only this form's note is cleared."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "The note was cleared."
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Clear note"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Ready-made fields"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Date"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "IBAN"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Mobile"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "National ID"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Card number"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Notices"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "Email"
+msgstr ""
+
+#: assets/admin/screen.js:116
+msgid "SMS"
 msgstr ""

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Check, Landmark } from "lucide-react";
+import { __ } from "@wordpress/i18n";
 import { cn } from "../lib/utils";
 import { bankLabel, formatIban, ibanBank, isIban, normalizeIban } from "../lib/persian";
 
@@ -41,7 +42,7 @@ export function IbanInput({ value, onChange, className, id }: IbanInputProps) {
         {valid && <Check className="size-4 text-success" />}
       </div>
       <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-        {bank ? (<><Landmark className="size-3" />{bankLabel(bank)}</>) : complete && !valid ? <span className="text-destructive">شماره‌ی شبا معتبر نیست</span> : "۲۴ رقم بعد از IR"}
+        {bank ? (<><Landmark className="size-3" />{bankLabel(bank)}</>) : complete && !valid ? <span className="text-destructive">{__("The IBAN is not valid.", "plugin-template")}</span> : __("24 digits after IR", "plugin-template")}
       </p>
     </div>
   );
