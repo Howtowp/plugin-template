@@ -30,4 +30,6 @@ export interface Envelope<T> {
 export interface AdminConfig {
   namespace: string;
   nonce: string;
+  locale?: string;
+  rtl?: boolean;
 }

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ArrowDown, ArrowUp, ArrowUpDown, Search } from "lucide-react";
+import { __, _n, sprintf } from "@wordpress/i18n";
 import { cn, en, fa } from "../lib/utils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./table";
 import { Pagination } from "./pagination";
@@ -40,7 +41,7 @@ type Sort<T> = { key: keyof T & string; dir: "asc" | "desc" } | null;
  * جدول داده. Client-side sort, text filter (Persian and Latin digits match each other),
  * تومان-friendly numeric columns, loading skeleton, empty state and pagination.
  */
-export function DataTable<T extends Record<string, unknown>>({ rows, columns, rowKey, loading, pageSize = 8, searchKeys, searchPlaceholder = "جست‌وجو…", emptyTitle = "چیزی پیدا نشد", emptyDescription = "فیلتر را عوض کنید یا مورد جدیدی اضافه کنید.", toolbar, onRowClick, className }: DataTableProps<T>) {
+export function DataTable<T extends Record<string, unknown>>({ rows, columns, rowKey, loading, pageSize = 8, searchKeys, searchPlaceholder = __("Search…", "plugin-template"), emptyTitle = __("Nothing found", "plugin-template"), emptyDescription = __("Change the filter or add a new item.", "plugin-template"), toolbar, onRowClick, className }: DataTableProps<T>) {
   const [q, setQ] = React.useState("");
   const [sort, setSort] = React.useState<Sort<T>>(null);
   const [page, setPage] = React.useState(1);
@@ -81,7 +82,13 @@ export function DataTable<T extends Record<string, unknown>>({ rows, columns, ro
             </div>
           )}
           {toolbar}
-          <span className="ms-auto text-xs text-muted-foreground">{fa(sorted.length)} مورد</span>
+          <span className="ms-auto text-xs text-muted-foreground">
+            {sprintf(
+              // translators: %s: number of rows.
+              _n("%s item", "%s items", sorted.length, "plugin-template"),
+              fa(sorted.length),
+            )}
+          </span>
         </div>
       )}
 
@@ -128,7 +135,14 @@ export function DataTable<T extends Record<string, unknown>>({ rows, columns, ro
 
       {pages > 1 && (
         <div className="flex items-center justify-between">
-          <span className="text-xs text-muted-foreground">صفحه‌ی {fa(current)} از {fa(pages)}</span>
+          <span className="text-xs text-muted-foreground">
+            {sprintf(
+              // translators: 1: current page, 2: total pages.
+              __("Page %1$s of %2$s", "plugin-template"),
+              fa(current),
+              fa(pages),
+            )}
+          </span>
           <Pagination page={current} total={pages} onChange={setPage} size="sm" />
         </div>
       )}

@@ -3,7 +3,7 @@
  * Plugin Name:       Plugin Template
  * Plugin URI:        https://howtowp.ir/plugins/plugin-template
  * Description:       Shared starter for How to WP plugins. Admin UI is React and VibeFarsi.
- * Version:           0.3.0
+ * Version:           0.4.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
  * Author:            How to WP
@@ -14,8 +14,8 @@
  * Domain Path:       /languages
  * Update URI:        https://howtowp.ir
  *
- * Plugin Name needs at least five Latin letters (Plugin Check). The Persian
- * title stays in Text::PluginName and in the React screen, not in this header.
+ * Plugin Name needs at least five Latin letters (Plugin Check). The translated
+ * title is Text::PluginName (English source, fa_IR in languages/).
  *
  * Bluwp 0.3.x (namespace Howtowp\Bluwp) is embedded in lib/bluwp. A site that
  * also has the standalone Bluwp plugin keeps using that copy when it is active
@@ -30,7 +30,7 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'HTW_PT_VERSION', '0.3.0' ); // Keep equal to the Version header (release check + tests).
+define( 'HTW_PT_VERSION', '0.4.0' ); // Keep equal to the Version header (release check + tests).
 define( 'HTW_PT_FILE', __FILE__ );
 define( 'HTW_PT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'HTW_PT_URL', plugin_dir_url( __FILE__ ) );
@@ -41,6 +41,23 @@ define( 'HTW_PT_MIN_PHP', '8.1' );
 define( 'HTW_PT_MIN_WP', '6.8' );
 define( 'HTW_PT_BLUWP_MIN', '0.3.0' );
 define( 'HTW_PT_BLUWP_BELOW', '0.4.0' ); // Exclusive upper bound. Stay on Bluwp 0.3.x.
+
+/*
+ * Register the bundled languages directory. WordPress 6.7+ loads the .mo
+ * just in time on the first translation call. This only tells core where
+ * the shipped catalog lives; wp-content/languages/plugins still wins when
+ * a file is installed there. Hooked on init so it is not too early.
+ */
+add_action(
+	'init',
+	static function () {
+		load_plugin_textdomain(
+			'plugin-template',
+			false,
+			dirname( plugin_basename( __FILE__ ) ) . '/languages'
+		);
+	}
+);
 
 /*
  * Keep this block free of namespaces, return types, and enums so an old PHP

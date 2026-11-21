@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import type { AdminConfig, Envelope, SettingsSchema } from "./types";
 
 interface ApiFetchOptions {
@@ -27,7 +28,7 @@ export async function loadSchema(config: AdminConfig): Promise<SettingsSchema> {
     path: restPath(config, "admin/settings/schema"),
   });
   if (!body.data?.schema) {
-    throw new Error(body.messages?.[0] ?? "Schema was empty");
+    throw new Error(body.messages?.[0] ?? __("The settings could not be read.", "plugin-template"));
   }
   return body.data.schema;
 }
@@ -39,7 +40,7 @@ export async function saveSettings(config: AdminConfig, endpoint: string, values
     data: values,
   });
   if (body.success === false) {
-    throw new Error(body.messages?.[0] ?? "Save failed");
+    throw new Error(body.messages?.[0] ?? __("Save failed.", "plugin-template"));
   }
-  return body.messages?.[0] ?? "ذخیره شد.";
+  return body.messages?.[0] ?? __("Saved.", "plugin-template");
 }

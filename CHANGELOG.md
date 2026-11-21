@@ -5,7 +5,15 @@ The WordPress-facing changelog lives in `plugin-template/readme.txt`.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-21
+### Added
+- English is the source language. Persian (`fa_IR`) ships in `languages/` (`plugin-template.pot`, `plugin-template-fa_IR.po`, `.mo`, and the JS JSON for `assets/admin/screen.js`).
+- `npm run i18n` and `composer i18n` rebuild the pot, update the po, compile the mo, and run `wp i18n make-json`. CI checks that the pot matches a fresh extraction.
+- The admin root sets `dir` from `is_rtl()`. LTR uses a Latin system font. RTL keeps Vazirmatn (`HowToWP Sans`). IRANSansX is not bundled.
 ### Changed
+- User-facing PHP and React strings go through WordPress i18n (`__()`, `esc_html__()`, `@wordpress/i18n`) with the text domain equal to the slug. `src/Text.php` still catalogs shared strings and customer overrides; its values are English msgids.
+- Embedded Bluwp Jalali month names use the `bluwp` text domain. Their Persian is in `lib/bluwp/lang/bluwp-fa_IR.po`.
+- The admin bundle is `assets/admin/screen.js` so `wp i18n make-json` does not treat the filename as a minified script.
 - Embedded Bluwp is 0.3.0. Its PHP namespace is `Howtowp\Bluwp`. The template pin is `>= 0.3.0 < 0.4.0` (`HTW_PT_BLUWP_MIN` / `HTW_PT_BLUWP_BELOW`).
 - Option names, transients, cron hooks, table names, and user meta were not renamed. They already use `bluwp_` or the plugin slug, so existing sites keep their settings without a data migration.
 

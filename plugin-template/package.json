@@ -1,12 +1,14 @@
 {
 	"name": "plugin-template",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"private": true,
 	"description": "Builds the VibeFarsi admin app into assets/admin using WordPress's React.",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
 		"build": "vite build --config admin/vite.config.ts",
-		"typecheck": "tsc -p admin/tsconfig.json --noEmit"
+		"typecheck": "tsc -p admin/tsconfig.json --noEmit",
+		"i18n": "bash bin/i18n.sh",
+		"i18n:check": "bash bin/i18n-check.sh"
 	},
 	"dependencies": {
 		"lucide-react": "0.487.0"

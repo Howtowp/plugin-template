@@ -13,7 +13,7 @@ app/Controllers              HTTP: capability, nonce, validate.
 app/Schemas                  JSON the admin kit renders.
 app/Repositories             Options.
 app/Http                     REST capability + nonce helper.
-src/Text.php                 Persian string enum + customer overrides.
+src/Text.php                 English string catalog + customer overrides. Persian is in languages/.
 crons/                       Bluwp cron definitions (glob; no index.php).
 database/migrations          Ordered migrations (glob; no index.php).
 admin/                       VibeFarsi React source. Not in the zip.

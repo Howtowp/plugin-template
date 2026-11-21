@@ -123,9 +123,12 @@ The WordPress-facing changelog lives in \`$SLUG/readme.txt\`.
 - Initial version, created from howtowp/plugin-template.
 CHANGELOG_EOF
 
-# 4) Regenerate the .pot with the new names when possible.
-if command -v python3 >/dev/null 2>&1 && [ -f scripts/make-pot.py ]; then
-  python3 scripts/make-pot.py >/dev/null || true
+# 4) The text domain inside the pot/po/JSON was renamed above. Rebuild the
+#    binary catalogs when WP-CLI and a built admin bundle are available.
+if command -v wp >/dev/null 2>&1 && [ -f "$SLUG/assets/admin/screen.js" ]; then
+  ( cd "$SLUG" && bash bin/i18n.sh ) || echo "warning: npm run i18n failed; run it before release." >&2
+else
+  echo "Next, from $SLUG: npm run build && npm run i18n   # refreshes languages/ after the rename"
 fi
 
 # 5) Remove this script (one-shot) unless asked to keep it.

@@ -1,7 +1,10 @@
 /**
- * Jalali (شمسی) calendar conversion — Borkowski algorithm as used by jalaali-js.
+ * Jalali calendar conversion — Borkowski algorithm as used by jalaali-js.
  * Valid for Jalali years 1 … 3177. Dependency-free.
  */
+import { __, _x } from "@wordpress/i18n";
+import { fa } from "./utils";
+import { isPersianLocale } from "../../locale";
 
 export type JalaliDate = { jy: number; jm: number; jd: number };
 
@@ -92,28 +95,63 @@ export function jalaliMonthLength(jy: number, jm: number) {
   return isLeapJalaliYear(jy) ? 30 : 29;
 }
 
-export const JALALI_MONTHS = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"];
-export const JALALI_WEEKDAYS = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
-export const JALALI_WEEKDAYS_SHORT = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
+export function jalaliMonths(): string[] {
+  return [
+    __("Farvardin", "plugin-template"),
+    __("Ordibehesht", "plugin-template"),
+    __("Khordad", "plugin-template"),
+    __("Tir", "plugin-template"),
+    __("Mordad", "plugin-template"),
+    __("Shahrivar", "plugin-template"),
+    __("Mehr", "plugin-template"),
+    __("Aban", "plugin-template"),
+    __("Azar", "plugin-template"),
+    __("Dey", "plugin-template"),
+    __("Bahman", "plugin-template"),
+    __("Esfand", "plugin-template"),
+  ];
+}
 
-/** 0 = شنبه … 6 = جمعه */
+export function jalaliWeekdays(): string[] {
+  return [
+    _x("Saturday", "Jalali weekday, week starts Saturday", "plugin-template"),
+    _x("Sunday", "Jalali weekday, week starts Saturday", "plugin-template"),
+    _x("Monday", "Jalali weekday, week starts Saturday", "plugin-template"),
+    _x("Tuesday", "Jalali weekday, week starts Saturday", "plugin-template"),
+    _x("Wednesday", "Jalali weekday, week starts Saturday", "plugin-template"),
+    _x("Thursday", "Jalali weekday, week starts Saturday", "plugin-template"),
+    _x("Friday", "Jalali weekday, week starts Saturday", "plugin-template"),
+  ];
+}
+
+export function jalaliWeekdaysShort(): string[] {
+  return [
+    _x("Sa", "Jalali weekday abbreviation, Saturday", "plugin-template"),
+    _x("Su", "Jalali weekday abbreviation, Sunday", "plugin-template"),
+    _x("Mo", "Jalali weekday abbreviation, Monday", "plugin-template"),
+    _x("Tu", "Jalali weekday abbreviation, Tuesday", "plugin-template"),
+    _x("We", "Jalali weekday abbreviation, Wednesday", "plugin-template"),
+    _x("Th", "Jalali weekday abbreviation, Thursday", "plugin-template"),
+    _x("Fr", "Jalali weekday abbreviation, Friday", "plugin-template"),
+  ];
+}
+
+/** 0 = Saturday … 6 = Friday. */
 export function jalaliWeekday(date: Date) {
   return (date.getDay() + 1) % 7;
 }
 
-const FA = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-const faDigits = (n: number | string) => String(n).replace(/\d/g, (d) => FA[Number(d)]);
-
-/** «چهارشنبه، ۲۵ شهریور ۱۴۰۵» */
+/** "Wednesday, 16 Shahrivar 1405", or the Persian form on fa_IR. */
 export function formatJalali(date: Date, opts: { weekday?: boolean; year?: boolean } = {}) {
   const { jy, jm, jd } = toJalali(date);
-  const parts = [`${faDigits(jd)} ${JALALI_MONTHS[jm - 1]}`];
-  if (opts.year !== false) parts[0] += ` ${faDigits(jy)}`;
-  return (opts.weekday ? `${JALALI_WEEKDAYS[jalaliWeekday(date)]}، ` : "") + parts.join(" ");
+  const comma = isPersianLocale() ? "، " : ", ";
+  const parts = [`${fa(jd)} ${jalaliMonths()[jm - 1]}`];
+  if (opts.year !== false) parts[0] += ` ${fa(jy)}`;
+  return (opts.weekday ? `${jalaliWeekdays()[jalaliWeekday(date)]}${comma}` : "") + parts.join(" ");
 }
 
-/** Numeric form «۱۴۰۵/۰۶/۲۵» */
+/** Numeric form "1405/06/25", with Persian digits on fa_IR. */
 export function formatJalaliNumeric(date: Date) {
   const { jy, jm, jd } = toJalali(date);
-  return faDigits(`${jy}/${String(jm).padStart(2, "0")}/${String(jd).padStart(2, "0")}`);
+  return fa(`${jy}/${String(jm).padStart(2, "0")}/${String(jd).padStart(2, "0")}`);
 }

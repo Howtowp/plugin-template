@@ -1,5 +1,6 @@
 import * as React from "react";
 import { X } from "lucide-react";
+import { __ } from "@wordpress/i18n";
 import { cn } from "../lib/utils";
 
 export interface DialogProps {
@@ -65,7 +66,7 @@ export function Dialog({ open, onOpenChange, title, description, children, foote
               {description && <p id={descId} className="mt-1 text-sm text-muted-foreground">{description}</p>}
             </div>
             {role === "dialog" && (
-              <button type="button" aria-label="بستن" onClick={() => onOpenChange(false)} className="-me-1 -mt-1 flex size-8 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground">
+              <button type="button" aria-label={__("Close", "plugin-template")} onClick={() => onOpenChange(false)} className="-me-1 -mt-1 flex size-8 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground">
                 <X className="size-4" />
               </button>
             )}

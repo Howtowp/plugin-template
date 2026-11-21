@@ -43,8 +43,21 @@
           return React.createElement(type, props == null ? props : Object.assign({}, props, { key: key }));
         },
       };
-      window.htwPtAdmin = { namespace: "plugin-template/v1", nonce: "harness" };
+      window.htwPtAdmin = { namespace: "plugin-template/v1", nonce: "harness", locale: "fa_IR", rtl: true };
+      function htwSprintf(format) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        var index = 0;
+        return String(format)
+          .replace(/%(\d+)\$[sd]/g, function (_, n) { return args[Number(n) - 1]; })
+          .replace(/%[sd]/g, function () { return args[index++]; });
+      }
       window.wp = {
+        i18n: {
+          __: function (text) { return text; },
+          _x: function (text) { return text; },
+          _n: function (single, plural, count) { return count === 1 ? single : plural; },
+          sprintf: htwSprintf,
+        },
         apiFetch: function (options) {
           if (options && options.method === "POST") {
             return Promise.resolve({ success: true, messages: ["ذخیره شد."] });
@@ -68,6 +81,6 @@
         },
       };
     </script>
-    <script src="../../assets/admin/admin.js"></script>
+    <script src="../../assets/admin/screen.js"></script>
   </body>
 </html>

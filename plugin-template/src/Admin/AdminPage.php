@@ -48,8 +48,12 @@ final class AdminPage {
 		if ( ! current_user_can( HTW_PT_CAPABILITY ) ) {
 			return;
 		}
+		$dir = is_rtl() ? 'rtl' : 'ltr';
 		echo '<div id="htw-pt-wrap" class="wrap">';
-		echo '<div id="htw-pt-admin" class="htw-pt-admin" dir="rtl"></div>';
+		printf(
+			'<div id="htw-pt-admin" class="htw-pt-admin" dir="%s"></div>',
+			esc_attr( $dir )
+		);
 		echo '</div>';
 	}
 
@@ -99,16 +103,20 @@ final class AdminPage {
 			return;
 		}
 
-		wp_enqueue_style(
-			'htw-admin-font',
-			HTW_PT_URL . 'assets/shared-font/fonts.css',
-			array(),
-			HTW_PT_VERSION
-		);
+		$style_deps = array();
+		if ( is_rtl() ) {
+			wp_enqueue_style(
+				'htw-admin-font',
+				HTW_PT_URL . 'assets/shared-font/fonts.css',
+				array(),
+				HTW_PT_VERSION
+			);
+			$style_deps[] = 'htw-admin-font';
+		}
 		wp_enqueue_style(
 			HTW_PT_SLUG . '-shell',
 			HTW_PT_URL . 'assets/admin-shell.css',
-			array( 'htw-admin-font' ),
+			$style_deps,
 			HTW_PT_VERSION
 		);
 
@@ -116,7 +124,7 @@ final class AdminPage {
 			wp_enqueue_style(
 				HTW_PT_SLUG . '-admin',
 				HTW_PT_URL . 'assets/admin/' . $style,
-				array( 'htw-admin-font', HTW_PT_SLUG . '-shell' ),
+				array_merge( $style_deps, array( HTW_PT_SLUG . '-shell' ) ),
 				HTW_PT_VERSION
 			);
 		}
@@ -128,12 +136,19 @@ final class AdminPage {
 			HTW_PT_VERSION,
 			true
 		);
+		wp_set_script_translations(
+			HTW_PT_SLUG . '-admin',
+			'plugin-template',
+			HTW_PT_DIR . 'languages'
+		);
 		wp_add_inline_script(
 			HTW_PT_SLUG . '-admin',
 			'window.htwPtAdmin = ' . wp_json_encode(
 				array(
 					'namespace' => HTW_PT_SLUG . '/v1',
 					'nonce'     => wp_create_nonce( 'wp_rest' ),
+					'locale'    => determine_locale(),
+					'rtl'       => is_rtl(),
 				)
 			) . ';',
 			'before'

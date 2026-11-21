@@ -1,7 +1,9 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { __, sprintf } from "@wordpress/i18n";
+import { isRtl } from "../../locale";
 import { cn, fa } from "../lib/utils";
-import { JALALI_MONTHS, JALALI_WEEKDAYS_SHORT, jalaliMonthLength, jalaliWeekday, toGregorian, toJalali } from "../lib/jalali";
+import { jalaliMonthLength, jalaliMonths, jalaliWeekday, jalaliWeekdaysShort, toGregorian, toJalali } from "../lib/jalali";
 
 export interface CalendarProps {
   value?: Date | null;
@@ -60,15 +62,19 @@ export function Calendar({ value, defaultValue = null, onChange, min, max, markW
     <div className={cn("rounded-xl border border-border bg-card p-3", compact ? "w-[220px]" : "w-[260px]", className)}>
       <div className="flex items-center justify-between px-1">
         <span className={cn("font-semibold", compact ? "text-xs" : "text-sm")}>
-          {JALALI_MONTHS[view.jm - 1]} {fa(view.jy)}
+          {jalaliMonths()[view.jm - 1]} {fa(view.jy)}
         </span>
         <div className="flex gap-0.5">
-          <button type="button" aria-label="ماه قبل" onClick={() => move(-1)} className={nav}><ChevronRight className="size-4" /></button>
-          <button type="button" aria-label="ماه بعد" onClick={() => move(1)} className={nav}><ChevronLeft className="size-4" /></button>
+          <button type="button" aria-label={__("Previous month", "plugin-template")} onClick={() => move(-1)} className={nav}>
+            {isRtl() ? <ChevronRight className="size-4" /> : <ChevronLeft className="size-4" />}
+          </button>
+          <button type="button" aria-label={__("Next month", "plugin-template")} onClick={() => move(1)} className={nav}>
+            {isRtl() ? <ChevronLeft className="size-4" /> : <ChevronRight className="size-4" />}
+          </button>
         </div>
       </div>
       <div className={cn("mt-2 grid grid-cols-7 overflow-hidden text-center", compact ? "gap-px text-[10px]" : "gap-0.5 text-[11px]")} role="grid">
-        {JALALI_WEEKDAYS_SHORT.map((d) => (
+        {jalaliWeekdaysShort().map((d) => (
           <span key={d} className="py-1 text-muted-foreground/80" aria-hidden>{d}</span>
         ))}
         {cells.map((d, i) => {
@@ -85,7 +91,22 @@ export function Calendar({ value, defaultValue = null, onChange, min, max, markW
               type="button"
               role="gridcell"
               aria-selected={isSel}
-              aria-label={`${fa(d)} ${JALALI_MONTHS[view.jm - 1]}${holiday ? `، تعطیل: ${holiday}` : ""}`}
+              aria-label={
+                holiday
+                  ? sprintf(
+                      /* translators: 1: day number, 2: month name, 3: holiday name. */
+                      __("%1$s %2$s, holiday: %3$s", "plugin-template"),
+                      fa(d),
+                      jalaliMonths()[view.jm - 1],
+                      holiday,
+                    )
+                  : sprintf(
+                      /* translators: 1: day number, 2: month name. */
+                      __("%1$s %2$s", "plugin-template"),
+                      fa(d),
+                      jalaliMonths()[view.jm - 1],
+                    )
+              }
               title={holiday ?? undefined}
               disabled={!!disabled}
               onClick={() => pick(d)}

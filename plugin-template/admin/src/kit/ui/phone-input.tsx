@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Check } from "lucide-react";
+import { __, sprintf } from "@wordpress/i18n";
 import { cn } from "../lib/utils";
 import { formatIranMobile, isIranMobile, mobileOperator, normalizeIranMobile } from "../lib/persian";
 
@@ -44,7 +45,15 @@ export function PhoneInput({ value, onChange, className, id, autoFocus }: PhoneI
         {valid && <Check className="size-4 text-success" />}
       </div>
       <p className="text-[11px] text-muted-foreground">
-        {op ? `اپراتور: ${op}` : digits.length === 10 && !valid ? <span className="text-destructive">شماره باید با ۹ شروع شود و ۱۰ رقم باشد</span> : "بدون صفر اول هم می‌توانید وارد کنید"}
+        {op
+          ? sprintf(
+              // translators: %s: mobile network operator.
+              __("Operator: %s", "plugin-template"),
+              op,
+            )
+          : digits.length === 10 && !valid
+            ? <span className="text-destructive">{__("The number must start with 9 and have 10 digits.", "plugin-template")}</span>
+            : __("You can omit the leading zero.", "plugin-template")}
       </p>
     </div>
   );

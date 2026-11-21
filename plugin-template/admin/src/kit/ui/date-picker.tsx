@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CalendarDays, X } from "lucide-react";
+import { __ } from "@wordpress/i18n";
 import { cn } from "../lib/utils";
 import { eventInside, FloatPortal, useFloat } from "../lib/float";
 import { formatJalali } from "../lib/jalali";
@@ -16,7 +17,7 @@ export interface DatePickerProps extends Omit<CalendarProps, "value" | "onChange
 }
 
 /** انتخاب تاریخ: a field that opens the Jalali calendar in a popover. */
-export function DatePicker({ value, onChange, placeholder = "انتخاب تاریخ", clearable = true, weekday = true, className, ...cal }: DatePickerProps) {
+export function DatePicker({ value, onChange, placeholder = __("Choose a date", "plugin-template"), clearable = true, weekday = true, className, ...cal }: DatePickerProps) {
   const [internal, setInternal] = React.useState<Date | null>(null);
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
@@ -54,7 +55,7 @@ export function DatePicker({ value, onChange, placeholder = "انتخاب تار
           <span className="truncate whitespace-nowrap">{date ? formatJalali(date, { weekday }) : placeholder}</span>
         </span>
         {clearable && date && (
-          <span role="button" aria-label="پاک کردن" onClick={(e) => { e.stopPropagation(); set(null); }} className="rounded p-0.5 text-muted-foreground hover:text-foreground">
+          <span role="button" aria-label={__("Clear", "plugin-template")} onClick={(e) => { e.stopPropagation(); set(null); }} className="rounded p-0.5 text-muted-foreground hover:text-foreground">
             <X className="size-3.5" />
           </span>
         )}

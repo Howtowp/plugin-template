@@ -41,6 +41,16 @@ jobs:
           node admin/harness/check-reset.mjs
           git diff --exit-code -- assets/admin
 
+      - name: Install WP-CLI
+        run: |
+          curl -fsSL -o "$HOME/wp-cli.phar" https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x "$HOME/wp-cli.phar"
+          sudo mv "$HOME/wp-cli.phar" /usr/local/bin/wp
+
+      - name: Translation catalog is current
+        working-directory: plugin-template
+        run: npm run i18n:check
+
   plugin-check:
     runs-on: ubuntu-latest
     steps:

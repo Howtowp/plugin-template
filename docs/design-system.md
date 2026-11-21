@@ -34,7 +34,7 @@ Set on `#htw-pt-admin` (the id uses the `htw-pt-` prefix, so `scripts/init.sh` r
 
 Focus ring: `rgba(249, 115, 22, 0.35)`.
 
-The shell is `dir="rtl"`, full width, with 20px padding. There is no max-width. `assets/admin-shell.css` (enqueued outside the React root) sets `#htw-pt-wrap.wrap` margin, padding, and max-width to zero so wp-admin's `.wrap` gutter does not inset the page. Fields with schema `direction: ltr` (URLs, IBAN, mobile, card numbers) use the `htw-ltr` class. The font family is `HowToWP Sans`.
+The shell `dir` is `rtl` or `ltr` from `is_rtl()`, full width, with 20px padding. There is no max-width. LTR uses a Latin system font. RTL sets the family to `HowToWP Sans` (Vazirmatn). `assets/admin-shell.css` (enqueued outside the React root) sets `#htw-pt-wrap.wrap` margin, padding, and max-width to zero so wp-admin's `.wrap` gutter does not inset the page. Fields with schema `direction: ltr` (URLs, IBAN, mobile, card numbers) use the `htw-ltr` class. The font family is `HowToWP Sans`.
 
 Screens use underline tabs (`Tabs` `variant="underline"`, the default). Settings sections use a second underline tab list. `LoadProvider` draws the top progress bar; `useLoadTask` / `useNavigationProgress` drive it. `FormSkeleton`, `TableSkeleton`, and `ScreenSkeleton` hold the layout while data loads. `Button` `busy` shows `.htw-spin` and disables the control.
 
@@ -61,7 +61,7 @@ Screens use underline tabs (`Tabs` `variant="underline"`, the default). Settings
 
 ## How a plugin builds its admin app
 
-Source is `plugin-template/admin/` (Vite, React, Tailwind, copied VibeFarsi components). It is not shipped. `npm run build` writes `assets/admin/admin.js`, `admin.css`, and `manifest.json`. React, ReactDOM, and the JSX runtime are external and resolve to WordPress globals. The script depends on `wp-element`, `wp-api-fetch`, `wp-i18n`, and `react-jsx-runtime`.
+Source is `plugin-template/admin/` (Vite, React, Tailwind, copied VibeFarsi components). It is not shipped. `npm run build` writes `assets/admin/screen.js`, `admin.css`, and `manifest.json`. The script is named `screen.js` so `wp i18n make-json` does not treat it as a `.min.js` file. React, ReactDOM, and the JSX runtime are external and resolve to WordPress globals. The script depends on `wp-element`, `wp-api-fetch`, `wp-i18n`, and `react-jsx-runtime`.
 
 There is no `bluwp-vuejs` checkout and no `development/build-admin.mjs`.
 

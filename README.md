@@ -38,6 +38,8 @@ my-plugin/
 
 `product.json` فیلد version ندارد (اسکیما اجازه نمی‌دهد). خط `Plugin-Version` در `AI-GUIDE.md` باید با هدر افزونه یکی باشد. `php scripts/check-catalog.php` این را، به‌علاوه‌ی capability یکسان صفحه و REST و استفاده‌نکردن از نام فایل سخت‌کدشده، چک می‌کند.
 
+زبان مبدأ انگلیسی است و ترجمهٔ فارسی (`fa_IR`) داخل `languages/` منتشر می‌شود. پیشخوان جهت را از زبان سایت می‌گیرد. جزئیات و ساخت دوبارهٔ فایل‌های ترجمه: [CONTRIBUTING.md](CONTRIBUTING.md).
+
 مجوز بازتوزیع فونت IranSans هنوز باز است. جزئیات: [docs/design-system.md](docs/design-system.md). چک‌لیست مهاجرت افزونه‌های قدیمی: [docs/migrating.md](docs/migrating.md).
 
 ## ریلیز
@@ -70,6 +72,8 @@ Bluwp `0.3.0` ships in `lib/bluwp` (`Howtowp\Bluwp`). Refresh it with `./scripts
 - HPOS and checkout-blocks compatibility declared with `HTW_PT_FILE` (the real main file, not a hardcoded name).
 - `scripts/init.sh` renames slug, namespace, and prefix. `scripts/check-catalog.php` keeps the header, `readme.txt`, `package.json`, and `AI-GUIDE.md` `Plugin-Version` in lockstep. `product.json` has no version field.
 - Release workflow, Plugin Check, security rules, and `product.schema.json` stay.
+
+English is the source language. Persian (`fa_IR`) ships in `languages/`. The admin `dir` follows the site locale: a Latin system font in LTR, Vazirmatn in RTL. Rebuild catalogs with `cd plugin-template && npm run i18n` (WP-CLI required). How to add a language, and the checklist for plugins that already use this template: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 IranSans redistribution is an open licensing question. Migration checklist: [docs/migrating.md](docs/migrating.md). Release guide: [docs/releasing.md](docs/releasing.md).
 

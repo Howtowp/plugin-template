@@ -61,7 +61,7 @@ final class SettingsSchema {
 				self::field( 'customer_hello', Text::CustomerHello->text(), $override, 'textarea' ) + array(
 					'rows'        => 2,
 					'fullWidth'   => true,
-					'placeholder' => Text::CustomerHello->value,
+					'placeholder' => Text::CustomerHello->catalog(),
 					'description' => Text::CustomerHelloHint->text(),
 				),
 			),

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { __ } from "@wordpress/i18n";
 import { Button } from "./button";
 import { Dialog } from "./dialog";
 
@@ -14,7 +15,7 @@ export interface AlertDialogProps {
 }
 
 /** تأیید عمل: a blocking confirmation for irreversible actions. Cancel is focused first. */
-export function AlertDialog({ open, onOpenChange, title, description, confirmText = "تأیید", cancelText = "انصراف", destructive, onConfirm }: AlertDialogProps) {
+export function AlertDialog({ open, onOpenChange, title, description, confirmText = __("Confirm", "plugin-template"), cancelText = __("Cancel", "plugin-template"), destructive, onConfirm }: AlertDialogProps) {
   const [busy, setBusy] = React.useState(false);
   return (
     <Dialog
@@ -34,7 +35,7 @@ export function AlertDialog({ open, onOpenChange, title, description, confirmTex
               try { await onConfirm(); onOpenChange(false); } finally { setBusy(false); }
             }}
           >
-            {busy ? "لطفاً صبر کنید…" : confirmText}
+            {busy ? __("Please wait…", "plugin-template") : confirmText}
           </Button>
           <Button variant="outline" data-autofocus onClick={() => onOpenChange(false)}>{cancelText}</Button>
         </>

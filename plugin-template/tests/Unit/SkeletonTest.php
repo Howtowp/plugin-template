@@ -17,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 final class SkeletonTest extends TestCase {
 
 	public function test_text_enum_resolves_without_wordpress(): void {
-		$this->assertSame( 'سلام، خوش آمدید.', Text::CustomerHello->text() );
+		$this->assertSame( 'Hello, welcome.', Text::CustomerHello->text() );
+		$this->assertSame( 'Hello, welcome.', Text::CustomerHello->catalog() );
 		$this->assertSame( array(), Text::overrides() );
 		$this->assertContains( Text::CustomerHello, Text::customer_texts() );
 		$resolved = Text::resolve(
@@ -28,8 +29,8 @@ final class SkeletonTest extends TestCase {
 		);
 		$this->assertSame(
 			array(
-				'label' => 'ذخیره',
-				'nested' => array( 'تنظیمات' ),
+				'label' => 'Save',
+				'nested' => array( 'Settings' ),
 			),
 			$resolved
 		);
